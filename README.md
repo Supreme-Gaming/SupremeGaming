@@ -12,5 +12,5 @@ None
 
 - Supreme Gaming website
 - Supreme Gaming data api
-- Ark data cacher (re-written in TS and built on top of [https://github.com/knightzac19/NodeJS-ArkData](knightzac19's).
+- Ark data cacher (re-written in TS and built on top of [knightzac19's](https://github.com/knightzac19/NodeJS-ArkData).
 - Donation processing services (patreon and paypal)
