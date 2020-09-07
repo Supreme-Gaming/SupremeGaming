@@ -21,5 +21,9 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "data-api-nest": {
+      "tags": []
+    }
+  }
 }

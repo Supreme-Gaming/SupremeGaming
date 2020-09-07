@@ -26,7 +26,13 @@
     "help": "nx help"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@nestjs/common": "^7.0.0",
+    "@nestjs/core": "^7.0.0",
+    "@nestjs/platform-express": "^7.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "~6.5.5"
+  },
   "devDependencies": {
     "@nrwl/nest": "^10.1.0",
     "@nrwl/workspace": "10.1.0",
@@ -36,6 +42,17 @@
     "prettier": "2.0.4",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "@nrwl/jest": "10.1.0",
+    "jest": "26.2.2",
+    "@types/jest": "26.0.8",
+    "ts-jest": "26.1.4",
+    "@nrwl/node": "10.1.0",
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/testing": "^7.0.0",
+    "@nrwl/eslint-plugin-nx": "10.1.0",
+    "@typescript-eslint/parser": "2.19.2",
+    "@typescript-eslint/eslint-plugin": "2.19.2",
+    "eslint-config-prettier": "6.0.0"
   }
 }
