@@ -53,6 +53,105 @@
           }
         }
       }
+    },
+    "common-entities": {
+      "root": "libs/common/entities",
+      "sourceRoot": "libs/common/entities/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["libs/common/entities/tsconfig.lib.json", "libs/common/entities/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/entities/jest.config.js",
+            "tsConfig": "libs/common/entities/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-entities-ark": {
+      "root": "libs/common/entities/ark",
+      "sourceRoot": "libs/common/entities/ark/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["libs/common/entities/ark/tsconfig.lib.json", "libs/common/entities/ark/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/ark/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/entities/ark/jest.config.js",
+            "tsConfig": "libs/common/entities/ark/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-entities-steam": {
+      "root": "libs/common/entities/steam",
+      "sourceRoot": "libs/common/entities/steam/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["libs/common/entities/steam/tsconfig.lib.json", "libs/common/entities/steam/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/steam/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/entities/steam/jest.config.js",
+            "tsConfig": "libs/common/entities/steam/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-entities-servers": {
+      "root": "libs/common/entities/servers",
+      "sourceRoot": "libs/common/entities/servers/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/common/entities/servers/tsconfig.lib.json",
+              "libs/common/entities/servers/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/servers/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/entities/servers/jest.config.js",
+            "tsConfig": "libs/common/entities/servers/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
