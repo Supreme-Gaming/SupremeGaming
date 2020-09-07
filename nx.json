@@ -1,7 +1,7 @@
 {
   "npmScope": "supremegaming",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "development"
   },
   "implicitDependencies": {
     "workspace.json": "*",
@@ -23,6 +23,18 @@
   },
   "projects": {
     "data-api-nest": {
+      "tags": []
+    },
+    "common-entities": {
+      "tags": []
+    },
+    "common-entities-ark": {
+      "tags": []
+    },
+    "common-entities-steam": {
+      "tags": []
+    },
+    "common-entities-servers": {
       "tags": []
     }
   }
