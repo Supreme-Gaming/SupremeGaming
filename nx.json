@@ -36,6 +36,12 @@
     },
     "common-entities-servers": {
       "tags": []
+    },
+    "conan-cacher": {
+      "tags": []
+    },
+    "common-entities-conan": {
+      "tags": []
     }
   }
 }
