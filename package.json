@@ -28,14 +28,15 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "@nrwl/nest": "^10.1.0",
-    "@nrwl/workspace": "10.1.0",
+    "@nrwl/cli": "10.3.1",
+    "@nrwl/nest": "10.3.1",
+    "@nrwl/workspace": "10.3.1",
     "@types/node": "~8.9.4",
     "dotenv": "6.2.0",
-    "eslint": "6.8.0",
+    "eslint": "7.10.0",
     "prettier": "2.0.4",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "4.0.3"
   }
 }
