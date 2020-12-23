@@ -1,0 +1,5 @@
+@import 'src/scss/mixins';
+
+:host {
+  @include flexbox();
+}

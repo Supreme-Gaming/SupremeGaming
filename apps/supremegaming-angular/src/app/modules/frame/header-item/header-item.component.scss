@@ -1,0 +1,96 @@
+@import 'src/scss/mixins';
+
+:host {
+  padding: 1.5rem 0.7rem;
+  position: relative;
+
+  // TODO: Figure out perspective and hover
+  perspective: 400px;
+  -webkit-perspective: 400px;
+  perspective-origin: center;
+  -webkit-perspective-origin: center;
+
+  a {
+    span.material-icons {
+      font-size: 1.1rem;
+      margin-right: 0.4rem;
+      margin-left: 0.4rem;
+      @include transition(transform 0.25s);
+    }
+  }
+  .sub-menu {
+    position: absolute;
+    min-width: 20rem;
+    left: 50%;
+    top: calc(100% - 1rem);
+    z-index: 9999;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    filter: drop-shadow(-2px 5px 5px rgba(0, 0, 0, 0.1));
+    @include transform-origin(50% -50px);
+    @include transform(translateX(-50%) rotateX(-20deg));
+    @include transition(transform 0.25s, opacity 0.25s);
+
+    ul {
+      @include flexbox();
+      @include flex-direction(column);
+      @include justify-content(flex-start);
+      background: #ffffff;
+      border-radius: 7px;
+
+      li {
+        padding: 0.4rem 1rem;
+        list-style: none;
+
+        &:first-child {
+          padding-top: 1rem;
+        }
+
+        &:last-child {
+          padding-bottom: 1.25rem;
+        }
+
+        &.descriptive-menu-item {
+          p {
+            font-size: 0.85rem;
+            color: #626262;
+          }
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0.25rem;
+      left: 50%;
+      @include transform(translate(-50%) rotateZ(45deg));
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 5px;
+      background: #ffffff;
+      z-index: -1;
+    }
+  }
+
+  &:hover,
+  &.active,
+  &.focus {
+    a {
+      color: #000000;
+
+      span.material-icons {
+        @include transform(rotate3d(0, 0, 1, -180deg));
+      }
+    }
+
+    .sub-menu {
+      opacity: 1;
+      pointer-events: initial;
+      @include transform(translateX(-50%) rotateX(0deg));
+    }
+  }
+}

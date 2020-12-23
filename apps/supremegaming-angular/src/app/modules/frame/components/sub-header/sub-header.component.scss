@@ -1,0 +1,14 @@
+@import 'src/scss/mixins';
+@import 'src/scss/modules/sub-header';
+
+:host {
+  @include flexbox();
+  background-color: lighten(#5a4350, 10%);
+  min-height: 3px;
+}
+
+.sub-header {
+  @include flexbox();
+  @include flex-direction(row);
+  @include justify-content(space-between);
+}

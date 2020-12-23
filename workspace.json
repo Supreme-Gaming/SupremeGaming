@@ -255,7 +255,7 @@
             "tsConfig": "apps/supremegaming-angular/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/supremegaming-angular/src/favicon.ico", "apps/supremegaming-angular/src/assets"],
-            "styles": ["apps/supremegaming-angular/src/styles.scss"],
+            "styles": ["src/scss/styles.scss"],
             "scripts": []
           },
           "configurations": {

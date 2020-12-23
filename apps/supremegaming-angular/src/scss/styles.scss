@@ -1,0 +1,112 @@
+// Imports
+@import '1140';
+@import 'mixins';
+@import 'dom_flexbox';
+@import 'spacing';
+@import './modules/content_section';
+
+$color: rgba(122, 87, 209, 1);
+
+// GLobal styles
+html {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: #212121;
+}
+
+p,
+a,
+li {
+  padding: 0.25rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: $color;
+  font-weight: 600;
+}
+
+p {
+  // Special markdown render styling. Adds a bar border on a p block.
+  & > em {
+    border-left: 4pt solid rgba(255, 46, 99, 1);
+    padding-left: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: block;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h4 {
+  font-family: 'Public Sans', sans-serif;
+  color: #424242;
+  font-weight: 400;
+
+  &.visions {
+    font-family: 'Marvin Visions', sans-serif;
+    letter-spacing: 1.4px;
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+
+  & > em {
+    font-style: normal;
+    padding-left: 0.5rem;
+    margin: 1rem 0 0.5rem 0;
+    display: block;
+    border-left: 3pt solid rgba(255, 46, 99, 1);
+  }
+}
+
+hr {
+  border-top: none;
+  border-bottom: none;
+  margin: 1.25rem 0;
+}
+
+ul,
+ol {
+  list-style-position: outside;
+  margin: 0.5rem 0;
+  margin-left: 1.75rem;
+
+  // Padding for p and li elements are defined in the same rule. If a p exists inside a list item,
+  // it will have double the padding.
+  li {
+    p {
+      padding: 0;
+    }
+
+    ul,
+    ol {
+      margin-left: 1rem;
+    }
+  }
+}
+
+code {
+  background: lighten($color, 15%);
+  color: #fafafa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 5pt;
+}
