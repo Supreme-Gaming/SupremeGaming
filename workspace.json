@@ -260,7 +260,8 @@
             "aot": true,
             "assets": ["apps/supremegaming-angular/src/favicon.ico", "apps/supremegaming-angular/src/assets"],
             "styles": ["apps/supremegaming-angular/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["webfontloader"]
           },
           "configurations": {
             "production": {
