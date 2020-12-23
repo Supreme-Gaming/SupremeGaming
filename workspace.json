@@ -1,6 +1,10 @@
 {
   "version": 1,
   "projects": {
+    "scss": {
+      "projectType": "library",
+      "root": "libs/sass"
+    },
     "data-api-nest": {
       "root": "apps/data-api-nest",
       "sourceRoot": "apps/data-api-nest/src",
@@ -243,7 +247,7 @@
       "projectType": "application",
       "root": "apps/supremegaming-angular",
       "sourceRoot": "apps/supremegaming-angular/src",
-      "prefix": "supremegaming",
+      "prefix": "sg",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -255,7 +259,7 @@
             "tsConfig": "apps/supremegaming-angular/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/supremegaming-angular/src/favicon.ico", "apps/supremegaming-angular/src/assets"],
-            "styles": ["src/scss/styles.scss"],
+            "styles": ["apps/supremegaming-angular/src/styles.scss"],
             "scripts": []
           },
           "configurations": {

@@ -1,9 +1,8 @@
 // Imports
-@import '1140';
-@import 'mixins';
-@import 'dom_flexbox';
-@import 'spacing';
-@import './modules/content_section';
+@import 'libs/scss/1140';
+@import 'libs/scss/mixins';
+@import 'libs/scss/dom_flexbox';
+@import 'libs/scss/spacing';
 
 $color: rgba(122, 87, 209, 1);
 
@@ -110,3 +109,42 @@ code {
   padding: 0.2rem 0.4rem;
   border-radius: 5pt;
 }
+
+section.root {
+  padding: 2rem 0;
+}
+
+// START Page sub-header
+
+.right-content,
+.left-content {
+  color: #f5f5f5;
+
+  @include flexbox();
+  @include flex-direction(row);
+
+  a {
+    font-weight: 300;
+    color: inherit;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+.left-content {
+  a:first-child {
+    padding-left: 0;
+  }
+}
+
+.left-content {
+  a:last-child {
+    padding-right: 0;
+  }
+}
+
+// END page sub-header

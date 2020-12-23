@@ -13,7 +13,7 @@
     "forin": true,
     "import-blacklist": [true, "rxjs/Rx"],
     "interface-over-type-literal": true,
-    "member-access": false,
+    "member-access": true,
     "member-ordering": [
       true,
       {
@@ -40,6 +40,7 @@
     "no-unused-expression": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
+    "no-any": true,
     "prefer-const": true,
     "radix": true,
     "triple-equals": [true, "allow-null-check"],
@@ -48,23 +49,23 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "enforceBuildableLibDependency": true,
         "allow": [],
         "depConstraints": [
           {
             "sourceTag": "*",
             "onlyDependOnLibsWithTags": ["*"]
           }
-        ]
+        ],
+        "enforceBuildableLibDependency": true
       }
     ],
-    "directive-selector": [true, "attribute", "app", "camelCase"],
-    "component-selector": [true, "element", "app", "kebab-case"],
+    "directive-selector": false,
+    "component-selector": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
-    "no-output-native": true,
+    "no-output-native": false,
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,

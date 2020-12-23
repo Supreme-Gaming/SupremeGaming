@@ -1,5 +1,4 @@
-@import 'src/scss/mixins';
-@import 'src/scss/modules/sub-header';
+@import 'libs/scss/mixins';
 
 :host {
   @include flexbox();

@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "supremegaming", "camelCase"],
-    "component-selector": [true, "element", "supremegaming", "kebab-case"]
+    "directive-selector": [true, "attribute", "sg", "camelCase"],
+    "component-selector": [true, "element", "sg", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

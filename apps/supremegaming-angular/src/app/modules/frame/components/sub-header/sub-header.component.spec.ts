@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubHeaderComponent } from './sub-header.component';
 
@@ -6,11 +6,11 @@ describe('SubHeaderComponent', () => {
   let component: SubHeaderComponent;
   let fixture: ComponentFixture<SubHeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [SubHeaderComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SubHeaderComponent);

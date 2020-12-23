@@ -8,5 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class CommunityComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit() {}
 }
