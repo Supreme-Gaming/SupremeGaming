@@ -14,9 +14,7 @@
             "outputPath": "dist/apps/data-api-nest",
             "main": "apps/data-api-nest/src/main.ts",
             "tsConfig": "apps/data-api-nest/tsconfig.app.json",
-            "assets": [
-              "apps/data-api-nest/src/assets"
-            ]
+            "assets": ["apps/data-api-nest/src/assets"]
           },
           "configurations": {
             "production": {
@@ -31,9 +29,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/node:execute",
@@ -45,14 +41,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/data-api-nest/tsconfig.app.json",
-              "apps/data-api-nest/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/data-api-nest/**/*"
-            ]
+            "tsConfig": ["apps/data-api-nest/tsconfig.app.json", "apps/data-api-nest/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/data-api-nest/**/*"]
           }
         },
         "test": {
@@ -62,9 +52,7 @@
             "tsConfig": "apps/data-api-nest/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/data-api-nest"
-          ]
+          "outputs": ["coverage/apps/data-api-nest"]
         }
       }
     },
@@ -78,14 +66,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/common/entities/tsconfig.lib.json",
-              "libs/common/entities/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/entities/**/*"
-            ]
+            "tsConfig": ["libs/common/entities/tsconfig.lib.json", "libs/common/entities/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/**/*"]
           }
         },
         "test": {
@@ -95,9 +77,7 @@
             "tsConfig": "libs/common/entities/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/common/entities"
-          ]
+          "outputs": ["coverage/libs/common/entities"]
         }
       }
     },
@@ -111,14 +91,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/common/entities/ark/tsconfig.lib.json",
-              "libs/common/entities/ark/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/entities/ark/**/*"
-            ]
+            "tsConfig": ["libs/common/entities/ark/tsconfig.lib.json", "libs/common/entities/ark/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/ark/**/*"]
           }
         },
         "test": {
@@ -128,9 +102,7 @@
             "tsConfig": "libs/common/entities/ark/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/common/entities/ark"
-          ]
+          "outputs": ["coverage/libs/common/entities/ark"]
         }
       }
     },
@@ -144,14 +116,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/common/entities/steam/tsconfig.lib.json",
-              "libs/common/entities/steam/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/entities/steam/**/*"
-            ]
+            "tsConfig": ["libs/common/entities/steam/tsconfig.lib.json", "libs/common/entities/steam/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/steam/**/*"]
           }
         },
         "test": {
@@ -161,9 +127,7 @@
             "tsConfig": "libs/common/entities/steam/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/common/entities/steam"
-          ]
+          "outputs": ["coverage/libs/common/entities/steam"]
         }
       }
     },
@@ -181,10 +145,7 @@
               "libs/common/entities/servers/tsconfig.lib.json",
               "libs/common/entities/servers/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/entities/servers/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/entities/servers/**/*"]
           }
         },
         "test": {
@@ -194,9 +155,7 @@
             "tsConfig": "libs/common/entities/servers/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/common/entities/servers"
-          ]
+          "outputs": ["coverage/libs/common/entities/servers"]
         }
       }
     },
@@ -213,9 +172,7 @@
             "outputPath": "dist/apps/conan-cacher",
             "main": "apps/conan-cacher/src/main.ts",
             "tsConfig": "apps/conan-cacher/tsconfig.app.json",
-            "assets": [
-              "apps/conan-cacher/src/assets"
-            ]
+            "assets": ["apps/conan-cacher/src/assets"]
           },
           "configurations": {
             "production": {
@@ -230,9 +187,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/node:execute",
@@ -244,14 +199,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/conan-cacher/tsconfig.app.json",
-              "apps/conan-cacher/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/conan-cacher/**/*"
-            ]
+            "tsConfig": ["apps/conan-cacher/tsconfig.app.json", "apps/conan-cacher/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/conan-cacher/**/*"]
           }
         },
         "test": {
@@ -261,9 +210,7 @@
             "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/conan-cacher"
-          ]
+          "outputs": ["coverage/apps/conan-cacher"]
         }
       }
     },
@@ -277,14 +224,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/common/entities/conan/tsconfig.lib.json",
-              "libs/common/entities/conan/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/entities/conan/**/*"
-            ]
+            "tsConfig": ["libs/common/entities/conan/tsconfig.lib.json", "libs/common/entities/conan/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/common/entities/conan/**/*"]
           }
         },
         "test": {
@@ -294,9 +235,121 @@
             "tsConfig": "libs/common/entities/conan/tsconfig.spec.json",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/common/entities/conan"
-          ]
+          "outputs": ["coverage/libs/common/entities/conan"]
+        }
+      }
+    },
+    "supremegaming-angular": {
+      "projectType": "application",
+      "root": "apps/supremegaming-angular",
+      "sourceRoot": "apps/supremegaming-angular/src",
+      "prefix": "supremegaming",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/supremegaming-angular",
+            "index": "apps/supremegaming-angular/src/index.html",
+            "main": "apps/supremegaming-angular/src/main.ts",
+            "polyfills": "apps/supremegaming-angular/src/polyfills.ts",
+            "tsConfig": "apps/supremegaming-angular/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/supremegaming-angular/src/favicon.ico", "apps/supremegaming-angular/src/assets"],
+            "styles": ["apps/supremegaming-angular/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/supremegaming-angular/src/environments/environment.ts",
+                  "with": "apps/supremegaming-angular/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "supremegaming-angular:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "supremegaming-angular:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "supremegaming-angular:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/supremegaming-angular/tsconfig.app.json",
+              "apps/supremegaming-angular/tsconfig.spec.json",
+              "apps/supremegaming-angular/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/supremegaming-angular/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/supremegaming-angular"],
+          "options": {
+            "jestConfig": "apps/supremegaming-angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "supremegaming-angular-e2e": {
+      "root": "apps/supremegaming-angular-e2e",
+      "sourceRoot": "apps/supremegaming-angular-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/supremegaming-angular-e2e/cypress.json",
+            "tsConfig": "apps/supremegaming-angular-e2e/tsconfig.e2e.json",
+            "devServerTarget": "supremegaming-angular:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "supremegaming-angular:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/supremegaming-angular-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/supremegaming-angular-e2e/**/*"]
+          }
         }
       }
     }
@@ -304,5 +357,17 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "data-api-nest"
+  "defaultProject": "data-api-nest",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  }
 }

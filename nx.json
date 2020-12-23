@@ -43,6 +43,13 @@
     },
     "conan-cacher": {
       "tags": []
+    },
+    "supremegaming-angular": {
+      "tags": []
+    },
+    "supremegaming-angular-e2e": {
+      "tags": [],
+      "implicitDependencies": ["supremegaming-angular"]
     }
   }
 }
