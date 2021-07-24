@@ -6,7 +6,7 @@ export class AuthService {
   constructor(private readonly jwtService: JwtService) {}
 
   public async login(user) {
-    const jwt = { username: user.displayName, sub: user.id };
+    const jwt = { username: user.displayName, sub: user.id, user: { steam: user._json } };
     const access_token = this.jwtService.sign(jwt);
     const decoded = this.jwtService.decode(access_token) as {
       [key: string]: string | number;
@@ -14,7 +14,7 @@ export class AuthService {
 
     return {
       access_token: this.jwtService.sign(jwt),
-      ...decoded,
+      exp: decoded.exp,
     };
   }
 }
