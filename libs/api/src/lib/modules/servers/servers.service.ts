@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 
 import { Server } from '@supremegaming/common/entities/servers';
+import { getRepository } from 'typeorm';
 
 import { SERVERS } from './types/types';
 
@@ -12,7 +13,21 @@ export class ServersService {
     if (includeSensitive) {
       return this.servers;
     } else {
-      return this.servers.map((s) => ServersService.cleanServer(s));
+      const servers = this.servers.map(s => {
+        const server = new Server();
+
+        server.host =  s.host;
+        server.rconpass = s.rconpass;
+        server.rconport = s.rconport;
+        server.game = s.game;
+
+
+        server.attachRcon();
+
+        return server;
+      })
+
+      return this.servers.map(s => ServersService.cleanServer(s));
     }
   }
 

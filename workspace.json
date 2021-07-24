@@ -509,6 +509,27 @@
           }
         }
       }
+    },
+    "utilities-rcon": {
+      "root": "libs/utilities/rcon",
+      "sourceRoot": "libs/utilities/rcon/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/utilities/rcon/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utilities/rcon"],
+          "options": {
+            "jestConfig": "libs/utilities/rcon/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

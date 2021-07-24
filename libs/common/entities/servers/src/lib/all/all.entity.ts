@@ -1,6 +1,7 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, AfterLoad } from 'typeorm';
 
 import { GuidIdentity } from '@supremegaming/common/entities';
+import { RCONServer } from '@supremegaming/utilities/rcon';
 
 @Entity({ name: 'servers' })
 export class Server extends GuidIdentity {
@@ -33,4 +34,16 @@ export class Server extends GuidIdentity {
 
   @Column()
   public game: 'ark' | 'atlas' | 'conan';
+
+  public rcon: RCONServer;
+
+  @AfterLoad()
+  public attachRcon() {
+    this.rcon = new RCONServer({
+      host: this.host,
+      rconpass: this.rconpass,
+      rconport: this.rconport,
+      game: this.game,
+    });
+  }
 }

@@ -26,7 +26,8 @@
       "@supremegaming/data-access": ["libs/data-access/src/index.ts"],
       "@supremegaming/pages/public": ["libs/pages/public/src/index.ts"],
       "@supremegaming/ui": ["libs/ui/src/index.ts"],
-      "@supremegaming/api": ["libs/api/src/index.ts"]
+      "@supremegaming/api": ["libs/api/src/index.ts"],
+      "@supremegaming/utilities/rcon": ["libs/utilities/rcon/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
