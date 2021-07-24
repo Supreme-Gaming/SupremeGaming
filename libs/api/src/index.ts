@@ -1,1 +1,3 @@
-export * from './lib/api.module';
+export * from './lib//modules/auth/auth.module';
+
+export * from './lib/modules/auth/types/types';
