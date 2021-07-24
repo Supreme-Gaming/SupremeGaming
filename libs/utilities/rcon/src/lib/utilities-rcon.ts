@@ -6,7 +6,7 @@ export class RCONServer {
   public rconpass: string;
   public game: string;
 
-  public connection: IRcon;
+  private connection: RCONConnection;
 
   constructor(connectionOptions: RconServerConnectionOptions) {
     this.host = connectionOptions.host;
@@ -41,8 +41,8 @@ export interface RconServerConnectionOptions {
   game: string;
 }
 
-export interface IRcon {
-  connect: () => string;
-  disconnect: () => void;
-  command: (command) => string;
+export interface RCONConnection {
+  connect: () => Promise<string>;
+  disconnect: () => Promise<string>;
+  command: (command) => Promise<string>;
 }

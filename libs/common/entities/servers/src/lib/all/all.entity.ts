@@ -36,12 +36,7 @@ export class Server extends GuidIdentity {
 
   @AfterLoad()
   public attachRcon() {
-    this.rcon = new RCONServer({
-      host: this.host,
-      rconpass: this.rconpass,
-      rconport: this.rconport,
-      game: this.game,
-    });
+    this.rcon = new RCONServer(this);
   }
 
   public static clean(server: Partial<Server>) {

@@ -26,7 +26,7 @@ export class ServersService {
     if (includeSensitive) {
       return server;
     } else {
-      return Server.clone(server);
+      return Server.clean(server);
     }
   }
 
@@ -34,5 +34,19 @@ export class ServersService {
     const s = this.serverRepo.create(server);
 
     return await s.save();
+  }
+
+  public async executeServerCommand(server: Server, command: string) {
+    return server.rcon
+      .connect()
+      .then((status) => {
+        return status;
+      })
+      .then((status) => {
+        return server.rcon.command(command);
+      })
+      .finally(() => {
+        return server.rcon.disconnect();
+      });
   }
 }
