@@ -5,9 +5,6 @@ import { RCONServer } from '@supremegaming/utilities/rcon';
 
 @Entity({ name: 'servers' })
 export class Server extends GuidIdentity {
-  @Column({ nullable: false })
-  public id: number;
-
   @Column()
   public host: string;
 
@@ -45,5 +42,21 @@ export class Server extends GuidIdentity {
       rconport: this.rconport,
       game: this.game,
     });
+  }
+
+  public static clean(server: Partial<Server>) {
+    const cloned: Server = Server.clone(server);
+
+    delete cloned.rconpass;
+    delete cloned.shouldProcess;
+    delete cloned.server_directory;
+    delete cloned.server_alt_dir;
+    delete cloned.rcon;
+
+    return cloned;
+  }
+
+  public static clone(server: Partial<Server>) {
+    return JSON.parse(JSON.stringify(server));
   }
 }

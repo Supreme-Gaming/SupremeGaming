@@ -3,3 +3,4 @@ export const environment = {
 };
 
 export * from './secrets';
+export { productionConfig as ormconfig } from './ormconfig';

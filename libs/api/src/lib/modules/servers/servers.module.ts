@@ -1,24 +1,14 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Server } from '@supremegaming/common/entities/servers';
 
 import { ServersController } from './servers.controller';
 import { ServersService } from './servers.service';
-import { SERVERS } from './types/types';
 
-@Module({})
-export class ServersModule {
-  public static forRoot(servers: Array<Partial<Server>>): DynamicModule {
-    return {
-      module: ServersModule,
-      controllers: [ServersController],
-      providers: [
-        ServersService,
-        {
-          provide: SERVERS,
-          useValue: servers,
-        },
-      ],
-    };
-  }
-}
+@Module({
+  imports: [TypeOrmModule.forFeature([Server])],
+  controllers: [ServersController],
+  providers: [ServersService],
+})
+export class ServersModule {}
