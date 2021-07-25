@@ -8,7 +8,7 @@ import { v4 } from 'public-ip';
 
 import { User } from '@supremegaming/common/entities/administration';
 
-import { AuthModuleOptions, OPTIONS } from '../types/types';
+import { AuthModuleOptions, ISteamProfile, OPTIONS } from '../types/types';
 
 const Strategy = ST.Strategy;
 
@@ -52,30 +52,4 @@ export class SteamStrategy extends PassportStrategy(Strategy) {
 
     return done(null, built);
   }
-}
-
-export interface ISteamProfile {
-  _json: ISteamProfileJson;
-  displayName: string;
-  id: string;
-  provider: string;
-}
-
-export interface ISteamProfileJson {
-  avatar: string;
-  avatarfull: string;
-  avatarhash: string;
-  avatarmedium: string;
-  communityvisibilitystate: number;
-  lastlogoff: number;
-  loccountrycode: string;
-  locstatecode: string;
-  personaname: string;
-  personastate: boolean;
-  personastateflags: boolean;
-  primaryclanid: string;
-  profilestate: number;
-  profileurl: string;
-  realname: string;
-  steamid: string;
 }

@@ -27,7 +27,7 @@ export class AuthModule {
           useValue: options,
         },
       ],
-      exports: [AuthService],
+      exports: [PassportModule, JwtModule],
     };
   }
 }
