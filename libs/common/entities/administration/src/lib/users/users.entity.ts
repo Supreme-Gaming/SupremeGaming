@@ -3,27 +3,26 @@ import { Entity, Column } from 'typeorm';
 import { GuidIdentity } from '@supremegaming/common/entities';
 
 @Entity({ name: 'users' })
-export class Users extends GuidIdentity {
-
-  @Column()
+export class User extends GuidIdentity {
+  @Column({ nullable: true })
   public email: string;
 
   @Column()
   public username: string;
 
-  @Column()
+  @Column({ nullable: true })
   public firstname: string;
 
-  @Column()
+  @Column({ nullable: true })
   public lastname: string;
 
-  @Column()
+  @Column({ nullable: true })
   public permissions: string;
-  
-  @Column()
+
+  @Column({ default: true })
   public active: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   public lastip: string;
 
   @Column()

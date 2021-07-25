@@ -1,6 +1,9 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { User } from '@supremegaming/common/entities/administration';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
@@ -13,7 +16,7 @@ export class AuthModule {
   public static forRoot(options: AuthModuleOptions): DynamicModule {
     return {
       module: AuthModule,
-      imports: [PassportModule, JwtModule.register(options.jwt)],
+      imports: [TypeOrmModule.forFeature([User]), PassportModule, JwtModule.register(options.jwt)],
       controllers: [AuthController],
       providers: [
         AuthService,
