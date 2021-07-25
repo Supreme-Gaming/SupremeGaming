@@ -530,6 +530,27 @@
           }
         }
       }
+    },
+    "common-entities-administration": {
+      "root": "libs/common/entities/administration",
+      "sourceRoot": "libs/common/entities/administration/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common/entities/administration/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/entities/administration"],
+          "options": {
+            "jestConfig": "libs/common/entities/administration/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
