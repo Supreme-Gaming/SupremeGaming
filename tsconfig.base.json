@@ -28,7 +28,8 @@
       "@supremegaming/ui": ["libs/ui/src/index.ts"],
       "@supremegaming/api": ["libs/api/src/index.ts"],
       "@supremegaming/utilities/rcon": ["libs/utilities/rcon/src/index.ts"],
-      "@supremegaming/common/entities/administration": ["libs/common/entities/administration/src/index.ts"]
+      "@supremegaming/common/entities/administration": ["libs/common/entities/administration/src/index.ts"],
+      "@supremegaming/utilities/database": ["libs/utilities/database/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
