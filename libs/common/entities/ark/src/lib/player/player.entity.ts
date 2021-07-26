@@ -1,13 +1,13 @@
 import { Entity, Column, ManyToOne } from 'typeorm';
 
-import { Tribe } from '../tribe/tribe.entity';
+import { ArkTribe } from '../tribe/tribe.entity';
 
 import { GuidIdentity } from '@supremegaming/common/entities';
 import { SteamProfile } from '@supremegaming/common/entities/steam';
 import { GameServer } from '@supremegaming/common/entities/servers';
 
 @Entity({ name: 'cache_ark_players' })
-export class Player extends GuidIdentity {
+export class ArkPlayer extends GuidIdentity {
   @Column({ nullable: false })
   public id: number;
 
@@ -23,8 +23,8 @@ export class Player extends GuidIdentity {
   @ManyToOne((type) => GameServer)
   public server: GameServer;
 
-  @ManyToOne((type) => Tribe, (tribe) => tribe.players)
-  public tribe: Tribe;
+  @ManyToOne((type) => ArkTribe, (tribe) => tribe.players)
+  public tribe: ArkTribe;
 
   @ManyToOne((type) => SteamProfile)
   public profile: SteamProfile;
