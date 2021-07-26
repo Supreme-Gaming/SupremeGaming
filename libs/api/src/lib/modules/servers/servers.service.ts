@@ -1,42 +1,60 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Server } from '@supremegaming/common/entities/servers';
+import { GameServer, HostServer } from '@supremegaming/common/entities/servers';
 
 @Injectable()
 export class ServersService {
-  constructor(@InjectRepository(Server) private readonly serverRepo: Repository<Server>) {}
+  constructor(
+    @InjectRepository(GameServer) private readonly gsRepo: Repository<GameServer>,
+    @InjectRepository(HostServer) private readonly hsRepo: Repository<HostServer>
+  ) {}
 
   public async getAllServers(includeSensitive?: boolean) {
     if (includeSensitive) {
-      return this.serverRepo.find();
+      return this.gsRepo.find();
     } else {
-      const servers = await this.serverRepo.find();
+      const servers = await this.gsRepo.find();
 
-      return servers.map((s) => Server.clean(s));
+      return servers.map((s) => GameServer.clean(s));
     }
   }
 
-  public async getServerByProps(whereProps: Partial<Server>, includeSensitive?: boolean) {
-    const server = await this.serverRepo.findOne({
+  public async getServerByProps(whereProps: Partial<GameServer>, includeSensitive?: boolean) {
+    const server = await this.gsRepo.findOne({
       where: whereProps,
     });
+
+    if (!server) {
+      throw new NotFoundException();
+    }
 
     if (includeSensitive) {
       return server;
     } else {
-      return Server.clean(server);
+      return GameServer.clean(server);
     }
   }
 
-  public async createServer(server: Partial<Server>) {
-    const s = this.serverRepo.create(server);
+  public async createGameServer(server: Partial<GameServer>) {
+    // Check if host exists, otherwise game server entry will fail.
+    const hs = await this.hsRepo.findOne({
+      where: {
+        guid: server.host,
+      },
+    });
 
-    return await s.save();
+    if (!hs) {
+      throw new UnprocessableEntityException();
+    }
+
+    const gs = this.gsRepo.create({ ...server, host: hs });
+
+    return await gs.save();
   }
 
-  public async executeServerCommand(server: Server, command: string) {
+  public async executeServerCommand(server: GameServer, command: string) {
     return server.rcon
       .connect()
       .then((status) => {

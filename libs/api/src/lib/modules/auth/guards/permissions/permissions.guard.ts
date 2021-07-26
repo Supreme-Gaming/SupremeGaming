@@ -27,8 +27,8 @@ export class PermissionsGuard implements CanActivate {
 
     const userPermissions: Array<string> = user.user.permissions.split(',');
 
-    return userPermissions.every((up) => {
-      return requiredPermissions.findIndex((rp) => rp === up) > -1;
+    return requiredPermissions.every((reqPerm) => {
+      return userPermissions.findIndex((userPerm) => reqPerm === userPerm) > -1;
     });
   }
 }

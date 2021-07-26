@@ -1,1 +1,2 @@
-export * from './all/all.entity';
+export * from './player/player.entity';
+export * from './tribe/tribe.entity';

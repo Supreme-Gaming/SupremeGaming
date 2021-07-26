@@ -1,1 +1,2 @@
-export * from './all/all.entity';
+export * from './game-server/game-server.entity';
+export * from './host-server/host-server.entity';

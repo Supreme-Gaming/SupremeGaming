@@ -2,7 +2,7 @@ import { Entity, Column } from 'typeorm';
 
 import { GuidIdentity } from '@supremegaming/common/entities';
 
-@Entity({ name: 'users' })
+@Entity({ name: 'administration_users' })
 export class User extends GuidIdentity {
   @Column({ nullable: true })
   public email: string;

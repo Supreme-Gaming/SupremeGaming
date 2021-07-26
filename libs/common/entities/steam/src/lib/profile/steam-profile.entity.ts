@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 import { GuidIdentity } from '@supremegaming/common/entities';
 
-@Entity({ name: 'steam_profiles' })
+@Entity({ name: 'cache_steam_profiles' })
 export class SteamProfile extends GuidIdentity {
   @PrimaryColumn()
   public steamId: number;

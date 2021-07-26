@@ -1,5 +1,7 @@
 import * as Rcon from 'srcds-rcon';
 
+import { HostServer } from '@supremegaming/common/entities/servers';
+
 export class RCONServer {
   public host: string;
   public rconport: number;
@@ -9,7 +11,7 @@ export class RCONServer {
   private connection: RCONConnection;
 
   constructor(connectionOptions: RconServerConnectionOptions) {
-    this.host = connectionOptions.host;
+    this.host = connectionOptions.host.ip;
     this.rconport = connectionOptions.rconport;
     this.rconpass = connectionOptions.rconpass;
     this.game = connectionOptions.game;
@@ -35,7 +37,7 @@ export class RCONServer {
 }
 
 export interface RconServerConnectionOptions {
-  host: string;
+  host: HostServer;
   rconport: number;
   rconpass: string;
   game: string;

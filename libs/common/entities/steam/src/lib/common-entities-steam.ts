@@ -1,1 +1,1 @@
-export * from './all/all.entity';
+export * from './profile/steam-profile.entity';

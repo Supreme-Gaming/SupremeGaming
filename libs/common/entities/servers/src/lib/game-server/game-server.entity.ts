@@ -1,12 +1,14 @@
-import { Entity, Column, AfterLoad } from 'typeorm';
+import { Entity, Column, AfterLoad, ManyToOne } from 'typeorm';
 
 import { GuidIdentity } from '@supremegaming/common/entities';
 import { RCONServer } from '@supremegaming/utilities/rcon';
 
-@Entity({ name: 'servers' })
-export class Server extends GuidIdentity {
-  @Column()
-  public host: string;
+import { HostServer } from '../host-server/host-server.entity';
+
+@Entity({ name: 'administration_game_servers' })
+export class GameServer extends GuidIdentity {
+  @ManyToOne(() => HostServer)
+  public host: HostServer;
 
   @Column()
   public port: number;
@@ -39,8 +41,8 @@ export class Server extends GuidIdentity {
     this.rcon = new RCONServer(this);
   }
 
-  public static clean(server: Partial<Server>) {
-    const cloned: Server = Server.clone(server);
+  public static clean(server: Partial<GameServer>) {
+    const cloned: GameServer = GameServer.clone(server);
 
     delete cloned.rconpass;
     delete cloned.shouldProcess;
@@ -51,7 +53,7 @@ export class Server extends GuidIdentity {
     return cloned;
   }
 
-  public static clone(server: Partial<Server>) {
+  public static clone(server: Partial<GameServer>) {
     return JSON.parse(JSON.stringify(server));
   }
 }
