@@ -2,12 +2,11 @@
 
 :host {
   @include flexbox();
-  background-color: lighten(#5a4350, 10%);
   min-height: 3px;
 }
 
 .sub-header {
   @include flexbox();
-  @include flex-direction(row);
+  @include flex-direction(row-reverse);
   @include justify-content(space-between);
 }

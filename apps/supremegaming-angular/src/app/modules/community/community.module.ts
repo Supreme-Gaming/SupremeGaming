@@ -10,7 +10,8 @@ import { ParsingModule } from '../utilities/parsing/parsing.module';
 const routes: Routes = [
   {
     path: '',
-    component: CommunityComponent,
+    // component: CommunityComponent,
+    redirectTo: 'rules',
   },
   {
     path: 'rules',

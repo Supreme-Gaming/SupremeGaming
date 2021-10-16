@@ -1,18 +1,14 @@
 <app-sub-header>
   <div class="left-content">
-    <a href="http://">Community Rules</a>
-    <a href="http://">Reddit</a>
-    <a href="http://">Forums</a>
-    <a href="http://">Support</a>
+    <a [routerLink]="['/community/rules']" routerLinkActive="active-sub-menu">Community Rules</a>
+    <a href="https://www.reddit.com/r/SupremeGaming/" target="_blank">Reddit</a>
+    <a href="https://supremegaming.gg/forums/">Forums</a>
+    <a href="https://discord.supremegaming.gg" target="_blank">Support</a>
   </div>
 </app-sub-header>
 
 <section class="root">
   <div class="container12">
-    <div class="column3">
-      <!-- Table of contents here -->
-      &nbsp;
-    </div>
     <div class="column8">
       <content-fragment url="https://raw.githubusercontent.com/Proantagonist/SupremeGamingCoalitionRules/master/Ark/PVE/pve.md"></content-fragment>
     </div>

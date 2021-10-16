@@ -3,16 +3,21 @@
 @import 'libs/scss/mixins';
 @import 'libs/scss/dom_flexbox';
 @import 'libs/scss/spacing';
-
-$color: rgba(122, 87, 209, 1);
+@import 'libs/scss/colors';
 
 // GLobal styles
 html {
   font-family: 'Public Sans', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.55;
-  color: #212121;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: $support;
+  background: $base;
+}
+
+body {
+  color: inherit;
 }
 
 p,
@@ -23,14 +28,13 @@ li {
 
 a {
   text-decoration: none;
-  color: $color;
-  font-weight: 600;
+  color: $primary_lightened;
 }
 
 p {
   // Special markdown render styling. Adds a bar border on a p block.
   & > em {
-    border-left: 4pt solid rgba(255, 46, 99, 1);
+    border-left: 3pt solid $primary;
     padding-left: 0.75rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -44,7 +48,7 @@ h3,
 h4,
 h4 {
   font-family: 'Public Sans', sans-serif;
-  color: #424242;
+  color: inherit;
   font-weight: 400;
 
   &.visions {
@@ -73,7 +77,7 @@ h4 {
     padding-left: 0.5rem;
     margin: 1rem 0 0.5rem 0;
     display: block;
-    border-left: 3pt solid rgba(255, 46, 99, 1);
+    border-left: 3pt solid $primary;
   }
 }
 
@@ -104,21 +108,23 @@ ol {
 }
 
 code {
-  background: lighten($color, 15%);
+  background: darken($primary, 10%);
   color: #fafafa;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 5pt;
+  font-size: 0.9rem;
 }
 
 section.root {
   padding: 2rem 0;
 }
 
-// START Page sub-header
-
+//
+// Deep penetrating sub-menu header styles
+//
 .right-content,
 .left-content {
-  color: #f5f5f5;
+  color: $support;
 
   @include flexbox();
   @include flex-direction(row);
@@ -126,24 +132,19 @@ section.root {
   a {
     font-weight: 300;
     color: inherit;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.75rem;
     font-size: 0.9rem;
+    @include transition(color 0.3s);
+
+    &.active-sub-menu {
+      color: $white;
+      border-bottom: 2pt solid $primary_lightened;
+      font-weight: 500;
+    }
 
     &:hover {
-      color: #ffffff;
+      color: $white;
     }
-  }
-}
-
-.left-content {
-  a:first-child {
-    padding-left: 0;
-  }
-}
-
-.left-content {
-  a:last-child {
-    padding-right: 0;
   }
 }
 

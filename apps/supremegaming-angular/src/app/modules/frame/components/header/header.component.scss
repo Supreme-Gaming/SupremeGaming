@@ -1,9 +1,9 @@
 @import 'libs/scss/mixins';
+@import 'libs/scss/colors';
 
 :host {
   display: block;
   position: relative;
-  background: #f5f5f5;
   width: 100%;
   padding: 0 1.5rem;
   box-sizing: border-box;
@@ -24,8 +24,13 @@ header {
     @include justify-content(center);
     @include align-items(center);
 
-    img {
-      width: 3rem;
+    h1 {
+      -webkit-text-fill-color: $base;
+      background: linear-gradient(115deg, $primary_darkened, $secondary);
+      -webkit-text-stroke: 3pt transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      padding: 0 0.5rem;
     }
 
     :hover {
@@ -35,11 +40,10 @@ header {
 }
 
 h1 {
-  color: #5a4350;
+  // color: #5a4350;
 }
 
 a {
-  color: #616161;
   text-decoration: none;
   @include flexbox();
   @include flex-direction(row);
@@ -67,6 +71,8 @@ li {
     -webkit-perspective-origin: center;
 
     a {
+      @include transition(color 0.3s);
+
       span.material-icons {
         font-size: 1.1rem;
         margin-right: 0.4rem;
@@ -74,6 +80,7 @@ li {
         @include transition(transform 0.25s);
       }
     }
+
     .sub-menu {
       position: absolute;
       min-width: 20rem;
@@ -93,7 +100,7 @@ li {
         @include flexbox();
         @include flex-direction(column);
         @include justify-content(flex-start);
-        background: #ffffff;
+        background: $base_lightened;
         border-radius: 7px;
 
         li {
@@ -109,21 +116,20 @@ li {
 
           &.descriptive-menu-item {
             a {
+              color: $support;
               @include flexbox();
               @include flex-direction(column);
               @include justify-content(flex-start);
               @include align-items(flex-start);
 
               span:last-child {
-                font-size: 0.85rem;
-                color: #626262;
+                font-size: 0.8rem;
+                color: darken($support, 15%);
               }
             }
           }
 
           &:hover {
-            color: #212121;
-
             .sub-sub-menu {
               opacity: 1;
               pointer-events: initial;
@@ -142,7 +148,7 @@ li {
         height: 1.5rem;
         width: 1.5rem;
         border-radius: 5px;
-        background: #ffffff;
+        background: $base_lightened;
         z-index: -1;
       }
 
@@ -153,7 +159,7 @@ li {
         height: calc(100% - 1.5rem);
         opacity: 0;
         pointer-events: none;
-        background: #eceff1;
+        background: lighten($base_lightened, 10%);
         min-width: 15rem;
 
         li {
@@ -191,7 +197,7 @@ li {
     &:hover,
     &.active {
       a {
-        color: #000000;
+        color: $primary_darkened;
 
         span.material-icons {
           @include transform(rotate3d(0, 0, 1, -180deg));

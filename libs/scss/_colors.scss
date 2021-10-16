@@ -1,0 +1,14 @@
+// $primary: rgb(255, 67, 114);
+$primary: #9effe9;
+$primary_lightened: lighten($primary, 5%);
+$primary_darkened: darken($primary, 5%);
+
+// $secondary: #d322ff;
+$secondary: #ff22e2;
+
+$support: #d5d7e4;
+$white: #ffffff;
+
+$base: #0f1121;
+$base_lightened: lighten($base, 5%);
+$base_darkened: darken($base, 5%);
