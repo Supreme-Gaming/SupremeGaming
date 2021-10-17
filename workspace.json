@@ -379,6 +379,28 @@
           }
         }
       }
+    },
+    "pages-public": {
+      "projectType": "library",
+      "root": "libs/pages/public",
+      "sourceRoot": "libs/pages/public/src",
+      "prefix": "supremegaming",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/pages/public/src/**/*.ts", "libs/pages/public/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/pages/public"],
+          "options": {
+            "jestConfig": "libs/pages/public/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
