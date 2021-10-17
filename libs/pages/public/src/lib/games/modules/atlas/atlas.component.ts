@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sg-atlas',
+  selector: 'supremegaming-atlas',
   templateUrl: './atlas.component.html',
   styleUrls: ['./atlas.component.scss'],
 })
-export class AtlasComponent implements OnInit {
-  constructor() {}
-
-  public ngOnInit(): void {}
-}
+export class AtlasComponent {}

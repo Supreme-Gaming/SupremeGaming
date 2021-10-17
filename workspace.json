@@ -247,7 +247,7 @@
       "projectType": "application",
       "root": "apps/supremegaming-angular",
       "sourceRoot": "apps/supremegaming-angular/src",
-      "prefix": "sg",
+      "prefix": "supremegaming",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

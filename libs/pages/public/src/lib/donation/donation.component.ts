@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-donation',
+  selector: 'supremegaming-donation',
   templateUrl: './donation.component.html',
   styleUrls: ['./donation.component.scss'],
 })
-export class DonationComponent implements OnInit {
-  constructor() {}
-
-  public ngOnInit() {}
-}
+export class DonationComponent {}

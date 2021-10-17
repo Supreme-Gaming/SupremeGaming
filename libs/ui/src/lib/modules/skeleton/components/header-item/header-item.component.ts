@@ -1,9 +1,9 @@
-import { Component, OnInit, HostListener, HostBinding, ElementRef } from '@angular/core';
-import { Observable, fromEvent, of, BehaviorSubject } from 'rxjs';
-import { switchMap, distinctUntilChanged, filter } from 'rxjs/operators';
+import { Component, OnInit, HostBinding, ElementRef } from '@angular/core';
+import { fromEvent, of } from 'rxjs';
+import { switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-header-item',
+  selector: 'supremegaming-header-item',
   templateUrl: './header-item.component.html',
   styleUrls: ['./header-item.component.scss'],
 })
