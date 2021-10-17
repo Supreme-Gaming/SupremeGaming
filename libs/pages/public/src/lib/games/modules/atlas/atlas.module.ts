@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/atlas-mods/atlas-mods.module').then((m) => m.AtlasModsModule),
       },
       {
+        path: 'plugins',
+        loadChildren: () => import('./modules/atlas-plugins/atlas-plugins.module').then((m) => m.AtlasPluginsModule),
+      },
+      {
         path: 'players-and-tribes',
         loadChildren: () =>
           import('./modules/atlas-players-and-tribes/atlas-players-and-tribes.module').then(

@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'atlas',
         loadChildren: () => import('./modules/atlas/atlas.module').then((m) => m.AtlasModule),
       },
+      {
+        path: 'ark',
+        loadChildren: () => import('./modules/ark/ark.module').then((m) => m.ArkModule),
+      },
     ],
   },
 ];
