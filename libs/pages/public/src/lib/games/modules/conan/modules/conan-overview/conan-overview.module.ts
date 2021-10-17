@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ConanAocOverviewComponent } from './conan-aoc-overview.component';
+import { ConanOverviewComponent } from './conan-overview.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConanAocOverviewComponent,
+    component: ConanOverviewComponent,
   },
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
-  declarations: [ConanAocOverviewComponent],
+  declarations: [ConanOverviewComponent],
 })
-export class ConanAocOverviewModule {}
+export class ConanOverviewModule {}

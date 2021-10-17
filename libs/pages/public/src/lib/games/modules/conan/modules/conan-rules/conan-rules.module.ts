@@ -4,17 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UiLayoutModule } from '@supremegaming/ui';
 
-import { ConanAocRulesComponent } from './conan-aoc-rules.component';
+import { ConanRulesComponent } from './conan-rules.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConanAocRulesComponent,
+    component: ConanRulesComponent,
   },
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes), UiLayoutModule],
-  declarations: [ConanAocRulesComponent],
+  declarations: [ConanRulesComponent],
 })
-export class ConanAocRulesModule {}
+export class ConanRulesModule {}

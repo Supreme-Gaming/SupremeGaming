@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConanAocModsComponent } from './conan-aoc-mods.component';
+import { ConanRulesComponent } from './conan-rules.component';
 
-describe('ConanAocModsComponent', () => {
-  let component: ConanAocModsComponent;
-  let fixture: ComponentFixture<ConanAocModsComponent>;
+describe('ConanRulesComponent', () => {
+  let component: ConanRulesComponent;
+  let fixture: ComponentFixture<ConanRulesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ConanAocModsComponent],
+      declarations: [ConanRulesComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConanAocModsComponent);
+    fixture = TestBed.createComponent(ConanRulesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
