@@ -10,18 +10,17 @@ const routes: Routes = [
   {
     path: '',
     component: GamesComponent,
-  },
-  {
-    path: 'ark',
-    component: GamesComponent,
-  },
-  {
-    path: 'atlas',
-    component: GamesComponent,
-  },
-  {
-    path: 'conan',
-    component: GamesComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        loadChildren: () => import('./modules/common/overview/overview.module').then((m) => m.OverviewModule),
+      },
+      {
+        path: 'atlas',
+        loadChildren: () => import('./modules/atlas/atlas.module').then((m) => m.AtlasModule),
+      },
+    ],
   },
 ];
 

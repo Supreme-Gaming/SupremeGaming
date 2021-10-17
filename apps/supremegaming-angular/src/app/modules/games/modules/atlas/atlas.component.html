@@ -1,0 +1,14 @@
+<div class="column12">
+  <app-sub-header>
+    <div class="left-content">
+      <a [routerLink]="['./']" routerLinkActive="active-sub-menu" [routerLinkActiveOptions]="{exact: true}">Atlas</a>
+      <a [routerLink]="['rules']" routerLinkActive="active-sub-menu">Rules</a>
+      <a [routerLink]="['mods']" routerLinkActive="active-sub-menu">Mods</a>
+      <a [routerLink]="['players-and-tribes']" routerLinkActive="active-sub-menu">Players &amp; Companies</a>
+    </div>
+  </app-sub-header>
+</div>
+
+<div class="column12">
+  <router-outlet></router-outlet>
+</div>

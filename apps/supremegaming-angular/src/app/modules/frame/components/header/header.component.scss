@@ -7,6 +7,7 @@
   width: 100%;
   padding: 0 1.5rem;
   box-sizing: border-box;
+  margin-bottom: 0.5rem;
 }
 
 header {
@@ -26,7 +27,7 @@ header {
 
     h1 {
       -webkit-text-fill-color: $base;
-      background: linear-gradient(115deg, $primary_darkened, $secondary);
+      background: linear-gradient(60deg, $primary_darkened, $secondary);
       -webkit-text-stroke: 3pt transparent;
       -webkit-background-clip: text;
       background-clip: text;

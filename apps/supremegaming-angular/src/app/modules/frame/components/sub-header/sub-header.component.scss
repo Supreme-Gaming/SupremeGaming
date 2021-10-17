@@ -3,6 +3,7 @@
 :host {
   @include flexbox();
   min-height: 3px;
+  margin-bottom: 4rem;
 }
 
 .sub-header {
