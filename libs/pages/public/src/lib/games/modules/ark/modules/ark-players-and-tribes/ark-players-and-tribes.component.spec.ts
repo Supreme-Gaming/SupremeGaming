@@ -8,9 +8,8 @@ describe('ArkPlayersAndTribesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArkPlayersAndTribesComponent ]
-    })
-    .compileComponents();
+      declarations: [ArkPlayersAndTribesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

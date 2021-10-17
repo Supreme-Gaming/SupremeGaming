@@ -8,9 +8,8 @@ describe('AtlasPluginsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AtlasPluginsComponent ]
-    })
-    .compileComponents();
+      declarations: [AtlasPluginsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -8,9 +8,8 @@ describe('ConanAocPlayersAndTribesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConanAocPlayersAndTribesComponent ]
-    })
-    .compileComponents();
+      declarations: [ConanAocPlayersAndTribesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

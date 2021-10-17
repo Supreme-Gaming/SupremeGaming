@@ -8,9 +8,8 @@ describe('ArkSupplyDropsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArkSupplyDropsComponent ]
-    })
-    .compileComponents();
+      declarations: [ArkSupplyDropsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

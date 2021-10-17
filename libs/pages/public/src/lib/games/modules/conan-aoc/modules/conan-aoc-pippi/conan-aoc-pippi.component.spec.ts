@@ -8,9 +8,8 @@ describe('ConanAocPippiComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConanAocPippiComponent ]
-    })
-    .compileComponents();
+      declarations: [ConanAocPippiComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -8,9 +8,8 @@ describe('ArkModsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArkModsComponent ]
-    })
-    .compileComponents();
+      declarations: [ArkModsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
