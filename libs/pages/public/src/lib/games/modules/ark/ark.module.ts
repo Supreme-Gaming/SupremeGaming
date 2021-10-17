@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/ark-rules/ark-rules.module').then((m) => m.ArkRulesModule),
       },
       {
+        path: 'settings',
+        loadChildren: () => import('./modules/ark-settings/ark-settings.module').then((m) => m.ArkSettingsModule),
+      },
+      {
         path: 'players-and-tribes',
         loadChildren: () =>
           import('./modules/ark-players-and-tribes/ark-players-and-tribes.module').then((m) => m.ArkPlayersAndTribesModule),

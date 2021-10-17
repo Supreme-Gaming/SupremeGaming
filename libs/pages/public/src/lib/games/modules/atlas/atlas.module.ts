@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/atlas-rules/atlas-rules.module').then((m) => m.AtlasRulesModule),
       },
       {
+        path: 'settings',
+        loadChildren: () => import('./modules/atlas-settings/atlas-settings.module').then((m) => m.AtlasSettingsModule),
+      },
+      {
         path: 'mods',
         loadChildren: () => import('./modules/atlas-mods/atlas-mods.module').then((m) => m.AtlasModsModule),
       },

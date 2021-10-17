@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/conan-aoc-rules/conan-aoc-rules.module').then((m) => m.ConanAocRulesModule),
       },
       {
+        path: 'settings',
+        loadChildren: () => import('./modules/conan-settings/conan-settings.module').then((m) => m.ConanSettingsModule),
+      },
+      {
         path: 'players-and-tribes',
         loadChildren: () =>
           import('./modules/conan-aoc-players-and-tribes/conan-aoc-players-and-tribes.module').then(
