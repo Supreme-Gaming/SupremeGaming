@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-community',
+  selector: 'supremegaming-community',
   templateUrl: './community.component.html',
   styleUrls: ['./community.component.scss'],
 })
-export class CommunityComponent implements OnInit {
-  constructor() {}
-
-  public ngOnInit() {}
-}
+export class CommunityComponent {}

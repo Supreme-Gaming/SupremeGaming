@@ -9,11 +9,22 @@ import { CommunityComponent } from './community.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'rules',
-  },
-  {
-    path: 'rules',
     component: CommunityComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'rules',
+      },
+      {
+        path: 'rules',
+        loadChildren: () => import('./modules/community-rules/community-rules.module').then((m) => m.CommunityRulesModule),
+      },
+      {
+        path: 'support',
+        loadChildren: () =>
+          import('./modules/community-support/community-support.module').then((m) => m.CommunitySupportModule),
+      },
+    ],
   },
 ];
 
