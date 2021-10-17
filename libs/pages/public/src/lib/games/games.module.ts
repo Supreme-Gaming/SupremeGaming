@@ -28,6 +28,10 @@ const routes: Routes = [
         path: 'ark-pf',
         loadChildren: () => import('./modules/ark-pf/ark-pf.module').then((m) => m.ArkPfModule),
       },
+      {
+        path: 'conan-aoc',
+        loadChildren: () => import('./modules/conan-aoc/conan-aoc.module').then((m) => m.ConanAocModule),
+      },
     ],
   },
 ];
