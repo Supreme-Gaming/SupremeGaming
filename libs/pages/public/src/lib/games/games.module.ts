@@ -24,6 +24,10 @@ const routes: Routes = [
         path: 'ark',
         loadChildren: () => import('./modules/ark/ark.module').then((m) => m.ArkModule),
       },
+      {
+        path: 'ark-pf',
+        loadChildren: () => import('./modules/ark-pf/ark-pf.module').then((m) => m.ArkPfModule),
+      },
     ],
   },
 ];
