@@ -10,7 +10,7 @@ export class MarkdownParsePipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
 
   public transform(value: string, ...args: string[]): SafeHtml {
-    if (!Boolean(value)) {
+    if (value === undefined || value === null || value === '') {
       return;
     }
 

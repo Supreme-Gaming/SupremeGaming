@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 import { ContentFragmentComponent } from './components/content-fragment/content-fragment.component';
-import { MarkdownParsePipe } from './pipes/markdown-parse.pipe';
+import { MarkdownParsePipe } from './pipes/markdown-parse/markdown-parse.pipe';
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   declarations: [ContentFragmentComponent, MarkdownParsePipe],
   exports: [ContentFragmentComponent, MarkdownParsePipe],
 })
-export class ParsingModule {}
+export class UiLayoutModule {}

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'content-fragment',
+  selector: 'supremegaming-content-fragment',
   templateUrl: './content-fragment.component.html',
   styleUrls: ['./content-fragment.component.scss'],
 })

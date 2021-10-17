@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FrameModule } from '../frame/frame.module';
+import { UiSkeletonModule } from '@supremegaming/ui';
 
 import { GamesComponent } from './games.component';
 
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), FrameModule],
+  imports: [CommonModule, RouterModule.forChild(routes), UiSkeletonModule],
   declarations: [GamesComponent],
   exports: [RouterModule],
 })

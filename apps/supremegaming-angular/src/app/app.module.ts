@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import * as WebFont from 'webfontloader';
 
+import { UiSkeletonModule } from '@supremegaming/ui';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FrameModule } from './modules/frame/frame.module';
 
 WebFont.load({
   google: {
@@ -18,7 +20,7 @@ WebFont.load({
 });
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule, FrameModule],
+  imports: [BrowserModule, AppRoutingModule, UiSkeletonModule, HttpClientModule],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],

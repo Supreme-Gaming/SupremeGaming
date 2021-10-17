@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HeaderItemComponent } from './header-item/header-item.component';
+import { HeaderItemComponent } from './components/header-item/header-item.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
   declarations: [HeaderComponent, SubHeaderComponent, HeaderItemComponent],
-  exports: [HeaderComponent, SubHeaderComponent],
+  exports: [HeaderComponent, SubHeaderComponent, HeaderItemComponent],
 })
-export class FrameModule {}
+export class UiSkeletonModule {}

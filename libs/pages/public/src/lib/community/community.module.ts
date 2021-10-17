@@ -2,15 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FrameModule } from '../frame/frame.module';
-import { CommunityComponent } from './community.component';
+import { UiSkeletonModule, UiLayoutModule } from '@supremegaming/ui';
 
-import { ParsingModule } from '../utilities/parsing/parsing.module';
+import { CommunityComponent } from './community.component';
 
 const routes: Routes = [
   {
     path: '',
-    // component: CommunityComponent,
     redirectTo: 'rules',
   },
   {
@@ -20,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), FrameModule, ParsingModule],
+  imports: [CommonModule, RouterModule.forChild(routes), UiSkeletonModule, UiLayoutModule],
   declarations: [CommunityComponent],
   exports: [RouterModule],
 })

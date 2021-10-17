@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FrameModule } from '../frame/frame.module';
+import { UiSkeletonModule } from '@supremegaming/ui';
 import { LandingComponent } from './landing.component';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), FrameModule],
+  imports: [CommonModule, RouterModule.forChild(routes), UiSkeletonModule],
   declarations: [LandingComponent],
   exports: [RouterModule],
 })
