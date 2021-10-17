@@ -13,5 +13,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [ConanAocModsComponent],
 })
 export class ConanAocModsModule {}

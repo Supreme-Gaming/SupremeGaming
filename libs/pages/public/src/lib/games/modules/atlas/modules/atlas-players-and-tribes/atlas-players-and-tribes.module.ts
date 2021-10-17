@@ -13,6 +13,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
-  declarations: [],
+  declarations: [AtlasPlayersAndTribesComponent],
 })
 export class AtlasPlayersAndTribesModule {}
