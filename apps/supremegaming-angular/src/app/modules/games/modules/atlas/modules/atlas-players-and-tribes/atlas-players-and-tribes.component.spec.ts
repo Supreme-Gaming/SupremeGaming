@@ -8,9 +8,8 @@ describe('AtlasPlayersAndTribesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AtlasPlayersAndTribesComponent ]
-    })
-    .compileComponents();
+      declarations: [AtlasPlayersAndTribesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

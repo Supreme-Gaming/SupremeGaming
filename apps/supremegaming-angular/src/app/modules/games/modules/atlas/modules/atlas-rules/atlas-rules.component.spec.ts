@@ -8,9 +8,8 @@ describe('AtlasRulesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AtlasRulesComponent ]
-    })
-    .compileComponents();
+      declarations: [AtlasRulesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

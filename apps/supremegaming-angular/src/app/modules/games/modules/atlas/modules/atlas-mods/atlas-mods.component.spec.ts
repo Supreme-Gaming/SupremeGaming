@@ -8,9 +8,8 @@ describe('AtlasModsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AtlasModsComponent ]
-    })
-    .compileComponents();
+      declarations: [AtlasModsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

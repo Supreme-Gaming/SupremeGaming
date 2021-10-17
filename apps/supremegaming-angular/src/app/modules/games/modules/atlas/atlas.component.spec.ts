@@ -8,9 +8,8 @@ describe('AtlasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AtlasComponent ]
-    })
-    .compileComponents();
+      declarations: [AtlasComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

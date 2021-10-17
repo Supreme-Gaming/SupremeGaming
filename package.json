@@ -53,14 +53,19 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1102.12",
+    "@angular-eslint/eslint-plugin": "~4.2.0",
+    "@angular-eslint/eslint-plugin-template": "~4.2.0",
+    "@angular-eslint/template-parser": "~4.2.0",
     "@angular/compiler-cli": "11.2.13",
     "@angular/language-service": "11.2.13",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
     "@nrwl/angular": "12.1.1",
     "@nrwl/cli": "12.1.1",
+    "@nrwl/cypress": "12.1.1",
     "@nrwl/eslint-plugin-nx": "12.1.1",
     "@nrwl/jest": "12.1.1",
+    "@nrwl/linter": "12.1.1",
     "@nrwl/nest": "12.1.1",
     "@nrwl/node": "12.1.1",
     "@nrwl/tao": "12.1.1",
@@ -71,6 +76,7 @@
     "@typescript-eslint/eslint-plugin": "4.19.0",
     "@typescript-eslint/parser": "4.19.0",
     "codelyzer": "^6.0.0",
+    "cypress": "^5.5.0",
     "dotenv": "8.2.0",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
@@ -80,8 +86,6 @@
     "ts-jest": "26.5.5",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
-    "typescript": "4.1.4",
-    "cypress": "^5.5.0",
-    "@nrwl/cypress": "12.1.1"
+    "typescript": "4.1.4"
   }
 }
