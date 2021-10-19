@@ -29,6 +29,7 @@
     "ui": { "tags": [] },
     "pages-public": { "tags": [] },
     "data-access": { "tags": [] },
-    "common-ngx": { "tags": [] }
+    "common-ngx": { "tags": [] },
+    "common-interfaces": { "tags": [] }
   }
 }

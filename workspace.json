@@ -445,6 +445,28 @@
           }
         }
       }
+    },
+    "common-interfaces": {
+      "projectType": "library",
+      "root": "libs/common/interfaces",
+      "sourceRoot": "libs/common/interfaces/src",
+      "prefix": "supremegaming",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common/interfaces/src/**/*.ts", "libs/common/interfaces/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/interfaces"],
+          "options": {
+            "jestConfig": "libs/common/interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
