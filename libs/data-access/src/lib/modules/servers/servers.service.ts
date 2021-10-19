@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { from, Observable, of } from 'rxjs';
-import { filter, switchMap, toArray } from 'rxjs/operators';
+import { catchError, filter, startWith, switchMap, timeout, toArray } from 'rxjs/operators';
 
-import { GameServer, SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
+import { GameServer, GameServerStatus, SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
 import { EnvironmentService } from '@supremegaming/common/ngx';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServersService {
-  constructor(private env: EnvironmentService) {}
+  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('apiUrl')}/servers`;
+
+  constructor(private env: EnvironmentService, private http: HttpClient) {}
 
   /**
    * Return a list of servers by game, if provided, or a full list of available servers if game is
@@ -32,4 +35,39 @@ export class ServersService {
       );
     }
   }
+
+  public getServerStatus(server: GameServer): Observable<GAME_SERVER_STATUS> {
+    return this.http.get<GameServerStatus>(`${this.resourceUrl}/status/${server.port}`).pipe(
+      timeout(10000),
+      startWith(GAME_SERVER_STATUS.PENDING),
+      switchMap((res) => {
+        // First observable value has direct bypass
+        if (res === GAME_SERVER_STATUS.PENDING) {
+          return of(GAME_SERVER_STATUS.PENDING);
+        }
+
+        if (typeof res !== 'string') {
+          if (res.success === false) {
+            return of(GAME_SERVER_STATUS.OFFLINE);
+          } else {
+            return of(GAME_SERVER_STATUS.ONLINE);
+          }
+        }
+      }),
+      catchError((err) => {
+        if (err.name === 'TimeoutError') {
+          return of(GAME_SERVER_STATUS.BUSY);
+        } else {
+          return of(GAME_SERVER_STATUS.OFFLINE);
+        }
+      })
+    );
+  }
+}
+
+export enum GAME_SERVER_STATUS {
+  ONLINE = 'online',
+  PENDING = 'pending',
+  BUSY = 'busy',
+  OFFLINE = 'offline',
 }

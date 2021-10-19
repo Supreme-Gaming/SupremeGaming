@@ -13,7 +13,7 @@ import { environment } from '../environments/environment';
 
 WebFont.load({
   google: {
-    families: ['Material Icons', 'Public Sans:300,400,500,600'],
+    families: ['Material Icons', 'Material Icons Outlined', 'Public Sans:300,400,500,600'],
   },
   custom: {
     families: ['Marvin Visions'],
@@ -22,7 +22,14 @@ WebFont.load({
 });
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule, UiSkeletonModule, HttpClientModule, EnvironmentModule.forRoot(environment)],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    UiSkeletonModule,
+    HttpClientModule,
+    EnvironmentModule.forRoot(environment),
+    HttpClientModule,
+  ],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],

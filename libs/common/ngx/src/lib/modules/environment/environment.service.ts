@@ -12,7 +12,7 @@ export class EnvironmentService {
   /**
    * Returns an environment value lookup by token.
    */
-  public value<T, R>(key?: keyof T, optional = true): R {
+  public value<T, R>(key?: keyof T, optional = false): R {
     if (key === undefined) {
       return this.env;
     }

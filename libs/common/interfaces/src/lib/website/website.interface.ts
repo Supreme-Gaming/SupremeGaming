@@ -11,3 +11,19 @@ export interface GameServer {
   map_name: string;
   game: 'ark' | 'conan' | 'atlas';
 }
+
+export interface GameServerStatus {
+  success: boolean;
+  status: number;
+  message: string;
+  data: {
+    name: string;
+    map: string;
+    maxplayers: number;
+    installversion: string;
+    status: {
+      online: boolean;
+      accessible: boolean;
+    };
+  };
+}

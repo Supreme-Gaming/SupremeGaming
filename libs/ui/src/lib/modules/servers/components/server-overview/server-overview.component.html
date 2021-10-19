@@ -1,0 +1,19 @@
+<div class="info">
+  <div class="status-container">
+    <p class="server-name">{{server.map_name}}</p>
+    <div class="server-status">
+      <div [ngSwitch]="status | async">
+        <div *ngSwitchCase="'online'"><span title="Server is online" class="status-dot online"></span></div>
+        <div *ngSwitchCase="'offline'"><span title="Server is offline" class="status-dot offline"></span></div>
+        <div *ngSwitchCase="'busy'"><span title="Server is busy. Try again later." class="status-dot busy"></span></div>
+        <div *ngSwitchDefault><span class="loader"></span></div>
+        <!-- <span class="loader"></span> -->
+      </div>
+    </div>
+  </div>
+  <p class="server-ip"><a [href]="connection">{{server.host}}:{{server.port}}</a></p>
+</div>
+
+<div class="action">
+  <a [href]="connection" title="Join Server" class="join-button"><span class="material-icons-outlined">play_circle</span></a>
+</div>
