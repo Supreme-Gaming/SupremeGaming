@@ -1,1 +1,1 @@
-export * from './lib/common-interfaces.module';
+export * from './lib/website/website.interface';

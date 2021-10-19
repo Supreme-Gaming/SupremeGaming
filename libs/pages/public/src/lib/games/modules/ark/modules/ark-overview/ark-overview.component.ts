@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { EnvironmentService } from '@supremegaming/common/ngx';
+import { GameServer } from '@supremegaming/common/interfaces';
+import { ServersService } from '@supremegaming/data-access';
 
 @Component({
   selector: 'supremegaming-ark-overview',
@@ -8,9 +10,11 @@ import { EnvironmentService } from '@supremegaming/common/ngx';
   styleUrls: ['./ark-overview.component.scss'],
 })
 export class ArkOverviewComponent implements OnInit {
-  constructor(private env: EnvironmentService) {}
+  public servers: Observable<Array<GameServer>>;
+
+  constructor(private ss: ServersService) {}
 
   public ngOnInit() {
-    this.env.value<{ x: string }>('x');
+    this.servers = this.ss.getServers('ark');
   }
 }
