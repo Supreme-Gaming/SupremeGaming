@@ -23,7 +23,8 @@
       "@supremegaming/common/entities/conan": ["libs/common/entities/conan/src/index.ts"],
       "@supremegaming/ui": ["libs/ui/src/index.ts"],
       "@supremegaming/pages/public": ["libs/pages/public/src/index.ts"],
-      "@supremegaming/data-access": ["libs/data-access/src/index.ts"]
+      "@supremegaming/data-access": ["libs/data-access/src/index.ts"],
+      "@supremegaming/common/ngx": ["libs/common/ngx/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

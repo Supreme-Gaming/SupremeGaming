@@ -423,6 +423,28 @@
           }
         }
       }
+    },
+    "common-ngx": {
+      "projectType": "library",
+      "root": "libs/common/ngx",
+      "sourceRoot": "libs/common/ngx/src",
+      "prefix": "supremegaming",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common/ngx/src/**/*.ts", "libs/common/ngx/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/ngx"],
+          "options": {
+            "jestConfig": "libs/common/ngx/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
