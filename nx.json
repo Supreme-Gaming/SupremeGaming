@@ -27,6 +27,7 @@
     "supremegaming-angular": { "tags": [] },
     "supremegaming-angular-e2e": { "tags": [], "implicitDependencies": ["supremegaming-angular"] },
     "ui": { "tags": [] },
-    "pages-public": { "tags": [] }
+    "pages-public": { "tags": [] },
+    "data-access": { "tags": [] }
   }
 }
