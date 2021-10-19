@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import * as WebFont from 'webfontloader';
 
+import { EnvironmentModule } from '@supremegaming/common/ngx';
 import { UiSkeletonModule } from '@supremegaming/ui';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 
 WebFont.load({
   google: {
@@ -20,7 +22,7 @@ WebFont.load({
 });
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule, UiSkeletonModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, UiSkeletonModule, HttpClientModule, EnvironmentModule.forRoot(environment)],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],
