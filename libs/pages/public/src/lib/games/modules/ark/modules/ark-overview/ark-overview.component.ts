@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { filter, switchMap, toArray } from 'rxjs/operators';
 
 import { GameServer } from '@supremegaming/common/interfaces';
 import { ServersService } from '@supremegaming/data-access';
@@ -15,6 +16,14 @@ export class ArkOverviewComponent implements OnInit {
   constructor(private ss: ServersService) {}
 
   public ngOnInit() {
-    this.servers = this.ss.getServers('ark');
+    this.servers = this.ss.getServers('ark').pipe(
+      switchMap((s) => {
+        return from(s);
+      }),
+      filter((server) => {
+        return server.map_name.includes('PF') === false;
+      }),
+      toArray()
+    );
   }
 }
