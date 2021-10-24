@@ -1,3 +1,22 @@
 @import 'libs/scss/mixins';
 @import 'libs/scss/colors';
 @import 'libs/scss/modules/servers/server-status';
+
+:host {
+  position: relative;
+}
+
+.grid-background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.server-name {
+  margin-left: 0.75rem;
+}

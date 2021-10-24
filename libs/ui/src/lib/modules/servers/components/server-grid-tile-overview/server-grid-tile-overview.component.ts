@@ -14,6 +14,12 @@ export class ServerGridTileOverviewComponent implements OnInit {
   @Input()
   public server: GameServer;
 
+  @Input()
+  public columnIndex: number;
+
+  @Input()
+  public rowIndex: number;
+
   public status: Observable<GAME_SERVER_STATUS>;
 
   constructor(private readonly ss: ServersService) {}

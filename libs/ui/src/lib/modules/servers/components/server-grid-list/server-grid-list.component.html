@@ -1,3 +1,3 @@
-<div class="server-grid" [ngStyle]="{'grid-template-rows': 'repeat(' + rows.length + ', 125px)', 'grid-template-columns': 'repeat(' + columns.length + ', 1fr)'}">
-  <supremegaming-server-grid-tile-overview *ngFor="let s of servers" [server]="s"></supremegaming-server-grid-tile-overview>
+<div class="server-grid" [ngStyle]="{'grid-template-rows': 'repeat(' + rows.length + ', 140px)', 'grid-template-columns': 'repeat(' + columns.length + ', 1fr)'}">
+  <supremegaming-server-grid-tile-overview *ngFor="let s of servers" [server]="s" [rowIndex]="s.map_name | atlasGridRowIndex : rows" [columnIndex]="s.map_name | atlasGridColumnIndex : columns"></supremegaming-server-grid-tile-overview>
 </div>
