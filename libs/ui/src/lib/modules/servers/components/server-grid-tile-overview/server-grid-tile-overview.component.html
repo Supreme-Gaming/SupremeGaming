@@ -1,4 +1,8 @@
-<div class="grid-background" *ngIf="columnIndex !== undefined && rowIndex !== undefined" [ngStyle]="{backgroundImage: 'url(assets/images/atlas-grid/CellImg_' + rowIndex + '-' +  columnIndex + '.jpg)'}"></div>
+<div
+  class="grid-background"
+  *ngIf="columnIndex !== undefined && rowIndex !== undefined"
+  [ngStyle]="{backgroundImage: 'url(assets/images/atlas-grid/CellImg_' + columnIndex + '-' +  rowIndex + '.jpg)'}"
+></div>
 
 <div class="status-container">
   <p class="server-name">{{server.map_name}}</p>
