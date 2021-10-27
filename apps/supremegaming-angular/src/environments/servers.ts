@@ -96,14 +96,14 @@ export const servers = [
     host: 'play.supremegaming.gg',
     port: 29000,
     rcon_port: 19000,
-    map_name: 'Legend of the Sands (Whitelist)',
+    map_name: 'Supreme Siptah',
     game: 'conan',
   },
   {
     host: 'play.supremegaming.gg',
     port: 29002,
     rcon_port: 19002,
-    map_name: 'Conan Calamitous PVE-C',
+    map_name: 'Supreme Calamitous RP-Lite',
     game: 'conan',
   },
   {
