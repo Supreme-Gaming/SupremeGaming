@@ -128,3 +128,22 @@ export interface ArkSupplyDropTableCrateSetItemEntries {
    */
   ChanceToBeBlueprintOverride: string;
 }
+
+export type ArkItemDictionary = Array<ArkItemDictionaryItem>;
+
+export interface ArkItemDictionaryItem {
+  /**
+   * Friendly readable item name
+   */
+  ItemName: string;
+
+  /**
+   * Item category (e.g. ammunition, saddle, food, etc)
+   */
+  Type: string;
+
+  /**
+   * Class name without the _C suffix
+   */
+  Class: string;
+}
