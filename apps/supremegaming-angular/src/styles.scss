@@ -112,8 +112,11 @@ blockquote {
   padding-left: 0.75rem;
   margin-left: 0.25rem;
   display: block;
-  font-size: 1.1rem;
   font-style: italic;
+
+  p {
+    font-size: 1.1rem;
+  }
 }
 
 section.root {
