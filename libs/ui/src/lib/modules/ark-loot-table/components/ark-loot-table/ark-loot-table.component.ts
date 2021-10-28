@@ -1,6 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
-import { filter, map, pluck, reduce, switchMap, toArray, withLatestFrom } from 'rxjs/operators';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { combineLatest, from, Observable, of } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  pluck,
+  reduce,
+  shareReplay,
+  startWith,
+  switchMap,
+  toArray,
+} from 'rxjs/operators';
 
 import {
   KeyedArkItemDictionary,
@@ -21,12 +33,28 @@ export class ArkLootTableComponent implements OnInit {
   public crateNames: Observable<KeyedArkSupplyDropNameDictionary>;
   public mappedCrates: Observable<Array<SimplifiedArkSupplyDropTableCrate>>;
 
-  constructor(private ls: ArkSupplyDropsService) {}
+  public form: FormGroup;
+
+  private searchText: Observable<string>;
+
+  constructor(private ls: ArkSupplyDropsService, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
+    // The form control is used to access the form control API to easily detect
+    // text input changes
+    this.form = this.fb.group({
+      search: '',
+    });
+
+    // Search control observable that will emit 500ms after typing stop and only if the source
+    // input is not the same as the previous value.
+    this.searchText = this.form.get('search').valueChanges.pipe(startWith(''), debounceTime(500), distinctUntilChanged());
+
     this.itemDictionary = this.ls.getArkItemDictionary().pipe(
       switchMap((items) => from(items)),
       reduce((dict, item) => {
+        // Dictionary items don't have the _C suffix that the drop table item entries do
+        // Need to add the suffix to be able to lookup easily.
         dict[`${item.Class}_C`] = item;
 
         return dict;
@@ -65,28 +93,45 @@ export class ArkLootTableComponent implements OnInit {
       }, {})
     );
 
-    this.mappedCrates = this.crates.pipe(
-      withLatestFrom(this.itemDictionary, this.crateNames),
-      switchMap(([crates, dict, names]) => {
+    this.mappedCrates = combineLatest([this.crates, this.searchText, this.itemDictionary, this.crateNames]).pipe(
+      switchMap(([crates, matchText, dict, names]) => {
         return from(crates).pipe(
           switchMap(
             (crate): Observable<SimplifiedArkSupplyDropTableCrate> => {
-              const mappedItems = crate.ItemEntries.map((item) => {
-                return {
+              const mappedItems = crate.ItemEntries.reduce((items, item) => {
+                const mappedItem = {
                   source: item,
                   mapped: dict[item.ItemClassStrings],
                 };
-              });
+
+                // If the search term is an empty string, no filtering should take place.
+                if (matchText === '') {
+                  items.push(mappedItem);
+                } else {
+                  const friendlyName = dict[item.ItemClassStrings].ItemName.toLowerCase();
+                  const searchTermIsInName = friendlyName.includes(matchText);
+
+                  if (searchTermIsInName) {
+                    items.push(mappedItem);
+                  }
+                }
+
+                return items;
+              }, []);
 
               return of({
                 SupplyCrateClassString: names[crate.SupplyCrateClassString].name,
                 ItemEntries: mappedItems,
               });
             }
-          )
+          ),
+          filter((crate) => {
+            return crate.ItemEntries.length > 0;
+          }),
+          toArray()
         );
       }),
-      toArray()
+      shareReplay()
     );
   }
 }
