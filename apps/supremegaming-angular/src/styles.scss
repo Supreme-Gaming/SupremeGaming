@@ -31,17 +31,6 @@ a {
   color: $primary_lightened;
 }
 
-p {
-  // Special markdown render styling. Adds a bar border on a p block.
-  & > em {
-    border-left: 3pt solid $primary;
-    padding-left: 0.75rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    display: block;
-  }
-}
-
 h1,
 h2,
 h3,
@@ -59,6 +48,8 @@ h4 {
 
 h1 {
   font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 h2 {
@@ -66,7 +57,12 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+}
+
+p + h4 {
+  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
 }
 
 h4 {
@@ -99,20 +95,25 @@ ol {
     p {
       padding: 0;
     }
-
-    ul,
-    ol {
-      margin-left: 1rem;
-    }
   }
 }
 
 code {
-  background: darken($primary, 10%);
-  color: #fafafa;
-  padding: 0.2rem 0.5rem;
-  border-radius: 5pt;
+  background: lighten($base_lightened, 20%);
+  padding: 0.2rem 0.6rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  border-radius: 3pt;
   font-size: 0.9rem;
+}
+
+blockquote {
+  border-left: 3pt solid $primary;
+  padding-left: 0.75rem;
+  margin-left: 0.25rem;
+  display: block;
+  font-size: 1.1rem;
+  font-style: italic;
 }
 
 section.root {
