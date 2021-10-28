@@ -87,10 +87,10 @@ export interface ArkSupplyDropTableCrateSet {
    */
   bItemsRandomWithoutReplacement: string;
 
-  ItemEntries: Array<ArkSupplyDropTableCrateSetItemEntries>;
+  ItemEntries: Array<ArkSupplyDropTableCrateSetItemEntry>;
 }
 
-export interface ArkSupplyDropTableCrateSetItemEntries {
+export interface ArkSupplyDropTableCrateSetItemEntry {
   /**
    * Double in string representation
    */
@@ -129,6 +129,14 @@ export interface ArkSupplyDropTableCrateSetItemEntries {
   ChanceToBeBlueprintOverride: string;
 }
 
+export interface SimplifiedArkSupplyDropTableCrate {
+  SupplyCrateClassString: string;
+  ItemEntries: Array<{
+    source: ArkSupplyDropTableCrateSetItemEntry;
+    mapped: ArkItemDictionaryItem;
+  }>;
+}
+
 export type ArkItemDictionary = Array<ArkItemDictionaryItem>;
 
 export interface ArkItemDictionaryItem {
@@ -146,4 +154,30 @@ export interface ArkItemDictionaryItem {
    * Class name without the _C suffix
    */
   Class: string;
+}
+
+/**
+ * Ark item dictionary in object form, keyed by item class name, for efficient item lookup
+ * instead of iterating to find the matching item.
+ */
+export interface KeyedArkItemDictionary {
+  [key: string]: ArkItemDictionaryItem;
+}
+
+export interface ArkSupplyDropName {
+  /**
+   * Supply drop class string
+   */
+  classString: string;
+
+  /**
+   * Friendly readable supply drop name
+   */
+  name: string;
+}
+
+export type ArkSupplyDropNameDictionary = Array<ArkSupplyDropName>;
+
+export interface KeyedArkSupplyDropNameDictionary {
+  [key: string]: ArkSupplyDropName;
 }

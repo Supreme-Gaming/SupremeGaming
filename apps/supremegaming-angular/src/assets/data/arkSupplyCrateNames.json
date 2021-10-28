@@ -1,0 +1,150 @@
+[
+  {
+    "classString": "TSMOD_SupplyCrate_Level03_C",
+    "name": "White Surface Drop (Level 3)"
+  },
+  {
+    "classString": "TSMOD_SupplyCrate_Level15_C",
+    "name": "Green Surface Drop (Level 15)"
+  },
+  {
+    "classString": "TSMOD_SupplyCrate_Level25_C",
+    "name": "Blue Surface Drop (Level 25)"
+  },
+  {
+    "classString": "TSMOD_SupplyCrate_Level35_C",
+    "name": "Purple Surface Drop (Level 35)"
+  },
+  {
+    "classString": "TSMOD_SupplyCrate_Level45_C",
+    "name": "Yellow Surface Drop (Level 45)"
+  },
+  {
+    "classString": "TSMOD_SupplyCrate_Level60_C",
+    "name": "Red Surface Drop (Level 60)"
+  },
+  {
+    "classString": "SupplyCrate_OceanInstant_C",
+    "name": "Underwater Deep Sea Crate (Red)"
+  },
+  {
+    "classString": "SupplyCrate_UnderwaterCaveTier1_C",
+    "name": "The Island Underwater Cave Crate (T1)"
+  },
+  {
+    "classString": "SupplyCrate_UnderwaterCaveTier2_C",
+    "name": "The Island Underwater Cave Crate (T2)"
+  },
+  {
+    "classString": "SupplyCrate_UnderwaterCaveTier3_C",
+    "name": "The Island Underwater Cave Crate (T3)"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier1_C",
+    "name": "Standard Cave Crate (T1)"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier2_C",
+    "name": "Standard Cave Crate (T2)"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier3_C",
+    "name": "Standard Cave Crate (T3)"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier4_C",
+    "name": "Standard Cave Crate (T4)"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier1_ScorchedEarth_C",
+    "name": "Scorched Earth Cave Blue"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier2_ScorchedEarth_C",
+    "name": "Scorched Earth Cave Yellow"
+  },
+  {
+    "classString": "SupplyCrate_Cave_QualityTier3_ScorchedEarth_C",
+    "name": "Scorched Earth Cave Red"
+  },
+  {
+    "classString": "SupplyCrate_IceCaveTier1_C",
+    "name": "Ice Cave Crate (T1)"
+  },
+  {
+    "classString": "SupplyCrate_IceCaveTier2_C",
+    "name": "Ice Cave Crate (T2)"
+  },
+  {
+    "classString": "SupplyCrate_IceCaveTier3_C",
+    "name": "Ice Cave Crate (T3)"
+  },
+  {
+    "classString": "SupplyCrate_SwampCaveTier1_C",
+    "name": "Swamp Cave Crate (T1)"
+  },
+  {
+    "classString": "SupplyCrate_SwampCaveTier2_C",
+    "name": "Swamp Cave Crate (T2)"
+  },
+  {
+    "classString": "SupplyCrate_SwampCaveTier3_C",
+    "name": "Swamp Cave Crate (T3)"
+  },
+  {
+    "classString": "SupplyCrate_Cave_Aberration_Level10_C",
+    "name": "Aberration Cave White"
+  },
+  {
+    "classString": "SupplyCrate_Cave_Aberration_Level25_C",
+    "name": "Aberration Cave Green"
+  },
+  {
+    "classString": "SupplyCrate_Cave_Aberration_Level35_C",
+    "name": "Aberration Cave Blue"
+  },
+  {
+    "classString": "SupplyCrate_Cave_Aberration_Level50_C",
+    "name": "Aberration Cave Purple"
+  },
+  {
+    "classString": "SupplyCrate_Cave_Aberration_Level65_C",
+    "name": "Aberration Cave Yellow"
+  },
+  {
+    "classString": "SupplyCrate_Cave_Aberration_Level80_C",
+    "name": "Aberration Cave Red"
+  },
+  {
+    "classString": "SupplyCrate_Level35_Aberrant_Surface_C",
+    "name": "Aberration Surface Blue"
+  },
+  {
+    "classString": "SupplyCrate_Level50_Aberrant_Surface_C",
+    "name": "Aberration Surface Purple"
+  },
+  {
+    "classString": "SupplyCrate_Level65_Aberrant_Surface_C",
+    "name": "Aberration Surface Yellow"
+  },
+  {
+    "classString": "SupplyCrate_Level80_Aberrant_Surface_C",
+    "name": "Aberration Surface Red"
+  },
+  {
+    "classString": "SupplyCrate_Dungeon_Aberration_Level35_C",
+    "name": "Aberration Dungeon Blue"
+  },
+  {
+    "classString": "SupplyCrate_Dungeon_Aberration_Level50_C",
+    "name": "Aberration Dungeon Purple"
+  },
+  {
+    "classString": "SupplyCrate_Dungeon_Aberration_Level65_C",
+    "name": "Aberration Dungeon Yellow"
+  },
+  {
+    "classString": "SupplyCrate_Dungeon_Aberration_Level80_C",
+    "name": "Aberration Dungeon Red"
+  }
+]
