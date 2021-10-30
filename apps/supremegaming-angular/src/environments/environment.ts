@@ -9,6 +9,11 @@ export const environment: SupremeGamingEnvironment = {
   production: false,
   servers,
   apiUrl: 'https://supremegaming.gg/api',
+  games: {
+    atlas: {
+      gridImages: 'https://static.supremegaming.gg',
+    },
+  },
 };
 
 /*

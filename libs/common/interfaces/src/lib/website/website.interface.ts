@@ -2,6 +2,16 @@ export interface SupremeGamingEnvironment {
   production: boolean;
   servers: Array<GameServer>;
   apiUrl: string;
+  games?: SupremeGamingEnvironmentGameSettings;
+}
+
+export interface SupremeGamingEnvironmentGameSettings {
+  atlas?: {
+    /**
+     * Root URL for static assets. Some assets on this website don't make sense to store in version control, so they are hosted separately.
+     */
+    gridImages?: string;
+  };
 }
 
 export interface GameServer {
@@ -26,6 +36,21 @@ export interface GameServerStatus {
       accessible: boolean;
     };
   };
+}
+
+export interface GameServerOnlinePlayers {
+  success: boolean;
+  status: number;
+  message: string;
+  date: Array<{
+    Id: number;
+    LastOnline: number;
+    TribeId: number;
+    SteamId: string;
+    CharacterName: string;
+    PlayMap: string;
+    Host: string;
+  }>;
 }
 
 export interface ArkSupplyDropTable {
