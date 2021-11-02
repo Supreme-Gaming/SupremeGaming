@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { PipesModule } from '@supremegaming/common/ngx';
 
@@ -11,7 +12,7 @@ import { TribeTableComponent } from './components/tribe-table/tribe-table.compon
 import { TribeSearchListComponent } from './components/tribe-search-list/tribe-search-list.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, PipesModule],
+  imports: [CommonModule, ReactiveFormsModule, PipesModule, RouterModule],
   declarations: [
     OnlinePlayerListComponent,
     PlayerSearchListComponent,

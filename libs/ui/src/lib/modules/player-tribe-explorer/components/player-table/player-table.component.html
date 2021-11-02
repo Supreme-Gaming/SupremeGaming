@@ -13,12 +13,18 @@
       <td class="name-and-avatar" *ngIf="columnsVisible | includes : 'CharacterName'">
         <span class="character-profile-picture"
           ><img [src]="player.AvatarUrl" [alt]="player.SteamName" [title]="player.SteamName" /></span
-        ><a href="">{{player.CharacterName}}</a>
+        ><a [routerLink]="[playerDetailsRoute, player.Guid]" routerLinkActive="router-link-active"
+          >{{player.CharacterName}}</a
+        >
       </td>
 
       <td *ngIf="columnsVisible | includes : 'Level'">{{player.Level}}</td>
 
-      <td *ngIf="columnsVisible | includes : 'TribeName'"><a href="">{{player.TribeName}}</a></td>
+      <td *ngIf="columnsVisible | includes : 'TribeName'">
+        <a [routerLink]="[tribeDetailsRoute, player.TribeGuid]" routerLinkActive="router-link-active"
+          >{{player.TribeName}}</a
+        >
+      </td>
 
       <td *ngIf="columnsVisible | includes : 'PlayMap'">{{player.PlayMap}}</td>
 

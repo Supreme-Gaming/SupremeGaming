@@ -11,7 +11,7 @@
       <td *ngIf="showCount"><span class="character-count">{{i + 1}}.</span></td>
 
       <td class="name-and-avatar" *ngIf="columnsVisible | includes : 'Name'">
-        <a href="">{{tribe.Name}}</a>
+        <a [routerLink]="[tribeDetailsRoute, tribe.Guid]" routerLinkActive="router-link-active">{{tribe.Name}}</a>
       </td>
 
       <td *ngIf="columnsVisible | includes : 'MemberCount'">{{tribe.Members.length}}</td>
