@@ -1,52 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, shareReplay, switchMap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 import { GameServerTribe } from '@supremegaming/common/interfaces';
 import { TribesService } from '@supremegaming/data-access';
+
+import { AbstractSearchListComponent } from '../abstract-search-list/abstract-search-list.component';
 
 @Component({
   selector: 'supremegaming-tribe-search-list',
   templateUrl: './tribe-search-list.component.html',
   styleUrls: ['./tribe-search-list.component.scss'],
 })
-export class TribeSearchListComponent implements OnInit {
-  /**
-   * Game to restrict player search to. This value is included to the http
-   * request so the receiving API must support it.
-   */
-  @Input()
-  public game: string;
+export class TribeSearchListComponent extends AbstractSearchListComponent<GameServerTribe> implements OnInit {
+  constructor(public readonly fb: FormBuilder, public readonly ts: TribesService) {
+    super(fb);
+  }
 
-  @Input()
-  public placeholder: string;
+  public getData() {
+    const { search } = this.form.getRawValue();
 
-  public form: FormGroup;
-
-  public tribes: Observable<Array<GameServerTribe>>;
-
-  public searchTerm: Observable<string>;
-
-  constructor(private readonly fb: FormBuilder, private readonly ts: TribesService) {}
-
-  public ngOnInit() {
-    this.form = this.fb.group({
-      search: '',
-    });
-
-    this.searchTerm = this.form.get('search').valueChanges.pipe(debounceTime(500));
-
-    this.tribes = this.searchTerm.pipe(
-      distinctUntilChanged(),
-      switchMap((term) => {
-        if (term.trim() === '') {
-          return of(null);
-        }
-
-        return this.ts.searchTribesForGame(this.game, term);
-      }),
-      shareReplay()
-    );
+    return this.ts.searchTribesForGame(this.game, search);
   }
 }

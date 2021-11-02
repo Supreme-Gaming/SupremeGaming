@@ -4,14 +4,14 @@
   </div>
 </form>
 
-<ng-container *ngIf="(players | async)?.length > 0">
+<ng-container *ngIf="(data | async)?.length > 0">
   <supremegaming-player-table
-    [players]="(players | async)"
+    [players]="(data | async)"
     [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap', 'FileUpdated']"
     [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map', 'Last Online']"
   ></supremegaming-player-table>
 </ng-container>
 
 <div class="search-feedback">
-  <p *ngIf="(searchTerm | async)?.length > 0 && (players | async)?.length === 0">There's nothing here Jim...</p>
+  <p *ngIf="(searchTerm | async)?.length > 0 && (data | async)?.length === 0">There's nothing here Jim...</p>
 </div>
