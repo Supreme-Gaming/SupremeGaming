@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { from, Observable, of } from 'rxjs';
-import { catchError, filter, startWith, switchMap, timeout, toArray } from 'rxjs/operators';
+import { catchError, filter, map, startWith, switchMap, timeout, toArray } from 'rxjs/operators';
 
-import { GameServer, GameServerStatus, SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
+import {
+  GameServer,
+  GameServerOnlinePlayers,
+  GameServerPlayer,
+  GameServerStatus,
+  SupremeGamingEnvironment,
+} from '@supremegaming/common/interfaces';
 import { EnvironmentService } from '@supremegaming/common/ngx';
 
 @Injectable({
@@ -38,7 +44,7 @@ export class ServersService {
 
   public getServerStatus(server: GameServer): Observable<GAME_SERVER_STATUS> {
     return this.http.get<GameServerStatus>(`${this.resourceUrl}/status/${server.port}`).pipe(
-      timeout(10000),
+      timeout(7500),
       startWith(GAME_SERVER_STATUS.PENDING),
       switchMap((res) => {
         // First observable value has direct bypass
@@ -60,6 +66,15 @@ export class ServersService {
         } else {
           return of(GAME_SERVER_STATUS.OFFLINE);
         }
+      })
+    );
+  }
+
+  public getOnlinePlayers(server: GameServer): Observable<Array<GameServerPlayer>> {
+    return this.http.get<GameServerOnlinePlayers>(`${this.resourceUrl}/online/${server.port}`).pipe(
+      timeout(7500),
+      map((response) => {
+        return response.data;
       })
     );
   }

@@ -42,15 +42,34 @@ export interface GameServerOnlinePlayers {
   success: boolean;
   status: number;
   message: string;
-  date: Array<{
-    Id: number;
-    LastOnline: number;
-    TribeId: number;
-    SteamId: string;
-    CharacterName: string;
-    PlayMap: string;
-    Host: string;
-  }>;
+  data: Array<GameServerPlayer>;
+}
+
+export interface GameServerPlayer {
+  Admin: number;
+  AvatarUrl: string;
+  Banned: number;
+  CharacterName: string;
+  CommunityBanned: number;
+  DataPort: string;
+  DaysSinceLastBan: number;
+  Engrams: number;
+  FileCreated: number;
+  FileUpdated: number;
+  Guid: string;
+  Host: string;
+  Id: number;
+  Level: number;
+  NumberOfGameBans: number;
+  NumberOfVACBans: number;
+  PlayMap: string;
+  ProfileUrl: string;
+  SteamId: string;
+  SteamName: string;
+  TribeGuid: string;
+  TribeId: number;
+  TribeName: string;
+  VACBanned: number;
 }
 
 export interface ArkSupplyDropTable {
