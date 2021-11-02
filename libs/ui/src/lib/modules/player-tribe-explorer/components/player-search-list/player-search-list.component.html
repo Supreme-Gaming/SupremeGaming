@@ -6,7 +6,7 @@
 
 <ng-container *ngIf="(data | async)?.length > 0">
   <supremegaming-player-table
-    [players]="(data | async)"
+    [data]="(data | async)"
     [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap', 'FileUpdated']"
     [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map', 'Last Online']"
   ></supremegaming-player-table>

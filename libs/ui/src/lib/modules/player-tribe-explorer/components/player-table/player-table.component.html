@@ -7,7 +7,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let player of players; let i = index;">
+    <tr *ngFor="let player of data; let i = index;">
       <td *ngIf="showCount"><span class="character-count">{{i + 1}}.</span></td>
 
       <td class="name-and-avatar" *ngIf="columnsVisible | includes : 'CharacterName'">

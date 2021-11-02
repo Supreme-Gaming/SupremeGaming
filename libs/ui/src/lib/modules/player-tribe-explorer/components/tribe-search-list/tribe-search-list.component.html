@@ -6,7 +6,7 @@
 
 <ng-container *ngIf="(data | async)?.length > 0">
   <supremegaming-tribe-table
-    [tribes]="(data | async)"
+    [data]="(data | async)"
     [columnsVisible]="['Name', 'MemberCount', 'PlayMap']"
     [columnLabels]="['Tribe Name', 'Members', 'Map']"
   ></supremegaming-tribe-table>
