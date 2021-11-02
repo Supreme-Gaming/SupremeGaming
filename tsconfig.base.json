@@ -28,5 +28,8 @@
       "@supremegaming/common/interfaces": ["libs/common/interfaces/src/index.ts"]
     }
   },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true
+  },
   "exclude": ["node_modules", "tmp"]
 }
