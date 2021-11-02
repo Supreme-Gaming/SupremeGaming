@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ArkPlayerSearchComponent } from './ark-player-search.component';
+import { ArkTribesListComponent } from './ark-tribes-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArkPlayerSearchComponent,
+    component: ArkTribesListComponent,
   },
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
-  declarations: [ArkPlayerSearchComponent],
+  declarations: [ArkTribesListComponent],
 })
-export class ArkPlayerSearchModule {}
+export class ArkTribesListModule {}

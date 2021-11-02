@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ServersOnlinePlayerListComponent } from './components/servers-online-player-list/servers-online-player-list.component';
+import { OnlinePlayerListComponent } from './components/online-player-list/online-player-list.component';
+import { PlayerSearchListComponent } from './components/player-search-list/player-search-list.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [ServersOnlinePlayerListComponent],
-  exports: [ServersOnlinePlayerListComponent],
+  declarations: [OnlinePlayerListComponent, PlayerSearchListComponent],
+  exports: [OnlinePlayerListComponent, PlayerSearchListComponent],
 })
 export class PlayerTribeExplorerModule {}

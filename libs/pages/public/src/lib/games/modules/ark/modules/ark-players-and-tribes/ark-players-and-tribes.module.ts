@@ -11,7 +11,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         loadChildren: () => import('./modules/ark-online-list/ark-online-list.module').then((m) => m.ArkOnlineListModule),
+      },
+      {
+        path: 'survivors',
+        loadChildren: () => import('./modules/ark-players-list/ark-players-list.module').then((m) => m.ArkPlayersListModule),
+      },
+      {
+        path: 'tribes',
+        loadChildren: () => import('./modules/ark-tribes-list/ark-tribes-list.module').then((m) => m.ArkTribesListModule),
       },
     ],
   },

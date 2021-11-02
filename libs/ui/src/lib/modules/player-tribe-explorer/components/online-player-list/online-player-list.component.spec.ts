@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArkPlayerSearchComponent } from './ark-player-search.component';
+import { OnlinePlayerListComponent } from './online-player-list.component';
 
-describe('ArkPlayerSearchComponent', () => {
-  let component: ArkPlayerSearchComponent;
-  let fixture: ComponentFixture<ArkPlayerSearchComponent>;
+describe('OnlinePlayerListComponent', () => {
+  let component: OnlinePlayerListComponent;
+  let fixture: ComponentFixture<OnlinePlayerListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ArkPlayerSearchComponent],
+      declarations: [OnlinePlayerListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArkPlayerSearchComponent);
+    fixture = TestBed.createComponent(OnlinePlayerListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

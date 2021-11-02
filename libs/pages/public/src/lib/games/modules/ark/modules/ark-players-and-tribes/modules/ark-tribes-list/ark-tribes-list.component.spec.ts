@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArkTribeSearchComponent } from './ark-tribe-search.component';
+import { ArkTribesListComponent } from './ark-tribes-list.component';
 
-describe('ArkTribeSearchComponent', () => {
-  let component: ArkTribeSearchComponent;
-  let fixture: ComponentFixture<ArkTribeSearchComponent>;
+describe('ArkTribesListComponent', () => {
+  let component: ArkTribesListComponent;
+  let fixture: ComponentFixture<ArkTribesListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ArkTribeSearchComponent],
+      declarations: [ArkTribesListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArkTribeSearchComponent);
+    fixture = TestBed.createComponent(ArkTribesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

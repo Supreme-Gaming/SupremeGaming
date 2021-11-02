@@ -6,11 +6,11 @@ import { GameServer, GameServerPlayer } from '@supremegaming/common/interfaces';
 import { ServersService } from '@supremegaming/data-access';
 
 @Component({
-  selector: 'supremegaming-servers-online-player-list',
-  templateUrl: './servers-online-player-list.component.html',
-  styleUrls: ['./servers-online-player-list.component.scss'],
+  selector: 'supremegaming-online-player-list',
+  templateUrl: './online-player-list.component.html',
+  styleUrls: ['./online-player-list.component.scss'],
 })
-export class ServersOnlinePlayerListComponent implements OnInit {
+export class OnlinePlayerListComponent implements OnInit {
   @Input()
   public servers: Array<GameServer>;
 
