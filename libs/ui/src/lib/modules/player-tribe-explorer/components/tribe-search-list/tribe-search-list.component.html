@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <div class="search-container">
+    <input formControlName="search" type="text" [placeholder]="placeholder" autofocus />
+  </div>
+</form>
+
+<ng-container *ngIf="(tribes | async)?.length > 0">
+  <supremegaming-tribe-table
+    [tribes]="(tribes | async)"
+    [columnsVisible]="['Name', 'MemberCount', 'PlayMap']"
+    [columnLabels]="['Tribe Name', 'Members', 'Map']"
+  ></supremegaming-tribe-table>
+</ng-container>
+
+<div class="search-feedback">
+  <p *ngIf="(searchTerm | async)?.length > 0 && (tribes | async)?.length === 0">There's nothing here Jim...</p>
+</div>

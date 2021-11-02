@@ -22,10 +22,13 @@ export interface GameServer {
   game: 'ark' | 'conan' | 'atlas';
 }
 
-export interface GameServerStatus {
+export interface BaseAPIResponse {
   success: boolean;
   status: number;
   message: string;
+}
+
+export interface GameServerStatus extends BaseAPIResponse {
   data: {
     name: string;
     map: string;
@@ -38,11 +41,15 @@ export interface GameServerStatus {
   };
 }
 
-export interface GameServerPlayersResponse {
-  success: boolean;
-  status: number;
-  message: string;
+export interface GameServerPlayersResponse extends BaseAPIResponse {
   data: Array<GameServerPlayer>;
+}
+export interface GameServerPlayersResponse extends BaseAPIResponse {
+  data: Array<GameServerPlayer>;
+}
+
+export interface GameServerTribesResponse extends BaseAPIResponse {
+  data: Array<GameServerTribe>;
 }
 
 export interface GameServerPlayer {
@@ -70,6 +77,20 @@ export interface GameServerPlayer {
   TribeId: number;
   TribeName: string;
   VACBanned: number;
+}
+
+export interface GameServerTribe {
+  DataPort: string;
+  FileCreated: number;
+  FileUpdated: number;
+  Guid: string;
+  Host: string;
+  Id: number;
+  Members: Array<GameServerPlayer>;
+  Name: string;
+  OwnerId: number;
+  PlayMap: string;
+  TribeLog: string;
 }
 
 export interface ArkSupplyDropTable {

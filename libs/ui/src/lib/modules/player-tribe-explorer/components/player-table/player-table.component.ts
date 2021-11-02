@@ -18,5 +18,5 @@ export class PlayerTableComponent {
   public columnLabels: Array<string>;
 
   @Input()
-  public showCount: boolean;
+  public showCount = true;
 }

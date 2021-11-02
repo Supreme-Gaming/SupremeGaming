@@ -11,8 +11,8 @@
   <tbody>
     <tr *ngFor="let item of crate.ItemEntries">
       <td [ngSwitch]="item.source.MinQuantity === item.source.MaxQuantity">
-        <div *ngSwitchCase="true">{{item.source.MinQuantity | number : 0}}</div>
-        <div *ngSwitchDefault>{{item.source.MinQuantity | number : 0}}-{{item.source.MaxQuantity | number : 0}}</div>
+        <div *ngSwitchCase="true">{{item.source.MinQuantity | number : '0'}}</div>
+        <div *ngSwitchDefault>{{item.source.MinQuantity | number : '0'}}-{{item.source.MaxQuantity | number : '0'}}</div>
       </td>
 
       <td>{{item.mapped?.Type}}</td>

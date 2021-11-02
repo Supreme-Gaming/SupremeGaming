@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngIf="showCount"></th>
+      <th *ngFor="let title of columnLabels">{{title}}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let tribe of tribes; let i = index;">
+      <td *ngIf="showCount"><span class="character-count">{{i + 1}}.</span></td>
+
+      <td class="name-and-avatar" *ngIf="columnsVisible | includes : 'Name'">
+        <a href="">{{tribe.Name}}</a>
+      </td>
+
+      <td *ngIf="columnsVisible | includes : 'MemberCount'">{{tribe.Members.length}}</td>
+
+      <td *ngIf="columnsVisible | includes : 'PlayMap'">{{tribe.PlayMap}}</td>
+    </tr>
+  </tbody>
+</table>

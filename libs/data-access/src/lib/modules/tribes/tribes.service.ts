@@ -1,23 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
+import { SupremeGamingEnvironment, GameServerTribesResponse } from '@supremegaming/common/interfaces';
 import { EnvironmentService } from '@supremegaming/common/ngx';
-import { GameServerPlayer, GameServerPlayersResponse, SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PlayersService {
-  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('apiUrl')}/players`;
+export class TribesService {
+  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('apiUrl')}/tribes`;
 
-  constructor(private env: EnvironmentService, private http: HttpClient) {}
+  constructor(private readonly http: HttpClient, private readonly env: EnvironmentService) {}
 
-  public searchPlayersForGame(game: string, term: string): Observable<Array<GameServerPlayer>> {
+  public searchTribesForGame(game: string, term: string) {
     const url = this.getQueryEndpointForGame(game);
 
-    return this.http.get<GameServerPlayersResponse>(`${url}/${term}`).pipe(pluck('data'));
+    return this.http.get<GameServerTribesResponse>(`${url}/${term}`).pipe(pluck('data'));
   }
 
   /**
