@@ -1,27 +1,6 @@
-<div class="players-list table">
-  <table class="simple">
-    <thead>
-      <tr>
-        <th></th>
-        <th>{{characterColumnLabel}}</th>
-        <th>Level</th>
-        <th>{{groupColumnLabel}}</th>
-        <th>{{mapColumnLabel}}</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let player of (players | async); let i = index;">
-        <td><span class="character-count">{{i + 1}}.</span></td>
-        <td class="name-and-avatar">
-          <span class="character-profile-picture"
-            ><img [src]="player.AvatarUrl" [alt]="player.SteamName" [title]="player.SteamName" /></span
-          ><a href="">{{player.CharacterName}}</a>
-        </td>
-        <td>{{player.Level}}</td>
-        <td><a href="">{{player.TribeName}}</a></td>
-        <td>{{player.PlayMap}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<supremegaming-player-table
+  [players]="players | async"
+  [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap']"
+  [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map']"
+  [showCount]="true"
+></supremegaming-player-table>

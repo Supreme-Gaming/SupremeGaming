@@ -9,24 +9,3 @@
 h2 {
   margin-bottom: 0.75rem;
 }
-
-table {
-  td {
-    padding: 0.5rem 2rem;
-  }
-
-  thead {
-    font-weight: 600;
-  }
-
-  tbody {
-    tr {
-      border: 1px solid #fafafa;
-      @include transition(background 0.3s);
-
-      &:hover {
-        background: $base_lightened;
-      }
-    }
-  }
-}

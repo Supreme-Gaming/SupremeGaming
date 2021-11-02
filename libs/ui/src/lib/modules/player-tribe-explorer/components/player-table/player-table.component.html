@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngIf="showCount"></th>
+      <th *ngFor="let title of columnLabels">{{title}}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let player of players; let i = index;">
+      <td *ngIf="showCount"><span class="character-count">{{i + 1}}.</span></td>
+
+      <td class="name-and-avatar" *ngIf="columnsVisible | includes : 'CharacterName'">
+        <span class="character-profile-picture"
+          ><img [src]="player.AvatarUrl" [alt]="player.SteamName" [title]="player.SteamName" /></span
+        ><a href="">{{player.CharacterName}}</a>
+      </td>
+
+      <td *ngIf="columnsVisible | includes : 'Level'">{{player.Level}}</td>
+
+      <td *ngIf="columnsVisible | includes : 'TribeName'"><a href="">{{player.TribeName}}</a></td>
+
+      <td *ngIf="columnsVisible | includes : 'PlayMap'">{{player.PlayMap}}</td>
+
+      <td *ngIf="columnsVisible | includes : 'FileUpdated'">{{player.FileUpdated | date : 'short'}}</td>
+    </tr>
+  </tbody>
+</table>

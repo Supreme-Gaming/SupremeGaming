@@ -5,7 +5,7 @@ import { catchError, filter, map, startWith, switchMap, timeout, toArray } from 
 
 import {
   GameServer,
-  GameServerOnlinePlayers,
+  GameServerPlayersResponse,
   GameServerPlayer,
   GameServerStatus,
   SupremeGamingEnvironment,
@@ -71,7 +71,7 @@ export class ServersService {
   }
 
   public getOnlinePlayers(server: GameServer): Observable<Array<GameServerPlayer>> {
-    return this.http.get<GameServerOnlinePlayers>(`${this.resourceUrl}/online/${server.port}`).pipe(
+    return this.http.get<GameServerPlayersResponse>(`${this.resourceUrl}/online/${server.port}`).pipe(
       timeout(7500),
       map((response) => {
         return response.data;

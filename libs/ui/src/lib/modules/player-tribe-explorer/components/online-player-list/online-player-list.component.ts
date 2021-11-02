@@ -14,15 +14,6 @@ export class OnlinePlayerListComponent implements OnInit {
   @Input()
   public servers: Array<GameServer>;
 
-  @Input()
-  public characterColumnLabel: string;
-
-  @Input()
-  public groupColumnLabel: string;
-
-  @Input()
-  public mapColumnLabel: string;
-
   public players: Observable<Array<GameServerPlayer>>;
 
   constructor(private readonly ss: ServersService) {}
