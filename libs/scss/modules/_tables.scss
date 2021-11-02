@@ -12,7 +12,7 @@ table {
   }
 
   tr {
-    border-bottom: 1pt solid rgba(190, 186, 253, 0.144);
+    border-bottom: 1pt solid $base_lightened;
     @include transition(background 0.3s);
 
     &:hover {
