@@ -221,3 +221,9 @@ section.root {
     transform: rotate(360deg);
   }
 }
+
+.wire-container {
+  padding: 1.25rem 1.5rem;
+  border: 1pt solid $base_lightened;
+  border-radius: 5pt;
+}

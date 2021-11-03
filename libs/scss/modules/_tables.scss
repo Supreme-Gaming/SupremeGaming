@@ -12,7 +12,10 @@ table {
   }
 
   tr {
-    border-bottom: 1pt solid $base_lightened;
+    &:not(:last-child) {
+      border-bottom: 1pt solid $base_lightened;
+    }
+
     @include transition(background 0.3s);
 
     &:hover {

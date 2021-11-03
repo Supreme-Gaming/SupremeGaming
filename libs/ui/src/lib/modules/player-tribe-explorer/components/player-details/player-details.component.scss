@@ -1,0 +1,85 @@
+@import 'libs/scss/mixins';
+@import 'libs/scss/colors';
+
+:host {
+  @include flexbox();
+  @include flex-direction(row);
+  @include justify-content(center);
+}
+
+.overview {
+  @include flex(1);
+  margin-top: 2rem;
+}
+
+.alternate-entities {
+  @include flex(1);
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.character-fragment {
+  @include flexbox();
+  @include flex-direction(row);
+
+  h2 {
+    margin: 0;
+  }
+
+  .avatar {
+    img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 99rem;
+      margin: 0.75rem 2rem 0.5rem 0.5rem;
+    }
+  }
+
+  .details {
+    @include flexbox();
+    @include flex-direction(column);
+
+    .row {
+      @include flexbox();
+      @include flex-direction(row);
+      margin-bottom: 0;
+    }
+  }
+}
+
+.player-attribute,
+h2 {
+  font-weight: 600;
+}
+
+.player-attribute {
+  font-size: 1.1rem;
+}
+
+.metadata {
+  margin-top: 0.5rem;
+}
+
+.player-attribute-metadata {
+  font-size: 0.8rem;
+  color: $base_lightened;
+  cursor: pointer;
+  font-weight: 600;
+  @include transition(color 0.4s, background 0.4s);
+
+  code {
+    color: inherit;
+    background-color: inherit;
+    @include transition(color 0.4s, background 0.4s);
+  }
+
+  &:hover {
+    color: $support;
+    code {
+      color: $support;
+      background-color: $base_lightened;
+    }
+  }
+}

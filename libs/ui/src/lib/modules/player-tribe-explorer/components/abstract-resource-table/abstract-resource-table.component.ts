@@ -17,4 +17,7 @@ export abstract class AbstractResourceTableComponent<T> extends AbstractRoutable
 
   @Input()
   public showCount = true;
+
+  @Input()
+  public showAvatar = true;
 }

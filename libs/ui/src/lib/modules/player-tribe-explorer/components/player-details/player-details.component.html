@@ -1,0 +1,54 @@
+<div class="overview">
+  <ng-container *ngIf="player | async as pl">
+    <div class="character-fragment">
+      <div class="avatar">
+        <img [src]="pl.AvatarUrl" alt="Avatar image" />
+      </div>
+
+      <div class="details">
+        <div class="row">
+          <div class="name">
+            <h2>{{pl.CharacterName}}</h2>
+          </div>
+        </div>
+
+        <div>
+          <div class="tribe-membership">
+            <div [ngSwitch]="pl.TribeGuid !== null">
+              <div *ngSwitchCase="true">
+                <span class="player-attribute">Tribe: </span
+                ><a [routerLink]="[tribeDetailsRoute, pl.TribeGuid]">{{pl.TribeName}}</a>
+              </div>
+              <div *ngSwitchDefault><span class="player-attribute">Tribe: </span>Not in any tribe</div>
+            </div>
+          </div>
+
+          <p><span class="player-attribute">Owner</span>: <a [href]="pl.ProfileUrl" target="_blank">{{pl.SteamName}}</a></p>
+          <p><span class="player-attribute">Level: </span>{{pl.Level}}</p>
+          <p><span class="player-attribute">Map: </span>{{pl.PlayMap}}</p>
+          <p><span class="player-attribute">Last Online</span>: {{pl.FileUpdated | date : 'short'}}</p>
+        </div>
+
+        <div class="metadata">
+          <p class="player-attribute-metadata">Steam ID: <code>{{pl.SteamId }}</code></p>
+          <p class="player-attribute-metadata">Player ID: <code>{{pl.Id }}</code></p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="alternate-entities wire-container">
+  <h2>Related Characters</h2>
+
+  <p>The following list shows all other characters linked to the same SteamID and the last visited maps.</p>
+
+  <supremegaming-player-table
+    [data]="entities | async"
+    [showCount]="false"
+    [showAvatar]="false"
+    [columnsVisible]="['CharacterName', 'PlayMap', 'FileUpdated']"
+    [columnLabels]="['Name', 'Map', 'Last Online']"
+    [playerDetailsRoute]="playerDetailsRoute"
+  ></supremegaming-player-table>
+</div>

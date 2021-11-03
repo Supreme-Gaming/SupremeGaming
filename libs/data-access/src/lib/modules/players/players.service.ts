@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 import { EnvironmentService } from '@supremegaming/common/ngx';
 import { GameServerPlayer, GameServerPlayersResponse, SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
@@ -14,10 +14,21 @@ export class PlayersService {
 
   constructor(private env: EnvironmentService, private http: HttpClient) {}
 
-  public searchPlayersForGame(game: string, term: string): Observable<Array<GameServerPlayer>> {
+  public searchPlayersForGame(game: string, term: string, sortByLastOnline?: boolean): Observable<Array<GameServerPlayer>> {
     const url = this.getQueryEndpointForGame(game);
 
-    return this.http.get<GameServerPlayersResponse>(`${url}/${term}`).pipe(pluck('data'));
+    return this.http.get<GameServerPlayersResponse>(`${url}/${term}`).pipe(
+      pluck('data'),
+      map((players) => {
+        if (sortByLastOnline) {
+          return players.sort((a, b) => {
+            return b.FileUpdated - a.FileUpdated;
+          });
+        } else {
+          return players;
+        }
+      })
+    );
   }
 
   /**

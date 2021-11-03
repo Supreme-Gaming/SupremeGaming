@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'supremegaming-ark-tribe-details',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ark-tribe-details.component.scss'],
 })
 export class ArkTribeDetailsComponent implements OnInit {
-  constructor() {}
+  public tribeGuid: Observable<string>;
 
-  ngOnInit(): void {}
+  constructor(public route: ActivatedRoute) {}
+
+  public ngOnInit(): void {
+    this.tribeGuid = this.route.params.pipe(pluck('guid'));
+  }
 }

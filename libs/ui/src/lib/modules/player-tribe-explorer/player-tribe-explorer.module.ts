@@ -10,6 +10,8 @@ import { PlayerSearchListComponent } from './components/player-search-list/playe
 import { PlayerTableComponent } from './components/player-table/player-table.component';
 import { TribeTableComponent } from './components/tribe-table/tribe-table.component';
 import { TribeSearchListComponent } from './components/tribe-search-list/tribe-search-list.component';
+import { TribeDetailsComponent } from './components/tribe-details/tribe-details.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, PipesModule, RouterModule],
@@ -19,7 +21,15 @@ import { TribeSearchListComponent } from './components/tribe-search-list/tribe-s
     PlayerTableComponent,
     TribeSearchListComponent,
     TribeTableComponent,
+    TribeDetailsComponent,
+    PlayerDetailsComponent,
   ],
-  exports: [OnlinePlayerListComponent, PlayerSearchListComponent, TribeSearchListComponent],
+  exports: [
+    OnlinePlayerListComponent,
+    PlayerSearchListComponent,
+    TribeSearchListComponent,
+    PlayerDetailsComponent,
+    TribeDetailsComponent,
+  ],
 })
 export class PlayerTribeExplorerModule {}

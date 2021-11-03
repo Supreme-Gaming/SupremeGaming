@@ -19,6 +19,6 @@ export class PlayerSearchListComponent extends AbstractSearchListComponent<GameS
   public getData() {
     const { search } = this.form.getRawValue();
 
-    return this.ps.searchPlayersForGame(this.game, search);
+    return this.ps.searchPlayersForGame(this.game, search, true);
   }
 }
