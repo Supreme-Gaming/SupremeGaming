@@ -8,6 +8,13 @@ const routes: Routes = [
   {
     path: '',
     component: AtlasPlayersAndTribesComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./modules/atlas-online-list/atlas-online-list.module').then((m) => m.AtlasOnlineListModule),
+      },
+    ],
   },
 ];
 

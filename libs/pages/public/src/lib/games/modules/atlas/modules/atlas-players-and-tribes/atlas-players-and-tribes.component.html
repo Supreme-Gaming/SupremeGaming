@@ -1,1 +1,9 @@
-<p>Atlas player and tribe explorer goes here</p>
+<div class="tabs leader-2 trailer-3">
+  <div class="tab" [routerLink]="['./']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+    Online Players
+  </div>
+  <div class="tab" [routerLink]="['./pathfinders']" [routerLinkActive]="'active'">Pathfinders</div>
+  <div class="tab" [routerLink]="['./companies']" [routerLinkActive]="'active'">Companies</div>
+</div>
+
+<router-outlet></router-outlet>

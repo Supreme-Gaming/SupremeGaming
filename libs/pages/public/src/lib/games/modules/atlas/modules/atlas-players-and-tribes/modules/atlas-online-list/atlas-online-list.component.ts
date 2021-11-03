@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { GameServer } from '@supremegaming/common/interfaces';
+import { ServersService } from '@supremegaming/data-access';
 
 @Component({
   selector: 'supremegaming-atlas-online-list',
@@ -6,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./atlas-online-list.component.scss'],
 })
 export class AtlasOnlineListComponent implements OnInit {
-  constructor() {}
+  public servers: Observable<Array<GameServer>>;
 
-  ngOnInit(): void {}
+  constructor(private readonly ss: ServersService) {}
+
+  public ngOnInit(): void {
+    this.servers = this.ss.getServers('atlas');
+  }
 }
