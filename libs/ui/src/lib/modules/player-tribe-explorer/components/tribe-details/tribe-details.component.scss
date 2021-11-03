@@ -1,0 +1,13 @@
+@import 'libs/scss/mixins';
+
+:host {
+  @include flexbox();
+}
+
+.overview {
+  @include flex(1);
+}
+
+.membership {
+  @include flex(2);
+}

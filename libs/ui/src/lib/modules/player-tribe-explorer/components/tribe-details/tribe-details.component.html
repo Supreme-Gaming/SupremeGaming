@@ -1,1 +1,36 @@
-<p>tribe-details works!</p>
+<div class="overview">
+  <ng-container *ngIf="tribe | async as tr">
+    <div class="details">
+      <div>
+        <div class="name">
+          <h2>{{tr.Name}}</h2>
+        </div>
+      </div>
+
+      <div>
+        <p *ngIf="(tribeOwner | async) as owner">
+          <span class="player-attribute">Owner</span>:
+          <a [routerLink]="[playerDetailsRoute, owner.Guid]">{{owner.CharacterName}}</a>
+        </p>
+
+        <p>{{tr.PlayMap}}</p>
+      </div>
+
+      <div class="metadata">
+        <p class="player-attribute-metadata">Tribe ID: <code>{{tr.Id }}</code></p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="membership wire-container">
+  <h2>Tribe Members</h2>
+
+  <supremegaming-player-table
+    [data]="tribeMembers | async"
+    [showAvatar]="false"
+    [columnsVisible]="['CharacterName', 'Level', 'FileUpdated']"
+    [columnLabels]="['Name', 'Level', 'Last Online']"
+    [playerDetailsRoute]="playerDetailsRoute"
+  ></supremegaming-player-table>
+</div>
