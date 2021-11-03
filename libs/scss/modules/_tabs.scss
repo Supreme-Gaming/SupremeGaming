@@ -10,12 +10,17 @@
     padding: 0.5rem 2rem;
     color: darken($color: $support, $amount: 20%);
     cursor: pointer;
+    @include transition(color 0.3s);
+
+    &:hover {
+      color: $support;
+    }
 
     &.active {
       border-bottom: 2pt solid $primary;
       color: $support;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
     }
   }
 }

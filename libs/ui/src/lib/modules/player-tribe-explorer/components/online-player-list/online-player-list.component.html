@@ -1,7 +1,9 @@
-<supremegaming-player-table
-  [data]="players | async"
-  [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap']"
-  [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map']"
-  [playerDetailsRoute]="playerDetailsRoute"
-  [tribeDetailsRoute]="tribeDetailsRoute"
-></supremegaming-player-table>
+<div class="wire-container">
+  <supremegaming-player-table
+    [data]="players | async"
+    [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap']"
+    [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map']"
+    [playerDetailsRoute]="playerDetailsRoute"
+    [tribeDetailsRoute]="tribeDetailsRoute"
+  ></supremegaming-player-table>
+</div>

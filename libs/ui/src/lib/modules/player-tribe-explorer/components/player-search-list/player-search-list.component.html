@@ -5,13 +5,15 @@
 </form>
 
 <ng-container *ngIf="(data | async)?.length > 0">
-  <supremegaming-player-table
-    [data]="(data | async)"
-    [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap', 'FileUpdated']"
-    [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map', 'Last Online']"
-    [playerDetailsRoute]="playerDetailsRoute"
-    [tribeDetailsRoute]="tribeDetailsRoute"
-  ></supremegaming-player-table>
+  <div class="wire-container">
+    <supremegaming-player-table
+      [data]="(data | async)"
+      [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap', 'FileUpdated']"
+      [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map', 'Last Online']"
+      [playerDetailsRoute]="playerDetailsRoute"
+      [tribeDetailsRoute]="tribeDetailsRoute"
+    ></supremegaming-player-table>
+  </div>
 </ng-container>
 
 <div class="search-feedback">
