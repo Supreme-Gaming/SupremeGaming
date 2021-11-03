@@ -18,7 +18,7 @@ export class ArkOnlineListComponent implements OnInit {
   public ngOnInit() {
     this.servers = this.ps.getServers('ark').pipe(
       switchMap((s) => from(s)),
-      filter((server) => server.game.includes('PF') === false),
+      filter((server) => server.map_name.includes('PF') === false),
       toArray()
     );
   }
