@@ -45,10 +45,11 @@
 
   <supremegaming-player-table
     [data]="entities | async"
-    [showCount]="false"
-    [showAvatar]="false"
+    [showAvatar]="showAvatar"
+    [showCount]="showCount"
     [columnsVisible]="columnsVisible"
     [columnLabels]="columnLabels"
     [playerDetailsRoute]="playerDetailsRoute"
+    [tribeDetailsRoute]="tribeDetailsRoute"
   ></supremegaming-player-table>
 </div>

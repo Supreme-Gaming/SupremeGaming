@@ -8,6 +8,8 @@
   <div class="wire-container">
     <supremegaming-player-table
       [data]="(searchData | async)"
+      [showAvatar]="showAvatar"
+      [showCount]="showCount"
       [columnsVisible]="columnsVisible"
       [columnLabels]="columnLabels"
       [playerDetailsRoute]="playerDetailsRoute"

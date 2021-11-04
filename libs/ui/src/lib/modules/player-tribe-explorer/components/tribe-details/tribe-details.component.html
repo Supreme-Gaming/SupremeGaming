@@ -28,9 +28,11 @@
 
   <supremegaming-player-table
     [data]="tribeMembers | async"
-    [showAvatar]="false"
+    [showAvatar]="showAvatar"
+    [showCount]="showCount"
     [columnsVisible]="columnsVisible"
     [columnLabels]="columnLabels"
     [playerDetailsRoute]="playerDetailsRoute"
+    [tribeDetailsRoute]="tribeDetailsRoute"
   ></supremegaming-player-table>
 </div>
