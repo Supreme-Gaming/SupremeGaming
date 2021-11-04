@@ -14,6 +14,26 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/atlas-online-list/atlas-online-list.module').then((m) => m.AtlasOnlineListModule),
       },
+      {
+        path: 'pathfinders/:guid',
+        loadChildren: () =>
+          import('./modules/atlas-player-details/atlas-player-details.module').then((m) => m.AtlasPlayerDetailsModule),
+      },
+      {
+        path: 'pathfinders',
+        loadChildren: () =>
+          import('./modules/atlas-player-list/atlas-player-list.module').then((m) => m.AtlasPlayerListModule),
+      },
+      {
+        path: 'companies/:guid',
+        loadChildren: () =>
+          import('./modules/atlas-company-details/atlas-company-details.module').then((m) => m.AtlasCompanyDetailsModule),
+      },
+      {
+        path: 'companies',
+        loadChildren: () =>
+          import('./modules/atlas-company-list/atlas-company-list.module').then((m) => m.AtlasCompanyListModule),
+      },
     ],
   },
 ];

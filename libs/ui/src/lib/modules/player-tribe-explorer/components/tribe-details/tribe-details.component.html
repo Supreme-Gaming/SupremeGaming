@@ -3,17 +3,17 @@
     <div class="details">
       <div>
         <div class="name">
-          <h2>{{tr.Name}}</h2>
+          <h2>{{tr.Name ? tr.Name : tr.TribeName}}</h2>
         </div>
       </div>
 
       <div>
         <p *ngIf="(tribeOwner | async) as owner">
           <span class="player-attribute">Owner</span>:
-          <a [routerLink]="[playerDetailsRoute, owner.Guid]">{{owner.CharacterName}}</a>
+          <a [routerLink]="[playerDetailsRoute, owner.Guid ? owner.Guid : owner.Id]">{{owner.CharacterName}}</a>
         </p>
 
-        <p>{{tr.PlayMap}}</p>
+        <p *ngIf="tr.PlayMap">{{tr.PlayMap}}</p>
       </div>
 
       <div class="metadata">
@@ -24,7 +24,8 @@
 </div>
 
 <div class="membership wire-container">
-  <h2>Tribe Members</h2>
+  <h2 *ngIf="game === 'ark'">Tribe Members</h2>
+  <h2 *ngIf="game === 'atlas'">Company Members</h2>
 
   <supremegaming-player-table
     [data]="tribeMembers | async"

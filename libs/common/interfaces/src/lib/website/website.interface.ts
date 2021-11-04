@@ -77,6 +77,9 @@ export interface GameServerPlayer {
   TribeId: number;
   TribeName: string;
   VACBanned: number;
+
+  // Used for Atlas
+  LastOnline: number;
 }
 
 export interface GameServerTribe {
@@ -91,6 +94,9 @@ export interface GameServerTribe {
   OwnerId: number;
   PlayMap: string;
   TribeLog: string;
+
+  /// Used for Atlas
+  TribeName: string;
 }
 
 export interface ArkSupplyDropTable {
