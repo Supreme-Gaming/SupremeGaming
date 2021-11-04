@@ -83,14 +83,14 @@ export const servers = [
     port: 28010,
     rcon_port: 18010,
     map_name: 'PF Ragnarok PVE',
-    game: 'ark',
+    game: 'ark-pf',
   },
   {
     host: 'play.supremegaming.gg',
     port: 28024,
     rcon_port: 18024,
     map_name: 'PF Crystal Isles PVE',
-    game: 'ark',
+    game: 'ark-pf',
   },
   {
     host: 'play.supremegaming.gg',

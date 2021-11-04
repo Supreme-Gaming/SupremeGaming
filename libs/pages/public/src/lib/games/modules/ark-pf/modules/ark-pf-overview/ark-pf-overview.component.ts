@@ -16,14 +16,6 @@ export class ArkPfOverviewComponent implements OnInit {
   constructor(private ss: ServersService) {}
 
   public ngOnInit() {
-    this.servers = this.ss.getServers('ark').pipe(
-      switchMap((s) => {
-        return from(s);
-      }),
-      filter((server) => {
-        return server.map_name.includes('PF') === true;
-      }),
-      toArray()
-    );
+    this.servers = this.ss.getServers('ark-pf');
   }
 }
