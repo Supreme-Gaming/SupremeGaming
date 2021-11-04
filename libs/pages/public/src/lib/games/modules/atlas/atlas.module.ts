@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AtlasComponent } from './atlas.component';
 import { UiSkeletonModule } from '@supremegaming/ui';
+
+import { AtlasComponent } from './atlas.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
         loadChildren: () => import('./modules/atlas-plugins/atlas-plugins.module').then((m) => m.AtlasPluginsModule),
       },
       {
-        path: 'players-and-tribes',
+        path: 'players-and-companies',
         loadChildren: () =>
           import('./modules/atlas-players-and-tribes/atlas-players-and-tribes.module').then(
             (m) => m.AtlasPlayersAndTribesModule
