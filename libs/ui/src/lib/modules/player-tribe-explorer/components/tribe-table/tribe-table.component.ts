@@ -9,7 +9,4 @@ import { AbstractResourceTableComponent } from '../abstract-resource-table/abstr
   templateUrl: './tribe-table.component.html',
   styleUrls: ['./tribe-table.component.scss'],
 })
-export class TribeTableComponent extends AbstractResourceTableComponent<GameServerTribe> {
-  @Input()
-  public columnsVisible: Array<keyof GameServerTribe | 'MemberCount'>;
-}
+export class TribeTableComponent extends AbstractResourceTableComponent<GameServerTribe> {}

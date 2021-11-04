@@ -1,5 +1,7 @@
 <supremegaming-online-player-list
   [servers]="servers | async"
+  [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap']"
+  [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map']"
   [playerDetailsRoute]="'./survivors'"
   [tribeDetailsRoute]="'./tribes'"
 ></supremegaming-online-player-list>

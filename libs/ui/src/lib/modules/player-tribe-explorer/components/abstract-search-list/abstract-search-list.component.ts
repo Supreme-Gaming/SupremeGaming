@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, shareReplay, switchMap } from 'rxjs/operators';
 
-import { AbstractRoutableResourceComponent } from '../abstract-routable-resource/abstract-routable-resource.component';
+import { AbstractResourceTableComponent } from '../abstract-resource-table/abstract-resource-table.component';
 
 @Component({
   template: '',
 })
-export abstract class AbstractSearchListComponent<D> extends AbstractRoutableResourceComponent implements OnInit {
+export abstract class AbstractSearchListComponent<D> extends AbstractResourceTableComponent<D> implements OnInit {
   /**
    * Game to restrict player search to. This value is included to the http
    * request so the receiving API must support it.
@@ -21,7 +21,7 @@ export abstract class AbstractSearchListComponent<D> extends AbstractRoutableRes
 
   public form: FormGroup;
 
-  public data: Observable<Array<D>>;
+  public searchData: Observable<Array<D>>;
 
   public searchTerm: Observable<string>;
 
@@ -36,7 +36,7 @@ export abstract class AbstractSearchListComponent<D> extends AbstractRoutableRes
 
     this.searchTerm = this.form.get('search').valueChanges.pipe(debounceTime(500));
 
-    this.data = this.searchTerm.pipe(
+    this.searchData = this.searchTerm.pipe(
       distinctUntilChanged(),
       switchMap((term) => {
         if (term.trim() === '') {

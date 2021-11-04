@@ -5,14 +5,14 @@ import { map, pluck, shareReplay, switchMap, withLatestFrom } from 'rxjs/operato
 import { GameServerPlayer, GameServerTribe } from '@supremegaming/common/interfaces';
 import { TribesService } from '@supremegaming/data-access';
 
-import { AbstractRoutableResourceComponent } from '../abstract-routable-resource/abstract-routable-resource.component';
+import { AbstractResourceTableComponent } from '../abstract-resource-table/abstract-resource-table.component';
 
 @Component({
   selector: 'supremegaming-tribe-details',
   templateUrl: './tribe-details.component.html',
   styleUrls: ['../player-details/player-details.component.scss', './tribe-details.component.scss'],
 })
-export class TribeDetailsComponent extends AbstractRoutableResourceComponent implements OnInit {
+export class TribeDetailsComponent extends AbstractResourceTableComponent<GameServerTribe> implements OnInit {
   @Input()
   public tribeGuid: Observable<string>;
 

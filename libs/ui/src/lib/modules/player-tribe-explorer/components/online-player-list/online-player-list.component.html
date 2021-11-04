@@ -1,8 +1,8 @@
 <div class="wire-container">
   <supremegaming-player-table
     [data]="players | async"
-    [columnsVisible]="['CharacterName', 'Level', 'TribeName', 'PlayMap']"
-    [columnLabels]="['Survivor Name', 'Level', 'Tribe Name', 'Map']"
+    [columnsVisible]="columnsVisible"
+    [columnLabels]="columnLabels"
     [playerDetailsRoute]="playerDetailsRoute"
     [tribeDetailsRoute]="tribeDetailsRoute"
   ></supremegaming-player-table>

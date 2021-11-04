@@ -29,8 +29,8 @@
   <supremegaming-player-table
     [data]="tribeMembers | async"
     [showAvatar]="false"
-    [columnsVisible]="['CharacterName', 'Level', 'FileUpdated']"
-    [columnLabels]="['Name', 'Level', 'Last Online']"
+    [columnsVisible]="columnsVisible"
+    [columnLabels]="columnLabels"
     [playerDetailsRoute]="playerDetailsRoute"
   ></supremegaming-player-table>
 </div>

@@ -5,14 +5,14 @@ import { mergeMap, scan } from 'rxjs/operators';
 import { GameServer, GameServerPlayer } from '@supremegaming/common/interfaces';
 import { ServersService } from '@supremegaming/data-access';
 
-import { AbstractRoutableResourceComponent } from '../abstract-routable-resource/abstract-routable-resource.component';
+import { AbstractResourceTableComponent } from '../abstract-resource-table/abstract-resource-table.component';
 
 @Component({
   selector: 'supremegaming-online-player-list',
   templateUrl: './online-player-list.component.html',
   styleUrls: ['./online-player-list.component.scss'],
 })
-export class OnlinePlayerListComponent extends AbstractRoutableResourceComponent implements OnInit {
+export class OnlinePlayerListComponent extends AbstractResourceTableComponent<GameServerPlayer> implements OnInit {
   @Input()
   public servers: Array<GameServer>;
 

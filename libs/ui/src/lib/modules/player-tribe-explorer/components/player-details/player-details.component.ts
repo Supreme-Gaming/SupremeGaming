@@ -5,14 +5,14 @@ import { filter, map, pluck, shareReplay, switchMap, toArray, withLatestFrom } f
 
 import { PlayersService } from '@supremegaming/data-access';
 
-import { AbstractRoutableResourceComponent } from '../abstract-routable-resource/abstract-routable-resource.component';
+import { AbstractResourceTableComponent } from '../abstract-resource-table/abstract-resource-table.component';
 
 @Component({
   selector: 'supremegaming-player-details',
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.scss'],
 })
-export class PlayerDetailsComponent extends AbstractRoutableResourceComponent implements OnInit {
+export class PlayerDetailsComponent extends AbstractResourceTableComponent<GameServerPlayer> implements OnInit {
   @Input()
   public playerGuid: Observable<string>;
 

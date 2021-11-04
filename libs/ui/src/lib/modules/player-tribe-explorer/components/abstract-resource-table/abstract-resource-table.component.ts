@@ -10,7 +10,7 @@ export abstract class AbstractResourceTableComponent<T> extends AbstractRoutable
   public data: Array<T>;
 
   @Input()
-  public abstract columnsVisible: Array<string>;
+  public columnsVisible: Array<string>;
 
   @Input()
   public columnLabels: Array<string>;
