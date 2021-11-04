@@ -28,7 +28,14 @@ export class OnlinePlayerListComponent extends AbstractResourceTableComponent<Ga
         return this.ss.getOnlinePlayers(server);
       }),
       scan((acc, curr) => {
-        return [...acc, ...curr];
+        // Atlas returns duplicates for different servers, presumably because of the grid crossing feature
+        //
+        // Filter out all the players that are already in the list to not show them
+        const newPlayersNotInList = curr.filter((p) => {
+          return acc.find((pp) => pp.SteamId === p.SteamId) === undefined;
+        });
+
+        return [...acc, ...newPlayersNotInList];
       }, [])
     );
   }
