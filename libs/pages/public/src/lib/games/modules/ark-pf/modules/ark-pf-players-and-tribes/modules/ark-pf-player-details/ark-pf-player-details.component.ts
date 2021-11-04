@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'supremegaming-ark-pf-player-details',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ark-pf-player-details.component.scss'],
 })
 export class ArkPfPlayerDetailsComponent implements OnInit {
-  constructor() {}
+  public playerGuid: Observable<string>;
 
-  ngOnInit(): void {}
+  constructor(private readonly route: ActivatedRoute) {}
+
+  public ngOnInit() {
+    this.playerGuid = this.route.params.pipe(pluck('guid'));
+  }
 }

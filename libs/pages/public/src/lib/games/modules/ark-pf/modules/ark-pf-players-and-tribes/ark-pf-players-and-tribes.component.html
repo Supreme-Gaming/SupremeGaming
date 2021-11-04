@@ -1,1 +1,9 @@
-<p>Ark PF players and tribes go here.</p>
+<div class="tabs leader-2 trailer-3">
+  <div class="tab" [routerLink]="['./']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+    Online Players
+  </div>
+  <div class="tab" [routerLink]="['./survivors']" [routerLinkActive]="'active'">Survivors</div>
+  <div class="tab" [routerLink]="['./tribes']" [routerLinkActive]="'active'">Tribes</div>
+</div>
+
+<router-outlet></router-outlet>
