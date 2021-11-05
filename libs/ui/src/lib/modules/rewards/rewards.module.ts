@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { RewardsListComponent } from './components/rewards-list/rewards-list.component';
 import { InteractionsModule } from '../interactions/interactions.module';
 
 @NgModule({
-  imports: [CommonModule, InteractionsModule],
+  imports: [CommonModule, ReactiveFormsModule, InteractionsModule],
   declarations: [RewardsListComponent],
   exports: [RewardsListComponent],
 })

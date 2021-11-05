@@ -1,27 +1,9 @@
 @import 'libs/scss/mixins';
 @import 'libs/scss/colors';
 @import 'libs/scss/fonts';
-
-:host {
-  @include flexbox();
-}
+@import 'libs/scss/modules/search';
 
 .filters,
-.products {
-  padding: 0.5rem;
-  box-sizing: border-box;
-}
-
-.filters {
-  @include transform(translateX(0));
-
-  .controls-container {
-    position: sticky;
-    top: 0;
-    left: 0;
-  }
-}
-
 .product-type-description,
 .products h2 {
   margin-bottom: 1.25rem;
@@ -29,6 +11,9 @@
 
 .products {
   width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+
   h2 {
     border-bottom: 1pt solid $base_lightened;
     padding-bottom: 0.5rem;

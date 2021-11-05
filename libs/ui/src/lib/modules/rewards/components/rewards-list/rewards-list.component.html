@@ -1,37 +1,45 @@
-<!-- <div class="filters column3">
-  <div class="controls-container">
-    <p>Search input and checkbox filters will go here</p>
+<form [formGroup]="form">
+  <div class="search-container">
+    <input formControlName="search" type="text" placeholder="Type to search for items or kits" autofocus />
   </div>
-</div> -->
+</form>
 
 <div class="products">
   <h2>Items</h2>
 
-  <ng-container *ngIf="(rewards | async) as rewards; else itemsNotReady">
+  <ng-container *ngIf="(items | async) as rewards; else itemsNotReady">
     <p class="product-type-description">All shop items are one-time purchases and do not persist after death.</p>
 
-    <div class="products-list">
-      <div class="product" *ngFor="let item of rewards?.ShopItems">
-        <div class="product-section product-general-info">
-          <p class="product-name">{{item.WebName}}</p>
-          <div class="product-description">{{item.Description}}</div>
-          <div class="product-image-container">
-            <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+    <ng-container *ngIf="rewards.length > 0 ;else noItems">
+      <div class="products-list">
+        <div class="product" *ngFor="let item of rewards">
+          <div class="product-section product-general-info">
+            <p class="product-name">{{item.WebName}}</p>
+            <div class="product-description">{{item.Description}}</div>
+            <div class="product-image-container">
+              <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+            </div>
+            <div class="product-price">{{item.Price}} Points</div>
           </div>
-          <div class="product-price">{{item.Price}} Points</div>
-        </div>
 
-        <div class="product-section product-buy-info">
-          <p class="product-buy-code">/buy {{item.SpawnCode}} 1</p>
-          <supremegaming-copy class="copy-button" [text]="'/buy ' + item.SpawnCode + ' 1'"></supremegaming-copy>
+          <div class="product-section product-buy-info">
+            <p class="product-buy-code">/buy {{item.SpawnCode}} 1</p>
+            <supremegaming-copy class="copy-button" [text]="'/buy ' + item.SpawnCode + ' 1'"></supremegaming-copy>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 
   <ng-template #itemsNotReady>
     <div class="search-feedback">
-      <p>Gift wrapping items...</p>
+      <p>Reducing the quantum effect...</p>
+    </div>
+  </ng-template>
+
+  <ng-template #noItems>
+    <div class="search-feedback">
+      <p>No item results for search input.</p>
     </div>
   </ng-template>
 
@@ -43,29 +51,37 @@
     <code>/kit kitName</code> and the kit contents will spawn in your inventory.
   </p>
 
-  <ng-container *ngIf="(rewards | async) as rewards; else kitsNotReady">
-    <div class="products-list">
-      <div class="product" *ngFor="let item of rewards?.Kits">
-        <div class="product-section product-general-info">
-          <p class="product-name">{{item.WebName}}</p>
-          <div class="product-description">{{item.Description}}</div>
-          <div class="product-image-container">
-            <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+  <ng-container *ngIf="(kits | async) as rewards; else kitsNotReady">
+    <ng-container *ngIf="rewards.length > 0 ;else notKits">
+      <div class="products-list">
+        <div class="product" *ngFor="let item of rewards">
+          <div class="product-section product-general-info">
+            <p class="product-name">{{item.WebName}}</p>
+            <div class="product-description">{{item.Description}}</div>
+            <div class="product-image-container">
+              <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+            </div>
+            <div class="product-price">{{item.Price}} Points</div>
           </div>
-          <div class="product-price">{{item.Price}} Points</div>
-        </div>
 
-        <div class="product-section product-buy-info">
-          <p class="product-buy-code">/buykit {{item.SpawnCode}} 1</p>
-          <supremegaming-copy class="copy-button" [text]="'/buykit ' + item.SpawnCode + ' 1'"></supremegaming-copy>
+          <div class="product-section product-buy-info">
+            <p class="product-buy-code">/buykit {{item.SpawnCode}} 1</p>
+            <supremegaming-copy class="copy-button" [text]="'/buykit ' + item.SpawnCode + ' 1'"></supremegaming-copy>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 
   <ng-template #kitsNotReady>
     <div class="search-feedback">
       <p>Gift wrapping kits...</p>
+    </div>
+  </ng-template>
+
+  <ng-template #notKits>
+    <div class="search-feedback">
+      <p>No kit results for search input.</p>
     </div>
   </ng-template>
 </div>
