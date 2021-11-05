@@ -1,0 +1,47 @@
+<!-- <div class="filters column3">
+  <div class="controls-container">
+    <p>Search input and checkbox filters will go here</p>
+  </div>
+</div> -->
+
+<div class="products">
+  <h2>Items</h2>
+
+  <div class="products-list">
+    <div class="product" *ngFor="let item of (rewards | async)?.ShopItems">
+      <div class="product-section product-general-info">
+        <p class="product-name">{{item.WebName}}</p>
+        <div class="product-description">{{item.Description}}</div>
+        <div class="product-image-container">
+          <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+        </div>
+        <div class="product-price">{{item.Price}} Points</div>
+      </div>
+
+      <div class="product-section product-buy-info">
+        <p class="product-buy-code">/buy {{item.SpawnCode}}</p>
+        <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Kits</h2>
+
+  <div class="products-list">
+    <div class="product" *ngFor="let item of (rewards | async)?.Kits">
+      <div class="product-section product-general-info">
+        <p class="product-name">{{item.WebName}}</p>
+        <div class="product-description">{{item.Description}}</div>
+        <div class="product-image-container">
+          <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+        </div>
+        <div class="product-price">{{item.Price}} Points</div>
+      </div>
+
+      <div class="product-section product-buy-info">
+        <p class="product-buy-code">/buy {{item.SpawnCode}}</p>
+        <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+      </div>
+    </div>
+  </div>
+</div>

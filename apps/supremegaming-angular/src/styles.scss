@@ -4,6 +4,7 @@
 @import 'libs/scss/dom_flexbox';
 @import 'libs/scss/spacing';
 @import 'libs/scss/colors';
+@import 'libs/scss/fonts';
 
 @import 'libs/scss/modules/tabs';
 @import 'libs/scss/modules/search';
@@ -11,7 +12,7 @@
 
 // GLobal styles
 html {
-  font-family: 'Public Sans', sans-serif;
+  font-family: $primary_font_family;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.6;
@@ -40,12 +41,12 @@ h2,
 h3,
 h4,
 h4 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: $primary_font_family;
   color: inherit;
   font-weight: 400;
 
   &.visions {
-    font-family: 'Marvin Visions', sans-serif;
+    font-family: $secondary_font_family;
     letter-spacing: 1.4px;
   }
 }

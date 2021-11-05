@@ -1,0 +1,136 @@
+@import 'libs/scss/mixins';
+@import 'libs/scss/colors';
+@import 'libs/scss/fonts';
+
+:host {
+  @include flexbox();
+}
+
+.filters,
+.products {
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.filters {
+  @include transform(translateX(0));
+
+  .controls-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+}
+
+.products {
+  h2 {
+    border-bottom: 1pt solid $base_lightened;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  .products-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .product {
+    margin: 0.5rem;
+    border: 1pt solid $base_lightened;
+    border-radius: 5pt;
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    @include transition(border-color 0.3s);
+
+    .product-name,
+    .product-description,
+    .product-price {
+      text-align: center;
+    }
+
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-image-container {
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(center);
+      margin: 1rem 0;
+
+      img {
+        height: 3.75rem;
+        width: 3.75rem;
+      }
+    }
+
+    .product-description,
+    .product-price,
+    .product-spawn-code {
+      font-size: 0.9rem;
+    }
+
+    .product-description {
+      color: darken($color: $support, $amount: 15%);
+    }
+
+    .product-price {
+      font-style: italic;
+      font-weight: 600;
+      margin: 1.25rem 0 0.5rem 0;
+      color: $primary_lightened;
+    }
+
+    .product-general-info {
+      padding: 0.75rem;
+    }
+
+    .product-buy-info {
+      width: 100%;
+      border-top: 1pt solid $base_lightened;
+      box-sizing: border-box;
+      font-size: 0.9rem;
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(space-between);
+
+      .product-buy-code,
+      .copy-button {
+        padding: 1rem;
+        display: inline-block;
+      }
+
+      .product-buy-code {
+        padding-right: 0;
+        font-size: 0.8rem;
+        color: $support_darkened;
+      }
+
+      .copy-button {
+        color: inherit;
+        font-size: 1.25rem;
+        cursor: pointer;
+        color: $base_focus;
+        @include transition(color 0.3s);
+
+        &:hover {
+          color: $primary_lightened;
+        }
+      }
+
+      .product-buy-code {
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: $terciary_font_family;
+      }
+    }
+
+    &:hover {
+      border-color: $base_focus;
+    }
+  }
+}

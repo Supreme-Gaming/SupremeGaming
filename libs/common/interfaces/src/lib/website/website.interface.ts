@@ -11,6 +11,28 @@ export interface SupremeGamingEnvironmentGameSettings {
      * Root URL for static assets. Some assets on this website don't make sense to store in version control, so they are hosted separately.
      */
     gridImages?: string;
+
+    /**
+     * URL endpoint that returns shop rewards for Ark
+     */
+    rewardsUrl?: string;
+
+    /**
+     * Base URL where the product images for ark rewards are hosted.
+     */
+    rewardsProductImagesUrl?: string;
+  };
+
+  ark?: {
+    /**
+     * URL endpoint that returns shop rewards for Ark
+     */
+    rewardsUrl?: string;
+
+    /**
+     * Base URL where the product images for ark rewards are hosted.
+     */
+    rewardsProductImagesUrl?: string;
   };
 }
 
@@ -19,7 +41,7 @@ export interface GameServer {
   port: number;
   rcon_port: number;
   map_name: string;
-  game: 'ark' | 'conan' | 'atlas';
+  game: Game;
 }
 
 export interface BaseAPIResponse {
@@ -252,3 +274,54 @@ export type ArkSupplyDropNameDictionary = Array<ArkSupplyDropName>;
 export interface KeyedArkSupplyDropNameDictionary {
   [key: string]: ArkSupplyDropName;
 }
+
+/**
+ * Shop reward config as exported from source.
+ */
+export interface SourceShopRewards {
+  Kits: { [key: string]: RewardKitGroup };
+  ShopItems: { [key: string]: RewardShopItemGroup };
+}
+
+/**
+ * Transformed reward config so it's more friendly to use in templates.
+ */
+export interface ShopRewards {
+  Kits: Array<RewardKitGroup>;
+  ShopItems: Array<RewardShopItemGroup>;
+}
+
+export interface BaseRewardSet {
+  /**
+   * This is the key of the kit or item entry.
+   */
+  SpawnCode: string;
+
+  /**
+   * Number of points the item is buy.
+   */
+  Price: number;
+  Description: string;
+  WebCategory: string;
+  WebName: string;
+  WebDefaultAmount: number;
+  WebImgUrl: string;
+  Items: Array<RewardItem>;
+}
+
+export interface RewardKitGroup extends BaseRewardSet {
+  DefaultAmount: number;
+}
+
+export interface RewardShopItemGroup extends BaseRewardSet {
+  Type: string;
+}
+
+export interface RewardItem {
+  Amount: number;
+  Quality: number;
+  Blueprint: string;
+  WebKitItemName: string;
+}
+
+export type Game = keyof SupremeGamingEnvironment['games'];

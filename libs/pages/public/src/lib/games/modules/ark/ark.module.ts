@@ -40,6 +40,10 @@ const routes: Routes = [
         path: 'supply-drops',
         loadChildren: () => import('./modules/ark-supply-drops/ark-supply-drops.module').then((m) => m.ArkSupplyDropsModule),
       },
+      {
+        path: 'rewards',
+        loadChildren: () => import('./modules/ark-shop-rewards/ark-shop-rewards.module').then((m) => m.ArkShopRewardsModule),
+      },
     ],
   },
 ];

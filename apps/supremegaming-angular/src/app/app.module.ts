@@ -13,7 +13,7 @@ import { environment } from '../environments/environment';
 
 WebFont.load({
   google: {
-    families: ['Material Icons', 'Material Icons Outlined', 'Public Sans:300,400,500,600'],
+    families: ['Material Icons', 'Material Icons Outlined', 'Poppins', 'Public Sans:300,400,500,600'],
   },
   custom: {
     families: ['Marvin Visions'],

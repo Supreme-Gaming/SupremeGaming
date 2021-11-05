@@ -9,5 +9,9 @@ export const environment: SupremeGamingEnvironment = {
     atlas: {
       gridImages: 'https://static.supremegaming.gg',
     },
+    ark: {
+      rewardsUrl: 'https://static.supremegaming.gg/data/ark/rewards.json',
+      rewardsProductImagesUrl: 'https://static.supremegaming.gg/images/ark/products',
+    },
   },
 };
