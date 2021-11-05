@@ -7,9 +7,10 @@ import { ServerGridListComponent } from './components/server-grid-list/server-gr
 import { ServerGridTileOverviewComponent } from './components/server-grid-tile-overview/server-grid-tile-overview.component';
 import { AtlasGridColumnIndexPipe } from './pipes/atlas-grid-column-index/atlas-grid-column-index.pipe';
 import { AtlasGridRowIndexPipe } from './pipes/atlas-grid-row-index/atlas-grid-row-index.pipe';
+import { InteractionsModule } from '../interactions/interactions.module';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, InteractionsModule],
   declarations: [
     ServerListComponent,
     ServerOverviewComponent,

@@ -10,7 +10,10 @@
       </div>
     </div>
   </div>
-  <p class="server-ip"><a [href]="connection">{{server.host}}:{{server.port}}</a></p>
+  <div class="server-connection">
+    <p class="server-ip"><a [href]="connection">{{server.host}}:{{server.port}}</a></p>
+    <supremegaming-copy [text]="server.host + ':' + server.port"></supremegaming-copy>
+  </div>
 </div>
 
 <div class="action">

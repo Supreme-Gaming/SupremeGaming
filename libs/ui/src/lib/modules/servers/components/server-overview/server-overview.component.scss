@@ -26,10 +26,17 @@
 }
 
 .info {
-  .server-ip {
-    color: $primary_lightened;
-    font-size: 0.75rem;
-    font-style: italic;
+  .server-connection {
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+
+    .server-ip {
+      color: $primary_lightened;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
   }
 }
 
