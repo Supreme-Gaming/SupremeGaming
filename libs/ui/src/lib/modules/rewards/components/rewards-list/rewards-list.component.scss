@@ -22,7 +22,13 @@
   }
 }
 
+.product-type-description,
+.products h2 {
+  margin-bottom: 1.25rem;
+}
+
 .products {
+  width: 100%;
   h2 {
     border-bottom: 1pt solid $base_lightened;
     padding-bottom: 0.5rem;
@@ -31,9 +37,9 @@
 
   .products-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    margin: 1rem 0;
+    margin-bottom: 1.5rem;
   }
 
   .product {
@@ -63,8 +69,8 @@
       margin: 1rem 0;
 
       img {
-        height: 3.75rem;
-        width: 3.75rem;
+        height: 4.5rem;
+        width: 4.5rem;
       }
     }
 
@@ -79,7 +85,6 @@
     }
 
     .product-price {
-      font-style: italic;
       font-weight: 600;
       margin: 1.25rem 0 0.5rem 0;
       color: $primary_lightened;
@@ -104,12 +109,6 @@
         display: inline-block;
       }
 
-      .product-buy-code {
-        padding-right: 0;
-        font-size: 0.8rem;
-        color: $support_darkened;
-      }
-
       .copy-button {
         color: inherit;
         font-size: 1.25rem;
@@ -123,9 +122,13 @@
       }
 
       .product-buy-code {
-        overflow: hidden;
-        white-space: nowrap;
         font-family: $terciary_font_family;
+        white-space: nowrap;
+        padding-right: 0;
+        font-size: 0.8rem;
+        color: $support_darkened;
+        max-width: 80%;
+        overflow: hidden;
       }
     }
 

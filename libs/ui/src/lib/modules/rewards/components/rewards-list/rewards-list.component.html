@@ -7,41 +7,65 @@
 <div class="products">
   <h2>Items</h2>
 
-  <div class="products-list">
-    <div class="product" *ngFor="let item of (rewards | async)?.ShopItems">
-      <div class="product-section product-general-info">
-        <p class="product-name">{{item.WebName}}</p>
-        <div class="product-description">{{item.Description}}</div>
-        <div class="product-image-container">
-          <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
-        </div>
-        <div class="product-price">{{item.Price}} Points</div>
-      </div>
+  <ng-container *ngIf="(rewards | async) as rewards; else itemsNotReady">
+    <p class="product-type-description">All shop items are one-time purchases and do not persist after death.</p>
 
-      <div class="product-section product-buy-info">
-        <p class="product-buy-code">/buy {{item.SpawnCode}}</p>
-        <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+    <div class="products-list">
+      <div class="product" *ngFor="let item of rewards?.ShopItems">
+        <div class="product-section product-general-info">
+          <p class="product-name">{{item.WebName}}</p>
+          <div class="product-description">{{item.Description}}</div>
+          <div class="product-image-container">
+            <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+          </div>
+          <div class="product-price">{{item.Price}} Points</div>
+        </div>
+
+        <div class="product-section product-buy-info">
+          <p class="product-buy-code">/buy {{item.SpawnCode}} 1</p>
+          <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+
+  <ng-template #itemsNotReady>
+    <div class="search-feedback">
+      <p>Gift wrapping items...</p>
+    </div>
+  </ng-template>
 
   <h2>Kits</h2>
 
-  <div class="products-list">
-    <div class="product" *ngFor="let item of (rewards | async)?.Kits">
-      <div class="product-section product-general-info">
-        <p class="product-name">{{item.WebName}}</p>
-        <div class="product-description">{{item.Description}}</div>
-        <div class="product-image-container">
-          <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
-        </div>
-        <div class="product-price">{{item.Price}} Points</div>
-      </div>
+  <p class="product-type-description">
+    Kits work a little differently than shop items. Each player has a balance of kits and when you buy a kit, it gets added
+    to that balance. To redeem a kit for which you have a positive balance of, you must run the command
+    <code>/kit kitName</code> and the kit contents will spawn in your inventory.
+  </p>
 
-      <div class="product-section product-buy-info">
-        <p class="product-buy-code">/buy {{item.SpawnCode}}</p>
-        <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+  <ng-container *ngIf="(rewards | async) as rewards; else kitsNotReady">
+    <div class="products-list">
+      <div class="product" *ngFor="let item of rewards?.Kits">
+        <div class="product-section product-general-info">
+          <p class="product-name">{{item.WebName}}</p>
+          <div class="product-description">{{item.Description}}</div>
+          <div class="product-image-container">
+            <img [src]="rewardImageBaseUrl + '/' + item.WebImgUrl" alt="Shop item icon" />
+          </div>
+          <div class="product-price">{{item.Price}} Points</div>
+        </div>
+
+        <div class="product-section product-buy-info">
+          <p class="product-buy-code">/buykit {{item.SpawnCode}} 1</p>
+          <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+
+  <ng-template #kitsNotReady>
+    <div class="search-feedback">
+      <p>Gift wrapping kits...</p>
+    </div>
+  </ng-template>
 </div>
