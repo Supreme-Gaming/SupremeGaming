@@ -23,7 +23,7 @@
 
         <div class="product-section product-buy-info">
           <p class="product-buy-code">/buy {{item.SpawnCode}} 1</p>
-          <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+          <supremegaming-copy class="copy-button" [text]="'/buy ' + item.SpawnCode + ' 1'"></supremegaming-copy>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
 
         <div class="product-section product-buy-info">
           <p class="product-buy-code">/buykit {{item.SpawnCode}} 1</p>
-          <span class="material-icons-outlined copy-button" title="Copy to clipboard">copy</span>
+          <supremegaming-copy class="copy-button" [text]="'/buykit ' + item.SpawnCode + ' 1'"></supremegaming-copy>
         </div>
       </div>
     </div>

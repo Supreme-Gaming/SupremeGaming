@@ -102,23 +102,15 @@
       @include flexbox();
       @include flex-direction(row);
       @include justify-content(space-between);
+      @include align-items(center);
 
       .product-buy-code,
       .copy-button {
         padding: 1rem;
-        display: inline-block;
       }
 
       .copy-button {
-        color: inherit;
         font-size: 1.25rem;
-        cursor: pointer;
-        color: $base_focus;
-        @include transition(color 0.3s);
-
-        &:hover {
-          color: $primary_lightened;
-        }
       }
 
       .product-buy-code {
