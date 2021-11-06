@@ -22,6 +22,8 @@ const routes: Routes = [
         data: {
           meta: {
             title: 'Supreme Atlas',
+            description: 'Supreme Atlas server connections, map, status checkers, and more!',
+            image: 'https://static.supremegaming.gg/images/atlas/grid/0/MapImg.png',
           },
         },
       },

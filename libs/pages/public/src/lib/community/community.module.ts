@@ -20,7 +20,9 @@ const routes: Routes = [
         loadChildren: () => import('./modules/community-rules/community-rules.module').then((m) => m.CommunityRulesModule),
         data: {
           meta: {
-            title: 'Community Rules',
+            title: 'Supreme Gaming Global Community Rules',
+            description:
+              'Community rule set to enable and a welcoming and comfortable place to hang out and make new friends.',
           },
         },
       },
@@ -31,6 +33,8 @@ const routes: Routes = [
         data: {
           meta: {
             title: 'Community Support',
+            description:
+              'Have a question or a problem? Learn how to ask for help and join our Discord server, the best place to communicate with community and staff members.',
           },
         },
       },
