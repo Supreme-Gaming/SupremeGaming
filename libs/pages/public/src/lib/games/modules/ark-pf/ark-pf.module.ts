@@ -18,10 +18,20 @@ const routes: Routes = [
       {
         path: 'rules',
         loadChildren: () => import('./modules/ark-pf-rules/ark-pf-rules.module').then((m) => m.ArkPfRulesModule),
+        data: {
+          meta: {
+            title: 'Ark PF Rules',
+          },
+        },
       },
       {
         path: 'settings',
         loadChildren: () => import('./modules/ark-pf-settings/ark-pf-settings.module').then((m) => m.ArkPfSettingsModule),
+        data: {
+          meta: {
+            title: 'Ark PF Settings',
+          },
+        },
       },
       {
         path: 'players-and-tribes',
@@ -29,14 +39,29 @@ const routes: Routes = [
           import('./modules/ark-pf-players-and-tribes/ark-pf-players-and-tribes.module').then(
             (m) => m.ArkPfPlayersAndTribesModule
           ),
+        data: {
+          meta: {
+            title: 'Ark PF Player & Tribe Explorer',
+          },
+        },
       },
       {
         path: 'mods',
         loadChildren: () => import('./modules/ark-pf-mods/ark-pf-mods.module').then((m) => m.ArkPfModsModule),
+        data: {
+          meta: {
+            title: 'Ark PF Mods',
+          },
+        },
       },
       {
         path: 'plugins',
         loadChildren: () => import('./modules/ark-pf-plugins/ark-pf-plugins.module').then((m) => m.ArkPfPluginsModule),
+        data: {
+          meta: {
+            title: 'Ark PF Plugins',
+          },
+        },
       },
     ],
   },

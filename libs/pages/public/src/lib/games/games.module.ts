@@ -19,18 +19,38 @@ const routes: Routes = [
       {
         path: 'atlas',
         loadChildren: () => import('./modules/atlas/atlas.module').then((m) => m.AtlasModule),
+        data: {
+          meta: {
+            title: 'Supreme Atlas',
+          },
+        },
       },
       {
         path: 'ark',
         loadChildren: () => import('./modules/ark/ark.module').then((m) => m.ArkModule),
+        data: {
+          meta: {
+            title: 'Supreme Ark',
+          },
+        },
       },
       {
         path: 'ark-pf',
         loadChildren: () => import('./modules/ark-pf/ark-pf.module').then((m) => m.ArkPfModule),
+        data: {
+          meta: {
+            title: 'Supreme Ark Primal Fear',
+          },
+        },
       },
       {
         path: 'conan',
         loadChildren: () => import('./modules/conan/conan.module').then((m) => m.ConanModule),
+        data: {
+          meta: {
+            title: 'Supreme Conan Exiles',
+          },
+        },
       },
     ],
   },

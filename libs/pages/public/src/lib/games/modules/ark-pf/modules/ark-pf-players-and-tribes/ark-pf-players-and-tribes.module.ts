@@ -13,26 +13,51 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./modules/ark-pf-online-list/ark-pf-online-list.module').then((m) => m.ArkPfOnlineListModule),
+        data: {
+          meta: {
+            title: 'Ark PF Online Players',
+          },
+        },
       },
       {
         path: 'survivors/:guid',
         loadChildren: () =>
           import('./modules/ark-pf-player-details/ark-pf-player-details.module').then((m) => m.ArkPfPlayerDetailsModule),
+        data: {
+          meta: {
+            title: 'Ark PF Survivor Details',
+          },
+        },
       },
       {
         path: 'survivors',
         loadChildren: () =>
           import('./modules/ark-pf-player-list/ark-pf-player-list.module').then((m) => m.ArkPfPlayerListModule),
+        data: {
+          meta: {
+            title: 'Ark PF Survivor Search',
+          },
+        },
       },
       {
         path: 'tribes/:guid',
         loadChildren: () =>
           import('./modules/ark-pf-tribe-details/ark-pf-tribe-details.module').then((m) => m.ArkPfTribeDetailsModule),
+        data: {
+          meta: {
+            title: 'Ark PF Tribe Details',
+          },
+        },
       },
       {
         path: 'tribes',
         loadChildren: () =>
           import('./modules/ark-pf-tribe-list/ark-pf-tribe-list.module').then((m) => m.ArkPfTribeListModule),
+        data: {
+          meta: {
+            title: 'Ark PF Tribe Search',
+          },
+        },
       },
     ],
   },

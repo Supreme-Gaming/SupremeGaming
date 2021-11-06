@@ -18,10 +18,20 @@ const routes: Routes = [
       {
         path: 'rules',
         loadChildren: () => import('./modules/conan-rules/conan-rules.module').then((m) => m.ConanRulesModule),
+        data: {
+          meta: {
+            title: 'Conan Rules',
+          },
+        },
       },
       {
         path: 'settings',
         loadChildren: () => import('./modules/conan-settings/conan-settings.module').then((m) => m.ConanSettingsModule),
+        data: {
+          meta: {
+            title: 'Conan Settings',
+          },
+        },
       },
       {
         path: 'players-and-tribes',
@@ -29,14 +39,29 @@ const routes: Routes = [
           import('./modules/conan-players-and-tribes/conan-players-and-tribes.module').then(
             (m) => m.ConanPlayersAndTribesModule
           ),
+        data: {
+          meta: {
+            title: 'Conan Exiled & Tribe Explorer',
+          },
+        },
       },
       {
         path: 'mods',
         loadChildren: () => import('./modules/conan-mods/conan-mods.module').then((m) => m.ConanModsModule),
+        data: {
+          meta: {
+            title: 'Conan Mods',
+          },
+        },
       },
       {
         path: 'pippi',
         loadChildren: () => import('./modules/conan-pippi/conan-pippi.module').then((m) => m.ConanPippiModule),
+        data: {
+          meta: {
+            title: 'Conan Pippi',
+          },
+        },
       },
     ],
   },

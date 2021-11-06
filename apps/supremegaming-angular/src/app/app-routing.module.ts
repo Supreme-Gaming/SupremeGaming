@@ -10,11 +10,6 @@ const routes: Routes = [
   {
     path: 'community',
     loadChildren: () => import('@supremegaming/pages/public').then((m) => m.CommunityModule),
-    data: {
-      meta: {
-        title: 'Community',
-      },
-    },
   },
   {
     path: 'games',
@@ -23,6 +18,11 @@ const routes: Routes = [
   {
     path: 'donate',
     loadChildren: () => import('@supremegaming/pages/public').then((m) => m.DonationModule),
+    data: {
+      meta: {
+        title: 'Donate and Support the Community',
+      },
+    },
   },
 ];
 
