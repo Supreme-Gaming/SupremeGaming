@@ -18,11 +18,21 @@ const routes: Routes = [
       {
         path: 'rules',
         loadChildren: () => import('./modules/community-rules/community-rules.module').then((m) => m.CommunityRulesModule),
+        data: {
+          meta: {
+            title: 'Community Rules',
+          },
+        },
       },
       {
         path: 'support',
         loadChildren: () =>
           import('./modules/community-support/community-support.module').then((m) => m.CommunitySupportModule),
+        data: {
+          meta: {
+            title: 'Community Support',
+          },
+        },
       },
     ],
   },
