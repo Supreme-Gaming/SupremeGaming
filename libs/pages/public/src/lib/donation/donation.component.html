@@ -1,17 +1,12 @@
 <supremegaming-sub-header>
   <div class="left-content">
-    <a href="http://">Plugin Unlocks</a>
-    <a href="http://">Shop</a>
-    <a href="http://">Kits</a>
+    <a [routerLink]="['/donate']" routerLinkActive="active-sub-menu" [routerLinkActiveOptions]="{exact: true}">Donate</a>
+    <a [routerLink]="['/donate/info']" routerLinkActive="active-sub-menu">Donation System</a>
   </div>
 </supremegaming-sub-header>
 
 <section class="root">
   <div class="container12">
-    <div class="column12">
-      <h2>Donate</h2>
-
-      <p>Donation details go here.</p>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </section>

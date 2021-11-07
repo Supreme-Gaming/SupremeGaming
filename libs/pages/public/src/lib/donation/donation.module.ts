@@ -10,14 +10,16 @@ const routes: Routes = [
   {
     path: '',
     component: DonationComponent,
-  },
-  {
-    path: 'shop',
-    component: DonationComponent,
-  },
-  {
-    path: 'rewards',
-    component: DonationComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./modules/donate/donate.module').then((m) => m.DonateModule),
+      },
+      {
+        path: 'info',
+        loadChildren: () => import('./modules/donate-info/donate-info.module').then((m) => m.DonateInfoModule),
+      },
+    ],
   },
 ];
 
