@@ -1,0 +1,33 @@
+@import 'libs/scss/mixins';
+
+:host {
+  text-align: center;
+}
+
+.donation-method-container {
+  @include flexbox();
+  @include flex-direction(row);
+  @include justify-content(space-around);
+  margin: 2rem 0;
+
+  .donation-method {
+    @include flex(1);
+    max-width: 42.5%;
+
+    h3 {
+      font-weight: 600;
+      text-decoration: underline;
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+img {
+  max-height: 2.75rem;
+  max-width: 12.5rem;
+  margin: 1.5rem;
+}
+
+.cta {
+  margin: 1rem 0;
+}
