@@ -63,6 +63,16 @@ const routes: Routes = [
           },
         },
       },
+      {
+        path: 'rewards',
+        loadChildren: () =>
+          import('./modules/atlas-shop-rewards/atlas-shop-rewards.module').then((m) => m.AtlasShopRewardsModule),
+        data: {
+          meta: {
+            title: 'Atlas Shop Rewards',
+          },
+        },
+      },
     ],
   },
 ];
