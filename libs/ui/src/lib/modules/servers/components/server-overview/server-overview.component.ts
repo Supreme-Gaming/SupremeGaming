@@ -22,7 +22,7 @@ export class ServerOverviewComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer, private ss: ServersService) {}
 
   public ngOnInit(): void {
-    this.connection = this.sanitizer.bypassSecurityTrustUrl(`steam://connect/${this.server.host}/${this.server.port}`);
+    this.connection = this.sanitizer.bypassSecurityTrustUrl(`steam://connect/${this.server.host}:${this.server.port}`);
     this.status = this.ss.getServerStatus(this.server).pipe(shareReplay());
   }
 }
