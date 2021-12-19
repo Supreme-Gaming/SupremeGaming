@@ -80,6 +80,13 @@ export const servers = [
   },
   {
     host: 'play.supremegaming.gg',
+    port: 28058,
+    rcon_port: 18058,
+    map_name: 'Lost Island PVE',
+    game: 'ark',
+  },
+  {
+    host: 'play.supremegaming.gg',
     port: 28010,
     rcon_port: 18010,
     map_name: 'PF Ragnarok PVE',
