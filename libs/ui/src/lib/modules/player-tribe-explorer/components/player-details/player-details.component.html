@@ -1,5 +1,5 @@
 <div class="overview">
-  <ng-container *ngIf="player | async as pl">
+  <ng-container *ngIf="(player | async) as pl">
     <div class="character-fragment">
       <div *ngIf="game === 'ark'" class="avatar">
         <img [src]="pl.AvatarUrl" alt="Avatar image" />

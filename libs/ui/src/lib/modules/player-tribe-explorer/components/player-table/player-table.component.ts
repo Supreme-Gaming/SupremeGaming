@@ -11,5 +11,5 @@ import { AbstractResourceTableComponent } from '../abstract-resource-table/abstr
 })
 export class PlayerTableComponent extends AbstractResourceTableComponent<GameServerPlayer> {
   @Input()
-  public columnsVisible: Array<keyof GameServerPlayer>;
+  public columnsVisible: Array<string>;
 }

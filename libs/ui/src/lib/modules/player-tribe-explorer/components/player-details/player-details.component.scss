@@ -5,6 +5,7 @@
   @include flexbox();
   @include flex-direction(row);
   @include justify-content(center);
+  display: block
 }
 
 .overview {

@@ -29,7 +29,8 @@
     }
   },
   "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true
+    "fullTemplateTypeCheck": true,
+    "strictTemplates": true
   },
   "exclude": ["node_modules", "tmp"]
 }
