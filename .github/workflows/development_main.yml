@@ -13,3 +13,4 @@ jobs:
     uses: ./.github/workflows/development_build.yml
   deploy:
     uses: ./.github/workflows/development_deploy.yml
+    needs: build
