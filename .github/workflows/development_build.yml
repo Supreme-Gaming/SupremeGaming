@@ -21,12 +21,14 @@ jobs:
           node-version: '16'
 
       - uses: actions/cache@v3
+        id: npm-cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Dependencies
-        run: npm i
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Build Supreme Gaming Website
         run: npx nx run supremegaming-angular:build:production
