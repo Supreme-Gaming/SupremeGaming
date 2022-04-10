@@ -26,9 +26,6 @@ jobs:
         with:
           name: ${{ github.sha }}
 
-      - name: Display structure of downloaded files
-        run: ls -R
-
       - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main
         env:
