@@ -5,6 +5,10 @@ name: Development Deploy
 
 on:
   workflow_call:
+    inputs:
+      sha:
+        required: true
+        type: string
     secrets:
       SERVER_SSH_KEY:
         required: true
@@ -23,6 +27,8 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v3
+        with:
+          - name: ${{ inputs.sha }}
 
       - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main

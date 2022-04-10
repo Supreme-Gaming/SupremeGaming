@@ -5,6 +5,10 @@ name: Development Build
 
 on:
   workflow_call:
+    inputs:
+      sha:
+        required: true
+        type: string
 
 jobs:
   build:
@@ -30,4 +34,5 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: dist/ # or path/to/artifact
+          name: ${{ inputs.sha }}
+          path: dist/
