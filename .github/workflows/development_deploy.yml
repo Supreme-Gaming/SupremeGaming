@@ -16,15 +16,18 @@ on:
         required: true
 
 jobs:
-  Development:
+  deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Server
+    name: Development
 
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v3
         with:
           name: ${{ github.sha }}
+
+      - name: Display structure of downloaded files
+        run: ls -R
 
       - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main

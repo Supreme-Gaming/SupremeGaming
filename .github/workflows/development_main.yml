@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/development_build.yml
   Deploy:
     uses: ./.github/workflows/development_deploy.yml
-    needs: build
+    needs: Build
     secrets:
       SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
       REMOTE_HOST: ${{ secrets.REMOTE_HOST }}

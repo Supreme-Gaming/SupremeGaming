@@ -7,8 +7,8 @@ on:
   workflow_call:
 
 jobs:
-  Development:
-    name: Build
+  build:
+    name: Development
     runs-on: ubuntu-latest
 
     steps:
