@@ -21,6 +21,9 @@ jobs:
     name: Deploy to Server
 
     steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+
       - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main
         env:
