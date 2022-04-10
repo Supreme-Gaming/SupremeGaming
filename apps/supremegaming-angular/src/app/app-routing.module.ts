@@ -5,19 +5,24 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/landing/landing.module').then((m) => m.LandingModule),
+    loadChildren: () => import('@supremegaming/pages/public').then((m) => m.LandingModule),
   },
   {
     path: 'community',
-    loadChildren: () => import('./modules/community/community.module').then((m) => m.CommunityModule),
+    loadChildren: () => import('@supremegaming/pages/public').then((m) => m.CommunityModule),
   },
   {
     path: 'games',
-    loadChildren: () => import('./modules/games/games.module').then((m) => m.GamesModule),
+    loadChildren: () => import('@supremegaming/pages/public').then((m) => m.GamesModule),
   },
   {
     path: 'donate',
-    loadChildren: () => import('./modules/donation/donation.module').then((m) => m.DonationModule),
+    loadChildren: () => import('@supremegaming/pages/public').then((m) => m.DonationModule),
+    data: {
+      meta: {
+        title: 'Donate and Support the Community',
+      },
+    },
   },
 ];
 

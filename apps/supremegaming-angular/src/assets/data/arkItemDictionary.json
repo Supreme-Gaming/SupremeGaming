@@ -1,0 +1,6847 @@
+﻿[
+  {
+    "ItemName": "Advanced Bullet",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_AdvancedBullet"
+  },
+  {
+    "ItemName": "Advanced Rifle Bullet",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_AdvancedRifleBullet"
+  },
+  {
+    "ItemName": "Advanced Sniper Bullet",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_AdvancedSniperBullet"
+  },
+  {
+    "ItemName": "Ballista Bolt",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_BallistaArrow"
+  },
+  {
+    "ItemName": "Base Ammo",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_Base"
+  },
+  {
+    "ItemName": "Base Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowBase"
+  },
+  {
+    "ItemName": "Boulder",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_Boulder"
+  },
+  {
+    "ItemName": "C4 Charge",
+    "Type": "Ammunition",
+    "Class": "PrimalItemC4Ammo"
+  },
+  {
+    "ItemName": "Cannon Ball",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_CannonBall"
+  },
+  {
+    "ItemName": "Grappling Hook",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_GrapplingHook"
+  },
+  {
+    "ItemName": "Metal Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_CompoundBowArrow"
+  },
+  {
+    "ItemName": "Rocket Propelled Grenade",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_Rocket"
+  },
+  {
+    "ItemName": "Simple Bullet",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_SimpleBullet"
+  },
+  {
+    "ItemName": "Simple Rifle Ammo",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_SimpleRifleBullet"
+  },
+  {
+    "ItemName": "Simple Shotgun Ammo",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_SimpleShotgunBullet"
+  },
+  {
+    "ItemName": "Stone Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowStone"
+  },
+  {
+    "ItemName": "Tranquilizer Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowTranq"
+  },
+  {
+    "ItemName": "Tranquilizer Dart",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_TranqDart"
+  },
+  {
+    "ItemName": "Transponder Node",
+    "Type": "Ammunition",
+    "Class": "PrimalItemTransGPSAmmo"
+  },
+  {
+    "ItemName": "Base Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_BaseBoots"
+  },
+  {
+    "ItemName": "Base Gloves",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_BaseGloves"
+  },
+  {
+    "ItemName": "Base Helmet",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_BaseHelmet"
+  },
+  {
+    "ItemName": "Base Pants",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_BasePants"
+  },
+  {
+    "ItemName": "Base Shield",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_Shield"
+  },
+  {
+    "ItemName": "Base Shirt",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_BaseShirt"
+  },
+  {
+    "ItemName": "Chitin Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ChitinBoots"
+  },
+  {
+    "ItemName": "Chitin Chestpiece",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ChitinShirt"
+  },
+  {
+    "ItemName": "Chitin Gauntlets",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ChitinGloves"
+  },
+  {
+    "ItemName": "Chitin Helmet",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ChitinHelmet"
+  },
+  {
+    "ItemName": "Chitin Leggings",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ChitinPants"
+  },
+  {
+    "ItemName": "Cloth Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ClothBoots"
+  },
+  {
+    "ItemName": "Cloth Gloves",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ClothGloves"
+  },
+  {
+    "ItemName": "Cloth Hat",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ClothHelmet"
+  },
+  {
+    "ItemName": "Cloth Pants",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ClothPants"
+  },
+  {
+    "ItemName": "Cloth Shirt",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ClothShirt"
+  },
+  {
+    "ItemName": "Flak Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MetalBoots"
+  },
+  {
+    "ItemName": "Flak Chestpiece",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MetalShirt"
+  },
+  {
+    "ItemName": "Flak Gauntlets",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MetalGloves"
+  },
+  {
+    "ItemName": "Flak Helmet",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MetalHelmet"
+  },
+  {
+    "ItemName": "Flak Leggings",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MetalPants"
+  },
+  {
+    "ItemName": "Fur Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_FurBoots"
+  },
+  {
+    "ItemName": "Fur Cap",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_FurHelmet"
+  },
+  {
+    "ItemName": "Fur Chestpiece",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_FurShirt"
+  },
+  {
+    "ItemName": "Fur Gauntlets",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_FurGloves"
+  },
+  {
+    "ItemName": "Fur Leggings",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_FurPants"
+  },
+  {
+    "ItemName": "Gas Mask",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GasMask"
+  },
+  {
+    "ItemName": "Generic Armor",
+    "Type": "Armor",
+    "Class": "PrimalItemArmorGeneric"
+  },
+  {
+    "ItemName": "Ghillie Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GhillieBoots"
+  },
+  {
+    "ItemName": "Ghillie Chestpiece",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GhillieShirt"
+  },
+  {
+    "ItemName": "Ghillie Gauntlets",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GhillieGloves"
+  },
+  {
+    "ItemName": "Ghillie Leggings",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GhilliePants"
+  },
+  {
+    "ItemName": "Ghillie Mask",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GhillieHelmet"
+  },
+  {
+    "ItemName": "Heavy Miner's Helmet",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MinersHelmet"
+  },
+  {
+    "ItemName": "Hide Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HideBoots"
+  },
+  {
+    "ItemName": "Hide Gloves",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HideGloves"
+  },
+  {
+    "ItemName": "Hide Hat",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HideHelmet"
+  },
+  {
+    "ItemName": "Hide Pants",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HidePants"
+  },
+  {
+    "ItemName": "Hide Shirt",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HideShirt"
+  },
+  {
+    "ItemName": "Metal Shield",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_MetalShield"
+  },
+  {
+    "ItemName": "Night Vision Goggles",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_NightVisionGoggles"
+  },
+  {
+    "ItemName": "Riot Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_RiotBoots"
+  },
+  {
+    "ItemName": "Riot Chestpiece",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_RiotShirt"
+  },
+  {
+    "ItemName": "Riot Gauntlets",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_RiotGloves"
+  },
+  {
+    "ItemName": "Riot Helmet",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_RiotHelmet"
+  },
+  {
+    "ItemName": "Riot Leggings",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_RiotPants"
+  },
+  {
+    "ItemName": "Riot Shield",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TransparentRiotShield"
+  },
+  {
+    "ItemName": "SCUBA Flippers",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ScubaBoots_Flippers"
+  },
+  {
+    "ItemName": "SCUBA Leggings",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ScubaPants"
+  },
+  {
+    "ItemName": "SCUBA Mask",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ScubaHelmet_Goggles"
+  },
+  {
+    "ItemName": "SCUBA Tank",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_ScubaShirt_SuitWithTank"
+  },
+  {
+    "ItemName": "Second Helmet Blueprint",
+    "Type": "Armor",
+    "Class": "PrimalItemHelmet2"
+  },
+  {
+    "ItemName": "Wooden Shield",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_WoodShield"
+  },
+  {
+    "ItemName": "Argentavis Talon",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Argentavis"
+  },
+  {
+    "ItemName": "Artifact Of The Clever",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_05"
+  },
+  {
+    "ItemName": "Artifact Of The Devious",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_04"
+  },
+  {
+    "ItemName": "Artifact Of The Devourer",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_07"
+  },
+  {
+    "ItemName": "Artifact Of The Flamekeeper",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_10"
+  },
+  {
+    "ItemName": "Artifact Of The Hunter",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_01"
+  },
+  {
+    "ItemName": "Artifact Of The Immune",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_08"
+  },
+  {
+    "ItemName": "Artifact Of The Massive",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_03"
+  },
+  {
+    "ItemName": "Artifact Of The Pack",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_02"
+  },
+  {
+    "ItemName": "Artifact Of The Skylord",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_06"
+  },
+  {
+    "ItemName": "Artifact Of The Strong",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_09"
+  },
+  {
+    "ItemName": "Base Item",
+    "Type": "Artifact",
+    "Class": "PrimalItem_Base"
+  },
+  {
+    "ItemName": "Base Multi-Item",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_MulticraftItem_Base"
+  },
+  {
+    "ItemName": "Summon Broodmother Portal (Old)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute1"
+  },
+  {
+    "ItemName": "Summon Center Portal",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_TheCenter"
+  },
+  {
+    "ItemName": "Summon Dragon Portal (Old)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute3"
+  },
+  {
+    "ItemName": "Summon Megapithecus Portal (Old)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute2"
+  },
+  {
+    "ItemName": "Generic Artifact",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifactGeneric"
+  },
+  {
+    "ItemName": "Generic Boss Summon",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTributeGeneric"
+  },
+  {
+    "ItemName": "Megalodon Tooth",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Megalodon"
+  },
+  {
+    "ItemName": "Mysterious Snow Globe",
+    "Type": "Artifact",
+    "Class": "PrimalItem_Bonus"
+  },
+  {
+    "ItemName": "Revealed Snow Globe",
+    "Type": "Artifact",
+    "Class": "PrimalItem_Bonus2"
+  },
+  {
+    "ItemName": "Sauropod Vertebra",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Sauro"
+  },
+  {
+    "ItemName": "Spawn Generic Tamed Boss",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_SpawnTameBoss"
+  },
+  {
+    "ItemName": "Spawn Tamed Broodmother",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_SpawnTameBoss_Spider"
+  },
+  {
+    "ItemName": "Spawn Tamed Megapithecus",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_SpawnTameBoss_Gorilla"
+  },
+  {
+    "ItemName": "Specimen Implant",
+    "Type": "Artifact",
+    "Class": "PrimalItem_StartingNote"
+  },
+  {
+    "ItemName": "Summon Witch Hat (Dino)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_HatTributeDino"
+  },
+  {
+    "ItemName": "Summon Witch Hat (Player)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_HatTributePlayer"
+  },
+  {
+    "ItemName": "Tyrannosaurus Arm",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Rex"
+  },
+  {
+    "ItemName": "Flashlight Attachment",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachment_Flashlight"
+  },
+  {
+    "ItemName": "Generic Weapon Attachment",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachmentGeneric"
+  },
+  {
+    "ItemName": "Holo-Scope Attachment",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachment_HoloScope"
+  },
+  {
+    "ItemName": "Laser Attachment",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachment_Laser"
+  },
+  {
+    "ItemName": "Scope Attachment",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachment_Scope"
+  },
+  {
+    "ItemName": "Silencer Attachment",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachment_Silencer"
+  },
+  {
+    "ItemName": "Amarberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Berry_Amarberry"
+  },
+  {
+    "ItemName": "Azulberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Berry_Azulberry"
+  },
+  {
+    "ItemName": "Base Veggie",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Base"
+  },
+  {
+    "ItemName": "Battle Tartare",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_BattleTartare"
+  },
+  {
+    "ItemName": "Beer Jar",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_BeerJar"
+  },
+  {
+    "ItemName": "Beer Jar (alt)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_BeerJarAlt"
+  },
+  {
+    "ItemName": "Bingleberry Soup",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_BerrySoup"
+  },
+  {
+    "ItemName": "Box o Chocolates",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_ValentinesChocolate"
+  },
+  {
+    "ItemName": "Broth of Enlightenment",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_TheHorn"
+  },
+  {
+    "ItemName": "Bug Repellant",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_BugRepellant"
+  },
+  {
+    "ItemName": "Calien Soup",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_CalienSoup"
+  },
+  {
+    "ItemName": "Canteen (Empty)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CanteenCraftable"
+  },
+  {
+    "ItemName": "Canteen (Full)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CanteenRefill"
+  },
+  {
+    "ItemName": "Citronal",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Citronal"
+  },
+  {
+    "ItemName": "Cooked Fish Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedMeat_Fish"
+  },
+  {
+    "ItemName": "Cooked Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedMeat"
+  },
+  {
+    "ItemName": "Cooked Meat Jerky",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedMeat_Jerky"
+  },
+  {
+    "ItemName": "Cooked Prime Fish Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPrimeMeat_Fish"
+  },
+  {
+    "ItemName": "Cooked Prime Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPrimeMeat"
+  },
+  {
+    "ItemName": "Enduro Stew",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_EnduroStew"
+  },
+  {
+    "ItemName": "Energy Brew",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_StaminaSoup"
+  },
+  {
+    "ItemName": "Focal Chili",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_FocalChili"
+  },
+  {
+    "ItemName": "Fria Curry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_FriaCurry"
+  },
+  {
+    "ItemName": "Generic Consumable",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumableGeneric"
+  },
+  {
+    "ItemName": "Generic Consumable (Eatable)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumableEatable"
+  },
+  {
+    "ItemName": "Generic Consumable (Non Refrigerateable)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumableEatable_NoIceBox"
+  },
+  {
+    "ItemName": "Generic Drink Recipe Type 1",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomDrinkRecipe_Type1"
+  },
+  {
+    "ItemName": "Generic Drink Recipe Type 2",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomDrinkRecipe_Type2"
+  },
+  {
+    "ItemName": "Generic Drink Recipe Type 3",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomDrinkRecipe_Base"
+  },
+  {
+    "ItemName": "Generic Feces",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumablePoop"
+  },
+  {
+    "ItemName": "Generic Food Recipe Type 1",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomFoodRecipe_Type1"
+  },
+  {
+    "ItemName": "Generic Food Recipe Type 2",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomFoodRecipe_Type2"
+  },
+  {
+    "ItemName": "Generic Food Recipe Type 3",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomFoodRecipe_Type3"
+  },
+  {
+    "ItemName": "Generic Food Recipe Type 4",
+    "Type": "Consumable",
+    "Class": "PrimalItemCustomFoodRecipe_Base"
+  },
+  {
+    "ItemName": "Lazarus Chowder",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_LazarusChowder"
+  },
+  {
+    "ItemName": "Lesser Antidote",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CureLow"
+  },
+  {
+    "ItemName": "Longrass",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Longrass"
+  },
+  {
+    "ItemName": "Medical Brew",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_HealSoup"
+  },
+  {
+    "ItemName": "Mejoberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Berry_Mejoberry"
+  },
+  {
+    "ItemName": "Mindwipe Tonic",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumableRespecSoup"
+  },
+  {
+    "ItemName": "Narcoberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Berry_Narcoberry"
+  },
+  {
+    "ItemName": "Prime Meat Jerky",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPrimeMeat_Jerky"
+  },
+  {
+    "ItemName": "Raw Fish Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_RawMeat_Fish"
+  },
+  {
+    "ItemName": "Raw Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_RawMeat"
+  },
+  {
+    "ItemName": "Raw Prime Fish Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_RawPrimeMeat_Fish"
+  },
+  {
+    "ItemName": "Raw Prime Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_RawPrimeMeat"
+  },
+  {
+    "ItemName": "Rockarrot",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Rockarrot"
+  },
+  {
+    "ItemName": "Savoroot",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Savoroot"
+  },
+  {
+    "ItemName": "Shadow Steak Saute",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_ShadowSteak"
+  },
+  {
+    "ItemName": "Soap",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumableSoap"
+  },
+  {
+    "ItemName": "Spoiled Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_SpoiledMeat"
+  },
+  {
+    "ItemName": "Stimberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Berry_Stimberry"
+  },
+  {
+    "ItemName": "Super Test Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_SuperTestMeat"
+  },
+  {
+    "ItemName": "Sweet Veggie Cake",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_SweetVeggieCake"
+  },
+  {
+    "ItemName": "Tintoberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Berry_Tintoberry"
+  },
+  {
+    "ItemName": "Water Jar (Empty)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_WaterJarCraftable"
+  },
+  {
+    "ItemName": "Water Jar (Full)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_WaterJarRefill"
+  },
+  {
+    "ItemName": "Waterskin (Empty)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_WaterskinCraftable"
+  },
+  {
+    "ItemName": "Waterskin (Filled)",
+    "Type": "Consumable",
+    "Class": "PrimalItemRefill_WaterskinRefill"
+  },
+  {
+    "ItemName": "Black Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Black"
+  },
+  {
+    "ItemName": "Blue Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Blue"
+  },
+  {
+    "ItemName": "Brick Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Brick"
+  },
+  {
+    "ItemName": "Brown Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Brown"
+  },
+  {
+    "ItemName": "Cantaloupe Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Cantaloupe"
+  },
+  {
+    "ItemName": "Cyan Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Cyan"
+  },
+  {
+    "ItemName": "Forest Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Forest"
+  },
+  {
+    "ItemName": "Generic Dye",
+    "Type": "Dye",
+    "Class": "PrimalItemDyeGeneric"
+  },
+  {
+    "ItemName": "Green Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Green"
+  },
+  {
+    "ItemName": "Magenta Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_ActuallyMagenta"
+  },
+  {
+    "ItemName": "Mud Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Mud"
+  },
+  {
+    "ItemName": "Navy Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Navy"
+  },
+  {
+    "ItemName": "Olive Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Olive"
+  },
+  {
+    "ItemName": "Orange Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Orange"
+  },
+  {
+    "ItemName": "Parchment Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Parchment"
+  },
+  {
+    "ItemName": "Pink Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Pink"
+  },
+  {
+    "ItemName": "Purple Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Purple"
+  },
+  {
+    "ItemName": "Purple Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Purple"
+  },
+  {
+    "ItemName": "Red Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Red"
+  },
+  {
+    "ItemName": "Royalty Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Royalty"
+  },
+  {
+    "ItemName": "Silver Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Silver"
+  },
+  {
+    "ItemName": "Sky Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Sky"
+  },
+  {
+    "ItemName": "Slate Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Slate"
+  },
+  {
+    "ItemName": "Tan Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Tan"
+  },
+  {
+    "ItemName": "Tangerine Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Tangerine"
+  },
+  {
+    "ItemName": "White Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_White"
+  },
+  {
+    "ItemName": "Yellow Coloring",
+    "Type": "Dye",
+    "Class": "PrimalItemDye_Yellow"
+  },
+  {
+    "ItemName": "Allosaurus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Allo"
+  },
+  {
+    "ItemName": "Allosaurus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Allo_Fertilized"
+  },
+  {
+    "ItemName": "Ankylo Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Ankylo"
+  },
+  {
+    "ItemName": "Ankylo Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Ankylo_Fertilized"
+  },
+  {
+    "ItemName": "Araneo Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Spider"
+  },
+  {
+    "ItemName": "Archaeopteryx Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Archa"
+  },
+  {
+    "ItemName": "Archaeopteryx Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Archa_Fertilized"
+  },
+  {
+    "ItemName": "Argentavis Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Argent"
+  },
+  {
+    "ItemName": "Argentavis Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Argent_Fertilized"
+  },
+  {
+    "ItemName": "Bronto Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Bronto"
+  },
+  {
+    "ItemName": "Bronto Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Bronto_Fertilized"
+  },
+  {
+    "ItemName": "Carno Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Carno"
+  },
+  {
+    "ItemName": "Carno Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Carno_Fertilized"
+  },
+  {
+    "ItemName": "Compy Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Compy"
+  },
+  {
+    "ItemName": "Compy Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Compy_Fertilized"
+  },
+  {
+    "ItemName": "Dilo Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dilo"
+  },
+  {
+    "ItemName": "Dilo Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dilo_Fertilized"
+  },
+  {
+    "ItemName": "Dimetrodon Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dimetrodon"
+  },
+  {
+    "ItemName": "Dimetrodon Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dimetrodon_Fertilized"
+  },
+  {
+    "ItemName": "Dimorph Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dimorph"
+  },
+  {
+    "ItemName": "Dimorph Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dimorph_Fertilized"
+  },
+  {
+    "ItemName": "Dinosaur Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg"
+  },
+  {
+    "ItemName": "Diplo Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Diplo"
+  },
+  {
+    "ItemName": "Diplo Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Diplo_Fertilized"
+  },
+  {
+    "ItemName": "Dodo Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dodo"
+  },
+  {
+    "ItemName": "Dodo Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Dodo_Fertilized"
+  },
+  {
+    "ItemName": "Giganotosaurus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Gigant"
+  },
+  {
+    "ItemName": "Giganotosaurus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Gigant_Fertilized"
+  },
+  {
+    "ItemName": "Kairuku Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Kairuku"
+  },
+  {
+    "ItemName": "Kairuku Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Kairuku_Fertilized"
+  },
+  {
+    "ItemName": "Kaprosuchus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Kaprosuchus"
+  },
+  {
+    "ItemName": "Kaprosuchus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Kaprosuchus_Fertilized"
+  },
+  {
+    "ItemName": "Lystro Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Lystro"
+  },
+  {
+    "ItemName": "Lystro Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Lystro_Fertilized"
+  },
+  {
+    "ItemName": "Megalosaurus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Megalosaurus"
+  },
+  {
+    "ItemName": "Megalosaurus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Megalosaurus_Fertilized"
+  },
+  {
+    "ItemName": "Oviraptor Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Oviraptor"
+  },
+  {
+    "ItemName": "Oviraptor Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Oviraptor_Fertilized"
+  },
+  {
+    "ItemName": "Pachycephalosaurus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pachy"
+  },
+  {
+    "ItemName": "Pachycephalosaurus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pachy_Fertilized"
+  },
+  {
+    "ItemName": "Parasaur Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Para"
+  },
+  {
+    "ItemName": "Parasaur Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Para_Fertilized"
+  },
+  {
+    "ItemName": "Pelagornis Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pela"
+  },
+  {
+    "ItemName": "Pelagornis Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pela_Fertilized"
+  },
+  {
+    "ItemName": "Pteranodon Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Ptero"
+  },
+  {
+    "ItemName": "Pteranodon Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Ptero_Fertilized"
+  },
+  {
+    "ItemName": "Pulmonoscorpius Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Scorpion"
+  },
+  {
+    "ItemName": "Quetzal Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Quetz"
+  },
+  {
+    "ItemName": "Quetzal Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Quetz_Fertilized"
+  },
+  {
+    "ItemName": "Raptor Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Raptor"
+  },
+  {
+    "ItemName": "Raptor Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Raptor_Fertilized"
+  },
+  {
+    "ItemName": "Rex Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Rex"
+  },
+  {
+    "ItemName": "Rex Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Rex_Fertilized"
+  },
+  {
+    "ItemName": "Sarco Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Sarco"
+  },
+  {
+    "ItemName": "Sarco Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Sarco_Fertilized"
+  },
+  {
+    "ItemName": "Spino Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Spino"
+  },
+  {
+    "ItemName": "Spino Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Spino_Fertilized"
+  },
+  {
+    "ItemName": "Stego Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Stego"
+  },
+  {
+    "ItemName": "Stego Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Stego_Fertilized"
+  },
+  {
+    "ItemName": "Tapejara Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Tapejara"
+  },
+  {
+    "ItemName": "Tapejara Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Tapejara_Fertilized"
+  },
+  {
+    "ItemName": "Terror Bird Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_TerrorBird"
+  },
+  {
+    "ItemName": "Terror Bird Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_TerrorBird_Fertilized"
+  },
+  {
+    "ItemName": "Titanoboa Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Boa"
+  },
+  {
+    "ItemName": "Trike Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Trike"
+  },
+  {
+    "ItemName": "Trike Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Trike_Fertilized"
+  },
+  {
+    "ItemName": "Turtle Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Turtle"
+  },
+  {
+    "ItemName": "Turtle Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Turtle_Fertilized"
+  },
+  {
+    "ItemName": "Animal Feces (Large)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_DinoPoopLarge"
+  },
+  {
+    "ItemName": "Animal Feces (Massive)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_DinoPoopMassive"
+  },
+  {
+    "ItemName": "Animal Feces (Medium)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_DinoPoopMedium"
+  },
+  {
+    "ItemName": "Animal Feces (Small)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_DinoPoopSmall"
+  },
+  {
+    "ItemName": "Base Fertilizer",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_Fertilizer_Base"
+  },
+  {
+    "ItemName": "Crop Plot (Large)",
+    "Type": "Farming",
+    "Class": "PrimalItemStructure_CropPlot_Large"
+  },
+  {
+    "ItemName": "Crop Plot (Medium)",
+    "Type": "Farming",
+    "Class": "PrimalItemStructure_CropPlot_Medium"
+  },
+  {
+    "ItemName": "Crop Plot (Small)",
+    "Type": "Farming",
+    "Class": "PrimalItemStructure_CropPlot_Small"
+  },
+  {
+    "ItemName": "Feces (Human)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_HumanPoop"
+  },
+  {
+    "ItemName": "Fertilizer",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_Fertilizer_Compost"
+  },
+  {
+    "ItemName": "Multi-Craft Beetle Poop (Human)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_MulticraftItem_BeetlePoop_Human"
+  },
+  {
+    "ItemName": "Multi-Craft Beetle Poop (Large)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_MulticraftItem_BeetlePoop_Large"
+  },
+  {
+    "ItemName": "Multi-Craft Beetle Poop (Massive)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_MulticraftItem_BeetlePoop_Massive"
+  },
+  {
+    "ItemName": "Multi-Craft Beetle Poop (Medium)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_MulticraftItem_BeetlePoop_Medium"
+  },
+  {
+    "ItemName": "Multi-Craft Beetle Poop (Small)",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_MulticraftItem_BeetlePoop_Small"
+  },
+  {
+    "ItemName": "Re-Fertilizer",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumableMiracleGro"
+  },
+  {
+    "ItemName": "Kibble (Allosaurus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Allo"
+  },
+  {
+    "ItemName": "Kibble (Ankylo Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_AnkyloEgg"
+  },
+  {
+    "ItemName": "Kibble (Araneo Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_SpiderEgg"
+  },
+  {
+    "ItemName": "Kibble (Archaeopteryx Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_ArchaEgg"
+  },
+  {
+    "ItemName": "Kibble (Argentavis Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_ArgentEgg"
+  },
+  {
+    "ItemName": "Kibble (Base Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Base"
+  },
+  {
+    "ItemName": "Kibble (Bronto Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_SauroEgg"
+  },
+  {
+    "ItemName": "Kibble (Carno Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_CarnoEgg"
+  },
+  {
+    "ItemName": "Kibble (Compy Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Compy"
+  },
+  {
+    "ItemName": "Kibble (Dilo Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_DiloEgg"
+  },
+  {
+    "ItemName": "Kibble (Dimetrodon Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_DimetroEgg"
+  },
+  {
+    "ItemName": "Kibble (Dimorph Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_DimorphEgg"
+  },
+  {
+    "ItemName": "Kibble (Diplo Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_DiploEgg"
+  },
+  {
+    "ItemName": "Kibble (Dodo Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_DodoEgg"
+  },
+  {
+    "ItemName": "Kibble (Gallimimus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_GalliEgg"
+  },
+  {
+    "ItemName": "Kibble (Kairuku Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_KairukuEgg"
+  },
+  {
+    "ItemName": "Kibble (Kaprosuchus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_KaproEgg"
+  },
+  {
+    "ItemName": "Kibble (Lystrosaurus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_LystroEgg"
+  },
+  {
+    "ItemName": "Kibble (Megalosaurus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_MegalosaurusEgg"
+  },
+  {
+    "ItemName": "Kibble (Pachy Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_PachyEgg"
+  },
+  {
+    "ItemName": "Kibble (Parasaur Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_ParaEgg"
+  },
+  {
+    "ItemName": "Kibble (Pelagornis Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Pela"
+  },
+  {
+    "ItemName": "Kibble (Pteranodon Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_PteroEgg"
+  },
+  {
+    "ItemName": "Kibble (Pulmonoscorpius Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_ScorpionEgg"
+  },
+  {
+    "ItemName": "Kibble (Quetzal Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_QuetzEgg"
+  },
+  {
+    "ItemName": "Kibble (Raptor Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_RaptorEgg"
+  },
+  {
+    "ItemName": "Kibble (Rex Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_RexEgg"
+  },
+  {
+    "ItemName": "Kibble (Sarco Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_SarcoEgg"
+  },
+  {
+    "ItemName": "Kibble (Spino Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_SpinoEgg"
+  },
+  {
+    "ItemName": "Kibble (Stego Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_StegoEgg"
+  },
+  {
+    "ItemName": "Kibble (Tapejara Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_TapejaraEgg"
+  },
+  {
+    "ItemName": "Kibble (Terror Bird Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_TerrorBirdEgg"
+  },
+  {
+    "ItemName": "Kibble (Titanoboa Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_BoaEgg"
+  },
+  {
+    "ItemName": "Kibble (Trike Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_TrikeEgg"
+  },
+  {
+    "ItemName": "Kibble (Turtle Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_TurtleEgg"
+  },
+  {
+    "ItemName": "BluePrint Note",
+    "Type": "Recipe",
+    "Class": "PrimalItem_Note"
+  },
+  {
+    "ItemName": "Notes on Rockwell Recipes",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_Measurements"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Battle Tartare",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_BattleTartare"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Calien Soup",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_CalienSoup"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Decorative Coloring",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_Dye"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Egg-based Kibble",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_Kibble"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Enduro Stew",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_EnduroStew"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Energy Brew",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_StaminaSoup"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Focal Chili",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_FocalChili"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Fria Curry",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_FriaCurry"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Lazarus Chowder",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_LazarusChowder"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Meat Jerky",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_Jerky"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Medical Brew",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_HealSoup"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Mindwipe Tonic",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_RespecSoup"
+  },
+  {
+    "ItemName": "Rockwell Recipes- Shadow Steak Saute",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_ShadowSteak"
+  },
+  {
+    "ItemName": "Some Recipe Thing",
+    "Type": "Recipe",
+    "Class": "PrimalItem_RecipeNote_Base"
+  },
+  {
+    "ItemName": "Absorbent Substrate",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_SubstrateAbsorbent"
+  },
+  {
+    "ItemName": "Angler Gel",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_AnglerGel"
+  },
+  {
+    "ItemName": "Base Craftable Resource",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Craftable"
+  },
+  {
+    "ItemName": "Beer Liquid",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Beer"
+  },
+  {
+    "ItemName": "Birthday Candle",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_BirthdayCandle"
+  },
+  {
+    "ItemName": "Black Pearl",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_BlackPearl_C"
+  },
+  {
+    "ItemName": "Cementing Paste",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_ChitinPaste"
+  },
+  {
+    "ItemName": "Charcoal",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Charcoal"
+  },
+  {
+    "ItemName": "Chitin",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Chitin"
+  },
+  {
+    "ItemName": "Chitin or Keratin",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_ChitinOrKeratin"
+  },
+  {
+    "ItemName": "Coal",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Coal"
+  },
+  {
+    "ItemName": "Crystal",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Crystal"
+  },
+  {
+    "ItemName": "Electronics",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Electronics"
+  },
+  {
+    "ItemName": "Fiber",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Fibers"
+  },
+  {
+    "ItemName": "Flint",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Flint"
+  },
+  {
+    "ItemName": "Gasoline",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Gasoline"
+  },
+  {
+    "ItemName": "Generic Resource",
+    "Type": "Resource",
+    "Class": "PrimalItemResourceGeneric"
+  },
+  {
+    "ItemName": "Generic Resource (Null)",
+    "Type": "Resource",
+    "Class": "PrimalItemResourceNull"
+  },
+  {
+    "ItemName": "Gunpowder",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Gunpowder"
+  },
+  {
+    "ItemName": "Hide",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Hide"
+  },
+  {
+    "ItemName": "Keratin",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Keratin"
+  },
+  {
+    "ItemName": "Leech Blood",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_LeechBlood"
+  },
+  {
+    "ItemName": "Leechblood/Horns",
+    "Type": "Resource",
+    "Class": "PrimalItemResourceGeneric_Curing"
+  },
+  {
+    "ItemName": "Metal",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Metal"
+  },
+  {
+    "ItemName": "Metal Ingot",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_MetalIngot"
+  },
+  {
+    "ItemName": "Mistletoe",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_MistleToe"
+  },
+  {
+    "ItemName": "Narcotic",
+    "Type": "Resource",
+    "Class": "PrimalItemConsumable_Narcotic"
+  },
+  {
+    "ItemName": "Obsidian",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Obsidian"
+  },
+  {
+    "ItemName": "Oil",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Oil"
+  },
+  {
+    "ItemName": "Organic Polymer",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Polymer_Organic"
+  },
+  {
+    "ItemName": "Pelt",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Pelt"
+  },
+  {
+    "ItemName": "Polymer",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Polymer"
+  },
+  {
+    "ItemName": "Rare Flower",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_RareFlower"
+  },
+  {
+    "ItemName": "Rare Mushroom",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_RareMushroom"
+  },
+  {
+    "ItemName": "Sap",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Sap"
+  },
+  {
+    "ItemName": "Silica Pearls",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Silicon"
+  },
+  {
+    "ItemName": "Sparkpowder",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Sparkpowder"
+  },
+  {
+    "ItemName": "Stimulant",
+    "Type": "Resource",
+    "Class": "PrimalItemConsumable_Stimulant"
+  },
+  {
+    "ItemName": "Stone",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Stone"
+  },
+  {
+    "ItemName": "Thatch",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Thatch"
+  },
+  {
+    "ItemName": "Water",
+    "Type": "Resource",
+    "Class": "PrimalItemConsumableEatable_WaterContainer"
+  },
+  {
+    "ItemName": "Wishbone",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Wishbone"
+  },
+  {
+    "ItemName": "Wood",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Wood"
+  },
+  {
+    "ItemName": "Woolly Rhino Horn",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Horn_C"
+  },
+  {
+    "ItemName": "Allosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_AlloSaddle"
+  },
+  {
+    "ItemName": "Ankylo Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_AnkyloSaddle"
+  },
+  {
+    "ItemName": "Araneo Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SpiderSaddle"
+  },
+  {
+    "ItemName": "Argentavis Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ArgentavisSaddle"
+  },
+  {
+    "ItemName": "Arthropluera Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ArthroSaddle"
+  },
+  {
+    "ItemName": "Beelzebufo Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ToadSaddle"
+  },
+  {
+    "ItemName": "Bronto Platform Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SauroSaddle_Platform"
+  },
+  {
+    "ItemName": "Bronto Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SauroSaddle"
+  },
+  {
+    "ItemName": "Carbonemys Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TurtleSaddle"
+  },
+  {
+    "ItemName": "Carno Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_CarnoSaddle"
+  },
+  {
+    "ItemName": "Castoroides Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_BeaverSaddle"
+  },
+  {
+    "ItemName": "Chalicotherium Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ChalicoSaddle"
+  },
+  {
+    "ItemName": "Diplodocus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_DiplodocusSaddle"
+  },
+  {
+    "ItemName": "Direbear Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_DireBearSaddle"
+  },
+  {
+    "ItemName": "Doedicurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_DoedSaddle"
+  },
+  {
+    "ItemName": "Dunkleosteus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_DunkleosteusSaddle"
+  },
+  {
+    "ItemName": "Gallimimus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_Gallimimus"
+  },
+  {
+    "ItemName": "Generic Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SaddleGeneric"
+  },
+  {
+    "ItemName": "Giganotosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_GigantSaddle"
+  },
+  {
+    "ItemName": "Ichthyosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_DolphinSaddle"
+  },
+  {
+    "ItemName": "Kaprosuchus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_KaprosuchusSaddle"
+  },
+  {
+    "ItemName": "Mammoth Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MammothSaddle"
+  },
+  {
+    "ItemName": "Manta Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MantaSaddle"
+  },
+  {
+    "ItemName": "Megaloceros Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_StagSaddle"
+  },
+  {
+    "ItemName": "Megalodon Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MegalodonSaddle"
+  },
+  {
+    "ItemName": "Megalosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MegalosaurusSaddle"
+  },
+  {
+    "ItemName": "Mosasaurus Platform Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MosaSaddle_Platform"
+  },
+  {
+    "ItemName": "Mosasaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MosaSaddle"
+  },
+  {
+    "ItemName": "Pachy Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PachySaddle"
+  },
+  {
+    "ItemName": "Paracer Platform Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ParacerSaddle_Platform"
+  },
+  {
+    "ItemName": "Paracer Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_Paracer_Saddle"
+  },
+  {
+    "ItemName": "Parasaur Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ParaSaddle"
+  },
+  {
+    "ItemName": "Pelagornis Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PelaSaddle"
+  },
+  {
+    "ItemName": "Phiomia Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PhiomiaSaddle"
+  },
+  {
+    "ItemName": "Plesiosaur Platform Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PlesiSaddle_Platform"
+  },
+  {
+    "ItemName": "Plesiosaur Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PlesiaSaddle"
+  },
+  {
+    "ItemName": "Procoptodon Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ProcoptodonSaddle"
+  },
+  {
+    "ItemName": "Pteranodon Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PteroSaddle"
+  },
+  {
+    "ItemName": "Pulmonoscorpius Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ScorpionSaddle"
+  },
+  {
+    "ItemName": "Quetz Platform Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_QuetzSaddle_Platform"
+  },
+  {
+    "ItemName": "Quetz Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_QuetzSaddle"
+  },
+  {
+    "ItemName": "Raptor Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_RaptorSaddle"
+  },
+  {
+    "ItemName": "Rex Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_RexSaddle"
+  },
+  {
+    "ItemName": "Sabertooth Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SaberSaddle"
+  },
+  {
+    "ItemName": "Sarco Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SarcoSaddle"
+  },
+  {
+    "ItemName": "Spino Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SpinoSaddle"
+  },
+  {
+    "ItemName": "Stego Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_StegoSaddle"
+  },
+  {
+    "ItemName": "Tapejara Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TapejaraSaddle"
+  },
+  {
+    "ItemName": "Terror Bird Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TerrorBirdSaddle"
+  },
+  {
+    "ItemName": "Titanosaur Platform Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TitanSaddle_Platform"
+  },
+  {
+    "ItemName": "Trike Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TrikeSaddle"
+  },
+  {
+    "ItemName": "Woolly Rhino Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_RhinoSaddle"
+  },
+  {
+    "ItemName": "Amarberry Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Amarberry"
+  },
+  {
+    "ItemName": "Amarberry Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Amarberry_SpeedHack"
+  },
+  {
+    "ItemName": "Azulberry Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Azulberry"
+  },
+  {
+    "ItemName": "Azulberry Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Azulberry_SpeedHack"
+  },
+  {
+    "ItemName": "Base Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumableSeed"
+  },
+  {
+    "ItemName": "Berry Bush Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_BaseBerry"
+  },
+  {
+    "ItemName": "Berry Bush Seeds alt",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Test"
+  },
+  {
+    "ItemName": "Citronal Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Citronal"
+  },
+  {
+    "ItemName": "Citronal Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Citronal_SpeedHack"
+  },
+  {
+    "ItemName": "Longrass Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Longrass"
+  },
+  {
+    "ItemName": "Longrass Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Longrass_SpeedHack"
+  },
+  {
+    "ItemName": "Mejoberry Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Mejoberry"
+  },
+  {
+    "ItemName": "Mejoberry Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Mejoberry_SpeedHack"
+  },
+  {
+    "ItemName": "Narcoberry Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Narcoberry"
+  },
+  {
+    "ItemName": "Narcoberry Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Narcoberry_SpeedHack"
+  },
+  {
+    "ItemName": "Plant Species X Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_DefensePlant"
+  },
+  {
+    "ItemName": "Plant Species X Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_DefensePlant_SpeedHack"
+  },
+  {
+    "ItemName": "Rockarrot Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Rockarrot"
+  },
+  {
+    "ItemName": "Rockarrot Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Rockarrot_SpeedHack"
+  },
+  {
+    "ItemName": "Savoroot Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Savoroot"
+  },
+  {
+    "ItemName": "Savoroot Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Savoroot_SpeedHack"
+  },
+  {
+    "ItemName": "Stimberry Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Stimberry"
+  },
+  {
+    "ItemName": "Stimberry Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Stimberry_SpeedHack"
+  },
+  {
+    "ItemName": "Super Veggie Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_BaseSuperVeggie"
+  },
+  {
+    "ItemName": "Tintoberry Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tintoberry"
+  },
+  {
+    "ItemName": "Tintoberry Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tintoberry_SpeedHack"
+  },
+  {
+    "ItemName": "Veggie Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_BaseVeggie"
+  },
+  {
+    "ItemName": "ARK Dev Kit Master Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItem_Skin_Account_DevKitMaster"
+  },
+  {
+    "ItemName": "ARK Tester Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItem_Skin_Account_GameTester"
+  },
+  {
+    "ItemName": "ARK Wildcard Admin Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItem_Skin_Account_WildcardAdmin"
+  },
+  {
+    "ItemName": "Bionic Rex Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BionicRex"
+  },
+  {
+    "ItemName": "Birthday Suit Pants Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_BirthdayPants"
+  },
+  {
+    "ItemName": "Birthday Suit Shirt Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_BirthdayShirt"
+  },
+  {
+    "ItemName": "Bone Giga Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneGigant"
+  },
+  {
+    "ItemName": "Bone Quetz Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneQuetz"
+  },
+  {
+    "ItemName": "Bone Bronto Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneSauro"
+  },
+  {
+    "ItemName": "Bunny Ears Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_BunnyHat"
+  },
+  {
+    "ItemName": "Candy Cane Club Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_CandyClub"
+  },
+  {
+    "ItemName": "Bone Carno Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneCarno"
+  },
+  {
+    "ItemName": "Chieftan Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_TurkeyHat"
+  },
+  {
+    "ItemName": "Dino Bunny Ears Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DinoBunnyHat"
+  },
+  {
+    "ItemName": "Dino Glasses",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DinoSpecs"
+  },
+  {
+    "ItemName": "Dino Party Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DinoPartyHat"
+  },
+  {
+    "ItemName": "Dino Santa Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DinoSantaHat"
+  },
+  {
+    "ItemName": "Dino Witch Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DinoWitchHat"
+  },
+  {
+    "ItemName": "DodoRex Mask Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DodorexMask"
+  },
+  {
+    "ItemName": "Fireworks Flaregun Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_FlaregunFireworks"
+  },
+  {
+    "ItemName": "Fireworks Rocket Launcher Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_RocketLauncherFireworks"
+  },
+  {
+    "ItemName": "Generic Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostumeGeneric"
+  },
+  {
+    "ItemName": "Generic Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkinGeneric"
+  },
+  {
+    "ItemName": "Generic Trophy Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkinGeneric_Trophy"
+  },
+  {
+    "ItemName": "Hunter Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemArmor_HideHelmetAlt"
+  },
+  {
+    "ItemName": "Megaloceros Reindeer Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_ReindeerStag"
+  },
+  {
+    "ItemName": "Nerdry Glasses",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_Glasses"
+  },
+  {
+    "ItemName": "Parasaur ARK Founder Saddle Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemArmor_ParaSaddle_Launch"
+  },
+  {
+    "ItemName": "Party Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_PartyHat"
+  },
+  {
+    "ItemName": "Procoptodon Bunny Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_ProcopBunny"
+  },
+  {
+    "ItemName": "Raptor Bone Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneRaptor"
+  },
+  {
+    "ItemName": "Bone Rex Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneRex"
+  },
+  {
+    "ItemName": "Rex Bone Helmet",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_BoneHelmet"
+  },
+  {
+    "ItemName": "Rex Stomped Glasses Saddle Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemArmor_RexSaddle_StompedGlasses"
+  },
+  {
+    "ItemName": "Santa Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_SantaHat"
+  },
+  {
+    "ItemName": "Stego Bone Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneStego"
+  },
+  {
+    "ItemName": "Top Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_TopHat"
+  },
+  {
+    "ItemName": "Torch Sparkler Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_TorchSparkler"
+  },
+  {
+    "ItemName": "Bone Trike Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneTrike"
+  },
+  {
+    "ItemName": "Trike Bone Helmet Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_TrikeSkullHelmet"
+  },
+  {
+    "ItemName": "Vampire Eyes Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_VampireEyes"
+  },
+  {
+    "ItemName": "Werewolf Hat",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_WerewolfHat"
+  },
+  {
+    "ItemName": "Witch Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_WitchHat"
+  },
+  {
+    "ItemName": "Air Conditioner",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AirConditioner"
+  },
+  {
+    "ItemName": "Auto Turret",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Turret"
+  },
+  {
+    "ItemName": "Ballista Turret",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TurretBallista"
+  },
+  {
+    "ItemName": "Base Bed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Bed_Base"
+  },
+  {
+    "ItemName": "Base Catwalk",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseCatwalk"
+  },
+  {
+    "ItemName": "Base Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseCeiling"
+  },
+  {
+    "ItemName": "Base Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseDoor"
+  },
+  {
+    "ItemName": "Base Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseWallWithDoor"
+  },
+  {
+    "ItemName": "Base Fence Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseFenceFoundation"
+  },
+  {
+    "ItemName": "Base Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseFloor"
+  },
+  {
+    "ItemName": "Base Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseGate"
+  },
+  {
+    "ItemName": "Base Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseCeilingWithTrapdoor"
+  },
+  {
+    "ItemName": "Base Intake Pipe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseStonePipe"
+  },
+  {
+    "ItemName": "Base Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseLadder"
+  },
+  {
+    "ItemName": "Base Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BasePillar"
+  },
+  {
+    "ItemName": "Base Railing",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseRailing"
+  },
+  {
+    "ItemName": "Base Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseRamp"
+  },
+  {
+    "ItemName": "Base Sign",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseSign"
+  },
+  {
+    "ItemName": "Base Sleeping Bag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_SleepingBag_Base"
+  },
+  {
+    "ItemName": "Base Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseRoof"
+  },
+  {
+    "ItemName": "Base Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Base Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Base Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseTrapdoor"
+  },
+  {
+    "ItemName": "Base Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseWall"
+  },
+  {
+    "ItemName": "Base Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseWindow"
+  },
+  {
+    "ItemName": "Base Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BaseWallWithWindow"
+  },
+  {
+    "ItemName": "Basic Gravestone",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_Gravestone"
+  },
+  {
+    "ItemName": "Bear Trap",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BearTrap"
+  },
+  {
+    "ItemName": "Beer Barrel",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BeerBarrel"
+  },
+  {
+    "ItemName": "Birthday Cake",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BirthdayCake"
+  },
+  {
+    "ItemName": "Bookshelf",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Bookshelf"
+  },
+  {
+    "ItemName": "Bunk Bed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Bed_Modern"
+  },
+  {
+    "ItemName": "Bunny Egg",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_EasterEgg"
+  },
+  {
+    "ItemName": "Campfire",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Campfire"
+  },
+  {
+    "ItemName": "Catapult Turret",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TurretCatapult"
+  },
+  {
+    "ItemName": "Chemistry Bench",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ChemBench"
+  },
+  {
+    "ItemName": "Compost Bin",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_CompostBin"
+  },
+  {
+    "ItemName": "Cooking Pot",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_CookingPot"
+  },
+  {
+    "ItemName": "Dragon Flag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Flag_Dragon"
+  },
+  {
+    "ItemName": "Electric Cable (Inclined)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PowerCableIncline"
+  },
+  {
+    "ItemName": "Electric Cable (Intersection)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PowerCableIntersection"
+  },
+  {
+    "ItemName": "Electric Cable (Straight)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PowerCableStraight"
+  },
+  {
+    "ItemName": "Electric Cable (Vertical)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PowerCableVertical"
+  },
+  {
+    "ItemName": "Electric Generator",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PowerGenerator"
+  },
+  {
+    "ItemName": "Electric Outlet",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PowerOutlet"
+  },
+  {
+    "ItemName": "Elevator Platform (Base)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ElevatorPlatformBase"
+  },
+  {
+    "ItemName": "Elevator Platform (Large)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ElevatorPlatformLarge"
+  },
+  {
+    "ItemName": "Elevator Platform (Medium)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ElevatorPlatfromMedium"
+  },
+  {
+    "ItemName": "Elevator Platform (Small)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ElevatorPlatformSmall"
+  },
+  {
+    "ItemName": "Elevator Track",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ElevatorTrackBase"
+  },
+  {
+    "ItemName": "Fabricator",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Fabricator"
+  },
+  {
+    "ItemName": "Feeding Trough",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_FeedingTrough"
+  },
+  {
+    "ItemName": "Generic Consumable (Structure)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructureGeneric"
+  },
+  {
+    "ItemName": "Gift Box",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageBox_ChristmasGift"
+  },
+  {
+    "ItemName": "Gorilla Flag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Flag_Gorilla"
+  },
+  {
+    "ItemName": "Greenhouse Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseCeiling"
+  },
+  {
+    "ItemName": "Greenhouse Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseDoor"
+  },
+  {
+    "ItemName": "Greenhouse Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseWallWithDoor"
+  },
+  {
+    "ItemName": "Greenhouse Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseRoof"
+  },
+  {
+    "ItemName": "Greenhouse Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Greenhouse Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Greenhouse Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseWall"
+  },
+  {
+    "ItemName": "Greenhouse Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GreenhouseWindow"
+  },
+  {
+    "ItemName": "Haloween Gravestone",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_HW_Grave"
+  },
+  {
+    "ItemName": "Hide Sleeping Bag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_SleepingBag_Hide"
+  },
+  {
+    "ItemName": "Holiday Lights",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_XmasLights"
+  },
+  {
+    "ItemName": "Holiday Stocking",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Stocking"
+  },
+  {
+    "ItemName": "Holiday Tree",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ChristmasTree"
+  },
+  {
+    "ItemName": "Homing Underwater Mine",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_SeaMine"
+  },
+  {
+    "ItemName": "Industrial Cooker",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_IndustrialCookingPot"
+  },
+  {
+    "ItemName": "Industrial Forge",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_IndustrialForge"
+  },
+  {
+    "ItemName": "Industrial Grill",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Grill"
+  },
+  {
+    "ItemName": "Industrial Grinder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Grinder"
+  },
+  {
+    "ItemName": "Lamppost",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Lamppost"
+  },
+  {
+    "ItemName": "Large Bear Trap",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BearTrap_Large"
+  },
+  {
+    "ItemName": "Large Storage Box",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageBox_Large"
+  },
+  {
+    "ItemName": "Metal Behemoth Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalGate_Large"
+  },
+  {
+    "ItemName": "Metal Behemoth Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalGateframe_Large"
+  },
+  {
+    "ItemName": "Metal Billboard",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalSign_Large"
+  },
+  {
+    "ItemName": "Metal Catwalk",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalCatwalk"
+  },
+  {
+    "ItemName": "Metal Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalCeiling"
+  },
+  {
+    "ItemName": "Metal Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalGate"
+  },
+  {
+    "ItemName": "Metal Dinosaur Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalGateframe"
+  },
+  {
+    "ItemName": "Metal Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalDoor"
+  },
+  {
+    "ItemName": "Metal Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalWallWithDoor"
+  },
+  {
+    "ItemName": "Metal Fence Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalFenceFoundation"
+  },
+  {
+    "ItemName": "Metal Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalFloor"
+  },
+  {
+    "ItemName": "Metal Giant Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalCeilingWithTrapdoorGiant"
+  },
+  {
+    "ItemName": "Metal Giant Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalTrapdoorGiant"
+  },
+  {
+    "ItemName": "Metal Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalCeilingWithTrapdoor"
+  },
+  {
+    "ItemName": "Metal Irrigation Pipe (Inclined)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPipeIncline"
+  },
+  {
+    "ItemName": "Metal Irrigation Pipe (Intake)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPipeIntake"
+  },
+  {
+    "ItemName": "Metal Irrigation Pipe (Intersection)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPipeIntersection"
+  },
+  {
+    "ItemName": "Metal Irrigation Pipe (Straight)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPipeStraight"
+  },
+  {
+    "ItemName": "Metal Irrigation Pipe (Tap)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPipeTap"
+  },
+  {
+    "ItemName": "Metal Irrigation Pipe (Vertical)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPipeVertical"
+  },
+  {
+    "ItemName": "Metal Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalLadder"
+  },
+  {
+    "ItemName": "Metal Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalPillar"
+  },
+  {
+    "ItemName": "Metal Railing",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalRailing"
+  },
+  {
+    "ItemName": "Metal Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalRamp"
+  },
+  {
+    "ItemName": "Metal Sign",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalSign"
+  },
+  {
+    "ItemName": "Metal Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalRoof"
+  },
+  {
+    "ItemName": "Metal Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Metal Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Metal Spike Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalSpikeWall"
+  },
+  {
+    "ItemName": "Metal Staircase",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalStairs"
+  },
+  {
+    "ItemName": "Metal Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalTrapdoor"
+  },
+  {
+    "ItemName": "Metal Tree Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TreePlatform_Metal"
+  },
+  {
+    "ItemName": "Metal Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalWall"
+  },
+  {
+    "ItemName": "Metal Wall Sign",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalSign_Wall"
+  },
+  {
+    "ItemName": "Metal Water Reservoir",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WaterTankMetal"
+  },
+  {
+    "ItemName": "Metal Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalWindow"
+  },
+  {
+    "ItemName": "Metal Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalWallWithWindow"
+  },
+  {
+    "ItemName": "Minigun Turret",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TurretMinigun"
+  },
+  {
+    "ItemName": "Mortar And Pestle",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MortarAndPestle"
+  },
+  {
+    "ItemName": "Multi-Panel Flag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Flag"
+  },
+  {
+    "ItemName": "Omnidirectional lamppost",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LamppostOmni"
+  },
+  {
+    "ItemName": "Painting Canvas",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PaintingCanvas"
+  },
+  {
+    "ItemName": "Preserving Bin",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PreservingBin"
+  },
+  {
+    "ItemName": "Primitive Cannon",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Cannon"
+  },
+  {
+    "ItemName": "Pumpkin",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Pumpkin"
+  },
+  {
+    "ItemName": "Refining Forge",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Forge"
+  },
+  {
+    "ItemName": "Refrigerator",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_IceBox"
+  },
+  {
+    "ItemName": "Reinforced Wood Behemoth Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneGateLarge"
+  },
+  {
+    "ItemName": "Reinforced Wood Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneGate"
+  },
+  {
+    "ItemName": "Reinforced Wood Giant Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneCeilingDoorGiant"
+  },
+  {
+    "ItemName": "Reinforced Wood Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneTrapdoor"
+  },
+  {
+    "ItemName": "Reinforced Wood Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneWindow"
+  },
+  {
+    "ItemName": "Reinforced Wooden Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneDoor"
+  },
+  {
+    "ItemName": "Remote Keypad",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Keypad"
+  },
+  {
+    "ItemName": "Rocket Turret",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TurretRocket"
+  },
+  {
+    "ItemName": "Rope Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_RopeLadder"
+  },
+  {
+    "ItemName": "Scarecrow",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Scarecrow"
+  },
+  {
+    "ItemName": "Simple Bed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Bed_Simple"
+  },
+  {
+    "ItemName": "Single Panel Flag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Flag_Single"
+  },
+  {
+    "ItemName": "Smithy",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AnvilBench"
+  },
+  {
+    "ItemName": "Snowman",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Snowman"
+  },
+  {
+    "ItemName": "Spider Flag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Flag_Spider"
+  },
+  {
+    "ItemName": "Standing Torch",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StandingTorch"
+  },
+  {
+    "ItemName": "Stone Behemoth Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneGateframe_Large"
+  },
+  {
+    "ItemName": "Stone Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneCeiling"
+  },
+  {
+    "ItemName": "Stone Dinosaur Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneGateframe"
+  },
+  {
+    "ItemName": "Stone Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneWallWithDoor"
+  },
+  {
+    "ItemName": "Stone Fence Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneFenceFoundation"
+  },
+  {
+    "ItemName": "Stone Fireplace",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Fireplace"
+  },
+  {
+    "ItemName": "Stone Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneFloor"
+  },
+  {
+    "ItemName": "Stone Giant Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneCeilingWithTrapdoorGiant"
+  },
+  {
+    "ItemName": "Stone Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneCeilingWithTrapdoor"
+  },
+  {
+    "ItemName": "Stone Irrigation Pipe (Inclined)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePipeIncline"
+  },
+  {
+    "ItemName": "Stone Irrigation Pipe (Intake)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePipeIntake"
+  },
+  {
+    "ItemName": "Stone Irrigation Pipe (Intersection)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePipeIntersection"
+  },
+  {
+    "ItemName": "Stone Irrigation Pipe (Straight)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePipeStraight"
+  },
+  {
+    "ItemName": "Stone Irrigation Pipe (Tap)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePipeTap"
+  },
+  {
+    "ItemName": "Stone Irrigation Pipe (Vertical)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePipeVertical"
+  },
+  {
+    "ItemName": "Stone Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StonePillar"
+  },
+  {
+    "ItemName": "Stone Railing",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneRailing"
+  },
+  {
+    "ItemName": "Stone Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneRoof"
+  },
+  {
+    "ItemName": "Stone Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Stone Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Stone Staircase",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneStairs"
+  },
+  {
+    "ItemName": "Stone Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneWall"
+  },
+  {
+    "ItemName": "Stone Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneWallWithWindow"
+  },
+  {
+    "ItemName": "Storage Box",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageBox_Small"
+  },
+  {
+    "ItemName": "Thatch Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchDoor"
+  },
+  {
+    "ItemName": "Thatch Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchWallWithDoor"
+  },
+  {
+    "ItemName": "Thatch Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchFloor"
+  },
+  {
+    "ItemName": "Thatch Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchCeiling"
+  },
+  {
+    "ItemName": "Thatch Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchRoof"
+  },
+  {
+    "ItemName": "Thatch Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Thatch Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Thatch Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ThatchWall"
+  },
+  {
+    "ItemName": "Training Dummy",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TrainingDummy"
+  },
+  {
+    "ItemName": "Tree Sap Tap",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TreeTap"
+  },
+  {
+    "ItemName": "Tripwire Alarm Trap",
+    "Type": "Structure",
+    "Class": "PrimalItem_WeaponAlarmTrap"
+  },
+  {
+    "ItemName": "Tripwire Narcotic Trap",
+    "Type": "Structure",
+    "Class": "PrimalItem_WeaponPoisonTrap"
+  },
+  {
+    "ItemName": "Trophy Base",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TrophyBase"
+  },
+  {
+    "ItemName": "Trophy Wall-Mount",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TrophyWall"
+  },
+  {
+    "ItemName": "Vault",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageBox_Huge"
+  },
+  {
+    "ItemName": "Wall Torch",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WallTorch"
+  },
+  {
+    "ItemName": "War Map",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WarMap"
+  },
+  {
+    "ItemName": "Wardrums",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Wardrums"
+  },
+  {
+    "ItemName": "Water Tank",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WaterTank"
+  },
+  {
+    "ItemName": "Wooden Bench",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_WoodBench"
+  },
+  {
+    "ItemName": "Wooden Billboard",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodSign_Large"
+  },
+  {
+    "ItemName": "Wooden Cage",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodCage"
+  },
+  {
+    "ItemName": "Wooden Catwalk",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodCatwalk"
+  },
+  {
+    "ItemName": "Wooden Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodCeiling"
+  },
+  {
+    "ItemName": "Wooden Chair",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_WoodChair"
+  },
+  {
+    "ItemName": "Wooden Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodGate"
+  },
+  {
+    "ItemName": "Wooden Dinosaur Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodGateframe"
+  },
+  {
+    "ItemName": "Wooden Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodDoor"
+  },
+  {
+    "ItemName": "Wooden Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodWallWithDoor"
+  },
+  {
+    "ItemName": "Wooden Fence Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodFenceFoundation"
+  },
+  {
+    "ItemName": "Wooden Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodFloor"
+  },
+  {
+    "ItemName": "Wooden Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodCeilingWithTrapdoor"
+  },
+  {
+    "ItemName": "Wooden Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodLadder"
+  },
+  {
+    "ItemName": "Wooden Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodPillar"
+  },
+  {
+    "ItemName": "Wooden Raft",
+    "Type": "Structure",
+    "Class": "PrimalItemRaft"
+  },
+  {
+    "ItemName": "Wooden Railing",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodRailing"
+  },
+  {
+    "ItemName": "Wooden Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodRamp"
+  },
+  {
+    "ItemName": "Wooden Sign",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodSign"
+  },
+  {
+    "ItemName": "Wooden Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodRoof"
+  },
+  {
+    "ItemName": "Wooden Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Wooden Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Wooden Spike Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodSpikeWall"
+  },
+  {
+    "ItemName": "Wooden Staircase",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodStairs"
+  },
+  {
+    "ItemName": "Wooden Table",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_WoodTable"
+  },
+  {
+    "ItemName": "Wooden Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodTrapdoor"
+  },
+  {
+    "ItemName": "Wooden Tree Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TreePlatform_Wood"
+  },
+  {
+    "ItemName": "Wooden Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodWall"
+  },
+  {
+    "ItemName": "Wooden Wall Sign",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodSign_Wall"
+  },
+  {
+    "ItemName": "Wooden Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodWindow"
+  },
+  {
+    "ItemName": "Wooden Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodWallWithWindow"
+  },
+  {
+    "ItemName": "Wreath",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Wreath"
+  },
+  {
+    "ItemName": "Base Hatchet",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponBaseHatchet"
+  },
+  {
+    "ItemName": "Base Pick",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponBasePick"
+  },
+  {
+    "ItemName": "Blood Extraction Syringe",
+    "Type": "Tool",
+    "Class": "PrimalItem_BloodExtractor"
+  },
+  {
+    "ItemName": "Blood Pack",
+    "Type": "Tool",
+    "Class": "PrimalItemConsumable_BloodPack"
+  },
+  {
+    "ItemName": "Compass",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponCompass"
+  },
+  {
+    "ItemName": "Dune Buggy",
+    "Type": "Tool",
+    "Class": "PrimalItemVHBuggy"
+  },
+  {
+    "ItemName": "Fishing Rod",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponFishingRod"
+  },
+  {
+    "ItemName": "Flare Gun",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponFlareGun"
+  },
+  {
+    "ItemName": "GPS",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponGPS"
+  },
+  {
+    "ItemName": "Handcuffs",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponHandcuffs"
+  },
+  {
+    "ItemName": "Magnifying Glass",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponMagnifyingGlass"
+  },
+  {
+    "ItemName": "Metal Hatchet",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponMetalHatchet"
+  },
+  {
+    "ItemName": "Metal Pick",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponMetalPick"
+  },
+  {
+    "ItemName": "Metal Sickle",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponSickle"
+  },
+  {
+    "ItemName": "Paintbrush",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponPaintbrush"
+  },
+  {
+    "ItemName": "Parachute",
+    "Type": "Tool",
+    "Class": "PrimalItemConsumableBuff_Parachute"
+  },
+  {
+    "ItemName": "Radio",
+    "Type": "Tool",
+    "Class": "PrimalItemRadio"
+  },
+  {
+    "ItemName": "Spray Painter",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponSprayPaint"
+  },
+  {
+    "ItemName": "Spyglass",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponSpyglass"
+  },
+  {
+    "ItemName": "Stone Hatchet",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponStoneHatchet"
+  },
+  {
+    "ItemName": "Stone Pick",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponStonePick"
+  },
+  {
+    "ItemName": "Torch",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponTorch"
+  },
+  {
+    "ItemName": "Transponder Tracker",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponTransGPS"
+  },
+  {
+    "ItemName": "Alpha Rex Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_AlphaRex"
+  },
+  {
+    "ItemName": "Broodmother Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Broodmother"
+  },
+  {
+    "ItemName": "Dragon Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Dragon"
+  },
+  {
+    "ItemName": "Generic Trophy (Base)",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophyGeneric"
+  },
+  {
+    "ItemName": "Generic Trophy (Parent)",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophyGenericParent"
+  },
+  {
+    "ItemName": "Generic Trophy (Wall)",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophyGenericWall"
+  },
+  {
+    "ItemName": "Megapithecus Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Gorilla"
+  },
+  {
+    "ItemName": "SotF: Unnatural Selection Trophy: 1st Place",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_SotFUS_1st"
+  },
+  {
+    "ItemName": "SotF: Unnatural Selection Trophy: 2nd Place",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_SotFUS_2nd"
+  },
+  {
+    "ItemName": "SotF: Unnatural Selection Trophy: 3rd Place",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_SotFUS_3rd"
+  },
+  {
+    "ItemName": "Survival of the Fittest Trophy: 1st Place",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_SotF_1st"
+  },
+  {
+    "ItemName": "Survival of the Fittest Trophy: 2nd Place",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_SotF_2nd"
+  },
+  {
+    "ItemName": "Survival of the Fittest Trophy: 3rd Place",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_SotF_3rd"
+  },
+  {
+    "ItemName": "Assault Rifle",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponRifle"
+  },
+  {
+    "ItemName": "Base Club",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponBaseClub"
+  },
+  {
+    "ItemName": "Bola",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponBola"
+  },
+  {
+    "ItemName": "Bow",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponBow"
+  },
+  {
+    "ItemName": "C4 Remote Detonator",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponC4"
+  },
+  {
+    "ItemName": "Chain Bola",
+    "Type": "Weapons",
+    "Class": "PrimalItemAmmo_ChainBola"
+  },
+  {
+    "ItemName": "Compound Bow",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponCompoundBow"
+  },
+  {
+    "ItemName": "Crossbow",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponCrossbow"
+  },
+  {
+    "ItemName": "Electric Prod",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponProd"
+  },
+  {
+    "ItemName": "Fabricated Pistol",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponMachinedPistol"
+  },
+  {
+    "ItemName": "Fabricated Sniper Rifle",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponMachinedSniper"
+  },
+  {
+    "ItemName": "Generic Weapon",
+    "Type": "Weapons",
+    "Class": "PrimalItemWeaponGeneric"
+  },
+  {
+    "ItemName": "Generic Weapon (Ammoless)",
+    "Type": "Weapons",
+    "Class": "PrimalItemWeaponGenericAmmoless"
+  },
+  {
+    "ItemName": "Generic Weapon (Consumes Self)",
+    "Type": "Weapons",
+    "Class": "PrimalItemWeaponGenericAmmolessConsumeSelf"
+  },
+  {
+    "ItemName": "Generic Weapon (Gun)",
+    "Type": "Weapons",
+    "Class": "PrimalItemWeaponGenericGun"
+  },
+  {
+    "ItemName": "Generic Weapon (No Stats)",
+    "Type": "Weapons",
+    "Class": "PrimalItemWeaponGenericNoStats"
+  },
+  {
+    "ItemName": "Grenade",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponGrenade"
+  },
+  {
+    "ItemName": "Improvised Explosive Device",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponTripwireC4"
+  },
+  {
+    "ItemName": "Longneck Rifle",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponOneShotRifle"
+  },
+  {
+    "ItemName": "Metal Sword",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponSword"
+  },
+  {
+    "ItemName": "Pike",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponPike"
+  },
+  {
+    "ItemName": "Poison Grenade",
+    "Type": "Weapons",
+    "Class": "PrimalItem_PoisonGrenade"
+  },
+  {
+    "ItemName": "Pump-Action Shotgun",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponMachinedShotgun"
+  },
+  {
+    "ItemName": "Rocket Launcher",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponRocketLauncher"
+  },
+  {
+    "ItemName": "Shotgun",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponShotgun"
+  },
+  {
+    "ItemName": "Simple Pistol",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponGun"
+  },
+  {
+    "ItemName": "Slingshot",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponSlingshot"
+  },
+  {
+    "ItemName": "Smoke Grenade",
+    "Type": "Weapons",
+    "Class": "PrimalItem_GasGrenade"
+  },
+  {
+    "ItemName": "Spear",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponSpear"
+  },
+  {
+    "ItemName": "Wooden Club",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponStoneClub"
+  },
+  {
+    "ItemName": "Flame Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowFlame"
+  },
+  {
+    "ItemName": "Flamethrower Ammo",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_Flamethrower"
+  },
+  {
+    "ItemName": "Rocket Homing Missile",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_RocketHomingMissile"
+  },
+  {
+    "ItemName": "Desert Cloth Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_DesertClothBoots"
+  },
+  {
+    "ItemName": "Desert Cloth Gloves",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_DesertClothGloves"
+  },
+  {
+    "ItemName": "Desert Cloth Pants",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_DesertClothPants"
+  },
+  {
+    "ItemName": "Desert Cloth Shirt",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_DesertClothShirt"
+  },
+  {
+    "ItemName": "Desert Goggles and Hat",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_DesertClothGogglesHelmet"
+  },
+  {
+    "ItemName": "Artifact Of The Crag",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifactSE_02"
+  },
+  {
+    "ItemName": "Artifact Of The Destroyer",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifactSE_03"
+  },
+  {
+    "ItemName": "Artifact Of The Gatekeeper",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifactSE_01"
+  },
+  {
+    "ItemName": "Summon Scorched Earth Portal (Old)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_ScorchedEarth"
+  },
+  {
+    "ItemName": "Wyvern Talon (Fire)",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_FireWyvern"
+  },
+  {
+    "ItemName": "Wyvern Talon (Lightning)",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_LightningWyvern"
+  },
+  {
+    "ItemName": "Wyvern Talon (Poison)",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_PoisonWyvern"
+  },
+  {
+    "ItemName": "Cactus Broth",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CactusBuffSoup"
+  },
+  {
+    "ItemName": "Cactus Sap",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CactusSap"
+  },
+  {
+    "ItemName": "Iced Canteen (Empty)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_IcedCanteen"
+  },
+  {
+    "ItemName": "Iced Canteen (Full)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_IcedCanteenRefill"
+  },
+  {
+    "ItemName": "Iced Water Jar (Empty)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_IcedWaterJar"
+  },
+  {
+    "ItemName": "Iced Water Jar (Full)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_IcedWaterJarRefill"
+  },
+  {
+    "ItemName": "Wyvern Milk",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_WyvernMilk"
+  },
+  {
+    "ItemName": "Fertilized Wyvern Egg (Fire)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Wyvern_Fertilized_Fire"
+  },
+  {
+    "ItemName": "Fertilized Wyvern Egg (Generic)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Wyvern_Fertilized"
+  },
+  {
+    "ItemName": "Fertilized Wyvern Egg (Lightning)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Wyvern_Fertilized_Lightning"
+  },
+  {
+    "ItemName": "Fertilized Wyvern Egg (Poison)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Wyvern_Fertilized_Poison"
+  },
+  {
+    "ItemName": "Mantis Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Mantis"
+  },
+  {
+    "ItemName": "Morellatops Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Camelsaurus"
+  },
+  {
+    "ItemName": "Morellatops Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Camelsaurus_Fertilized"
+  },
+  {
+    "ItemName": "Moth Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Moth"
+  },
+  {
+    "ItemName": "Moth Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Moth_Fertilized"
+  },
+  {
+    "ItemName": "Thorny Dragon Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_SpineyLizard"
+  },
+  {
+    "ItemName": "Thorny Dragon Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_SpineyLizard_Fertilized"
+  },
+  {
+    "ItemName": "Vulture Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Vulture"
+  },
+  {
+    "ItemName": "Vulture Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Vulture_Fertilized"
+  },
+  {
+    "ItemName": "Wyvern Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Wyvern"
+  },
+  {
+    "ItemName": "Kibble (Mantis Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Mantis"
+  },
+  {
+    "ItemName": "Kibble (Morellatops Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Camelsaurus"
+  },
+  {
+    "ItemName": "Kibble (Moth Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Moth"
+  },
+  {
+    "ItemName": "Kibble (Thorny Dragon Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_SpineyLizard"
+  },
+  {
+    "ItemName": "Kibble (Vulture Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Vulture"
+  },
+  {
+    "ItemName": "Kibble (Vulture Egg) (Broken)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_VultureEgg"
+  },
+  {
+    "ItemName": "Clay",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Clay"
+  },
+  {
+    "ItemName": "Deathworm Horn",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_KeratinSpike"
+  },
+  {
+    "ItemName": "Preserving Salt",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_PreservingSalt"
+  },
+  {
+    "ItemName": "Propellant",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Propellant"
+  },
+  {
+    "ItemName": "Raw Salt",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_RawSalt"
+  },
+  {
+    "ItemName": "Sand",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Sand"
+  },
+  {
+    "ItemName": "Silk",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Silk"
+  },
+  {
+    "ItemName": "Sulfur",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Sulfur"
+  },
+  {
+    "ItemName": "Lymantria Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MothSaddle"
+  },
+  {
+    "ItemName": "Mantis Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MantisSaddle"
+  },
+  {
+    "ItemName": "Morellatops Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_CamelsaurusSaddle"
+  },
+  {
+    "ItemName": "Rock Golem Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_RockGolemSaddle"
+  },
+  {
+    "ItemName": "Thorny Dragon Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_SpineyLizardSaddle"
+  },
+  {
+    "ItemName": "Plant Species Y Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_PlantSpeciesY"
+  },
+  {
+    "ItemName": "Plant Species Y Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_PlantSpeciesY_SpeedHack"
+  },
+  {
+    "ItemName": "ARK Thorny Dragon Saddle Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemArmor_SpineyLizardPromoSaddle"
+  },
+  {
+    "ItemName": "Bone Jerboa Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneJerboa"
+  },
+  {
+    "ItemName": "Bone Wyvern Costume",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BoneWyvern"
+  },
+  {
+    "ItemName": "Dodo Wyvern Hat",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_DodowyvernHat"
+  },
+  {
+    "ItemName": "Manticore Helmet Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_ManticoreHelmet"
+  },
+  {
+    "ItemName": "Manticore Shield Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_ManticoreShield"
+  },
+  {
+    "ItemName": "Safari Hat Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_ExplorerHat"
+  },
+  {
+    "ItemName": "Scorched Spike Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_ScorchedSpear"
+  },
+  {
+    "ItemName": "Scorched Sword Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_ScorchedSword"
+  },
+  {
+    "ItemName": "Scorched Torch Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_TorchScorched"
+  },
+  {
+    "ItemName": "Wyvern Gloves Skin",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_WyvernGloves"
+  },
+  {
+    "ItemName": "Adobe Behemoth Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeGateDoor_Large"
+  },
+  {
+    "ItemName": "Adobe Behemoth Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeGateframe_Large"
+  },
+  {
+    "ItemName": "Adobe Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeCeiling"
+  },
+  {
+    "ItemName": "Adobe Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeGateDoor"
+  },
+  {
+    "ItemName": "Adobe Dinosaur Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeFrameGate"
+  },
+  {
+    "ItemName": "Adobe Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeDoor"
+  },
+  {
+    "ItemName": "Adobe Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWallWithDoor"
+  },
+  {
+    "ItemName": "Adobe Fence Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeFenceFoundation"
+  },
+  {
+    "ItemName": "Adobe Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeFloor"
+  },
+  {
+    "ItemName": "Adobe Giant Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeCeilingWithDoorWay_Giant"
+  },
+  {
+    "ItemName": "Adobe Giant Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeCeilingDoorGiant"
+  },
+  {
+    "ItemName": "Adobe Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeCeilingWithTrapdoor"
+  },
+  {
+    "ItemName": "Adobe Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeLader"
+  },
+  {
+    "ItemName": "Adobe Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobePillar"
+  },
+  {
+    "ItemName": "Adobe Railing",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeRailing"
+  },
+  {
+    "ItemName": "Adobe Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeRamp"
+  },
+  {
+    "ItemName": "Adobe Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeRoof"
+  },
+  {
+    "ItemName": "Adobe Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Adobe Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Adobe Staircase",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeStaircase"
+  },
+  {
+    "ItemName": "Adobe Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeTrapdoor"
+  },
+  {
+    "ItemName": "Adobe Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWall"
+  },
+  {
+    "ItemName": "Adobe Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWindow"
+  },
+  {
+    "ItemName": "Adobe Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWallWithWindow"
+  },
+  {
+    "ItemName": "Manticore Flag",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Flag_Manticore"
+  },
+  {
+    "ItemName": "Mirror",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Mirror"
+  },
+  {
+    "ItemName": "Oil Pump",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_oilPump"
+  },
+  {
+    "ItemName": "Plant Species Y Trap",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PlantSpeciesYTrap"
+  },
+  {
+    "ItemName": "Tent",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Tent"
+  },
+  {
+    "ItemName": "Vessel",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Vessel"
+  },
+  {
+    "ItemName": "Water Well",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WaterWell"
+  },
+  {
+    "ItemName": "Wind Turbine",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WindTurbine"
+  },
+  {
+    "ItemName": "Chainsaw",
+    "Type": "Tool",
+    "Class": "PrimalItem_ChainSaw"
+  },
+  {
+    "ItemName": "Manticore Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Manticore"
+  },
+  {
+    "ItemName": "Boomerang",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponBoomerang"
+  },
+  {
+    "ItemName": "Cluster Grenade",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponClusterGrenade"
+  },
+  {
+    "ItemName": "Flamethrower",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeapFlamethrower"
+  },
+  {
+    "ItemName": "Oil Jar",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponOilJar"
+  },
+  {
+    "ItemName": "Whip",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponWhip"
+  },
+  {
+    "ItemName": "Clown Mask",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_ClownMask"
+  },
+  {
+    "ItemName": "Alpha Deathworm Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_AlphaWorm"
+  },
+  {
+    "ItemName": "Alpha Wyvern Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_AlphaWyvern"
+  },
+  {
+    "ItemName": "Pachyrhinosaurus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pachyrhino"
+  },
+  {
+    "ItemName": "Pachyrhinosaurus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pachyrhino_Fertilized"
+  },
+  {
+    "ItemName": "Kibble (Pachyrhinosaurus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_PachyRhinoEgg"
+  },
+  {
+    "ItemName": "Pachyrhinosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_PachyrhinoSaddle"
+  },
+  {
+    "ItemName": "Moschops Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Moschops"
+  },
+  {
+    "ItemName": "Moschops Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Moschops_Fertilized"
+  },
+  {
+    "ItemName": "Kibble (Moschops Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_MoschopsEgg"
+  },
+  {
+    "ItemName": "Achatina Paste",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_SnailPaste"
+  },
+  {
+    "ItemName": "Unlock Turkey Emote",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_UnlockEmote_Turkey"
+  },
+  {
+    "ItemName": "Kibble (Oviraptor Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_OviraptorEgg"
+  },
+  {
+    "ItemName": "Gallimimus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Galli"
+  },
+  {
+    "ItemName": "Gallimimus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Galli_Fertilized"
+  },
+  {
+    "ItemName": "APS Mail",
+    "Type": "Tool",
+    "Class": "PrimalItem_Mail"
+  },
+  {
+    "ItemName": "APS Mailbox",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Mailbox"
+  },
+  {
+    "ItemName": "Cooking Table",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BakingStation"
+  },
+  {
+    "ItemName": "Limestone (Prim+ TC)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Limestone"
+  },
+  {
+    "ItemName": "Viking Axe",
+    "Type": "Weapons",
+    "Class": "PrimalItem_VikingAxe"
+  },
+  {
+    "ItemName": "Spear",
+    "Type": "Weapons",
+    "Class": "PrimalItem_Weapon_Primitive_Spear"
+  },
+  {
+    "ItemName": "Battle Axe",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponBattleAxe"
+  },
+  {
+    "ItemName": "Metal Hammer",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponMetalHammer"
+  },
+  {
+    "ItemName": "Metal Machete",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponMetalMachete"
+  },
+  {
+    "ItemName": "Obsidian Spear",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponObsidianSpear"
+  },
+  {
+    "ItemName": "Obsidian Pickaxe",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponObsiPick"
+  },
+  {
+    "ItemName": "Pitchfork",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponPitchfork"
+  },
+  {
+    "ItemName": "Flintlock Pistol",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponPrimitivePistol"
+  },
+  {
+    "ItemName": "Musket",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponPrimitiveRifle"
+  },
+  {
+    "ItemName": "Primitive Shotgun",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponPrimitiveShotgun"
+  },
+  {
+    "ItemName": "Sharpened Sword",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponSharpenedSword"
+  },
+  {
+    "ItemName": "Stone Hunting Knife",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponStoneHuntingKnife"
+  },
+  {
+    "ItemName": "Wooden Club",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponWoodenClub"
+  },
+  {
+    "ItemName": "Flaming Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowFlaming"
+  },
+  {
+    "ItemName": "Obsidian Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowObsi"
+  },
+  {
+    "ItemName": "Feathered Stone Arrow",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_ArrowStone_Feathered"
+  },
+  {
+    "ItemName": "Primitive Scope",
+    "Type": "Attachment",
+    "Class": "PrimalItemWeaponAttachment_PrimitiveScope"
+  },
+  {
+    "ItemName": "Long Bow",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponLongBow"
+  },
+  {
+    "ItemName": "Barley Seed",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Barley"
+  },
+  {
+    "ItemName": "Barley Seed (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Barley_SpeedHack"
+  },
+  {
+    "ItemName": "Cashew Tree",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Cashew"
+  },
+  {
+    "ItemName": "Cashew Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Cashew_SpeedHack"
+  },
+  {
+    "ItemName": "Coffee Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Coffee"
+  },
+  {
+    "ItemName": "Coffee Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Coffee_SpeedHack"
+  },
+  {
+    "ItemName": "Grape Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Grape"
+  },
+  {
+    "ItemName": "Cabbage Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Lettuce"
+  },
+  {
+    "ItemName": "Rice Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Rice"
+  },
+  {
+    "ItemName": "Rice Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Rice_SpeedHack"
+  },
+  {
+    "ItemName": "Sugarcane Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Sugar"
+  },
+  {
+    "ItemName": "Tea Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tea"
+  },
+  {
+    "ItemName": "Tea Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tea_SpeedHack"
+  },
+  {
+    "ItemName": "Tobacco Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tobacco"
+  },
+  {
+    "ItemName": "Tobacco Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tobacco_SpeedHack"
+  },
+  {
+    "ItemName": "Tomato Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Tomato"
+  },
+  {
+    "ItemName": "Wheat Seeds",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Wheat"
+  },
+  {
+    "ItemName": "Wheat Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Wheat_SpeedHack"
+  },
+  {
+    "ItemName": "Fresh Barley",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Barley"
+  },
+  {
+    "ItemName": "Base Prim+ Veggie",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Base_PP"
+  },
+  {
+    "ItemName": "Fresh Coffee Fruit",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Coffee"
+  },
+  {
+    "ItemName": "Dried Tea Bags",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_DriedTea"
+  },
+  {
+    "ItemName": "Dried Tobacco",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_DriedTobacco"
+  },
+  {
+    "ItemName": "Grape",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Grape"
+  },
+  {
+    "ItemName": "Fresh Sugar Plant",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Sugar"
+  },
+  {
+    "ItemName": "Fresh Tobacco",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Tobacco"
+  },
+  {
+    "ItemName": "Fresh Wheat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Wheat"
+  },
+  {
+    "ItemName": "Dried Wheat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_DriedWheat"
+  },
+  {
+    "ItemName": "Fresh Tea Leaves",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Tea"
+  },
+  {
+    "ItemName": "Dried Rice",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Veggie_Rice_Dry"
+  },
+  {
+    "ItemName": "Sugarcane Seeds (Instant Grow)",
+    "Type": "Seed",
+    "Class": "PrimalItemConsumable_Seed_Sugar_SpeedHack"
+  },
+  {
+    "ItemName": "Bees Wax",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Beeswax"
+  },
+  {
+    "ItemName": "Brick",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Brick"
+  },
+  {
+    "ItemName": "Carbon",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Carbon"
+  },
+  {
+    "ItemName": "Trap Bait",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_CarnivoreBait"
+  },
+  {
+    "ItemName": "Cashew Milk",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_CashewMilk"
+  },
+  {
+    "ItemName": "Fresh Cement",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Cement"
+  },
+  {
+    "ItemName": "Clay",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Clay_PP"
+  },
+  {
+    "ItemName": "Claystone",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Claystone"
+  },
+  {
+    "ItemName": "Copper",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Copper"
+  },
+  {
+    "ItemName": "Fresh Dough",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Dough"
+  },
+  {
+    "ItemName": "Dried Barley",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_DriedBarley"
+  },
+  {
+    "ItemName": "Dried Firewood",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_DriedFirewood"
+  },
+  {
+    "ItemName": "Drone Bee",
+    "Type": "Farming",
+    "Class": "PrimalItemResource_DroneBee"
+  },
+  {
+    "ItemName": "Fabric",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Fabric"
+  },
+  {
+    "ItemName": "Feathers",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Feathers"
+  },
+  {
+    "ItemName": "Fish Bait",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_FishBAit"
+  },
+  {
+    "ItemName": "Sack of Flour",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Flour"
+  },
+  {
+    "ItemName": "Sack of Flour (Auto)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Flour_Auto"
+  },
+  {
+    "ItemName": "Fresh Firewood",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_FreshFirewood"
+  },
+  {
+    "ItemName": "Glass",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Glass"
+  },
+  {
+    "ItemName": "Grape Juice",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_GrapeJuice"
+  },
+  {
+    "ItemName": "Liquid Latex",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Latex"
+  },
+  {
+    "ItemName": "Leather",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Leather"
+  },
+  {
+    "ItemName": "Limestone",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Limestone"
+  },
+  {
+    "ItemName": "Wood Planks",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Lumber"
+  },
+  {
+    "ItemName": "Cup of Malt",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Malt"
+  },
+  {
+    "ItemName": "Processed Oil Base",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_OilMakerBase"
+  },
+  {
+    "ItemName": "Organic Oil (Animal)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_ProcessedOil_Animal"
+  },
+  {
+    "ItemName": "Organic Oil (Seed)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_ProcessedOil_Seed"
+  },
+  {
+    "ItemName": "Queen Bee",
+    "Type": "Farming",
+    "Class": "PrimalItemResource_QueenBee"
+  },
+  {
+    "ItemName": "Rubber",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Rubber"
+  },
+  {
+    "ItemName": "Salt",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Salt"
+  },
+  {
+    "ItemName": "Salt (Auto)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Salt_Auto"
+  },
+  {
+    "ItemName": "Salt (Cauldron)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Salt_Cauldron"
+  },
+  {
+    "ItemName": "Sparkpowder (Auto)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Sparkpowder_Auto"
+  },
+  {
+    "ItemName": "Steel Ingot",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_SteelIngot"
+  },
+  {
+    "ItemName": "Stone (Magnetite)",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Stone_Magnetite"
+  },
+  {
+    "ItemName": "Fresh Sugar Juice Bucket",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_SugarJuice"
+  },
+  {
+    "ItemName": "Worker Bee",
+    "Type": "Farming",
+    "Class": "PrimalItemResource_WorkerBee"
+  },
+  {
+    "ItemName": "Natural Yeast",
+    "Type": "Consumable",
+    "Class": "PrimalItemResource_Yeast"
+  },
+  {
+    "ItemName": "Baked Bread Loaf",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_BreadLoaf"
+  },
+  {
+    "ItemName": "Cigarette",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Cigarette"
+  },
+  {
+    "ItemName": "Cooked Bacon",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedBacon"
+  },
+  {
+    "ItemName": "Cooked Fish Fillet",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedFillet"
+  },
+  {
+    "ItemName": "Cooked Meat Jerky (Custom Oil)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedMeat_Jerky_CustomOil"
+  },
+  {
+    "ItemName": "Salted Jerky",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedMeat_SaltedJerky"
+  },
+  {
+    "ItemName": "Salted Jerky (Processed Oil)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedMeat_SaltedJerky_POil"
+  },
+  {
+    "ItemName": "Cooked Poultry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPoultry"
+  },
+  {
+    "ItemName": "Prime Meat Jerky (Custom Oil)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPrimeMeat_Jerky_CustomOil"
+  },
+  {
+    "ItemName": "Salted Prime Jerky",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPrimeMeat_SaltedJerky"
+  },
+  {
+    "ItemName": "Salted Prime Jerky (Processed Oil)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedPrimeMeat_SaltedJerky_POil"
+  },
+  {
+    "ItemName": "Cooked Spare Ribs",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CookedRibs"
+  },
+  {
+    "ItemName": "Cured Bacon",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_CuredBacon"
+  },
+  {
+    "ItemName": "Wheat Beer",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Drink_Beer"
+  },
+  {
+    "ItemName": "Braggot Mead",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Drink_Mead"
+  },
+  {
+    "ItemName": "Bonemeal Fertilizer",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_Fertilizer_Bonemeal"
+  },
+  {
+    "ItemName": "Fresh Fat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_FreshAnimalFat"
+  },
+  {
+    "ItemName": "Fresh Bacon",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_FreshBacon"
+  },
+  {
+    "ItemName": "Fresh Fish Fillet",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_FreshFillet"
+  },
+  {
+    "ItemName": "Fresh Poultry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_FreshPoultry"
+  },
+  {
+    "ItemName": "Fresh Spare Ribs",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_FreshRibs"
+  },
+  {
+    "ItemName": "Honey",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Honey"
+  },
+  {
+    "ItemName": "Baked Honey Loaf",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_HoneyLoaf"
+  },
+  {
+    "ItemName": "Chicken and Rice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Meal_ChickenRice"
+  },
+  {
+    "ItemName": "Fillet and Bread",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Meal_FilletBread"
+  },
+  {
+    "ItemName": "Prime Salad",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Meal_PrimeSalad"
+  },
+  {
+    "ItemName": "Salad",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Meal_Salad"
+  },
+  {
+    "ItemName": "Old Cooked Bacon",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Old_CookedBacon"
+  },
+  {
+    "ItemName": "Old Cooked Poultry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Old_CookedChicken"
+  },
+  {
+    "ItemName": "Old Cooked Fish Fillet",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Old_CookedFillet"
+  },
+  {
+    "ItemName": "Old Cooked Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Old_CookedMeat"
+  },
+  {
+    "ItemName": "Old Cooked Prime Meat",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Old_CookedPrimeMeat"
+  },
+  {
+    "ItemName": "Cooked Spare Ribs",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Old_CookedRibs"
+  },
+  {
+    "ItemName": "Jam of Amarberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Preserves_Armarberry"
+  },
+  {
+    "ItemName": "Jam of Azulberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Preserves_Azulberry"
+  },
+  {
+    "ItemName": "Jam of Mejoberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Preserves_Mejoberry"
+  },
+  {
+    "ItemName": "Jam of Tintoberry",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Preserves_Tintoberry"
+  },
+  {
+    "ItemName": "Seawater Container",
+    "Type": "Tool",
+    "Class": "PrimalItemConsumable_SeaBucketCraftable"
+  },
+  {
+    "ItemName": "Canteen",
+    "Type": "Tool",
+    "Class": "PrimalItemConsumable_SeaBucketRefill"
+  },
+  {
+    "ItemName": "Armarberry Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Armarberry"
+  },
+  {
+    "ItemName": "Azulberry Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Azulberry"
+  },
+  {
+    "ItemName": "Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Base"
+  },
+  {
+    "ItemName": "Mejoberry Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Mejoberry"
+  },
+  {
+    "ItemName": "Stimbull Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Stimbull"
+  },
+  {
+    "ItemName": "Tintoberry Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Tintoberry"
+  },
+  {
+    "ItemName": "Tomato Juice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Smoothie_Tomato"
+  },
+  {
+    "ItemName": "Cup of Coffee",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_CoffeeDrink"
+  },
+  {
+    "ItemName": "Cup of Tea",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_TeaDrink"
+  },
+  {
+    "ItemName": "Cane Sugar",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Sugar"
+  },
+  {
+    "ItemName": "Cooked Rice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_CookedRice"
+  },
+  {
+    "ItemName": "Casher",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_FreshCashew"
+  },
+  {
+    "ItemName": "Cabbage",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_FreshLettuce"
+  },
+  {
+    "ItemName": "Fresh Rice",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_FreshRice"
+  },
+  {
+    "ItemName": "Ground Cashew",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_GroundCashew"
+  },
+  {
+    "ItemName": "Ground Cashew (Auto)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_GroundCashew_Auto"
+  },
+  {
+    "ItemName": "Tomato",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Veggie_Tomato"
+  },
+  {
+    "ItemName": "Fermented Wine",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Drink_Wine"
+  },
+  {
+    "ItemName": "Rowboat",
+    "Type": "Structure",
+    "Class": "PrimalItemRowBoat"
+  },
+  {
+    "ItemName": "Sailboat",
+    "Type": "Structure",
+    "Class": "PrimalItemSailboat"
+  },
+  {
+    "ItemName": "Adobe Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeCeiling_PP"
+  },
+  {
+    "ItemName": "Adobe Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWall_PP"
+  },
+  {
+    "ItemName": "Adobe Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWallWithDoor_PP"
+  },
+  {
+    "ItemName": "Adobe Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeWallWithWindow_PP"
+  },
+  {
+    "ItemName": "Apiary",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Apiary"
+  },
+  {
+    "ItemName": "Wooden Arrow Sign",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ArrowWoodSign"
+  },
+  {
+    "ItemName": "Bakers Oven",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BakersOven"
+  },
+  {
+    "ItemName": "Barrel of Gunpowder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Barrel_Gunpowder"
+  },
+  {
+    "ItemName": "Storage Barrel",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Barrel_Normal"
+  },
+  {
+    "ItemName": "Fermenting Barrel",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BarrelFermenting"
+  },
+  {
+    "ItemName": "Simple Bed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Bed_SimplePrimitive"
+  },
+  {
+    "ItemName": "Big Bonfire",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BigBonfire"
+  },
+  {
+    "ItemName": "Big Campfire",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BigCampfire"
+  },
+  {
+    "ItemName": "Big Fence - Opening",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BigFenceOpening"
+  },
+  {
+    "ItemName": "Big Fence - Post",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BigFencePost"
+  },
+  {
+    "ItemName": "Big Fence - Section",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BigFenceSection"
+  },
+  {
+    "ItemName": "Brazier",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Brazier"
+  },
+  {
+    "ItemName": "Concrete Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickGate"
+  },
+  {
+    "ItemName": "Brick Dinosaur Gateway",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickGateframe_Large"
+  },
+  {
+    "ItemName": "Adobe Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdobeFloor_PP"
+  },
+  {
+    "ItemName": "Brick Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickWall_II"
+  },
+  {
+    "ItemName": "Brick Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickWall_Sloped_Left_II"
+  },
+  {
+    "ItemName": "Brick Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickWall_Sloped_Right_II"
+  },
+  {
+    "ItemName": "Brick Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickWallWithDoor_II"
+  },
+  {
+    "ItemName": "Brick Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_BrickWallWithWindow_II"
+  },
+  {
+    "ItemName": "Wooden Cabinet",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Cabinent"
+  },
+  {
+    "ItemName": "Covered Wooden Cabinet",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Cabinent2"
+  },
+  {
+    "ItemName": "Candles",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Candle"
+  },
+  {
+    "ItemName": "Cauldron",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Cauldron"
+  },
+  {
+    "ItemName": "Ceiling Lamp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_CeilingLamp"
+  },
+  {
+    "ItemName": "Cement Mixer",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_CementMixer"
+  },
+  {
+    "ItemName": "Sloped Cement Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_CementRoof"
+  },
+  {
+    "ItemName": "Well Chain",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ChainPipeStraight"
+  },
+  {
+    "ItemName": "Concrete Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ConcreteCeiling"
+  },
+  {
+    "ItemName": "Concrete Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ConcreteFloor"
+  },
+  {
+    "ItemName": "Concrete Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ConcretePillar"
+  },
+  {
+    "ItemName": "Concrete Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ConcreteRamp"
+  },
+  {
+    "ItemName": "Construction Table",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ConstructionTable"
+  },
+  {
+    "ItemName": "Cooking Station",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_CookingStation"
+  },
+  {
+    "ItemName": "Deadfall Trap",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_DeadfallTrap"
+  },
+  {
+    "ItemName": "Wood Post Fence",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Fence"
+  },
+  {
+    "ItemName": "Fish Trap",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_FishTrap"
+  },
+  {
+    "ItemName": "Fruit Press",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_FruitPress"
+  },
+  {
+    "ItemName": "Lumber Bench",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_LumberBench"
+  },
+  {
+    "ItemName": "Lumber Chair",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_LumberChair"
+  },
+  {
+    "ItemName": "Lumber Table",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_LumberTable"
+  },
+  {
+    "ItemName": "Table Lantern",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GeneralLantern"
+  },
+  {
+    "ItemName": "Lumber Glass Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GlassCeiling"
+  },
+  {
+    "ItemName": "Grindstone",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Grindstone"
+  },
+  {
+    "ItemName": "Simple Hammok",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Hammock_Simple"
+  },
+  {
+    "ItemName": "Handmill",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Handmill"
+  },
+  {
+    "ItemName": "Lumber Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberCeiling"
+  },
+  {
+    "ItemName": "Lumber Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberDoor_II"
+  },
+  {
+    "ItemName": "Lumber Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberFloor_II"
+  },
+  {
+    "ItemName": "Lumber Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGate"
+  },
+  {
+    "ItemName": "Lumber Dinosaur Gateway",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGateframe"
+  },
+  {
+    "ItemName": "Lumber Glass Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassDoor"
+  },
+  {
+    "ItemName": "Sloped Glass Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassRoof"
+  },
+  {
+    "ItemName": "Lumber Glass Wall Sloped (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassWall_Sloped_Left_II"
+  },
+  {
+    "ItemName": "Lumber Glass Wall Sloped (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassWall_Sloped_Right_II"
+  },
+  {
+    "ItemName": "Lumber Glass Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassWindow_II"
+  },
+  {
+    "ItemName": "Lumber Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberPillar"
+  },
+  {
+    "ItemName": "Lumber Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberRamp"
+  },
+  {
+    "ItemName": "Lumber Roof Sloped",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberRoof_II"
+  },
+  {
+    "ItemName": "Wooden Stairs (One Level)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberStairs"
+  },
+  {
+    "ItemName": "Lumber Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWall_II"
+  },
+  {
+    "ItemName": "Lumber Wall Sloped (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWall_Sloped_Left_II"
+  },
+  {
+    "ItemName": "Lumber Wall Sloped (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWall_Sloped_Right_II"
+  },
+  {
+    "ItemName": "Lumber Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWallWithDoor_II"
+  },
+  {
+    "ItemName": "Lumber Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWallWithWindow_II"
+  },
+  {
+    "ItemName": "Lumber Glass Pane",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWallWithPane"
+  },
+  {
+    "ItemName": "Lumber Station",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberWorkshop"
+  },
+  {
+    "ItemName": "Market Stall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MarketStall"
+  },
+  {
+    "ItemName": "Sink",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MetalSink"
+  },
+  {
+    "ItemName": "Miners Box",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_MinersCart"
+  },
+  {
+    "ItemName": "Modular Table",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_ModTable"
+  },
+  {
+    "ItemName": "Oil Tank",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_OilTank"
+  },
+  {
+    "ItemName": "Pontoon Bridge",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PontoonBridge"
+  },
+  {
+    "ItemName": "Preserving Campfire",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PreservervingCampfire"
+  },
+  {
+    "ItemName": "Meat Preserving Shed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PreservingShed_Meat"
+  },
+  {
+    "ItemName": "Primitive Grill",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PrimitiveGrill"
+  },
+  {
+    "ItemName": "Smokehouse",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Smokehouse"
+  },
+  {
+    "ItemName": "Spinning Mule",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_SpinningMule"
+  },
+  {
+    "ItemName": "Steel Handrail",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_SteelHandrail"
+  },
+  {
+    "ItemName": "Steel Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_SteelPillar"
+  },
+  {
+    "ItemName": "Stone Fence (Big)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneFence_Big"
+  },
+  {
+    "ItemName": "Stone Fence (Small)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StoneFence_Small"
+  },
+  {
+    "ItemName": "Steel Safebox",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageBox_Safe"
+  },
+  {
+    "ItemName": "Firewood Holder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageShed_Firewood"
+  },
+  {
+    "ItemName": "Modern Storage Shelf",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageShed_ModernWood"
+  },
+  {
+    "ItemName": "Modern Storage Shelf (Fiber)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageShed_ModernWood_Fiber"
+  },
+  {
+    "ItemName": "Modern Hanging Shelf",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageShed_ModernWoodHanging"
+  },
+  {
+    "ItemName": "Weapon Rack",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageShed_Weapon"
+  },
+  {
+    "ItemName": "Wood Storage Shed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_StorageShed_Wood"
+  },
+  {
+    "ItemName": "Tanning Rack",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TanningRack"
+  },
+  {
+    "ItemName": "Teepee",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Teepee"
+  },
+  {
+    "ItemName": "Trading Crate (Bread)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TradingCrate_Bread"
+  },
+  {
+    "ItemName": "Trading Crate (Eggs)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TradingCrate_Eggs"
+  },
+  {
+    "ItemName": "Trading Crate (Fruits/Veggies)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TradingCrate_FruitsVeggies"
+  },
+  {
+    "ItemName": "Trading Crate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TradingCrate_Small"
+  },
+  {
+    "ItemName": "Lantern",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TradingLantern"
+  },
+  {
+    "ItemName": "Tudor Bar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TudorBar"
+  },
+  {
+    "ItemName": "Tudor Bar L-Shaped",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TudorBar_L"
+  },
+  {
+    "ItemName": "Steel Water Tower",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WaterTower"
+  },
+  {
+    "ItemName": "Water Well",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WaterWell"
+  },
+  {
+    "ItemName": "Well Bucket",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WellBucket"
+  },
+  {
+    "ItemName": "Windmill",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Windmill"
+  },
+  {
+    "ItemName": "Wooden Handrail",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodHandrail"
+  },
+  {
+    "ItemName": "Yurt",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Yurt"
+  },
+  {
+    "ItemName": "Bio Toxin",
+    "Type": "Resource",
+    "Class": "PrimalItemConsumable_JellyVenom"
+  },
+  {
+    "ItemName": "Therizinosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TherizinosaurusSaddle"
+  },
+  {
+    "ItemName": "Therizinosaurus Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Therizino"
+  },
+  {
+    "ItemName": "Kibble (Therizinosaurus Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_TherizinoEgg"
+  },
+  {
+    "ItemName": "Squid Oil",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_SquidOil"
+  },
+  {
+    "ItemName": "Artifact of the Cunning",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_11"
+  },
+  {
+    "ItemName": "Artifact of the Brute",
+    "Type": "Artifact",
+    "Class": "PrimalItemArtifact_12"
+  },
+  {
+    "ItemName": "Therizinosaurus Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Therizino_Fertilized"
+  },
+  {
+    "ItemName": "Tusoteuthis Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_TusoSaddle"
+  },
+  {
+    "ItemName": "Unlock Snowball Emote",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_UnlockEmote_Snowball"
+  },
+  {
+    "ItemName": "Shocking Tranq Dart",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_RefinedTranqDart"
+  },
+  {
+    "ItemName": "Camera",
+    "Type": "Tool",
+    "Class": "PrimalItem_Camera"
+  },
+  {
+    "ItemName": "Troodon Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Troodon"
+  },
+  {
+    "ItemName": "Troodon Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Troodon_Fertilized"
+  },
+  {
+    "ItemName": "Pegomastax Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pegomastax"
+  },
+  {
+    "ItemName": "Pegomastax Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Pegomastax_Fertilized"
+  },
+  {
+    "ItemName": "Tusoteuthis Tentacle",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Tuso"
+  },
+  {
+    "ItemName": "Advanced Workbench",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdvancedWorkbench"
+  },
+  {
+    "ItemName": "Recurve Bow",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponRecurveBow"
+  },
+  {
+    "ItemName": "Lumber Glass Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassWallWithDoor_II"
+  },
+  {
+    "ItemName": "Lumber Glass Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_LumberGlassWallWithWindow_II"
+  },
+  {
+    "ItemName": "Basilosaurus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_BasiloSaddle"
+  },
+  {
+    "ItemName": "Baryonyx Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_BaryonyxSaddle"
+  },
+  {
+    "ItemName": "Scissors",
+    "Type": "Tool",
+    "Class": "PrimalItem_WeaponScissors"
+  },
+  {
+    "ItemName": "Lance",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponLance"
+  },
+  {
+    "ItemName": "Tek Rifle",
+    "Type": "Weapons",
+    "Class": "PrimalItem_TekRifle"
+  },
+  {
+    "ItemName": "Tek Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TekBoots"
+  },
+  {
+    "ItemName": "Tek Gloves",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TekGloves"
+  },
+  {
+    "ItemName": "Tek Helmet",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TekHelmet"
+  },
+  {
+    "ItemName": "Tek Pants",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TekPants"
+  },
+  {
+    "ItemName": "Tek Shirt",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TekShirt"
+  },
+  {
+    "ItemName": "Tek Replicator",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekReplicator"
+  },
+  {
+    "ItemName": "Tek Transmitter",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekTransmitter"
+  },
+  {
+    "ItemName": "Tek Rex Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_RexSaddle_Tek"
+  },
+  {
+    "ItemName": "Element",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Element"
+  },
+  {
+    "ItemName": "Baryonyx Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Baryonyx"
+  },
+  {
+    "ItemName": "Baryonyx Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_Baryonyx_Fertilized"
+  },
+  {
+    "ItemName": "Cooked Lamb Chop",
+    "Type": "Consumable",
+    "Class": "primalitemconsumable_cookedlambchop"
+  },
+  {
+    "ItemName": "Raw Mutton",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_RawMutton"
+  },
+  {
+    "ItemName": "Wool",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Wool"
+  },
+  {
+    "ItemName": "Human Hair",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Hair"
+  },
+  {
+    "ItemName": "Tek Shield",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_TekShield"
+  },
+  {
+    "ItemName": "Summon Dragon Portal (Easy)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Dragon_Easy"
+  },
+  {
+    "ItemName": "Summon Dragon Portal (Hard)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Dragon_Hard"
+  },
+  {
+    "ItemName": "Summon Dragon Portal (Medium)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Dragon_Medium"
+  },
+  {
+    "ItemName": "Summon Megapithecus Portal (Easy)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Gorilla_Easy"
+  },
+  {
+    "ItemName": "Summon Megapithecus Portal (Hard)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Gorilla_Hard"
+  },
+  {
+    "ItemName": "Summon Megapithecus Portal (Medium)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Gorilla_Medium"
+  },
+  {
+    "ItemName": "Summon Manticore Portal (Easy)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Manticore_Easy"
+  },
+  {
+    "ItemName": "Summon Manticore Portal (Hard)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Manticore_Hard"
+  },
+  {
+    "ItemName": "Summon Manticore Portal (Medium)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Manticore_Medium"
+  },
+  {
+    "ItemName": "Summon Broodmother Portal (Easy)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Spider_Easy"
+  },
+  {
+    "ItemName": "Summon Broodmother Portal (Hard)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Spider_Hard"
+  },
+  {
+    "ItemName": "Summon Broodmother Portal (Medium)",
+    "Type": "Artifact",
+    "Class": "PrimalItem_BossTribute_Spider_Medium"
+  },
+  {
+    "ItemName": "Unlock Heart Emote",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_UnlockEmote_Heart"
+  },
+  {
+    "ItemName": "Unlock Romantic Facial Hair",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_UnlockHairstyle_Facial_Romantic"
+  },
+  {
+    "ItemName": "Unlock Romantic Head Hair",
+    "Type": "Artifact",
+    "Class": "PrimalItemConsumable_UnlockHairstyle_Head_Romantic"
+  },
+  {
+    "ItemName": "Tek Window",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekWindow"
+  },
+  {
+    "ItemName": "Tek Catwalk",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekCatwalk"
+  },
+  {
+    "ItemName": "Tek Ceiling",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekCeiling"
+  },
+  {
+    "ItemName": "Tek Hatchframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekCeilingWithTrapdoor"
+  },
+  {
+    "ItemName": "Tek Door",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekDoor"
+  },
+  {
+    "ItemName": "Tek Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekFloor"
+  },
+  {
+    "ItemName": "Tek Dinosaur Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekGate"
+  },
+  {
+    "ItemName": "Tek Behemoth Gate",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekGate_Large"
+  },
+  {
+    "ItemName": "Tek Dinosaur Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekGateframe"
+  },
+  {
+    "ItemName": "Tek Behemoth Gateframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekGateframe_Large"
+  },
+  {
+    "ItemName": "Tek Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekLadder"
+  },
+  {
+    "ItemName": "Tek Pillar",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekPillar"
+  },
+  {
+    "ItemName": "Tek Ramp",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekRamp"
+  },
+  {
+    "ItemName": "Tek Trapdoor",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekTrapdoor"
+  },
+  {
+    "ItemName": "Tek Wall",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekWall"
+  },
+  {
+    "ItemName": "Tek Doorframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekWallWithDoor"
+  },
+  {
+    "ItemName": "Tek Windowframe",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekWallWithWindow"
+  },
+  {
+    "ItemName": "Tek Stairs",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekStairs"
+  },
+  {
+    "ItemName": "Tek Railing",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Tekrailing"
+  },
+  {
+    "ItemName": "Tek Fence Foundation",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Tekfencefoundation"
+  },
+  {
+    "ItemName": "Tek Sloped Wall (Left)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekWall_Sloped_Left"
+  },
+  {
+    "ItemName": "Tek Sloped Wall (Right)",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekWall_Sloped_Right"
+  },
+  {
+    "ItemName": "Tek Sloped Roof",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekRoof"
+  },
+  {
+    "ItemName": "Tek Shield",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekShield"
+  },
+  {
+    "ItemName": "Microraptor Egg",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_MicroRaptor"
+  },
+  {
+    "ItemName": "Microraptor Egg (Fertilized)",
+    "Type": "Egg",
+    "Class": "PrimalItemConsumable_Egg_MicroRaptor_Fertilized"
+  },
+  {
+    "ItemName": "Pheromone Dart",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_AggroTranqDart"
+  },
+  {
+    "ItemName": "Thylacoleo Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ThylacoSaddle"
+  },
+  {
+    "ItemName": "Ammonite Bile",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_AmmoniteBlood"
+  },
+  {
+    "ItemName": "Equus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_EquusSaddle"
+  },
+  {
+    "ItemName": "Iguanodon Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_IguanodonSaddle"
+  },
+  {
+    "ItemName": "Tek Generator",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekGenerator"
+  },
+  {
+    "ItemName": "Tek Teleporter",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekTeleporter"
+  },
+  {
+    "ItemName": "Underwater Base",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_UnderwaterBase"
+  },
+  {
+    "ItemName": "Tek Mosa Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MosaSaddle_Tek"
+  },
+  {
+    "ItemName": "Lasso",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponLasso"
+  },
+  {
+    "ItemName": "Element Shard",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_ElementShard"
+  },
+  {
+    "ItemName": "Kibble (Microraptor Egg)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Kibble_MicroraptorEgg"
+  },
+  {
+    "ItemName": "Kibble (Troodon Egg)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Kibble_TroodonEgg"
+  },
+  {
+    "ItemName": "Kibble (Pegomastax Egg)",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Kibble_PegomastaxEgg"
+  },
+  {
+    "ItemName": "Underwater Base Moonpool",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_UnderwaterBase_Moonpool"
+  },
+  {
+    "ItemName": "Captains Hat",
+    "Type": "Skin",
+    "Class": "PrimalItemSkin_CaptainsHat"
+  },
+  {
+    "ItemName": "Kibble (Iguanodon eggs)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_IguanodonEgg"
+  },
+  {
+    "ItemName": "Kibble (Ichthyornis eggs)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_IchthyornisEgg"
+  },
+  {
+    "ItemName": "Honey",
+    "Type": "Resource",
+    "Class": "PrimalItemConsumable_Honey"
+  },
+  {
+    "ItemName": "Daeodon",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_DaeodonSaddle"
+  },
+  {
+    "ItemName": "Tek Megalodon",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MegalodonSaddle_Tek"
+  },
+  {
+    "ItemName": "Tek Cloning chamber",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekCloningChamber"
+  },
+  {
+    "ItemName": "Tek Turret",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TurretTek"
+  },
+  {
+    "ItemName": "Broodmother Gamma trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Broodmother_Gamma"
+  },
+  {
+    "ItemName": "Broodmother Beta trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Broodmother_Beta"
+  },
+  {
+    "ItemName": "Broodmother Alpha trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Broodmother_Alpha"
+  },
+  {
+    "ItemName": "Megapithecus Gamma trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Gorilla_Gamma"
+  },
+  {
+    "ItemName": "Megapithecus Beta Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Gorilla_Beta"
+  },
+  {
+    "ItemName": "Megapithecus Alpha trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Gorilla_Alpha"
+  },
+  {
+    "ItemName": "Dragon Gamma trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Dragon_Gamma"
+  },
+  {
+    "ItemName": "Dragon Beta trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Dragon_Beta"
+  },
+  {
+    "ItemName": "Dragon Alpha trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Dragon_Alpha"
+  },
+  {
+    "ItemName": "Manticore Gamma trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Manticore_Gamma"
+  },
+  {
+    "ItemName": "Manticore Beta trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Manticore_Beta"
+  },
+  {
+    "ItemName": "Manticore Alpha trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_Manticore_Alpha"
+  },
+  {
+    "ItemName": "Alpha Carno",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaCarno"
+  },
+  {
+    "ItemName": "Alpha Leedsichthys",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaLeeds"
+  },
+  {
+    "ItemName": "Alpha Megalodon",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaMegalodon"
+  },
+  {
+    "ItemName": "Alpha Mosasaur",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaMosasaur"
+  },
+  {
+    "ItemName": "Alpha Raptor",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaRaptor"
+  },
+  {
+    "ItemName": "Alpha Rex",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaRex"
+  },
+  {
+    "ItemName": "Alpha Tusoteuthis",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaTuso"
+  },
+  {
+    "ItemName": "Tek grenade",
+    "Type": "Weapons",
+    "Class": "PrimalItem_TekGrenade"
+  },
+  {
+    "ItemName": "Kibble (Kairuku eggs)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_KairukuEgg"
+  },
+  {
+    "ItemName": "Kibble (Hesperonis eggs)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_HesperonisEgg"
+  },
+  {
+    "ItemName": "Kibble (Megalania eggs)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_Megalania"
+  },
+  {
+    "ItemName": "Kibble (Kentro eggs)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_KentroEgg"
+  },
+  {
+    "ItemName": "Tranq Spear Bolt",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_TranqSpearBolt"
+  },
+  {
+    "ItemName": "Hyaenodon Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_HyaenodonSaddle"
+  },
+  {
+    "ItemName": "Megalania Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MegalaniaSaddle"
+  },
+  {
+    "ItemName": "Megatherium Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MegatheriumSaddle"
+  },
+  {
+    "ItemName": "Yutyrannus Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_YutySaddle"
+  },
+  {
+    "ItemName": "Motorboat",
+    "Type": "Structure",
+    "Class": "PrimalItemMotorboat"
+  },
+  {
+    "ItemName": "Toilet",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Toilet"
+  },
+  {
+    "ItemName": "Harpoon",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponHarpoon"
+  },
+  {
+    "ItemName": "Hesperonis Golden Egg",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Egg_Hesperonis_Golden"
+  },
+  {
+    "ItemName": "Tek Tapejara Armor",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_Tapejara_Tek"
+  },
+  {
+    "ItemName": "Tek Feeding Trough",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_TekTrough"
+  },
+  {
+    "ItemName": "ARK Trophy",
+    "Type": "Trophy",
+    "Class": "PrimalItemTrophy_ARKLogo"
+  },
+  {
+    "ItemName": "Bionic Giga",
+    "Type": "Skin",
+    "Class": "primalitemcostume_bionicgigant"
+  },
+  {
+    "ItemName": "Bionic Rex",
+    "Type": "Skin",
+    "Class": "PrimalItemCostume_BionicRex"
+  },
+  {
+    "ItemName": "Allosaurus Brain",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Allo"
+  },
+  {
+    "ItemName": "Alpha Carnotaurus Arm",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaCarno"
+  },
+  {
+    "ItemName": "Alpha Leedsichthys Blubber",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaLeeds"
+  },
+  {
+    "ItemName": "Alpha Megalodon Fin",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaMegalodon"
+  },
+  {
+    "ItemName": "Alpha Mosasaur Tooth",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaMosasaur"
+  },
+  {
+    "ItemName": "Alpha Raptor Claw",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaRaptor"
+  },
+  {
+    "ItemName": "Alpha Tyrannosaur Tooth",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaRex"
+  },
+  {
+    "ItemName": "Alpha Tusoteuthis Eye",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_AlphaTuso"
+  },
+  {
+    "ItemName": "Basilosaurus Blubber",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Basilo"
+  },
+  {
+    "ItemName": "Titanoboa Venom",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Boa"
+  },
+  {
+    "ItemName": "Fire Talon",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_FireWyvern"
+  },
+  {
+    "ItemName": "Giganotosaurus Heart",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Giga"
+  },
+  {
+    "ItemName": "Lightning Talon",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_LightningWyvern"
+  },
+  {
+    "ItemName": "Megalania Toxin",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Megalania"
+  },
+  {
+    "ItemName": "Poison Talon",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_PoisonWyvern"
+  },
+  {
+    "ItemName": "Sarcosuchus Skin",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Sarco"
+  },
+  {
+    "ItemName": "Spinosaurus Sail",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Spino"
+  },
+  {
+    "ItemName": "Therizino Claws",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Theriz"
+  },
+  {
+    "ItemName": "Thylacoleo Hook-Claw",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Thylaco"
+  },
+  {
+    "ItemName": "Tusoteuthis Tentacle",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Tuso"
+  },
+  {
+    "ItemName": "Yutyrannus Lungs",
+    "Type": "Artifact",
+    "Class": "PrimalItemResource_ApexDrop_Yuty"
+  },
+  {
+    "ItemName": "Advanced Bed",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_AdvModernBed"
+  },
+  {
+    "ItemName": "Extended Raft",
+    "Type": "Structure",
+    "Class": "PrimalItemExtendedRaft"
+  },
+  {
+    "ItemName": "Advanced Fertilizer",
+    "Type": "Farming",
+    "Class": "PrimalItemConsumable_ADVFertilizer"
+  },
+  {
+    "ItemName": "Paracer Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_ParacerSaddle"
+  },
+  {
+    "ItemName": "Kibble (Giga Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_GigantEgg"
+  },
+  {
+    "ItemName": "Gas Mask",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_GasMask_C"
+  },
+  {
+    "ItemName": "Focal Chilli",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_Soup_FocalChilli"
+  },
+  {
+    "ItemName": "Black Pearl",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_BlackPearl"
+  },
+  {
+    "ItemName": "Advanced Electric Prod",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponProdAdv"
+  },
+  {
+    "ItemName": "Glass Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GlassMetalPlatform_Large"
+  },
+  {
+    "ItemName": "Wooly Rhino Horn",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_Horn"
+  },
+  {
+    "ItemName": "Kibble (Glowtail Egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_LanternLizardEgg"
+  },
+  {
+    "ItemName": "Kibble (Featherlight egg)",
+    "Type": "Kibble",
+    "Class": "PrimalItemConsumable_Kibble_LanternBirdEgg"
+  },
+  {
+    "ItemName": "Glow Stick",
+    "Type": "Weapons",
+    "Class": "PrimalItem_GlowStick"
+  },
+  {
+    "ItemName": "Portable Rope Ladder",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_PortableLadder"
+  },
+  {
+    "ItemName": "Shag Rug",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Furniture_Rug"
+  },
+  {
+    "ItemName": "Fish Basket",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_FishBasket"
+  },
+  {
+    "ItemName": "Small Wood Elevator",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodElevatorPlatform_Small"
+  },
+  {
+    "ItemName": "Wood Elevator Top Switch",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodElevatorTopSwitch"
+  },
+  {
+    "ItemName": "Wood Elevator Track",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodElevatorTrack"
+  },
+  {
+    "ItemName": "Medium Wood Elevator Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodElevatorPlatform_Medium"
+  },
+  {
+    "ItemName": "Climbing Pick",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponClimbPick"
+  },
+  {
+    "ItemName": "Zipline Anchor",
+    "Type": "Ammunition",
+    "Class": "PrimalItemAmmo_Zipline"
+  },
+  {
+    "ItemName": "Large Wood Elevator Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_WoodElevatorPlatform_Large"
+  },
+  {
+    "ItemName": "Stone Cliff Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Stone_CliffPlatform"
+  },
+  {
+    "ItemName": "Gas Collector",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_GasCollector"
+  },
+  {
+    "ItemName": "Pliers",
+    "Type": "Weapons",
+    "Class": "PrimalItem_Pliers"
+  },
+  {
+    "ItemName": "Metal Cliff Platform",
+    "Type": "Structure",
+    "Class": "PrimalItemStructure_Metal_CliffPlatform"
+  },
+  {
+    "ItemName": "Zip-Line Motor Attachment",
+    "Type": "Structure",
+    "Class": "PrimalItemArmor_ZiplineMotor"
+  },
+  {
+    "ItemName": "Ravager Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_CaveWolfSaddle"
+  },
+  {
+    "ItemName": "Roll Rat Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_MoleRatSaddle"
+  },
+  {
+    "ItemName": "Glider Suit",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_Glider"
+  },
+  {
+    "ItemName": "Karkinos Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_CrabSaddle"
+  },
+  {
+    "ItemName": "Hazard Suit Hat",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HazardSuitHelmet"
+  },
+  {
+    "ItemName": "Hazard Suit Gloves",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HazardSuitGloves"
+  },
+  {
+    "ItemName": "Hazard Suit Pants",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HazardSuitPants"
+  },
+  {
+    "ItemName": "Hazard Suit Boots",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HazardSuitBoots"
+  },
+  {
+    "ItemName": "Hazard Suit Shirt",
+    "Type": "Armor",
+    "Class": "PrimalItemArmor_HazardSuitShirt"
+  },
+  {
+    "ItemName": "Charge Lantern",
+    "Type": "Weapons",
+    "Class": "PrimalItem_WeaponRadioactiveLanternCharge"
+  },
+  {
+    "ItemName": "Charge Battery",
+    "Type": "Ammunition",
+    "Class": "PrimalItem_ChargeBattery"
+  },
+  {
+    "ItemName": "Reaper Pheromone Gland",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_XenomorphPheromoneGland"
+  },
+  {
+    "ItemName": "Basilisk Scale",
+    "Type": "Resource",
+    "Class": "PrimalItemResource_ApexDrop_Basilisk"
+  },
+  {
+    "ItemName": "Rock Drake Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_RockDrakeSaddle"
+  },
+  {
+    "ItemName": "Basilisk Saddle",
+    "Type": "Saddle",
+    "Class": "PrimalItemArmor_BasiliskSaddle"
+  },
+  {
+    "ItemName": "Nameless Venom",
+    "Type": "Consumable",
+    "Class": "PrimalItemConsumable_NamelessVenom"
+  }
+]

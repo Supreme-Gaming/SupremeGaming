@@ -1,0 +1,30 @@
+@import 'libs/scss/mixins';
+@import 'libs/scss/colors';
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  tr {
+    &:not(:last-child) {
+      border-bottom: 1pt solid $base_lightened;
+    }
+
+    @include transition(background 0.3s);
+
+    &:hover {
+      background: $base_lightened;
+    }
+  }
+
+  td,
+  th {
+    padding: 1.25rem 1rem;
+  }
+}

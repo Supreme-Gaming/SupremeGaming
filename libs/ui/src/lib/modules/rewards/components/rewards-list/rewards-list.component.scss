@@ -1,0 +1,115 @@
+@import 'libs/scss/mixins';
+@import 'libs/scss/colors';
+@import 'libs/scss/fonts';
+@import 'libs/scss/modules/search';
+
+.filters,
+.product-type-description,
+.products h2 {
+  margin-bottom: 1.25rem;
+}
+
+.products {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+
+  h2 {
+    border-bottom: 1pt solid $base_lightened;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  .products-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .product {
+    margin: 0.5rem;
+    border: 1pt solid $base_lightened;
+    border-radius: 5pt;
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    @include transition(border-color 0.3s);
+
+    .product-name,
+    .product-description,
+    .product-price {
+      text-align: center;
+    }
+
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-image-container {
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(center);
+      margin: 1rem 0;
+
+      img {
+        width: 4.5rem;
+      }
+    }
+
+    .product-description,
+    .product-price,
+    .product-spawn-code {
+      font-size: 0.9rem;
+    }
+
+    .product-description {
+      color: darken($color: $support, $amount: 15%);
+    }
+
+    .product-price {
+      font-weight: 600;
+      margin: 1.25rem 0 0.5rem 0;
+      color: $primary_lightened;
+    }
+
+    .product-general-info {
+      padding: 0.75rem;
+    }
+
+    .product-buy-info {
+      width: 100%;
+      border-top: 1pt solid $base_lightened;
+      box-sizing: border-box;
+      font-size: 0.9rem;
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(space-between);
+      @include align-items(center);
+
+      .product-buy-code,
+      .copy-button {
+        padding: 1rem;
+      }
+
+      .copy-button {
+        font-size: 1.25rem;
+      }
+
+      .product-buy-code {
+        font-family: $terciary_font_family;
+        white-space: nowrap;
+        padding-right: 0;
+        font-size: 0.8rem;
+        color: $support_darkened;
+        max-width: 80%;
+        overflow: hidden;
+      }
+    }
+
+    &:hover {
+      border-color: $base_focus;
+    }
+  }
+}

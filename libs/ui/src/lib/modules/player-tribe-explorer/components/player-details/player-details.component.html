@@ -1,0 +1,73 @@
+<div class="overview">
+  <ng-container *ngIf="(player | async) as pl">
+    <div class="character-fragment">
+      <div *ngIf="game === 'ark'" class="avatar">
+        <img [src]="pl.AvatarUrl" alt="Avatar image" />
+      </div>
+
+      <div class="details">
+        <div class="row">
+          <div class="name">
+            <h2>{{pl.CharacterName}}</h2>
+          </div>
+        </div>
+
+        <div>
+          <div class="tribe-membership">
+            <div *ngIf="game === 'ark'" [ngSwitch]="pl.TribeGuid !== null">
+              <div *ngSwitchCase="true">
+                <span class="player-attribute">Tribe: </span
+                ><a [routerLink]="[tribeDetailsRoute, pl.TribeGuid]">{{pl.TribeName}}</a>
+              </div>
+              <div *ngSwitchDefault><span class="player-attribute">Tribe: </span>Not in any tribe</div>
+            </div>
+
+            <div *ngIf="game === 'atlas'" [ngSwitch]="pl.TribeId !== null">
+              <div *ngSwitchCase="true">
+                <span class="player-attribute">Company: </span
+                ><a [routerLink]="[tribeDetailsRoute, pl.TribeId]">{{pl.TribeName}}</a>
+              </div>
+              <div *ngSwitchDefault><span class="player-attribute">Company: </span>Not in any company</div>
+            </div>
+          </div>
+
+          <p *ngIf="pl.SteamName">
+            <span class="player-attribute">Owner</span>: <a [href]="pl.ProfileUrl" target="_blank">{{pl.SteamName}}</a>
+          </p>
+
+          <p *ngIf="pl.Level"><span class="player-attribute">Level: </span>{{pl.Level}}</p>
+
+          <p *ngIf="game === 'ark'"><span class="player-attribute">Map: </span>{{pl.PlayMap}}</p>
+          <p *ngIf="game === 'atlas'"><span class="player-attribute">Grid: </span>{{pl.PlayMap}}</p>
+
+          <p *ngIf="pl.FileUpdated">
+            <span class="player-attribute">Last Online</span>: {{pl.FileUpdated | date : 'short'}}
+          </p>
+
+          <p *ngIf="pl.LastOnline"><span class="player-attribute">Last Online</span>: {{pl.LastOnline | date : 'short'}}</p>
+        </div>
+
+        <div class="metadata">
+          <p class="player-attribute-metadata">Steam ID: <code>{{pl.SteamId }}</code></p>
+          <p class="player-attribute-metadata">Player ID: <code>{{pl.Id }}</code></p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="alternate-entities wire-container">
+  <h2>Related Characters</h2>
+
+  <p>The following list shows all other characters linked to the same SteamID and the last visited maps.</p>
+
+  <supremegaming-player-table
+    [data]="entities | async"
+    [showAvatar]="showAvatar"
+    [showCount]="showCount"
+    [columnsVisible]="columnsVisible"
+    [columnLabels]="columnLabels"
+    [playerDetailsRoute]="playerDetailsRoute"
+    [tribeDetailsRoute]="tribeDetailsRoute"
+  ></supremegaming-player-table>
+</div>

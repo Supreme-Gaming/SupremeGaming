@@ -1,0 +1,11 @@
+@import 'libs/scss/colors';
+@import 'libs/scss/mixins';
+
+:host {
+  margin-bottom: 2rem;
+  display: block;
+}
+
+h2 {
+  margin-bottom: 0.75rem;
+}

@@ -1,0 +1,17 @@
+@import 'libs/scss/colors';
+@import 'libs/scss/mixins';
+
+:host {
+  @include flexbox();
+}
+
+.copy-button {
+  font-size: inherit;
+  color: $base_focus;
+  cursor: pointer;
+  @include transition(color 0.3s);
+
+  &:hover {
+    color: $primary_lightened;
+  }
+}

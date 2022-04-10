@@ -1,0 +1,41 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngIf="showCount">#</th>
+      <th *ngFor="let title of columnLabels">{{title}}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let player of data; let i = index;">
+      <td *ngIf="showCount"><span class="character-count">{{i + 1}}.</span></td>
+
+      <td class="name-and-avatar" *ngIf="columnsVisible | includes : 'CharacterName'">
+        <span class="character-profile-picture" *ngIf="showAvatar"
+          ><img [src]="player.AvatarUrl" [alt]="player.SteamName" [title]="player.SteamName"
+        /></span>
+        <a [routerLink]="[playerDetailsRoute, player.Guid ? player.Guid : player.Id]" routerLinkActive="router-link-active"
+          >{{player.CharacterName}}</a
+        >
+      </td>
+
+      <td *ngIf="columnsVisible | includes : 'Level'">{{player.Level}}</td>
+
+      <td *ngIf="columnsVisible | includes : 'TribeName'">
+        <a
+          [routerLink]="[tribeDetailsRoute, player.TribeGuid ? player.TribeGuid : player.TribeId]"
+          routerLinkActive="router-link-active"
+          >{{player.TribeName}}</a
+        >
+      </td>
+
+      <td *ngIf="columnsVisible | includes : 'PlayMap'">{{player.PlayMap}}</td>
+
+      <!-- Ark last online -->
+      <td *ngIf="columnsVisible | includes : 'FileUpdated'">{{player.FileUpdated | date : 'short'}}</td>
+
+      <!-- Atlas last online -->
+      <td *ngIf="columnsVisible | includes : 'LastOnline'">{{player.LastOnline | date : 'short'}}</td>
+    </tr>
+  </tbody>
+</table>

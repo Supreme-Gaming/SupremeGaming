@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <div class="search-container">
+    <input formControlName="search" type="text" placeholder="Begin typing to search for item" autofocus />
+  </div>
+</form>
+
+<ng-container *ngIf="(mappedCrates | async) as crates; else goSpin">
+  <ng-container *ngIf="crates.length > 0; else noResults">
+    <supremegaming-ark-loot-crate *ngFor="let crate of crates" [crate]="crate"></supremegaming-ark-loot-crate>
+  </ng-container>
+
+  <ng-template #noResults>
+    <div class="search-feedback">
+      <p>There's nothing here Jim...</p>
+    </div>
+  </ng-template>
+</ng-container>
+
+<ng-template #goSpin>
+  <div class="search-feedback">
+    <p>Crunching numbers....</p>
+  </div>
+</ng-template>

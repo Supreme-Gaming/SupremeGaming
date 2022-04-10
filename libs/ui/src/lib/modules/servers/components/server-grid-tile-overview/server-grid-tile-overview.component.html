@@ -1,0 +1,16 @@
+<div
+  class="grid-background"
+  *ngIf="columnIndex !== undefined && rowIndex !== undefined"
+  [ngStyle]="{backgroundImage: backgroundImageUrl | async}"
+></div>
+
+<div class="status-container">
+  <p class="server-name"><a [href]="baseAssetUrl | async" target="_blank">{{server.map_name}}</a></p>
+
+  <div [ngSwitch]="status | async">
+    <div *ngSwitchCase="'online'"><span title="Server is online" class="status-dot online"></span></div>
+    <div *ngSwitchCase="'offline'"><span title="Server is offline" class="status-dot offline"></span></div>
+    <div *ngSwitchCase="'busy'"><span title="Server is busy. Try again later." class="status-dot busy"></span></div>
+    <div *ngSwitchDefault><span class="loader"></span></div>
+  </div>
+</div>

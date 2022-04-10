@@ -1,0 +1,22 @@
+<h2>{{crate?.SupplyCrateClassString}}</h2>
+
+<table>
+  <thead>
+    <tr>
+      <td>Quantity</td>
+      <td>Category</td>
+      <td>Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of crate.ItemEntries">
+      <td [ngSwitch]="item.source.MinQuantity === item.source.MaxQuantity">
+        <div *ngSwitchCase="true">{{item.source.MinQuantity | number}}</div>
+        <div *ngSwitchDefault>{{item.source.MinQuantity | number}}-{{item.source.MaxQuantity | number}}</div>
+      </td>
+
+      <td>{{item.mapped?.Type}}</td>
+      <td>{{item.mapped?.ItemName}}</td>
+    </tr>
+  </tbody>
+</table>

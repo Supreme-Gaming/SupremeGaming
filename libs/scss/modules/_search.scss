@@ -1,0 +1,17 @@
+@import 'libs/scss/colors';
+@import 'libs/scss/mixins';
+@import 'libs/scss/modules/forms';
+
+.search-container {
+  margin-bottom: 2rem;
+  width: 1;
+  font-size: 1.25rem;
+}
+
+.search-feedback {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 2.5rem;
+  opacity: 0.25;
+}

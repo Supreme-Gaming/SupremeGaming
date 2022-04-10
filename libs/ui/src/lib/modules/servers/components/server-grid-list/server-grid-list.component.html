@@ -1,0 +1,12 @@
+<div
+  class="server-grid"
+  [ngStyle]="{'grid-template-rows': 'repeat(' + rows.length + ', 140px)', 'grid-template-columns': 'repeat(' + columns.length + ', 1fr)'}"
+>
+  <supremegaming-server-grid-tile-overview
+    *ngFor="let s of servers"
+    [server]="s"
+    [rowIndex]="s.map_name | atlasGridRowIndex : rows"
+    [columnIndex]="s.map_name | atlasGridColumnIndex : columns"
+    [ngStyle]="{'grid-column-start': (s.map_name | atlasGridColumnIndex : columns) + 1, 'grid-row-start': (s.map_name | atlasGridRowIndex : rows) + 1}"
+  ></supremegaming-server-grid-tile-overview>
+</div>

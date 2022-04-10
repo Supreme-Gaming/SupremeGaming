@@ -1,0 +1,225 @@
+<header class="container12">
+  <div class="column12 nav">
+    <div class="branding-block">
+      <!-- <img src="assets/images/logo.png" alt="Logo" /> -->
+      <h1 class="visions" [routerLink]="['/']" routerLinkActive="router-link-active">Supreme Gaming</h1>
+    </div>
+
+    <nav class="module-navigation">
+      <ul>
+        <li class="dropdown">
+          <a [routerLink]="['/community']" routerLinkActive="router-link-active"
+            >Community <span class="material-icons">keyboard_arrow_down</span></a
+          >
+          <div class="sub-menu">
+            <ul>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/community/rules']" routerLinkActive="router-link-active">
+                  <span>Guidelines</span>
+                  <span>Global rules and community code of conduct</span>
+                </a>
+              </li>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/community/support']" routerLinkActive="router-link-active">
+                  <span>Getting Support</span>
+                  <span>Have an issue? Learn to to request support</span>
+                </a>
+              </li>
+              <li class="descriptive-menu-item">
+                <a href="https://discord.gg/supremegaming" target="_blank" rel="noopener noreferrer">
+                  <span>Discord</span>
+                  <span>Connect with the community, make friends, and get support</span>
+                </a>
+              </li>
+              <li class="descriptive-menu-item">
+                <a href="https://supremegaming.gg/forums/">
+                  <span>Forums</span>
+                  <span>Archive, long-term discussions, lore, and more!</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <a [routerLink]="['/games']" routerLinkActive="router-link-active"
+            >Games <span class="material-icons">keyboard_arrow_down</span></a
+          >
+          <div class="sub-menu">
+            <ul>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/games/atlas']" routerLinkActive="router-link-active">
+                  <span>Atlas</span>
+                  <span>Build your ship and sail across the seven seas</span>
+                </a>
+                <div class="sub-sub-menu">
+                  <ul>
+                    <li>
+                      <a [routerLink]="['/games/atlas/rules']">
+                        <span>Rules</span>
+                        <span>The pirate code, or the plank</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/atlas/players-and-companies']">
+                        <span>Players &amp; Companies</span>
+                        <span>Learn about company membership</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/atlas/mods']">
+                        <span>Mods</span>
+                        <span>Mod collection featured in-game</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/atlas/plugins']">
+                        <span>Plugins</span>
+                        <span>Shop, kits, cross-grid chat, and more!</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/games/ark']" routerLinkActive="router-link-active">
+                  <span>Ark: Survival Evolved</span>
+                  <span>Survive in in future filled with dinosaurs</span>
+                </a>
+                <div class="sub-sub-menu">
+                  <ul>
+                    <li>
+                      <a [routerLink]="['/games/ark/rules']">
+                        <span>Rules</span>
+                        <span>In-game PVE you must follow as a player</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark/players-and-tribes']">
+                        <span>Players &amp; Tribes</span>
+                        <span>Learn about tribe membership</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark/mods']">
+                        <span>Mods</span>
+                        <span>Mod collection featured in-game</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark/plugins']">
+                        <span>Plugins</span>
+                        <span>Shop, kits, cross-ark chat, and more!</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark/supply-drops']">
+                        <span>Supply Drops Table</span>
+                        <span>Maximize your next supply drop run</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/games/ark-pf']" routerLinkActive="router-link-active">
+                  <span>Ark: Primal Fear</span>
+                  <span>A hardcore ark experience for those looking for a challenge.</span>
+                </a>
+                <div class="sub-sub-menu">
+                  <ul>
+                    <li>
+                      <a [routerLink]="['/games/ark-pf/rules']">
+                        <span>Rules</span>
+                        <span>In-game rules for Ark: PF</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark-pf/players-and-tribes']">
+                        <span>Players &amp; Tribes</span>
+                        <span>Learn about tribe membership</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark-pf/mods']">
+                        <span>Mods</span>
+                        <span>Mod collection featured in-game</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/ark-pf/plugins']">
+                        <span>Plugins</span>
+                        <span>Shop, kits, cross-ark chat, and more!</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/games/conan']" routerLinkActive="router-link-active">
+                  <span>Conan Exiles </span>
+                  <span>Get lost in a barbaric world of fantasy</span>
+                </a>
+                <div class="sub-sub-menu">
+                  <ul>
+                    <li>
+                      <a [routerLink]="['/games/conan/rules']">
+                        <span>Rules</span>
+                        <span>The law of the sands</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/conan/players-and-tribes']">
+                        <span>Players &amp; Clans</span>
+                        <span>Learn about clan membership</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/conan/mods']">
+                        <span>Mods</span>
+                        <span>Mod collection featured in-game</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/conan/pippi']">
+                        <span>Pippi</span>
+                        <span>Kits, currency, ranks, and more!</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <a [routerLink]="['/donate']" routerLinkActive="router-link-active"
+            >Donate <span class="material-icons">keyboard_arrow_down</span></a
+          >
+          <div class="sub-menu">
+            <ul>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/donate']" routerLinkActive="router-link-active">
+                  <span>How to Donate</span>
+                  <span>Explore all of the donation options for Supreme Gaming.</span>
+                </a>
+              </li>
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/donate/info']" routerLinkActive="router-link-active">
+                  <span>Donation System</span>
+                  <span
+                    >Donation perks go beyond just points. Learn about all the perks you can unlock with your
+                    contribution.</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a href="http://">Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

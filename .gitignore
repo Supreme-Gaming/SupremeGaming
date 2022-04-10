@@ -40,3 +40,4 @@ Thumbs.db
 
 # Sensitives
 ormconfig.ts
+secrets.ts

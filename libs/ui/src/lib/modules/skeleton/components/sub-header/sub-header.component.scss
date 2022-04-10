@@ -1,0 +1,13 @@
+@import 'libs/scss/mixins';
+
+:host {
+  @include flexbox();
+  min-height: 3px;
+  margin-bottom: 4rem;
+}
+
+.sub-header {
+  @include flexbox();
+  @include flex-direction(row-reverse);
+  @include justify-content(space-between);
+}

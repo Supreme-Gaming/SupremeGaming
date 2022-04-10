@@ -1,0 +1,7 @@
+@import 'libs/scss/mixins';
+@import 'libs/scss/modules/forms';
+
+:host {
+  display: block;
+  height: 100%;
+}

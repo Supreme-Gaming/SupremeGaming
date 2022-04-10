@@ -1,0 +1,60 @@
+@import 'libs/scss/mixins';
+@import 'libs/scss/colors';
+@import 'libs/scss/modules/servers/server-status';
+
+:host {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: 1pt solid $base_lightened;
+  border-radius: 5pt;
+  box-sizing: border-box;
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  @include transition(border-color 0.3s);
+
+  &:hover {
+    border-color: lighten($color: $base_lightened, $amount: 15%);
+
+    .action {
+      a {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.info {
+  .server-connection {
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+
+    .server-ip {
+      color: $primary_lightened;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.action {
+  a.join-button {
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    span {
+      font-size: 1.8rem;
+      display: block;
+      opacity: inherit;
+      padding: 0 0.75rem;
+
+      @include transition(opacity 0.3s);
+    }
+  }
+}

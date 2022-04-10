@@ -1,0 +1,39 @@
+<div class="overview">
+  <ng-container *ngIf="tribe | async as tr">
+    <div class="details">
+      <div>
+        <div class="name">
+          <h2>{{tr.Name ? tr.Name : tr.TribeName}}</h2>
+        </div>
+      </div>
+
+      <div>
+        <p *ngIf="(tribeOwner | async) as owner">
+          <span class="player-attribute">Owner</span>:
+          <a [routerLink]="[playerDetailsRoute, owner.Guid ? owner.Guid : owner.Id]">{{owner.CharacterName}}</a>
+        </p>
+
+        <p *ngIf="tr.PlayMap">{{tr.PlayMap}}</p>
+      </div>
+
+      <div class="metadata">
+        <p class="player-attribute-metadata">Tribe ID: <code>{{tr.Id }}</code></p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="membership wire-container">
+  <h2 *ngIf="game === 'ark'">Tribe Members</h2>
+  <h2 *ngIf="game === 'atlas'">Company Members</h2>
+
+  <supremegaming-player-table
+    [data]="tribeMembers | async"
+    [showAvatar]="showAvatar"
+    [showCount]="showCount"
+    [columnsVisible]="columnsVisible"
+    [columnLabels]="columnLabels"
+    [playerDetailsRoute]="playerDetailsRoute"
+    [tribeDetailsRoute]="tribeDetailsRoute"
+  ></supremegaming-player-table>
+</div>

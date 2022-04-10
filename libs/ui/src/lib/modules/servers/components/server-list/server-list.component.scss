@@ -1,0 +1,8 @@
+@import 'libs/scss/mixins';
+
+:host {
+  width: 100%;
+  display: grid;
+
+  column-gap: 1rem;
+}
