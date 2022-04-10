@@ -30,7 +30,12 @@ export class TribeDetailsComponent extends AbstractResourceTableComponent<GameSe
   public ngOnInit(): void {
     this.tribe = this.tribeGuid.pipe(
       switchMap((guid) => {
-        return this.ts.searchTribesForGame(this.game, guid).pipe(pluck<GameServerTribe[], GameServerTribe>('0'));
+        return this.ts.searchTribesForGame(this.game, guid).pipe(
+          map((results) => {
+            const [tribe] = results;
+            return tribe;
+          })
+        );
       }),
       shareReplay()
     );
@@ -47,3 +52,4 @@ export class TribeDetailsComponent extends AbstractResourceTableComponent<GameSe
     );
   }
 }
+

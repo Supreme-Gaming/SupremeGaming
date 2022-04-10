@@ -1,9 +1,14 @@
 {
   "npmScope": "supremegaming",
-  "affected": { "defaultBase": "development" },
+  "affected": {
+    "defaultBase": "development"
+  },
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     "nx.json": "*",
@@ -12,24 +17,37 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "parallel": 1
+      }
     }
   },
-  "projects": {
-    "scss": { "tags": [] },
-    "data-api-nest": { "tags": [] },
-    "common-entities": { "tags": [] },
-    "common-entities-ark": { "tags": [] },
-    "common-entities-steam": { "tags": [] },
-    "common-entities-servers": { "tags": [] },
-    "common-entities-conan": { "tags": [] },
-    "conan-cacher": { "tags": [] },
-    "supremegaming-angular": { "tags": [] },
-    "supremegaming-angular-e2e": { "tags": [], "implicitDependencies": ["supremegaming-angular"] },
-    "ui": { "tags": [] },
-    "pages-public": { "tags": [] },
-    "data-access": { "tags": [] },
-    "common-ngx": { "tags": [] },
-    "common-interfaces": { "tags": [] }
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "supremegaming-angular",
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
   }
 }

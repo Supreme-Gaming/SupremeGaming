@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameServerPlayer } from '@supremegaming/common/interfaces';
 import { from, Observable } from 'rxjs';
-import { filter, map, pluck, shareReplay, switchMap, toArray, withLatestFrom } from 'rxjs/operators';
+import { filter, map, shareReplay, switchMap, toArray, withLatestFrom } from 'rxjs/operators';
 
 import { PlayersService } from '@supremegaming/data-access';
 
@@ -29,7 +29,12 @@ export class PlayerDetailsComponent extends AbstractResourceTableComponent<GameS
   public ngOnInit(): void {
     this.player = this.playerGuid.pipe(
       switchMap((guid) => {
-        return this.ps.searchPlayersForGame(this.game, guid).pipe(pluck<GameServerPlayer[], GameServerPlayer>('0'));
+        return this.ps.searchPlayersForGame(this.game, guid).pipe(
+          map((results) => {
+            const [player] = results;
+            return player;
+          })
+        );
       }),
       shareReplay()
     );
@@ -54,3 +59,4 @@ export class PlayerDetailsComponent extends AbstractResourceTableComponent<GameS
     );
   }
 }
+
