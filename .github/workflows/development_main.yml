@@ -14,3 +14,8 @@ jobs:
   deploy:
     uses: ./.github/workflows/development_deploy.yml
     needs: build
+    secrets:
+      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
