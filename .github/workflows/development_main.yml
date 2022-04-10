@@ -9,9 +9,9 @@ on:
       - development
 
 jobs:
-  build:
+  Build:
     uses: ./.github/workflows/development_build.yml
-  deploy:
+  Deploy:
     uses: ./.github/workflows/development_deploy.yml
     needs: build
     secrets:

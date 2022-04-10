@@ -16,7 +16,7 @@ on:
         required: true
 
 jobs:
-  deploy:
+  Development:
     runs-on: ubuntu-latest
     name: Deploy to Server
 
@@ -30,7 +30,7 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          SOURCE: 'dist/apps/supremegaming-angular/'
+          SOURCE: '${{ github.sha }}/dist/apps/supremegaming-angular/'
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{secrets.REMOTE_TARGET}}
