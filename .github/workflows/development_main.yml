@@ -1,0 +1,21 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Development Workflow
+
+on:
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  Build:
+    uses: ./.github/workflows/development_build.yml
+  Deploy:
+    uses: ./.github/workflows/development_deploy.yml
+    needs: Build
+    secrets:
+      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}

@@ -1,37 +1,40 @@
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Development CI
+name: Development Deploy
 
-on: [push]
+on:
+  workflow_call:
+    secrets:
+      SERVER_SSH_KEY:
+        required: true
+      REMOTE_HOST:
+        required: true
+      REMOTE_USER:
+        required: true
+      REMOTE_TARGET:
+        required: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    name: Development
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
         with:
-          node-version: '14'
-          cache: 'npm'
+          name: ${{ github.sha }}
 
-      - name: Install Dependencies
-        run: npm i
+      - name: Display structure of downloaded files
+        run: ls -R
 
-      - name: Build Supreme Gaming Website
-        run: npx nx run supremegaming-angular:build:production
-
-      - name: Deploy
+      - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          SOURCE: 'dist/apps/supremegaming-angular/'
+          SOURCE: './apps/supremegaming-angular/'
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{secrets.REMOTE_TARGET}}
           ARGS: '-rltgoDzvO --delete'
-
