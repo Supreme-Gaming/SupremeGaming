@@ -19,13 +19,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'npm'
 
-      - name: list 1
-        run: ls -R
+      - uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Dependencies
-        run: npm i
+        run: npm ci
 
       - name: Build Supreme Gaming Website
         run: npx nx run supremegaming-angular:build:production
@@ -35,6 +36,3 @@ jobs:
         with:
           name: ${{ github.sha }}
           path: dist/
-
-      - name: list 2
-        run: ls -R
