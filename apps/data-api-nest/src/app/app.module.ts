@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { AuthModule, HostsModule, ServersModule } from '@supremegaming/api';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { config } from '../environments/ormconfig';
+import { authOptions, ormconfig } from '../environments/environment';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config)],
+  imports: [...ormconfig, AuthModule.forRoot(authOptions), ServersModule, HostsModule],
   controllers: [AppController],
   providers: [AppService],
 })

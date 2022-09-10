@@ -16,7 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@supremegaming/api": ["libs/api/src/index.ts"],
       "@supremegaming/common/entities": ["libs/common/entities/src/index.ts"],
+      "@supremegaming/common/entities/administration": ["libs/common/entities/administration/src/index.ts"],
       "@supremegaming/common/entities/ark": ["libs/common/entities/ark/src/index.ts"],
       "@supremegaming/common/entities/conan": ["libs/common/entities/conan/src/index.ts"],
       "@supremegaming/common/entities/servers": ["libs/common/entities/servers/src/index.ts"],
@@ -25,7 +27,9 @@
       "@supremegaming/common/ngx": ["libs/common/ngx/src/index.ts"],
       "@supremegaming/data-access": ["libs/data-access/src/index.ts"],
       "@supremegaming/pages/public": ["libs/pages/public/src/index.ts"],
-      "@supremegaming/ui": ["libs/ui/src/index.ts"]
+      "@supremegaming/ui": ["libs/ui/src/index.ts"],
+      "@supremegaming/utilities/database": ["libs/utilities/database/src/index.ts"],
+      "@supremegaming/utilities/rcon": ["libs/utilities/rcon/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
