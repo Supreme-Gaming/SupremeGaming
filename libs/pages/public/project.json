@@ -1,0 +1,24 @@
+{
+  "projectType": "library",
+  "root": "libs/pages/public",
+  "sourceRoot": "libs/pages/public/src",
+  "prefix": "supremegaming",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/pages/public/src/**/*.ts", "libs/pages/public/src/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/pages/public"],
+      "options": {
+        "jestConfig": "libs/pages/public/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

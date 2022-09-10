@@ -1,0 +1,26 @@
+{
+  "root": "libs/common/entities/steam",
+  "sourceRoot": "libs/common/entities/steam/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:lint",
+      "options": {
+        "linter": "eslint",
+        "tsConfig": ["libs/common/entities/steam/tsconfig.lib.json", "libs/common/entities/steam/tsconfig.spec.json"],
+        "exclude": ["**/node_modules/**", "!libs/common/entities/steam/**/*"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/common/entities/steam/jest.config.js",
+        "tsConfig": "libs/common/entities/steam/tsconfig.spec.json",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/common/entities/steam"]
+    }
+  },
+  "tags": []
+}

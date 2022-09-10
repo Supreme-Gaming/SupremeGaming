@@ -1,0 +1,22 @@
+{
+  "root": "libs/utilities/rcon",
+  "sourceRoot": "libs/utilities/rcon/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/utilities/rcon/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/utilities/rcon"],
+      "options": {
+        "jestConfig": "libs/utilities/rcon/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

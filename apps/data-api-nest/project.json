@@ -1,0 +1,56 @@
+{
+  "root": "apps/data-api-nest",
+  "sourceRoot": "apps/data-api-nest/src",
+  "projectType": "application",
+  "prefix": "data-api-nest",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "options": {
+        "outputPath": "dist/apps/data-api-nest",
+        "main": "apps/data-api-nest/src/main.ts",
+        "tsConfig": "apps/data-api-nest/tsconfig.app.json",
+        "assets": ["apps/data-api-nest/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/data-api-nest/src/environments/environment.ts",
+              "with": "apps/data-api-nest/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "data-api-nest:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:lint",
+      "options": {
+        "linter": "eslint",
+        "tsConfig": ["apps/data-api-nest/tsconfig.app.json", "apps/data-api-nest/tsconfig.spec.json"],
+        "exclude": ["**/node_modules/**", "!apps/data-api-nest/**/*"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/data-api-nest/jest.config.js",
+        "tsConfig": "apps/data-api-nest/tsconfig.spec.json",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/data-api-nest"]
+    }
+  },
+  "tags": []
+}
