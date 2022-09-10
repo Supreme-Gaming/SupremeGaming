@@ -10,13 +10,13 @@ export const authOptions: AuthModuleOptions = {
   jwt: {
     secret: 'secretkey',
     signOptions: {
-      expiresIn: '60s'
+      expiresIn: '60s',
     },
   },
   jwtStrategy: {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     ignoreExpiration: false,
-    secretOrKey: 'secretkey'
+    secretOrKey: 'secretkey',
   },
   steamStrategy: {
     returnURL: 'https://domain.com/auth/steam/return',
@@ -40,7 +40,7 @@ import { Module } from '@nestjs/common';
 import { authOptions } from '../environments/environment';
 
 @Module({
-  imports: [AuthModule.forRoot(authOptions)]
+  imports: [AuthModule.forRoot(authOptions)],
 })
 export class AppModule {}
 ```

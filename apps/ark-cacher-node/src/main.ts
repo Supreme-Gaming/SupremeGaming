@@ -3,9 +3,9 @@ import { ArkCacherApp } from './app/app';
 
 import { ormconfig } from './environments/environment';
 
-console.log('Starting ark caching service')
+console.log('Starting ark caching service');
 
-async function bootstrap(){
+async function bootstrap() {
   await manager(ormconfig);
 
   new ArkCacherApp().start();
