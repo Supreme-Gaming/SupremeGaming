@@ -1,0 +1,89 @@
+{
+  "projectType": "application",
+  "root": "apps/supremegaming-angular",
+  "sourceRoot": "apps/supremegaming-angular/src",
+  "prefix": "supremegaming",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/supremegaming-angular",
+        "index": "apps/supremegaming-angular/src/index.html",
+        "main": "apps/supremegaming-angular/src/main.ts",
+        "polyfills": "apps/supremegaming-angular/src/polyfills.ts",
+        "tsConfig": "apps/supremegaming-angular/tsconfig.app.json",
+        "aot": true,
+        "assets": ["apps/supremegaming-angular/src/favicon.ico", "apps/supremegaming-angular/src/assets"],
+        "styles": ["apps/supremegaming-angular/src/styles.scss"],
+        "scripts": [],
+        "allowedCommonJsDependencies": ["webfontloader"]
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/supremegaming-angular/src/environments/environment.ts",
+              "with": "apps/supremegaming-angular/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "supremegaming-angular:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "supremegaming-angular:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "supremegaming-angular:build"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "tsConfig": [
+          "apps/supremegaming-angular/tsconfig.app.json",
+          "apps/supremegaming-angular/tsconfig.spec.json",
+          "apps/supremegaming-angular/tsconfig.editor.json"
+        ],
+        "exclude": ["**/node_modules/**", "!apps/supremegaming-angular/**/*"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/supremegaming-angular"],
+      "options": {
+        "jestConfig": "apps/supremegaming-angular/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

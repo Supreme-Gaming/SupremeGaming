@@ -1,0 +1,52 @@
+{
+  "root": "apps/ark-cacher-node",
+  "sourceRoot": "apps/ark-cacher-node/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ark-cacher-node",
+        "main": "apps/ark-cacher-node/src/main.ts",
+        "tsConfig": "apps/ark-cacher-node/tsconfig.app.json",
+        "assets": ["apps/ark-cacher-node/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/ark-cacher-node/src/environments/environment.ts",
+              "with": "apps/ark-cacher-node/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "ark-cacher-node:build",
+        "port": 7777
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/ark-cacher-node/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ark-cacher-node"],
+      "options": {
+        "jestConfig": "apps/ark-cacher-node/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

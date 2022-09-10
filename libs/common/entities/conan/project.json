@@ -1,0 +1,26 @@
+{
+  "root": "libs/common/entities/conan",
+  "sourceRoot": "libs/common/entities/conan/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:lint",
+      "options": {
+        "linter": "eslint",
+        "tsConfig": ["libs/common/entities/conan/tsconfig.lib.json", "libs/common/entities/conan/tsconfig.spec.json"],
+        "exclude": ["**/node_modules/**", "!libs/common/entities/conan/**/*"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/common/entities/conan/jest.config.js",
+        "tsConfig": "libs/common/entities/conan/tsconfig.spec.json",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/common/entities/conan"]
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "root": "apps/conan-cacher",
+  "sourceRoot": "apps/conan-cacher/src",
+  "projectType": "application",
+  "prefix": "conan-cacher",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "options": {
+        "outputPath": "dist/apps/conan-cacher",
+        "main": "apps/conan-cacher/src/main.ts",
+        "tsConfig": "apps/conan-cacher/tsconfig.app.json",
+        "assets": ["apps/conan-cacher/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/conan-cacher/src/environments/environment.ts",
+              "with": "apps/conan-cacher/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "conan-cacher:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:lint",
+      "options": {
+        "linter": "eslint",
+        "tsConfig": ["apps/conan-cacher/tsconfig.app.json", "apps/conan-cacher/tsconfig.spec.json"],
+        "exclude": ["**/node_modules/**", "!apps/conan-cacher/**/*"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/conan-cacher/jest.config.js",
+        "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/conan-cacher"]
+    }
+  },
+  "tags": []
+}
