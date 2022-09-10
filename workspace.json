@@ -1,31 +1,19 @@
 {
-  "version": 1,
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
+  "version": 2,
   "projects": {
     "api": {
       "root": "libs/api",
       "sourceRoot": "libs/api/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/api/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api"],
           "options": {
             "jestConfig": "libs/api/jest.config.js",
@@ -39,9 +27,9 @@
       "root": "apps/ark-cacher-node",
       "sourceRoot": "apps/ark-cacher-node/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@nrwl/node:build",
+          "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/ark-cacher-node",
@@ -64,20 +52,20 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/node:execute",
+          "executor": "@nrwl/node:execute",
           "options": {
             "buildTarget": "ark-cacher-node:build",
             "port": 7777
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/ark-cacher-node/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/ark-cacher-node"],
           "options": {
             "jestConfig": "apps/ark-cacher-node/jest.config.js",
@@ -91,10 +79,10 @@
       "root": "libs/common/entities",
       "sourceRoot": "libs/common/entities/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": ["libs/common/entities/tsconfig.lib.json", "libs/common/entities/tsconfig.spec.json"],
@@ -102,7 +90,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/entities/jest.config.js",
             "tsConfig": "libs/common/entities/tsconfig.spec.json",
@@ -117,15 +105,15 @@
       "root": "libs/common/entities/administration",
       "sourceRoot": "libs/common/entities/administration/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/common/entities/administration/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/common/entities/administration"],
           "options": {
             "jestConfig": "libs/common/entities/administration/jest.config.js",
@@ -139,10 +127,10 @@
       "root": "libs/common/entities/ark",
       "sourceRoot": "libs/common/entities/ark/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": ["libs/common/entities/ark/tsconfig.lib.json", "libs/common/entities/ark/tsconfig.spec.json"],
@@ -150,7 +138,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/entities/ark/jest.config.js",
             "tsConfig": "libs/common/entities/ark/tsconfig.spec.json",
@@ -165,10 +153,10 @@
       "root": "libs/common/entities/conan",
       "sourceRoot": "libs/common/entities/conan/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": ["libs/common/entities/conan/tsconfig.lib.json", "libs/common/entities/conan/tsconfig.spec.json"],
@@ -176,7 +164,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/entities/conan/jest.config.js",
             "tsConfig": "libs/common/entities/conan/tsconfig.spec.json",
@@ -191,10 +179,10 @@
       "root": "libs/common/entities/servers",
       "sourceRoot": "libs/common/entities/servers/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": [
@@ -205,7 +193,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/entities/servers/jest.config.js",
             "tsConfig": "libs/common/entities/servers/tsconfig.spec.json",
@@ -220,10 +208,10 @@
       "root": "libs/common/entities/steam",
       "sourceRoot": "libs/common/entities/steam/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": ["libs/common/entities/steam/tsconfig.lib.json", "libs/common/entities/steam/tsconfig.spec.json"],
@@ -231,7 +219,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/entities/steam/jest.config.js",
             "tsConfig": "libs/common/entities/steam/tsconfig.spec.json",
@@ -247,16 +235,16 @@
       "root": "libs/common/interfaces",
       "sourceRoot": "libs/common/interfaces/src",
       "prefix": "supremegaming",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/common/interfaces/src/**/*.ts", "libs/common/interfaces/src/**/*.html"]
           },
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/common/interfaces"],
           "options": {
             "jestConfig": "libs/common/interfaces/jest.config.js",
@@ -271,16 +259,16 @@
       "root": "libs/common/ngx",
       "sourceRoot": "libs/common/ngx/src",
       "prefix": "supremegaming",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/common/ngx/src/**/*.ts", "libs/common/ngx/src/**/*.html"]
           },
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/common/ngx"],
           "options": {
             "jestConfig": "libs/common/ngx/jest.config.js",
@@ -295,10 +283,10 @@
       "sourceRoot": "apps/conan-cacher/src",
       "projectType": "application",
       "prefix": "conan-cacher",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "build": {
-          "builder": "@nrwl/node:webpack",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "outputPath": "dist/apps/conan-cacher",
             "main": "apps/conan-cacher/src/main.ts",
@@ -321,13 +309,13 @@
           "outputs": ["{options.outputPath}"]
         },
         "serve": {
-          "builder": "@nrwl/node:node",
+          "executor": "@nrwl/node:node",
           "options": {
             "buildTarget": "conan-cacher:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": ["apps/conan-cacher/tsconfig.app.json", "apps/conan-cacher/tsconfig.spec.json"],
@@ -335,7 +323,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/conan-cacher/jest.config.js",
             "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
@@ -351,16 +339,16 @@
       "root": "libs/data-access",
       "sourceRoot": "libs/data-access/src",
       "prefix": "supremegaming",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/data-access/src/**/*.ts", "libs/data-access/src/**/*.html"]
           },
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/data-access"],
           "options": {
             "jestConfig": "libs/data-access/jest.config.js",
@@ -375,10 +363,10 @@
       "sourceRoot": "apps/data-api-nest/src",
       "projectType": "application",
       "prefix": "data-api-nest",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "build": {
-          "builder": "@nrwl/node:webpack",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "outputPath": "dist/apps/data-api-nest",
             "main": "apps/data-api-nest/src/main.ts",
@@ -401,13 +389,13 @@
           "outputs": ["{options.outputPath}"]
         },
         "serve": {
-          "builder": "@nrwl/node:node",
+          "executor": "@nrwl/node:node",
           "options": {
             "buildTarget": "data-api-nest:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "tsConfig": ["apps/data-api-nest/tsconfig.app.json", "apps/data-api-nest/tsconfig.spec.json"],
@@ -415,7 +403,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/data-api-nest/jest.config.js",
             "tsConfig": "apps/data-api-nest/tsconfig.spec.json",
@@ -431,16 +419,16 @@
       "root": "libs/pages/public",
       "sourceRoot": "libs/pages/public/src",
       "prefix": "supremegaming",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/pages/public/src/**/*.ts", "libs/pages/public/src/**/*.html"]
           },
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/pages/public"],
           "options": {
             "jestConfig": "libs/pages/public/jest.config.js",
@@ -460,9 +448,9 @@
       "root": "apps/supremegaming-angular",
       "sourceRoot": "apps/supremegaming-angular/src",
       "prefix": "supremegaming",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/supremegaming-angular",
             "index": "apps/supremegaming-angular/src/index.html",
@@ -506,7 +494,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "supremegaming-angular:build"
           },
@@ -517,13 +505,13 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "supremegaming-angular:build"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
               "apps/supremegaming-angular/tsconfig.app.json",
@@ -534,7 +522,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/supremegaming-angular"],
           "options": {
             "jestConfig": "apps/supremegaming-angular/jest.config.js",
@@ -548,9 +536,9 @@
       "root": "apps/supremegaming-angular-e2e",
       "sourceRoot": "apps/supremegaming-angular-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/supremegaming-angular-e2e/cypress.json",
             "tsConfig": "apps/supremegaming-angular-e2e/tsconfig.e2e.json",
@@ -563,7 +551,7 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/supremegaming-angular-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/supremegaming-angular-e2e/**/*"]
@@ -578,16 +566,16 @@
       "root": "libs/ui",
       "sourceRoot": "libs/ui/src",
       "prefix": "supremegaming",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
           },
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/ui"],
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
@@ -601,15 +589,15 @@
       "root": "libs/utilities/database",
       "sourceRoot": "libs/utilities/database/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/utilities/database/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/utilities/database"],
           "options": {
             "jestConfig": "libs/utilities/database/jest.config.js",
@@ -623,15 +611,15 @@
       "root": "libs/utilities/rcon",
       "sourceRoot": "libs/utilities/rcon/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/utilities/rcon/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/utilities/rcon"],
           "options": {
             "jestConfig": "libs/utilities/rcon/jest.config.js",
