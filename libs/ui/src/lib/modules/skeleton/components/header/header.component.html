@@ -81,6 +81,7 @@
                   </ul>
                 </div>
               </li>
+
               <li class="descriptive-menu-item">
                 <a [routerLink]="['/games/ark']" routerLinkActive="router-link-active">
                   <span>Ark: Survival Evolved</span>
@@ -121,33 +122,34 @@
                   </ul>
                 </div>
               </li>
+
               <li class="descriptive-menu-item">
-                <a [routerLink]="['/games/ark-pf']" routerLinkActive="router-link-active">
-                  <span>Ark: Primal Fear</span>
+                <a [routerLink]="['/games/ark-omega']" routerLinkActive="router-link-active">
+                  <span>Ark: Omega</span>
                   <span>A hardcore ark experience for those looking for a challenge.</span>
                 </a>
                 <div class="sub-sub-menu">
                   <ul>
                     <li>
-                      <a [routerLink]="['/games/ark-pf/rules']">
+                      <a [routerLink]="['/games/ark-omega/rules']">
                         <span>Rules</span>
-                        <span>In-game rules for Ark: PF</span>
+                        <span>In-game rules for Ark: Omega</span>
                       </a>
                     </li>
                     <li>
-                      <a [routerLink]="['/games/ark-pf/players-and-tribes']">
+                      <a [routerLink]="['/games/ark-omega/players-and-tribes']">
                         <span>Players &amp; Tribes</span>
                         <span>Learn about tribe membership</span>
                       </a>
                     </li>
                     <li>
-                      <a [routerLink]="['/games/ark-pf/mods']">
+                      <a [routerLink]="['/games/ark-omega/mods']">
                         <span>Mods</span>
                         <span>Mod collection featured in-game</span>
                       </a>
                     </li>
                     <li>
-                      <a [routerLink]="['/games/ark-pf/plugins']">
+                      <a [routerLink]="['/games/ark-omega/plugins']">
                         <span>Plugins</span>
                         <span>Shop, kits, cross-ark chat, and more!</span>
                       </a>
@@ -155,6 +157,7 @@
                   </ul>
                 </div>
               </li>
+
               <li class="descriptive-menu-item">
                 <a [routerLink]="['/games/conan']" routerLinkActive="router-link-active">
                   <span>Conan Exiles </span>
@@ -168,22 +171,60 @@
                         <span>The law of the sands</span>
                       </a>
                     </li>
+
                     <li>
-                      <a [routerLink]="['/games/conan/players-and-tribes']">
-                        <span>Players &amp; Clans</span>
-                        <span>Learn about clan membership</span>
+                      <a [routerLink]="['/games/conan/settings']">
+                        <span>Settings</span>
+                        <span>Server configuration</span>
                       </a>
                     </li>
+
                     <li>
                       <a [routerLink]="['/games/conan/mods']">
                         <span>Mods</span>
                         <span>Mod collection featured in-game</span>
                       </a>
                     </li>
+
+                    <!-- <li>
+                      <a [routerLink]="['/games/conan/players-and-tribes']">
+                        <span>Players &amp; Clans</span>
+                        <span>Learn about clan membership</span>
+                      </a>
+                    </li> -->
+                  </ul>
+                </div>
+              </li>
+
+              <li class="descriptive-menu-item">
+                <a [routerLink]="['/games/space-engineers']" routerLinkActive="router-link-active">
+                  <span>Space Engineers</span>
+                  <span>Legos...in space</span>
+                </a>
+                <div class="sub-sub-menu">
+                  <ul>
                     <li>
-                      <a [routerLink]="['/games/conan/pippi']">
-                        <span>Pippi</span>
-                        <span>Kits, currency, ranks, and more!</span>
+                      <a [routerLink]="['/games/space-engineers/rules']">
+                        <span>Rules</span>
+                        <span>Avoid getting ejected into space</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/space-engineers/settings']">
+                        <span>Settings</span>
+                        <span>Our special sauce</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/space-engineers/mods']">
+                        <span>Mods</span>
+                        <span>Mod collection featured in-game</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/games/space-engineers/faqs']">
+                        <span>FAQ's</span>
+                        <span>Most common questions about our server</span>
                       </a>
                     </li>
                   </ul>
