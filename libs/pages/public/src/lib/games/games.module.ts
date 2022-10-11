@@ -46,6 +46,15 @@ const routes: Routes = [
         },
       },
       {
+        path: 'ark-omega',
+        loadChildren: () => import('./modules/ark-omega/ark-omega.module').then((m) => m.ArkOmegaModule),
+        data: {
+          meta: {
+            title: 'Supreme Ark Omega',
+          },
+        },
+      },
+      {
         path: 'conan',
         loadChildren: () => import('./modules/conan/conan.module').then((m) => m.ConanModule),
         data: {
