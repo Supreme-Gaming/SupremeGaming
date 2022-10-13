@@ -94,6 +94,27 @@ export const servers = [
   },
   {
     host: 'play.supremegaming.gg',
+    port: 28012,
+    rcon_port: 18012,
+    map_name: 'Omega Fjordur PVE',
+    game: 'ark-omega',
+  },
+  {
+    host: 'play.supremegaming.gg',
+    port: 28014,
+    rcon_port: 18014,
+    map_name: 'Omega Scorched PVE',
+    game: 'ark-omega',
+  },
+  {
+    host: 'play.supremegaming.gg',
+    port: 28016,
+    rcon_port: 18016,
+    map_name: 'Omega Genesis II PVE',
+    game: 'ark-omega',
+  },
+  {
+    host: 'play.supremegaming.gg',
     port: 28024,
     rcon_port: 18024,
     map_name: 'PF Crystal Isles PVE',
