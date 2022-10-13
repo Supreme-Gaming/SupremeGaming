@@ -136,6 +136,13 @@ export const servers = [
   },
   {
     host: 'play.supremegaming.gg',
+    port: 29017,
+    rcon_port: 29019,
+    map_name: 'Supreme Space Engineers',
+    game: 'space-engineers',
+  },
+  {
+    host: 'play.supremegaming.gg',
     port: 57500,
     rcon_port: 17000,
     map_name: 'A1',

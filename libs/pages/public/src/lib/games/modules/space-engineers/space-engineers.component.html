@@ -1,0 +1,17 @@
+<div class="column12">
+  <supremegaming-sub-header>
+    <div class="left-content">
+      <a [routerLink]="['./']" routerLinkActive="active-sub-menu" [routerLinkActiveOptions]="{exact: true}"
+        >Space Engineers
+      </a>
+      <a [routerLink]="['rules']" routerLinkActive="active-sub-menu">Rules</a>
+      <a [routerLink]="['settings']" routerLinkActive="active-sub-menu">Settings</a>
+      <a [routerLink]="['mods']" routerLinkActive="active-sub-menu">Mods</a>
+      <a [routerLink]="['faqs']" routerLinkActive="active-sub-menu">FAQs</a>
+    </div>
+  </supremegaming-sub-header>
+</div>
+
+<div class="column12">
+  <router-outlet></router-outlet>
+</div>

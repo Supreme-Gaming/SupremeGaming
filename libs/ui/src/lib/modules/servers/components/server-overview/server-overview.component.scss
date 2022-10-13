@@ -26,6 +26,10 @@
 }
 
 .info {
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(flex-start);
+
   .server-connection {
     @include flexbox();
     @include flex-direction(row);

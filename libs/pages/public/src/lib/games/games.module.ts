@@ -63,6 +63,15 @@ const routes: Routes = [
           },
         },
       },
+      {
+        path: 'space-engineers',
+        loadChildren: () => import('./modules/space-engineers/space-engineers.module').then((m) => m.SpaceEngineersModule),
+        data: {
+          meta: {
+            title: 'Supreme Space Engineers',
+          },
+        },
+      },
     ],
   },
 ];

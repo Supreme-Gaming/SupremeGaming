@@ -53,7 +53,7 @@ const routes: Routes = [
             title: 'Conan Mods',
           },
         },
-      }
+      },
     ],
   },
 ];
