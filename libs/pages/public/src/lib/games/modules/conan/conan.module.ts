@@ -53,16 +53,7 @@ const routes: Routes = [
             title: 'Conan Mods',
           },
         },
-      },
-      {
-        path: 'pippi',
-        loadChildren: () => import('./modules/conan-pippi/conan-pippi.module').then((m) => m.ConanPippiModule),
-        data: {
-          meta: {
-            title: 'Conan Pippi',
-          },
-        },
-      },
+      }
     ],
   },
 ];
