@@ -14,6 +14,9 @@ export class ServerListComponent {
   @Input()
   public columnWidth: number;
 
+  @Input()
+  public queryStatus = true;
+
   @HostBinding('style.gridTemplateColumns')
   public get gridColumns() {
     return `repeat(${this.columnWidth || 3}, 1fr)`;

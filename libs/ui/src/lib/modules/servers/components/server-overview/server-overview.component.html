@@ -1,7 +1,7 @@
 <div class="info">
   <div class="status-container">
     <p class="server-name">{{server.map_name}}</p>
-    <div class="server-status">
+    <div class="server-status" *ngIf="queryStatus">
       <div [ngSwitch]="status | async">
         <div *ngSwitchCase="'online'"><span title="Server is online" class="status-dot online"></span></div>
         <div *ngSwitchCase="'offline'"><span title="Server is offline" class="status-dot offline"></span></div>
@@ -10,6 +10,7 @@
       </div>
     </div>
   </div>
+
   <div class="server-connection">
     <p class="server-ip"><a [href]="connection">{{server.host}}:{{server.port}}</a></p>
     <supremegaming-copy [text]="server.host + ':' + server.port"></supremegaming-copy>

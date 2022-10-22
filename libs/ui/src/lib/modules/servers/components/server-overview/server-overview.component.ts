@@ -15,6 +15,9 @@ export class ServerOverviewComponent implements OnInit {
   @Input()
   public server: GameServer;
 
+  @Input()
+  public queryStatus = true;
+
   public connection: SafeUrl;
 
   public status: Observable<string>;
