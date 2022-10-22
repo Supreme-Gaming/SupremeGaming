@@ -16,6 +16,7 @@
     "data-api-nest": "apps/data-api-nest",
     "pages-public": "libs/pages/public",
     "scss": "libs/sass",
+    "supreme-discord-bot-node": "apps/supreme-discord-bot-node",
     "supremegaming-angular": "apps/supremegaming-angular",
     "supremegaming-angular-e2e": "apps/supremegaming-angular-e2e",
     "ui": "libs/ui",
