@@ -14,6 +14,7 @@
     "conan-cacher": "apps/conan-cacher",
     "data-access": "libs/data-access",
     "data-api-nest": "apps/data-api-nest",
+    "discord-bootstrap": "libs/discord/bootstrap",
     "pages-public": "libs/pages/public",
     "scss": "libs/sass",
     "supreme-discord-bot-node": "apps/supreme-discord-bot-node",
