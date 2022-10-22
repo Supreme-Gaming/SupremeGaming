@@ -1,0 +1,23 @@
+{
+  "root": "libs/discord/ticket",
+  "sourceRoot": "libs/discord/ticket/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/discord/ticket/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/discord/ticket"],
+      "options": {
+        "jestConfig": "libs/discord/ticket/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
