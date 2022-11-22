@@ -15,6 +15,7 @@
     "data-access": "libs/data-access",
     "data-api-nest": "apps/data-api-nest",
     "discord-bootstrap": "libs/discord/bootstrap",
+    "discord-templates": "libs/discord/templates",
     "discord-ticket": "libs/discord/ticket",
     "pages-public": "libs/pages/public",
     "scss": "libs/sass",
