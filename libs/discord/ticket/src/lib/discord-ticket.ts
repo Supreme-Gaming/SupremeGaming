@@ -32,7 +32,7 @@ import { Ticket } from './features/discord-tickets.feature';
 import { TicketMessage } from './features/discord-ticket-message.feature';
 import { Dialog } from './features/dialog.feature';
 
-import { messages } from '../../templateMessages';
+import { CCC_INSTRUCTIONS_TEMPLATE } from '@supremegaming/discord/templates';
 
 export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUpdate, OnMessageDelete, OnInteractionCreate {
   constructor() {
@@ -85,7 +85,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         } else if (interaction.customId === 'ticket_dismiss_button') {
           await message.delete();
         } else if (interaction.customId === 'ccc_print_button') {
-          interaction.reply(messages.ccc);
+          interaction.reply(CCC_INSTRUCTIONS_TEMPLATE);
         }
       }
     }
