@@ -53,7 +53,6 @@
     "public-ip": "^4.0.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.1.0",
-    "sqlite3": "^5.0.0",
     "srcds-rcon": "git@github.com:Proantagonist/SupremeArkSrcdsRcon.git",
     "tslib": "^2.0.0",
     "typeorm": "^0.2.25",
