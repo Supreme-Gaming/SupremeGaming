@@ -10,7 +10,10 @@
         "outputPath": "dist/apps/supreme-discord-ticket-bot-node",
         "main": "apps/supreme-discord-ticket-bot-node/src/main.ts",
         "tsConfig": "apps/supreme-discord-ticket-bot-node/tsconfig.app.json",
-        "assets": ["apps/supreme-discord-ticket-bot-node/src/assets"],
+        "assets": [
+          "apps/supreme-discord-ticket-bot-node/src/assets",
+          "apps/supreme-discord-community-bot-node/src/Dockerfile"
+        ],
         "generatePackageJson": true
       },
       "configurations": {
