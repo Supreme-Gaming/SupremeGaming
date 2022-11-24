@@ -14,13 +14,13 @@ export class FunDiscordModule implements SlashCommands, OnInteractionCreate {
             .setName('cmd_choice')
             .setDescription('This needs a description. Go figure.')
             .setRequired(true)
-            .addChoices([
-              ["It's too late", 'apologize'],
-              ['Never gonna', 'giveYouUp'],
-              ['If you like it', 'putARingOnIt'],
-              ['Am I a real boy?', 'creator'],
-              ['LF: Passive pen', 'passivePen'],
-            ]);
+            .addChoices(
+              { name: "It's too late", value: 'apologize' },
+              { name: 'Never gonna', value: 'giveYouUp' },
+              { name: 'If you like it', value: 'putARingOnIt' },
+              { name: 'Am I real boy?', value: 'creator' },
+              { name: 'LF: Passive pen', value: 'passivePen' }
+            );
         }),
     ];
   }
