@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'supreme-discord-bot-node',
+  displayName: 'supreme-discord-ticket-bot-node',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/supreme-discord-bot-node',
+  coverageDirectory: '../../coverage/apps/supreme-discord-ticket-bot-node',
 };
