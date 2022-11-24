@@ -66,12 +66,28 @@ export class DiscordClientBootstrapper {
 
         // Register slash commands after all module listeners have been initialized.
         if (slashCommands.length > 0 && index === arr.length - 1) {
-          this._registerSlashCommands(
-            options.options.clientId,
-            options.options.guildId,
-            options.options.clientToken,
-            slashCommands
-          );
+          if (process.env.DISCORD_REGISTER_SLASH_COMMANDS === 'false') {
+            console.warn('Modules have configured slash commands but slash command registration is disabled.');
+          } else if (
+            process.env.DISCORD_REGISTER_SLASH_COMMANDS === 'true' ||
+            process.env.DISCORD_REGISTER_SLASH_COMMANDS === undefined
+          ) {
+            // Commands should be registered implicitly unless explicitly disabled.
+            if (
+              options.options.clientId === undefined ||
+              options.options.guildId === undefined ||
+              options.options.clientToken === undefined
+            ) {
+              console.error('Slash command registration is enabled but required environment variables are missing.');
+            } else {
+              this._registerSlashCommands(
+                options.options.clientId,
+                options.options.guildId,
+                options.options.clientToken,
+                slashCommands
+              );
+            }
+          }
         }
 
         console.log(`Loaded ${moduleInstance.constructor.name}.`);
