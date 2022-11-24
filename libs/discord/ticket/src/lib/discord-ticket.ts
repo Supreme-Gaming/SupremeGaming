@@ -16,7 +16,7 @@ import {
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
-import { createConnection } from 'typeorm';
+import { createConnection, ConnectionOptionsReader } from 'typeorm';
 
 import {
   OnInteractionCreate,
@@ -33,10 +33,24 @@ import { TicketMessage } from './features/discord-ticket-message.feature';
 import { Dialog } from './features/dialog.feature';
 
 import { CCC_INSTRUCTIONS_TEMPLATE } from '@supremegaming/discord/templates';
+import { TicketEntity } from './entities/ticket.entity';
+import { TicketAttachment } from './entities/ticket-attachment.entity';
+import { TicketConfiguration } from './entities/ticket-configuration.entity';
+import { TicketMessageEntity } from './entities/ticket-message.entity';
 
 export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUpdate, OnMessageDelete, OnInteractionCreate {
   constructor() {
-    createConnection();
+    this.connect();
+  }
+
+  public connect() {
+    const connectionOptionsReader = new ConnectionOptionsReader();
+    connectionOptionsReader.get('default').then((connectionOptions) => {
+      createConnection({
+        ...connectionOptions,
+        entities: [TicketEntity, TicketAttachment, TicketConfiguration, TicketMessageEntity],
+      });
+    });
   }
 
   public commands(): SlashCommandTypes {

@@ -43,3 +43,5 @@ Thumbs.db
 ormconfig.ts
 secrets.ts
 *.env
+.env.*
+!.env.sample
