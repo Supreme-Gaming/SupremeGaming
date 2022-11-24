@@ -19,6 +19,7 @@
     "discord-ticket": "libs/discord/ticket",
     "pages-public": "libs/pages/public",
     "scss": "libs/sass",
+    "supreme-discord-community-bot-node": "apps/supreme-discord-community-bot-node",
     "supreme-discord-ticket-bot-node": "apps/supreme-discord-ticket-bot-node",
     "supremegaming-angular": "apps/supremegaming-angular",
     "supremegaming-angular-e2e": "apps/supremegaming-angular-e2e",

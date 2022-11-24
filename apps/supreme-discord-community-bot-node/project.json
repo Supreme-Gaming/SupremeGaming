@@ -1,0 +1,52 @@
+{
+  "root": "apps/supreme-discord-community-bot-node",
+  "sourceRoot": "apps/supreme-discord-community-bot-node/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/supreme-discord-community-bot-node",
+        "main": "apps/supreme-discord-community-bot-node/src/main.ts",
+        "tsConfig": "apps/supreme-discord-community-bot-node/tsconfig.app.json",
+        "assets": ["apps/supreme-discord-community-bot-node/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/supreme-discord-community-bot-node/src/environments/environment.ts",
+              "with": "apps/supreme-discord-community-bot-node/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "supreme-discord-community-bot-node:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/supreme-discord-community-bot-node/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/supreme-discord-community-bot-node"],
+      "options": {
+        "jestConfig": "apps/supreme-discord-community-bot-node/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
