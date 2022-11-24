@@ -1,11 +1,3 @@
-# discord-templates
+# Discord Templates
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test discord-templates` to execute the unit tests via [Jest](https://jestjs.io).
-
-## Running lint
-
-Run `nx lint discord-templates` to execute the lint via [ESLint](https://eslint.org/).
+Supreme Gaming templates used in the ticket and community discord bot libs.
