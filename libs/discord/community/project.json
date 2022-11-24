@@ -1,0 +1,23 @@
+{
+  "root": "libs/discord/community",
+  "sourceRoot": "libs/discord/community/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/discord/community/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/discord/community"],
+      "options": {
+        "jestConfig": "libs/discord/community/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

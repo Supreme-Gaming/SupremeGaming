@@ -27,6 +27,7 @@
       "@supremegaming/common/ngx": ["libs/common/ngx/src/index.ts"],
       "@supremegaming/data-access": ["libs/data-access/src/index.ts"],
       "@supremegaming/discord/bootstrap": ["libs/discord/bootstrap/src/index.ts"],
+      "@supremegaming/discord/community": ["libs/discord/community/src/index.ts"],
       "@supremegaming/discord/templates": ["libs/discord/templates/src/index.ts"],
       "@supremegaming/discord/ticket": ["libs/discord/ticket/src/index.ts"],
       "@supremegaming/pages/public": ["libs/pages/public/src/index.ts"],
