@@ -42,3 +42,6 @@ Thumbs.db
 # Sensitives
 ormconfig.ts
 secrets.ts
+*.env
+.env.*
+!.env.sample
