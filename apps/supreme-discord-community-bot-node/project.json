@@ -10,7 +10,8 @@
         "outputPath": "dist/apps/supreme-discord-community-bot-node",
         "main": "apps/supreme-discord-community-bot-node/src/main.ts",
         "tsConfig": "apps/supreme-discord-community-bot-node/tsconfig.app.json",
-        "assets": ["apps/supreme-discord-community-bot-node/src/assets"]
+        "assets": ["apps/supreme-discord-community-bot-node/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
