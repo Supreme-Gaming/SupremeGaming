@@ -1,5 +1,5 @@
 {
-  "root": "apps/supreme-discord-ticket-bot-node",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/supreme-discord-ticket-bot-node/src",
   "projectType": "application",
   "targets": {

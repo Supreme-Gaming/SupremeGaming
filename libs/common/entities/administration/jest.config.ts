@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'common-entities-administration',
 
   globals: {
@@ -11,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../../coverage/libs/common/entities/administration',
-  preset: '../../../../jest.preset.ts',
+  preset: '../../../../jest.preset.js',
 };

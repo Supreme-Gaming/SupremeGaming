@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { combineLatest, from, Observable, of } from 'rxjs';
 import {
   debounceTime,
@@ -33,11 +33,11 @@ export class ArkLootTableComponent implements OnInit {
   public crateNames: Observable<KeyedArkSupplyDropNameDictionary>;
   public mappedCrates: Observable<Array<SimplifiedArkSupplyDropTableCrate>>;
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   private searchText: Observable<string>;
 
-  constructor(private ls: ArkSupplyDropsService, private fb: FormBuilder) {}
+  constructor(private ls: ArkSupplyDropsService, private fb: UntypedFormBuilder) {}
 
   public ngOnInit(): void {
     // The form control is used to access the form control API to easily detect
@@ -96,35 +96,33 @@ export class ArkLootTableComponent implements OnInit {
     this.mappedCrates = combineLatest([this.crates, this.searchText, this.itemDictionary, this.crateNames]).pipe(
       switchMap(([crates, matchText, dict, names]) => {
         return from(crates).pipe(
-          switchMap(
-            (crate): Observable<SimplifiedArkSupplyDropTableCrate> => {
-              const mappedItems = crate.ItemEntries.reduce((items, item) => {
-                const mappedItem = {
-                  source: item,
-                  mapped: dict[item.ItemClassStrings],
-                };
+          switchMap((crate): Observable<SimplifiedArkSupplyDropTableCrate> => {
+            const mappedItems = crate.ItemEntries.reduce((items, item) => {
+              const mappedItem = {
+                source: item,
+                mapped: dict[item.ItemClassStrings],
+              };
 
-                // If the search term is an empty string, no filtering should take place.
-                if (matchText === '') {
+              // If the search term is an empty string, no filtering should take place.
+              if (matchText === '') {
+                items.push(mappedItem);
+              } else {
+                const friendlyName = dict[item.ItemClassStrings].ItemName.toLowerCase();
+                const searchTermIsInName = friendlyName.includes(matchText);
+
+                if (searchTermIsInName) {
                   items.push(mappedItem);
-                } else {
-                  const friendlyName = dict[item.ItemClassStrings].ItemName.toLowerCase();
-                  const searchTermIsInName = friendlyName.includes(matchText);
-
-                  if (searchTermIsInName) {
-                    items.push(mappedItem);
-                  }
                 }
+              }
 
-                return items;
-              }, []);
+              return items;
+            }, []);
 
-              return of({
-                SupplyCrateClassString: names[crate.SupplyCrateClassString].name,
-                ItemEntries: mappedItems,
-              });
-            }
-          ),
+            return of({
+              SupplyCrateClassString: names[crate.SupplyCrateClassString].name,
+              ItemEntries: mappedItems,
+            });
+          }),
           filter((crate) => {
             return crate.ItemEntries.length > 0;
           }),

@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'discord-community',
 
   globals: {
@@ -12,5 +13,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../coverage/libs/discord/community',
-  preset: '../../../jest.preset.ts',
+  preset: '../../../jest.preset.js',
 };

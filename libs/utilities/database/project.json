@@ -1,5 +1,5 @@
 {
-  "root": "libs/utilities/database",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/utilities/database/src",
   "projectType": "library",
   "targets": {

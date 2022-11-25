@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'ark-cacher-node',
 
   globals: {
@@ -11,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/ark-cacher-node',
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };

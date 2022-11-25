@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, shareReplay, switchMap } from 'rxjs/operators';
 
@@ -19,13 +19,13 @@ export abstract class AbstractSearchListComponent<D> extends AbstractResourceTab
   @Input()
   public placeholder: string;
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   public searchData: Observable<Array<D>>;
 
   public searchTerm: Observable<string>;
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: UntypedFormBuilder) {
     super();
   }
 

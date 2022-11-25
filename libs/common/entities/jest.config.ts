@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   name: 'common-entities',
   preset: '../../../jest.config.js',
   globals: {

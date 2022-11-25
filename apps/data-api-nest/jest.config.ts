@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   name: 'data-api-nest',
   preset: '../../jest.config.js',
   globals: {

@@ -1,5 +1,5 @@
 {
-  "root": "libs/discord/templates",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/discord/templates/src",
   "projectType": "library",
   "targets": {

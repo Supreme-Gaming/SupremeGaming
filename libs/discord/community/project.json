@@ -1,5 +1,5 @@
 {
-  "root": "libs/discord/community",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/discord/community/src",
   "projectType": "library",
   "targets": {

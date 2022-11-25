@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   name: 'conan-cacher',
   preset: '../../jest.config.js',
   globals: {

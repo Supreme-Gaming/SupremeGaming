@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'supreme-discord-community-bot-node',
 
   globals: {
@@ -12,5 +13,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/supreme-discord-community-bot-node',
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };

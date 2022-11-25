@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'supremegaming-angular',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
@@ -16,5 +17,5 @@ module.exports = {
     'jest-preset-angular/build/serializers/html-comment',
   ],
   transform: { '^.+\\.(ts|js|html)$': 'jest-preset-angular' },
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };
