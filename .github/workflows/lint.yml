@@ -1,22 +1,18 @@
-name: Build Affected
+name: Lint Affected
 
 on:
-  workflow_run:
-    workflows: [Lint Affected]
-    types:
-      - completed
+  push:
 
 jobs:
-  build:
-    name: Build
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: $
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -33,11 +29,5 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci --legacy-peer-deps
 
-      - name: Build Affected
-        run: npx nx affected:build --configuration=production --exclude=ark-cacher-node,conan-cacher,data-api-nest  --base=origin/development --parallel=2
-
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ github.sha }}
-          path: dist/
+      - name: Lint Affected
+        run: npx nx affected:lint --configuration=production --exclude=ark-cacher-node,conan-cacher,data-api-nest  --base=origin/development --parallel=2
