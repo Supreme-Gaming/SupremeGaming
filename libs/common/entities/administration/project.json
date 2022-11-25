@@ -1,5 +1,6 @@
 {
-  "root": "libs/common/entities/administration",
+  "name": "common-entities-administration",
+  "$schema": "..\\..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/common/entities/administration/src",
   "projectType": "library",
   "targets": {
@@ -7,13 +8,14 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/common/entities/administration/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/common/entities/administration"],
+      "outputs": ["{workspaceRoot}/coverage/libs/common/entities/administration"],
       "options": {
-        "jestConfig": "libs/common/entities/administration/jest.config.js",
+        "jestConfig": "libs/common/entities/administration/jest.config.ts",
         "passWithNoTests": true
       }
     }

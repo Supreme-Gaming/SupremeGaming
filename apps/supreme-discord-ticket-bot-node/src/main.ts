@@ -1,6 +1,12 @@
 import { DiscordClientBootstrapper } from '@supremegaming/discord/bootstrap';
 import { TicketClient } from '@supremegaming/discord/ticket';
 
+// The following import is here only because it needs to be imported so that it can be bundled
+// else it will be tree shaken out of the bundle
+//
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as mysql from 'mysql';
+
 if (
   process.env.TYPEORM_CONNECTION === undefined ||
   process.env.TYPEORM_HOST === undefined ||

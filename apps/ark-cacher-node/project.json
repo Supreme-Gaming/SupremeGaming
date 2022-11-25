@@ -1,16 +1,20 @@
 {
-  "root": "apps/ark-cacher-node",
+  "name": "ark-cacher-node",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/ark-cacher-node/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/ark-cacher-node",
         "main": "apps/ark-cacher-node/src/main.ts",
         "tsConfig": "apps/ark-cacher-node/tsconfig.app.json",
-        "assets": ["apps/ark-cacher-node/src/assets"]
+        "assets": ["apps/ark-cacher-node/src/assets"],
+        "generatePackageJson": true,
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
@@ -27,7 +31,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:execute",
+      "executor": "@nrwl/node:node",
       "options": {
         "buildTarget": "ark-cacher-node:build",
         "port": 7777
@@ -37,13 +41,14 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/ark-cacher-node/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/ark-cacher-node"],
+      "outputs": ["{workspaceRoot}/coverage/apps/ark-cacher-node"],
       "options": {
-        "jestConfig": "apps/ark-cacher-node/jest.config.js",
+        "jestConfig": "apps/ark-cacher-node/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,6 +1,7 @@
 {
+  "name": "data-access",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "projectType": "library",
-  "root": "libs/data-access",
   "sourceRoot": "libs/data-access/src",
   "prefix": "supremegaming",
   "targets": {
@@ -13,9 +14,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/data-access"],
+      "outputs": ["{workspaceRoot}/coverage/libs/data-access"],
       "options": {
-        "jestConfig": "libs/data-access/jest.config.js",
+        "jestConfig": "libs/data-access/jest.config.ts",
         "passWithNoTests": true
       }
     }

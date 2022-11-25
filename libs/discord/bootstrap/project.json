@@ -1,20 +1,21 @@
 {
-  "root": "libs/discord/bootstrap",
+  "name": "discord-bootstrap",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/discord/bootstrap/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/discord/bootstrap/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/discord/bootstrap"],
+      "outputs": ["{workspaceRoot}/coverage/libs/discord/bootstrap"],
       "options": {
-        "jestConfig": "libs/discord/bootstrap/jest.config.js",
+        "jestConfig": "libs/discord/bootstrap/jest.config.ts",
         "passWithNoTests": true
       }
     }

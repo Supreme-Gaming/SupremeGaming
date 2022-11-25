@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'supremegaming-ark-shop-rewards',
   templateUrl: './ark-shop-rewards.component.html',
   styleUrls: ['./ark-shop-rewards.component.scss'],
 })
-export class ArkShopRewardsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class ArkShopRewardsComponent {}

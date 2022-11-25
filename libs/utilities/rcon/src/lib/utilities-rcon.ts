@@ -1,7 +1,5 @@
 import * as Rcon from 'srcds-rcon';
 
-import { HostServer } from '@supremegaming/common/entities/servers';
-
 export class RCONServer {
   public host: string;
   public rconport: number;
@@ -36,8 +34,16 @@ export class RCONServer {
   }
 }
 
+// This is here purely because there is a circular dependency between the entities and the utilities
+export interface IHostServer {
+  name: string;
+  ip: string;
+  status: 'register' | string;
+  key: string;
+}
+
 export interface RconServerConnectionOptions {
-  host: HostServer;
+  host: IHostServer;
   rconport: number;
   rconpass: string;
   game: string;

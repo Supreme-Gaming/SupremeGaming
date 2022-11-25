@@ -23,11 +23,11 @@ export class EnvironmentService {
     } else {
       if (optional) {
         console.log(
-          `Environment does not contain "${key}}" in environment. Key is marked optional. Execution is not halted.`
+          `Environment does not contain ${String(key)}} in environment. Key is marked optional. Execution is not halted.`
         );
         return;
       } else {
-        throw new Error(`Environment does not have "${key}" in environment. Halting execution.`);
+        throw new Error(`Environment does not have ${String(key)} in environment. Halting execution.`);
       }
     }
   }

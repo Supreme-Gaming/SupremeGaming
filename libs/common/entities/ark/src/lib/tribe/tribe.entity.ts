@@ -13,9 +13,9 @@ export class ArkTribe extends GuidIdentity {
   @Column()
   public name: string;
 
-  @OneToMany((type) => ArkPlayer, (player) => player.tribe)
+  @OneToMany(() => ArkPlayer, (player) => player.tribe)
   public players: ArkPlayer[];
 
-  @ManyToOne((type) => GameServer)
+  @ManyToOne(() => GameServer)
   public server: GameServer;
 }

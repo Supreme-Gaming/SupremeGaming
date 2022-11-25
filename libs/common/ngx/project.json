@@ -1,6 +1,7 @@
 {
+  "name": "common-ngx",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "projectType": "library",
-  "root": "libs/common/ngx",
   "sourceRoot": "libs/common/ngx/src",
   "prefix": "supremegaming",
   "targets": {
@@ -13,9 +14,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/common/ngx"],
+      "outputs": ["{workspaceRoot}/coverage/libs/common/ngx"],
       "options": {
-        "jestConfig": "libs/common/ngx/jest.config.js",
+        "jestConfig": "libs/common/ngx/jest.config.ts",
         "passWithNoTests": true
       }
     }

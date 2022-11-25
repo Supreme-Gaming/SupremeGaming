@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 import { GameServerTribe } from '@supremegaming/common/interfaces';
 import { TribesService } from '@supremegaming/data-access';
@@ -12,7 +12,7 @@ import { AbstractSearchListComponent } from '../abstract-search-list/abstract-se
   styleUrls: ['./tribe-search-list.component.scss'],
 })
 export class TribeSearchListComponent extends AbstractSearchListComponent<GameServerTribe> implements OnInit {
-  constructor(public readonly fb: FormBuilder, public readonly ts: TribesService) {
+  constructor(public readonly fb: UntypedFormBuilder, public readonly ts: TribesService) {
     super(fb);
   }
 

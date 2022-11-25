@@ -27,5 +27,6 @@
     "ui": "libs/ui",
     "utilities-database": "libs/utilities/database",
     "utilities-rcon": "libs/utilities/rcon"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

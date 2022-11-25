@@ -1,5 +1,6 @@
 {
-  "root": "libs/utilities/database",
+  "name": "utilities-database",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/utilities/database/src",
   "projectType": "library",
   "targets": {
@@ -7,13 +8,14 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/utilities/database/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/utilities/database"],
+      "outputs": ["{workspaceRoot}/coverage/libs/utilities/database"],
       "options": {
-        "jestConfig": "libs/utilities/database/jest.config.js",
+        "jestConfig": "libs/utilities/database/jest.config.ts",
         "passWithNoTests": true
       }
     }

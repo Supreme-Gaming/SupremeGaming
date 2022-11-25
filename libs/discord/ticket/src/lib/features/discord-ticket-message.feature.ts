@@ -153,8 +153,10 @@ export class TicketMessage {
    */
   private async getExistingDbTicket() {
     return await getRepository(TicketEntity).findOne({
-      serverId: this._serverId,
-      channelId: this._channelId,
+      where: {
+        serverId: this._serverId,
+        channelId: this._channelId,
+      },
     });
   }
 
@@ -170,8 +172,10 @@ export class TicketMessage {
    */
   private async getExistingDbMessage() {
     return this._repo.findOne({
-      serverId: this._serverId,
-      messageId: this._messageId,
+      where: {
+        serverId: this._serverId,
+        messageId: this._messageId,
+      },
     });
   }
 }

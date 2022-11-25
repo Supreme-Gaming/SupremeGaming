@@ -1,5 +1,6 @@
 {
-  "root": "libs/api",
+  "name": "api",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/api/src",
   "projectType": "library",
   "targets": {
@@ -7,13 +8,14 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/api/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api"],
       "options": {
-        "jestConfig": "libs/api/jest.config.js",
+        "jestConfig": "libs/api/jest.config.ts",
         "passWithNoTests": true
       }
     }

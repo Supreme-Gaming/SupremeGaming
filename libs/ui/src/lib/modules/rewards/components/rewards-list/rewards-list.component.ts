@@ -22,7 +22,7 @@ import {
   RewardShopItemGroup,
 } from '@supremegaming/common/interfaces';
 import { RewardsService } from '@supremegaming/data-access';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'supremegaming-rewards-list',
@@ -39,10 +39,14 @@ export class RewardsListComponent implements OnInit {
   public kits: Observable<Array<RewardKitGroup>>;
   public items: Observable<Array<RewardShopItemGroup>>;
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   public searchTerm: Observable<string>;
 
-  constructor(private env: EnvironmentService, private readonly rs: RewardsService, private readonly fb: FormBuilder) {}
+  constructor(
+    private env: EnvironmentService,
+    private readonly rs: RewardsService,
+    private readonly fb: UntypedFormBuilder
+  ) {}
 
   public ngOnInit(): void {
     this.form = this.fb.group({

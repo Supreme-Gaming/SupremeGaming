@@ -1,17 +1,20 @@
 {
-  "root": "apps/data-api-nest",
+  "name": "data-api-nest",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/data-api-nest/src",
   "projectType": "application",
   "prefix": "data-api-nest",
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/data-api-nest",
         "main": "apps/data-api-nest/src/main.ts",
         "tsConfig": "apps/data-api-nest/tsconfig.app.json",
-        "assets": ["apps/data-api-nest/src/assets"]
+        "assets": ["apps/data-api-nest/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
@@ -35,21 +38,20 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["apps/data-api-nest/tsconfig.app.json", "apps/data-api-nest/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!apps/data-api-nest/**/*"]
-      }
+        "lintFilePatterns": ["apps/data-api-nest/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "apps/data-api-nest/jest.config.js",
+        "jestConfig": "apps/data-api-nest/jest.config.ts",
         "tsConfig": "apps/data-api-nest/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/apps/data-api-nest"]
+      "outputs": ["{workspaceRoot}/coverage/apps/data-api-nest"]
     }
   },
   "tags": []

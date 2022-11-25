@@ -1,17 +1,20 @@
 {
-  "root": "apps/supreme-discord-ticket-bot-node",
+  "name": "supreme-discord-ticket-bot-node",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/supreme-discord-ticket-bot-node/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/supreme-discord-ticket-bot-node",
         "main": "apps/supreme-discord-ticket-bot-node/src/main.ts",
         "tsConfig": "apps/supreme-discord-ticket-bot-node/tsconfig.app.json",
         "assets": ["apps/supreme-discord-ticket-bot-node/src/assets", "apps/supreme-discord-ticket-bot-node/src/Dockerfile"],
-        "generatePackageJson": true
+        "generatePackageJson": true,
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
@@ -28,7 +31,7 @@
       }
     },
     "image-build": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
@@ -46,20 +49,19 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/supreme-discord-ticket-bot-node/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/supreme-discord-ticket-bot-node"],
+      "outputs": ["{workspaceRoot}/coverage/apps/supreme-discord-ticket-bot-node"],
       "options": {
-        "jestConfig": "apps/supreme-discord-ticket-bot-node/jest.config.js",
+        "jestConfig": "apps/supreme-discord-ticket-bot-node/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": []
 }
-

@@ -61,8 +61,10 @@ export class Ticket {
 
   public async close() {
     const ticketToClose = await this._repo.findOne({
-      serverId: this._serverId,
-      channelId: this._channelId,
+      where: {
+        serverId: this._serverId,
+        channelId: this._channelId,
+      },
     });
 
     if (ticketToClose) {

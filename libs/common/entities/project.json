@@ -1,25 +1,25 @@
 {
-  "root": "libs/common/entities",
+  "name": "common-entities",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/common/entities/src",
   "projectType": "library",
   "generators": {},
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["libs/common/entities/tsconfig.lib.json", "libs/common/entities/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!libs/common/entities/**/*"]
-      }
+        "lintFilePatterns": ["libs/common/entities/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "libs/common/entities/jest.config.js",
+        "jestConfig": "libs/common/entities/jest.config.ts",
         "tsConfig": "libs/common/entities/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/libs/common/entities"]
+      "outputs": ["{workspaceRoot}/coverage/libs/common/entities"]
     }
   },
   "tags": []

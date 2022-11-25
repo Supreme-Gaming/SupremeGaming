@@ -1,20 +1,21 @@
 {
-  "root": "libs/discord/ticket",
+  "name": "discord-ticket",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/discord/ticket/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/discord/ticket/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/discord/ticket"],
+      "outputs": ["{workspaceRoot}/coverage/libs/discord/ticket"],
       "options": {
-        "jestConfig": "libs/discord/ticket/jest.config.js",
+        "jestConfig": "libs/discord/ticket/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 import { GameServerPlayer } from '@supremegaming/common/interfaces';
 import { PlayersService } from '@supremegaming/data-access';
@@ -12,7 +12,7 @@ import { AbstractSearchListComponent } from '../abstract-search-list/abstract-se
   styleUrls: ['./player-search-list.component.scss'],
 })
 export class PlayerSearchListComponent extends AbstractSearchListComponent<GameServerPlayer> implements OnInit {
-  constructor(public readonly fb: FormBuilder, private readonly ps: PlayersService) {
+  constructor(public readonly fb: UntypedFormBuilder, private readonly ps: PlayersService) {
     super(fb);
   }
 

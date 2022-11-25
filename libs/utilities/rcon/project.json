@@ -1,5 +1,6 @@
 {
-  "root": "libs/utilities/rcon",
+  "name": "utilities-rcon",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/utilities/rcon/src",
   "projectType": "library",
   "targets": {
@@ -7,13 +8,14 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/utilities/rcon/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/utilities/rcon"],
+      "outputs": ["{workspaceRoot}/coverage/libs/utilities/rcon"],
       "options": {
-        "jestConfig": "libs/utilities/rcon/jest.config.js",
+        "jestConfig": "libs/utilities/rcon/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,25 +1,25 @@
 {
-  "root": "libs/common/entities/ark",
+  "name": "common-entities-ark",
+  "$schema": "..\\..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/common/entities/ark/src",
   "projectType": "library",
   "generators": {},
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["libs/common/entities/ark/tsconfig.lib.json", "libs/common/entities/ark/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!libs/common/entities/ark/**/*"]
-      }
+        "lintFilePatterns": ["libs/common/entities/ark/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "libs/common/entities/ark/jest.config.js",
+        "jestConfig": "libs/common/entities/ark/jest.config.ts",
         "tsConfig": "libs/common/entities/ark/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/libs/common/entities/ark"]
+      "outputs": ["{workspaceRoot}/coverage/libs/common/entities/ark"]
     }
   },
   "tags": []

@@ -1,17 +1,20 @@
 {
-  "root": "apps/conan-cacher",
+  "name": "conan-cacher",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/conan-cacher/src",
   "projectType": "application",
   "prefix": "conan-cacher",
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/conan-cacher",
         "main": "apps/conan-cacher/src/main.ts",
         "tsConfig": "apps/conan-cacher/tsconfig.app.json",
-        "assets": ["apps/conan-cacher/src/assets"]
+        "assets": ["apps/conan-cacher/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
@@ -35,21 +38,20 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["apps/conan-cacher/tsconfig.app.json", "apps/conan-cacher/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!apps/conan-cacher/**/*"]
-      }
+        "lintFilePatterns": ["apps/conan-cacher/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "apps/conan-cacher/jest.config.js",
+        "jestConfig": "apps/conan-cacher/jest.config.ts",
         "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/apps/conan-cacher"]
+      "outputs": ["{workspaceRoot}/coverage/apps/conan-cacher"]
     }
   },
   "tags": []
