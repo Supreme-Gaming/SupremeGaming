@@ -52,7 +52,11 @@ export class TicketServerConfiguration {
     try {
       const repo = getRepository(TicketConfiguration);
 
-      const dbConfig = await repo.findOne({ serverId: this._config.serverId });
+      const dbConfig = await repo.findOne({
+        where: {
+          serverId: this._config.serverId,
+        },
+      });
 
       if (dbConfig) {
         this.fromDb = true;
