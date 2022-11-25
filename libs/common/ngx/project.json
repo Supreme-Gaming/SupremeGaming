@@ -15,7 +15,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/common/ngx"],
       "options": {
-        "jestConfig": "libs/common/ngx/jest.config.js",
+        "jestConfig": "libs/common/ngx/jest.config.ts",
         "passWithNoTests": true
       }
     }

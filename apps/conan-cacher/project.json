@@ -45,7 +45,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "apps/conan-cacher/jest.config.js",
+        "jestConfig": "apps/conan-cacher/jest.config.ts",
         "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
         "passWithNoTests": true
       },

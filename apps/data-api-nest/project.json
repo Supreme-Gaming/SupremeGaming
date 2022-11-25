@@ -45,7 +45,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "apps/data-api-nest/jest.config.js",
+        "jestConfig": "apps/data-api-nest/jest.config.ts",
         "tsConfig": "apps/data-api-nest/tsconfig.spec.json",
         "passWithNoTests": true
       },

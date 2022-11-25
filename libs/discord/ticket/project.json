@@ -14,7 +14,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/discord/ticket"],
       "options": {
-        "jestConfig": "libs/discord/ticket/jest.config.js",
+        "jestConfig": "libs/discord/ticket/jest.config.ts",
         "passWithNoTests": true
       }
     }

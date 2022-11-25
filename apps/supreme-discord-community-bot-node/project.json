@@ -58,11 +58,10 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/supreme-discord-community-bot-node"],
       "options": {
-        "jestConfig": "apps/supreme-discord-community-bot-node/jest.config.js",
+        "jestConfig": "apps/supreme-discord-community-bot-node/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": []
 }
-

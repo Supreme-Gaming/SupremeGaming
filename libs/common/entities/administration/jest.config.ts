@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'utilities-rcon',
-  preset: '../../../jest.preset.js',
+  displayName: 'common-entities-administration',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +10,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/utilities/rcon',
+  coverageDirectory: '../../../../coverage/libs/common/entities/administration',
+  preset: '../../../../jest.preset.ts',
 };

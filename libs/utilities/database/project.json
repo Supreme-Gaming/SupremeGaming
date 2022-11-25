@@ -13,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/utilities/database"],
       "options": {
-        "jestConfig": "libs/utilities/database/jest.config.js",
+        "jestConfig": "libs/utilities/database/jest.config.ts",
         "passWithNoTests": true
       }
     }

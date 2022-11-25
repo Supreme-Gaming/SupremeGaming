@@ -43,7 +43,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/ark-cacher-node"],
       "options": {
-        "jestConfig": "apps/ark-cacher-node/jest.config.js",
+        "jestConfig": "apps/ark-cacher-node/jest.config.ts",
         "passWithNoTests": true
       }
     }

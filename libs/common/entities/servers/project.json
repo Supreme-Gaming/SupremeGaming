@@ -15,7 +15,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "libs/common/entities/servers/jest.config.js",
+        "jestConfig": "libs/common/entities/servers/jest.config.ts",
         "tsConfig": "libs/common/entities/servers/tsconfig.spec.json",
         "passWithNoTests": true
       },

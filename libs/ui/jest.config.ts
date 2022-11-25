@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'common-interfaces',
-  preset: '../../../jest.preset.js',
+  displayName: 'ui',
+
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,11 +8,12 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/common/interfaces',
+  coverageDirectory: '../../coverage/libs/ui',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
   transform: { '^.+\\.(ts|js|html)$': 'jest-preset-angular' },
+  preset: '../../jest.preset.ts',
 };
