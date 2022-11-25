@@ -20,12 +20,14 @@ export class ConanInfoDiscordModule implements SlashCommands, OnInteractionCreat
             .setName('info_type')
             .setDescription('Select the type of information for Ark that you need')
             .setRequired(true)
-            .addChoice('Connections - Get IP and connection information for joining the servers.', 'connections')
-            .addChoice('Online status - Offline or just me? Find out how to check the server status.', 'status')
-            .addChoice('Mods - Get info on the mods running on the Supreme Conan servers.', 'mods')
-            .addChoice(
-              'Pippi - Provides information on Pippi commands and its function on our Conan Exiles servers.',
-              'pippi'
+            .addChoices(
+              { name: 'Connections - Get IP and connection information for joining the servers.', value: 'connections' },
+              { name: 'Online status - Offline or just me? Find out how to check the server status.', value: 'status' },
+              { name: 'Mods - Get info on the mods running on the Supreme Conan Exiles servers.', value: 'mods' },
+              {
+                name: 'Pippi - Provides information on Pippi commands and its function on our Conan Exiles servers.',
+                value: 'pippi',
+              }
             )
         ),
     ];

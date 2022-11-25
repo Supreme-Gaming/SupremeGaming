@@ -8,7 +8,7 @@ import {
   GeneralHelpDiscordModule,
   NewMemberDiscordModule,
   RoleAssignmentDiscordModule,
-} from 'libs/discord/community/src';
+} from '@supremegaming/discord/community';
 
 if (
   process.env.DISCORD_API_TOKEN === undefined ||

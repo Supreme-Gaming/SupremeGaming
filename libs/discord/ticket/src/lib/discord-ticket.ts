@@ -63,12 +63,12 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
             .setName('action')
             .setDescription('Select a ticket action.')
             .setRequired(true)
-            .addChoices([
-              ['New ticket', 'new'],
-              ['Close ticket', 'close'],
-              ['Add ticket participant', 'add'],
-              ['Remove ticket participant', 'remove'],
-            ]);
+            .addChoices(
+              { name: 'New ticket', value: 'new' },
+              { name: 'Close ticket', value: 'close' },
+              { name: 'Add user to ticket', value: 'add' },
+              { name: 'Remove user from ticket', value: 'remove' }
+            );
         }),
     ];
   }

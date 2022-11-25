@@ -22,17 +22,19 @@ export class ArkInfoDiscordModule implements SlashCommands, OnInteractionCreate 
             .setName('info_type')
             .setDescription('Select the type of information for Ark that you need')
             .setRequired(true)
-            .addChoice('Connections - Get IP and connection information for joining the servers.', 'connections')
-            .addChoice('Online status - Offline or just me? Find out how to check the server status.', 'status')
-            .addChoice('Mods - Get info on the mods running on the Supreme Ark servers.', 'mods')
-            .addChoice('Shop - Learn what all you can spend you hard-earned points on.', 'shop')
-            .addChoice(
-              'Breeding - General information on the breeding program and settings that this server uses.',
-              'breeding'
-            )
-            .addChoice(
-              'ccc - Print information on how to get ccc coordinates, required by admins in support requests.',
-              'ccc'
+            .addChoices(
+              { name: 'Connections - Get IP and connection information for joining the servers.', value: 'connections' },
+              { name: 'Online status - Offline or just me? Find out how to check the server status.', value: 'status' },
+              { name: 'Mods - Get info on the mods running on the Supreme Ark servers.', value: 'mods' },
+              { name: 'Shop - Learn what all you can spend you hard-earned points on.', value: 'shop' },
+              {
+                name: 'Breeding - General information on the breeding program and settings that this server uses.',
+                value: 'breeding',
+              },
+              {
+                name: 'ccc - Print information on how to get ccc coordinates, required by admins in support requests.',
+                value: 'ccc',
+              }
             )
         ),
     ];

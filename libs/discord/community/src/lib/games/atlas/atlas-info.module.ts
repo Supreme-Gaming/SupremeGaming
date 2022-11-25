@@ -23,14 +23,16 @@ export class AtlasInfoDiscordModule implements SlashCommands, OnInteractionCreat
             .setName('info_type')
             .setDescription('Select the type of information for Atlas that you need')
             .setRequired(true)
-            .addChoice('Connections - Get IP and connection information for joining the servers.', 'connections')
-            .addChoice('Online status - Offline or just me? Find out how to check the server status.', 'status')
-            .addChoice('Mods - Get info on the mods running on the Supreme Atlas servers.', 'mods')
-            .addChoice('Shop - Learn what all you can spend you hard-earned points on.', 'shop')
-            .addChoice('Map - Handy map that you can have on your second screen as you navigate the high seas', 'map')
-            .addChoice(
-              'ccc - Print information on how to get ccc coordinates, required by admins in support requests.',
-              'ccc'
+            .addChoices(
+              { name: 'Connections - Get IP and connection information for joining the servers.', value: 'connections' },
+              { name: 'Online status - Offline or just me? Find out how to check the server status.', value: 'status' },
+              { name: 'Mods - Get info on the mods running on the Supreme Atlas servers.', value: 'mods' },
+              { name: 'Shop - Get info on the shop running on the Supreme Atlas servers.', value: 'shop' },
+              { name: 'Map - Get info on the map running on the Supreme Atlas servers.', value: 'map' },
+              {
+                name: 'ccc - Print information on how to get ccc coordinates, required by admins in support requests.',
+                value: 'ccc',
+              }
             )
         ),
     ];
