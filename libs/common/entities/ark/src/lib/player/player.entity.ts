@@ -20,12 +20,12 @@ export class ArkPlayer extends GuidIdentity {
   @Column()
   public engrams: number;
 
-  @ManyToOne((type) => GameServer)
+  @ManyToOne(() => GameServer)
   public server: GameServer;
 
-  @ManyToOne((type) => ArkTribe, (tribe) => tribe.players)
+  @ManyToOne(() => ArkTribe, (tribe) => tribe.players)
   public tribe: ArkTribe;
 
-  @ManyToOne((type) => SteamProfile)
+  @ManyToOne(() => SteamProfile)
   public profile: SteamProfile;
 }

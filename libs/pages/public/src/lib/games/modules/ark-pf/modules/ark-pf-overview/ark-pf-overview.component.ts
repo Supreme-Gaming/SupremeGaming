@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from, Observable } from 'rxjs';
-import { filter, switchMap, toArray } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { GameServer } from '@supremegaming/common/interfaces';
 import { ServersService } from '@supremegaming/data-access';

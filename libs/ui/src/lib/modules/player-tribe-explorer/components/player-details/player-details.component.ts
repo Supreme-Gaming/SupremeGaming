@@ -51,7 +51,7 @@ export class PlayerDetailsComponent extends AbstractResourceTableComponent<GameS
           filter(([player, guid]) => {
             return player.Guid !== guid;
           }),
-          map(([player, guid]) => player),
+          map(([player]) => player),
           toArray()
         );
       }),
@@ -59,4 +59,3 @@ export class PlayerDetailsComponent extends AbstractResourceTableComponent<GameS
     );
   }
 }
-
