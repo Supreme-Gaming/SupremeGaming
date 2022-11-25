@@ -1,5 +1,6 @@
 {
-  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "name": "supremegaming-angular-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/supremegaming-angular-e2e/src",
   "projectType": "application",
   "targets": {
@@ -7,8 +8,9 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/supremegaming-angular-e2e/cypress.json",
-        "tsConfig": "apps/supremegaming-angular-e2e/tsconfig.e2e.json",
-        "devServerTarget": "supremegaming-angular:serve"
+        "devServerTarget": "supremegaming-angular:serve:development",
+        "testingType": "e2e",
+        "tsConfig": "apps/supremegaming-angular-e2e/tsconfig.json"
       },
       "configurations": {
         "production": {
@@ -17,10 +19,10 @@
       }
     },
     "lint": {
-      "executor": "@angular-devkit/build-angular:tslint",
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "tsConfig": ["apps/supremegaming-angular-e2e/tsconfig.e2e.json"],
-        "exclude": ["**/node_modules/**", "!apps/supremegaming-angular-e2e/**/*"]
+        "lintFilePatterns": ["apps/supremegaming-angular-e2e/**/*.{js,ts}"]
       }
     }
   },
