@@ -30,6 +30,17 @@
         }
       }
     },
+    "image-build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker build -t supreme-discord-community-bot-node ."
+          }
+        ],
+        "cwd": "dist/apps/supreme-discord-community-bot-node"
+      }
+    },
     "serve": {
       "executor": "@nrwl/node:node",
       "options": {
@@ -54,3 +65,4 @@
   },
   "tags": []
 }
+
