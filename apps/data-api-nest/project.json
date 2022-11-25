@@ -1,4 +1,5 @@
 {
+  "name": "data-api-nest",
   "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/data-api-nest/src",
   "projectType": "application",

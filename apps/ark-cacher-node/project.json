@@ -1,4 +1,5 @@
 {
+  "name": "ark-cacher-node",
   "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/ark-cacher-node/src",
   "projectType": "application",

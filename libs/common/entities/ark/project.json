@@ -1,4 +1,5 @@
 {
+  "name": "common-entities-ark",
   "$schema": "..\\..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/common/entities/ark/src",
   "projectType": "library",

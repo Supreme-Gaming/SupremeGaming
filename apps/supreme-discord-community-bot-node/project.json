@@ -1,4 +1,5 @@
 {
+  "name": "supreme-discord-community-bot-node",
   "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/supreme-discord-community-bot-node/src",
   "projectType": "application",

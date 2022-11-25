@@ -1,4 +1,5 @@
 {
+  "name": "discord-bootstrap",
   "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/discord/bootstrap/src",
   "projectType": "library",

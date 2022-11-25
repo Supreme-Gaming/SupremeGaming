@@ -1,4 +1,5 @@
 {
+  "name": "common-entities-conan",
   "$schema": "..\\..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "libs/common/entities/conan/src",
   "projectType": "library",

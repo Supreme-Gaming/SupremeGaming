@@ -1,4 +1,5 @@
 {
+  "name": "conan-cacher",
   "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/conan-cacher/src",
   "projectType": "application",
