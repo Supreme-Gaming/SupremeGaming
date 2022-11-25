@@ -1,11 +1,15 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "node"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.mts", "*.cts", "*.tsx"],
       "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-parameter-properties": "off",
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
@@ -20,11 +24,6 @@
           }
         ]
       }
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
