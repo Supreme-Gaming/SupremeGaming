@@ -6,12 +6,14 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/conan-cacher",
         "main": "apps/conan-cacher/src/main.ts",
         "tsConfig": "apps/conan-cacher/tsconfig.app.json",
-        "assets": ["apps/conan-cacher/src/assets"]
+        "assets": ["apps/conan-cacher/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {

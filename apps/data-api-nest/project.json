@@ -6,12 +6,14 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/data-api-nest",
         "main": "apps/data-api-nest/src/main.ts",
         "tsConfig": "apps/data-api-nest/tsconfig.app.json",
-        "assets": ["apps/data-api-nest/src/assets"]
+        "assets": ["apps/data-api-nest/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
