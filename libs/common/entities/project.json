@@ -6,12 +6,11 @@
   "generators": {},
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["libs/common/entities/tsconfig.lib.json", "libs/common/entities/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!libs/common/entities/**/*"]
-      }
+        "lintFilePatterns": ["libs/common/entities/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",

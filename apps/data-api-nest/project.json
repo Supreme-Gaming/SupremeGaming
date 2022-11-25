@@ -38,12 +38,11 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["apps/data-api-nest/tsconfig.app.json", "apps/data-api-nest/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!apps/data-api-nest/**/*"]
-      }
+        "lintFilePatterns": ["apps/data-api-nest/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",

@@ -38,12 +38,11 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "linter": "eslint",
-        "tsConfig": ["apps/conan-cacher/tsconfig.app.json", "apps/conan-cacher/tsconfig.spec.json"],
-        "exclude": ["**/node_modules/**", "!apps/conan-cacher/**/*"]
-      }
+        "lintFilePatterns": ["apps/conan-cacher/**/*.ts"]
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",

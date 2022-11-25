@@ -70,7 +70,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/supremegaming-angular/src/**/*.ts", "apps/supremegaming-angular/src/**/*.html"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
