@@ -20,7 +20,7 @@
         "tsConfig": "libs/common/entities/steam/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/libs/common/entities/steam"]
+      "outputs": ["{workspaceRoot}/coverage/libs/common/entities/steam"]
     }
   },
   "tags": []

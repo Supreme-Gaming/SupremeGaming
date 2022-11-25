@@ -20,7 +20,7 @@
         "tsConfig": "libs/common/entities/conan/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/libs/common/entities/conan"]
+      "outputs": ["{workspaceRoot}/coverage/libs/common/entities/conan"]
     }
   },
   "tags": []

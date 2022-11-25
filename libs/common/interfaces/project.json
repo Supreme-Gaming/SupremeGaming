@@ -14,7 +14,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/common/interfaces"],
+      "outputs": ["{workspaceRoot}/coverage/libs/common/interfaces"],
       "options": {
         "jestConfig": "libs/common/interfaces/jest.config.ts",
         "passWithNoTests": true

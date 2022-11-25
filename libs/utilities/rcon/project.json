@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/utilities/rcon"],
+      "outputs": ["{workspaceRoot}/coverage/libs/utilities/rcon"],
       "options": {
         "jestConfig": "libs/utilities/rcon/jest.config.ts",
         "passWithNoTests": true

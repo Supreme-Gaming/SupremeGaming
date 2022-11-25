@@ -13,7 +13,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/discord/ticket"],
+      "outputs": ["{workspaceRoot}/coverage/libs/discord/ticket"],
       "options": {
         "jestConfig": "libs/discord/ticket/jest.config.ts",
         "passWithNoTests": true

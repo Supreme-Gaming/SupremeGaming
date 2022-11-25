@@ -52,7 +52,7 @@
         "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/apps/conan-cacher"]
+      "outputs": ["{workspaceRoot}/coverage/apps/conan-cacher"]
     }
   },
   "tags": []

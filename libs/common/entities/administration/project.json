@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/common/entities/administration"],
+      "outputs": ["{workspaceRoot}/coverage/libs/common/entities/administration"],
       "options": {
         "jestConfig": "libs/common/entities/administration/jest.config.ts",
         "passWithNoTests": true

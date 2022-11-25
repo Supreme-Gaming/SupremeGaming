@@ -56,7 +56,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/supreme-discord-ticket-bot-node"],
+      "outputs": ["{workspaceRoot}/coverage/apps/supreme-discord-ticket-bot-node"],
       "options": {
         "jestConfig": "apps/supreme-discord-ticket-bot-node/jest.config.ts",
         "passWithNoTests": true

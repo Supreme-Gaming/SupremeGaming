@@ -52,7 +52,7 @@
         "tsConfig": "apps/data-api-nest/tsconfig.spec.json",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/apps/data-api-nest"]
+      "outputs": ["{workspaceRoot}/coverage/apps/data-api-nest"]
     }
   },
   "tags": []
