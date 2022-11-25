@@ -7,10 +7,9 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/supremegaming-angular-e2e/cypress.json",
+        "cypressConfig": "apps/supremegaming-angular-e2e/cypress.config.ts",
         "devServerTarget": "supremegaming-angular:serve:development",
-        "testingType": "e2e",
-        "tsConfig": "apps/supremegaming-angular-e2e/tsconfig.json"
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {
