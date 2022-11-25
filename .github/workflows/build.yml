@@ -1,12 +1,7 @@
 name: Build Affected
+
 on:
   push:
-    branches-ignore:
-      - development
-      - master
-  pull_request:
-    branches:
-      - development
 
 jobs:
   build:
@@ -32,14 +27,13 @@ jobs:
 
       - name: Install Dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Build Affected
-        run: npx nx affected:apps --target=build --configuration=production --exclude=ark-cacher-node,conan-cacher,data-api-nest
+        run: npx nx affected:build --configuration=production --exclude=ark-cacher-node,conan-cacher,data-api-nest  --base=origin/development --parallel=2
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.sha }}
           path: dist/
-
