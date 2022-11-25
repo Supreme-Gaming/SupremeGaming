@@ -4,13 +4,14 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/ark-cacher-node",
         "main": "apps/ark-cacher-node/src/main.ts",
         "tsConfig": "apps/ark-cacher-node/tsconfig.app.json",
-        "assets": ["apps/ark-cacher-node/src/assets"]
+        "assets": ["apps/ark-cacher-node/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
@@ -27,7 +28,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:execute",
+      "executor": "@nrwl/node:node",
       "options": {
         "buildTarget": "ark-cacher-node:build",
         "port": 7777
