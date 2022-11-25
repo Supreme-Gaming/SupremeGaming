@@ -66,14 +66,9 @@
       }
     },
     "lint": {
-      "executor": "@angular-devkit/build-angular:tslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
-        "tsConfig": [
-          "apps/supremegaming-angular/tsconfig.app.json",
-          "apps/supremegaming-angular/tsconfig.spec.json",
-          "apps/supremegaming-angular/tsconfig.editor.json"
-        ],
-        "exclude": ["**/node_modules/**", "!apps/supremegaming-angular/**/*"]
+        "lintFilePatterns": ["apps/supremegaming-angular/src/**/*.ts", "apps/supremegaming-angular/src/**/*.html"]
       }
     },
     "test": {
