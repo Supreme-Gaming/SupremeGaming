@@ -1,13 +1,12 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Build Affected
-
 on:
   push:
-    branches: [$default-branch]
+    branches-ignore:
+      - development
+      - master
   pull_request:
-    branches: [$default-branch]
+    branches:
+      - development
 
 jobs:
   build:
@@ -17,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v3
