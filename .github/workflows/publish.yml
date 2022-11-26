@@ -36,10 +36,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/supremegaming/supremegaming-discord-community-bot-node
           flavor: |
             latest=${{ github.event.label.name == 'publish' }}
-            tag=${{ startsWith(github.ref, 'refs/tags/') }}
             ref=${{ github.ref }}
             sha=${{ github.sha }}
 
