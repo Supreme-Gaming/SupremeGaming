@@ -25,12 +25,8 @@ jobs:
         # run script to generate matrix by getting a list of all directories that have a dockerfile as json array in the /artifact directory
         run: |
           cd ./artifacts/apps
-          pwd && ls -la
-          echo $(find . -name "Dockerfile" -exec dirname {} \; | sed 's/^\.\///' | jq -R . | jq -s .;)
-          echo "matrix=$(find . -name "Dockerfile" -exec dirname {} \; | sed 's/^\.\///' | jq -R . | jq -s .;)" >> $GITHUB_OUTPUT
-
-        # run: echo "matrix=['supreme-discord-community-bot-node']" >> $GITHUB_OUTPUT
-
+          echo $(find . -name "Dockerfile" -exec dirname {} \; | sed 's/^\.\///' | jq -R -s -c 'split("\n")[:-1]')
+          echo "matrix=$(find . -name "Dockerfile" -exec dirname {} \; | sed 's/^\.\///' | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
   build-and-push:
     needs: list-publishable
     runs-on: ubuntu-latest
