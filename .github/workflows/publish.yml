@@ -9,11 +9,32 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  list-publishable:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: 'Download artifacts'
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: main.yml
+          name: ${{ github.event.pull_request.head.sha }}
+          path: artifacts
+      - name: 'Set matrix'
+        id: set-matrix
+        # run script to generate matrix by getting a list of all directories that have a dockerfile as json array
+        run: |
+          echo "::set-output name=matrix::$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
+
   build-and-push:
+    needs: list-publishable
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    strategy:
+      matrix:
+        image: ${{ fromJson(needs.list-publishable.outputs.matrix) }}
 
     steps:
       - name: 'Download artifacts'
@@ -34,7 +55,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/Supreme-Gaming/supreme-discord-ticket-bot-node
+          images: ${{ env.REGISTRY }}/Supreme-Gaming/${{ matrix.image }}
           flavor: |
             latest=true
           tags: |
@@ -45,7 +66,8 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
         with:
-          context: ./artifacts/apps/supreme-discord-community-bot-node
+          context: ./artifacts/apps/${{ matrix.image }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
