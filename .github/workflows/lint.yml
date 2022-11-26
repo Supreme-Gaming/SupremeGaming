@@ -5,7 +5,7 @@ on:
 
 jobs:
   lint:
-    name: Lint
+    name: Affected
     runs-on: ubuntu-latest
 
     steps:
