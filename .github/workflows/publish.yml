@@ -1,0 +1,53 @@
+name: Build and Publish Images
+
+on:
+  pull_request:
+    types: [labeled]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 'Download artifacts'
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.sha }}
+          path: ~/artifacts
+
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          flavor: |
+            latest=${{ github.event.label.name == 'publish' }}
+            tag=${{ startsWith(github.ref, 'refs/tags/') }}
+            ref=${{ github.ref }}
+            sha=${{ github.sha }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v3
+        with:
+          context: ~/artifacts
+          file: ~/artifacts/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
