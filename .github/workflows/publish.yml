@@ -23,10 +23,12 @@ jobs:
       - name: 'Set matrix'
         id: set-matrix
         # run script to generate matrix by getting a list of all directories that have a dockerfile as json array in the /artifact directory
-        # run: |
-        #   cd artifacts/apps
-        #   echo "::set-output name=matrix::$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
-        run: echo "matrix=['supreme-discord-community-bot-node']" >> $GITHUB_OUTPUT
+        run: |
+          cd ./artifacts/apps
+          echo "matrix=$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
+
+        # run: echo "matrix=['supreme-discord-community-bot-node']" >> $GITHUB_OUTPUT
+        # run: echo "::set-output name=matrix::$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
 
   build-and-push:
     needs: list-publishable
