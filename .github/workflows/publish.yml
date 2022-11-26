@@ -22,8 +22,9 @@ jobs:
           path: artifacts
       - name: 'Set matrix'
         id: set-matrix
-        # run script to generate matrix by getting a list of all directories that have a dockerfile as json array
+        # run script to generate matrix by getting a list of all directories that have a dockerfile as json array in the /artifact directory
         run: |
+          cd artifacts/apps
           echo "::set-output name=matrix::$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
 
   build-and-push:
