@@ -1,7 +1,7 @@
 name: Lint Affected
 
 on:
-  push:
+  workflow_call:
 
 jobs:
   lint:
