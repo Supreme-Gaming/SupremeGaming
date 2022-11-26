@@ -38,9 +38,11 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/supremegaming/supremegaming-discord-community-bot-node
           flavor: |
-            latest=${{ github.event.label.name == 'publish' }}
-            ref=${{ github.ref }}
-            sha=${{ github.sha }}
+            latest=auto
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
