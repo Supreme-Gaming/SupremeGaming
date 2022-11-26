@@ -22,7 +22,7 @@ jobs:
       - name: 'Download artifacts'
         uses: actions/download-artifact@v3
         with:
-          name: ${{ github.sha }}
+          name: ${{ github.event.pull_request.head.sha }}
           path: ~/artifacts
 
       - name: Docker login
