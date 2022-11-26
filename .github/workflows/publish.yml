@@ -27,10 +27,9 @@ jobs:
           cd ./artifacts/apps
           pwd && ls -la
           echo $(find . -name "Dockerfile" -exec dirname {} \; | sed 's/^\.\///' | jq -R . | jq -s .;)
-          echo "matrix=$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
+          echo "matrix=$(find . -name "Dockerfile" -exec dirname {} \; | sed 's/^\.\///' | jq -R . | jq -s .;)" >> $GITHUB_OUTPUT
 
         # run: echo "matrix=['supreme-discord-community-bot-node']" >> $GITHUB_OUTPUT
-        # run: echo "::set-output name=matrix::$(jq -nR '[inputs | select(contains("Dockerfile")) | split("/") | .[0]] | unique')"
 
   build-and-push:
     needs: list-publishable
