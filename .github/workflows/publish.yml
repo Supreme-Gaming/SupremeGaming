@@ -16,14 +16,12 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
       - name: 'Download artifacts'
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: main.yml
           name: ${{ github.event.pull_request.head.sha }}
+          path: artifacts
 
       - name: Docker login
         uses: docker/login-action@v2
@@ -47,8 +45,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: apps/supreme-discord-community-bot-node/Dockerfile
+          context: ./artifacts/apps/supreme-discord-community-bot-node
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
