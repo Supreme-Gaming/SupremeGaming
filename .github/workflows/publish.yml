@@ -36,7 +36,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/Supreme-Gaming/supreme-discord-ticket-bot-node
           flavor: |
-            latest=auto
+            latest=true
           tags: |
             type=ref,event=branch
             type=ref,event=pr
