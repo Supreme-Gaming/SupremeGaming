@@ -34,7 +34,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/supremegaming/supremegaming-discord-community-bot-node
           flavor: |
@@ -47,8 +47,8 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
         with:
-          context: ~/artifacts
-          file: ~/artifacts/apps/supreme-discord-community-bot-node/Dockerfile
+          context: .
+          file: apps/supreme-discord-community-bot-node/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
