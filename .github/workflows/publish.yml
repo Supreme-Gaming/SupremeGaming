@@ -22,7 +22,7 @@ jobs:
       - name: 'Download artifacts'
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: build.yml
+          workflow: main.yml
           name: ${{ github.event.pull_request.head.sha }}
 
       - name: Docker login
