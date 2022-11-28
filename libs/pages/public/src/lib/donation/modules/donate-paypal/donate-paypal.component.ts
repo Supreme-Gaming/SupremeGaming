@@ -12,6 +12,7 @@ import { GameServerPlayer } from '@supremegaming/common/interfaces';
 export class DonatePaypalComponent {
   public selectedGame: Observable<IDonationGame> = this.ss.game;
   public cartItems: Observable<Array<ICartItem>> = this.ss.cart;
+  public recipient: Observable<GameServerPlayer> = this.ss.recipient;
 
   constructor(private readonly ss: ShopService) {}
 
