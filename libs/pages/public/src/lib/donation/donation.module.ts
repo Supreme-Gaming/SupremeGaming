@@ -19,6 +19,15 @@ const routes: Routes = [
         path: 'info',
         loadChildren: () => import('./modules/donate-info/donate-info.module').then((m) => m.DonateInfoModule),
       },
+      {
+        path: 'one-time',
+        loadChildren: () => import('./modules/donate-paypal/donate-paypal.module').then((m) => m.DonatePaypalModule),
+        data: {
+          meta: {
+            title: 'One Time Donation',
+          },
+        },
+      },
     ],
   },
 ];

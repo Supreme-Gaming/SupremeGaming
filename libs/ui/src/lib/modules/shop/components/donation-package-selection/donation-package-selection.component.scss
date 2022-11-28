@@ -1,0 +1,92 @@
+@import 'libs/scss/colors';
+@import 'libs/scss/mixins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.package-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .package-card {
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 15rem;
+    margin: 1.25rem;
+    padding: 0;
+
+    .package-card__title {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .package-card__image {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+
+      img {
+        height: 5rem;
+        margin: 0 auto;
+      }
+    }
+
+    .with-border {
+      border: 1pt solid $base_lightened;
+    }
+
+    .package-card__price {
+      margin-bottom: 1rem;
+    }
+
+    .package-card__controls {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      @extend .with-border;
+      border-bottom: none;
+      border-left: none;
+      border-right: none;
+
+      .package-card-control,
+      .package-card__quantity {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.6rem;
+        flex: 1;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .package-card-control {
+        color: $base_focus;
+        cursor: pointer;
+        transition: color 0.3s, background 0.3s;
+        height: 100%;
+        @include no-select();
+
+        &:hover {
+          background: $base_lightened;
+        }
+      }
+
+      .package-card__quantity {
+        font-weight: bold;
+        @extend .with-border;
+        border-bottom: none;
+        border-top: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ export class MetaService {
     const ogTags: Array<MetaDefinition> = [];
 
     if (metadata.title) {
-      this.title.setTitle(metadata.title);
+      this.title.setTitle(`${metadata.title} | Supreme Gaming`);
       ogTags.push({
         content: metadata.title,
         property: 'og:title',

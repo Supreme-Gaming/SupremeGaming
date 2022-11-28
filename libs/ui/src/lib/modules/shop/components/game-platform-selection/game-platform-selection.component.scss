@@ -1,0 +1,44 @@
+@import 'libs/scss/colors';
+@import 'libs/scss/mixins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include no-select();
+
+  .game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+    transition: background-color 0.3s, background 0.25s;
+
+    .game-card__image {
+      margin-bottom: 0.5rem;
+    }
+
+    .game-card__title {
+      width: 100%;
+      text-align: center;
+    }
+
+    padding: 1.5rem 0.5rem;
+    width: 10rem;
+    cursor: pointer;
+
+    img {
+      height: 5em;
+    }
+
+    &.lit {
+      background: $base_lightened;
+    }
+  }
+}

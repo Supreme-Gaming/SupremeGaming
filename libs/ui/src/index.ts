@@ -6,3 +6,6 @@ export * from './lib/modules/player-tribe-explorer/player-tribe-explorer.module'
 export * from './lib/modules/rewards/rewards.module';
 export * from './lib/modules/shop/shop.module';
 export * from './lib/modules/forms/forms.module';
+
+export * from './lib/modules/shop/services/shop/shop.service';
+export * from './lib/modules/shop/interfaces/shop.interfaces';

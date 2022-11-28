@@ -1,0 +1,29 @@
+<h2 class="trailer-2">Step 2 &mdash; Select a Package</h2>
+
+<div class="package-cards">
+  <div class="package-card wire-container hover-light" *ngFor="let package of packages">
+    <div class="package-card__title">
+      <h4>{{ package.name }} ({{package.points | number}} Points)</h4>
+    </div>
+
+    <div class="package-card__image">
+      <img [src]="package.productImgPath" [alt]="package.name" />
+    </div>
+
+    <div class="package-card__price">
+      <h4>{{ package.price | currency: 'USD': 'symbol' }}</h4>
+    </div>
+
+    <div class="package-card__controls">
+      <div class="package-card-control pckage-card-control--remove" (click)="changeAmount(package, 'remove')">
+        <span class="material-icons">remove</span>
+      </div>
+
+      <div class="package-card__quantity">{{(cartItems | findByKeyValue : package : 'sku')?.count || 0}}</div>
+
+      <div class="package-card-control package-card--add" (click)="changeAmount(package, 'add')">
+        <span class="material-icons">add</span>
+      </div>
+    </div>
+  </div>
+</div>
