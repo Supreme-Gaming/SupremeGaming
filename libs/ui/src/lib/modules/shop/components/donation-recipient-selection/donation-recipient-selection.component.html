@@ -14,11 +14,11 @@
 
   <div class="donation-recipient-selection__search">
     <div class="search-container" #searchContainer>
-      <input [formControl]="searchTerm" type="text" [placeholder]="'Search by in-game name or Steam ID'" />
+      <input [formControl]="searchTerm" type="text" [placeholder]="'Search by in-game name or Steam ID'" tabindex="0" />
 
       <div [ngClass]="{hidden: (focused | async) === false}" #searchResultsContainer>
         <ng-container *ngIf="(searchResults | async)  as results">
-          <div class="search-results">
+          <div class="search-results" tabindex="0">
             <div class="search-result" *ngFor="let result of results" (click)="selectRecipient(result)">
               <div class="search-result__name">
                 {{ result.CharacterName }} ({{result.TribeName}} &mdash; {{result.PlayMap}})
