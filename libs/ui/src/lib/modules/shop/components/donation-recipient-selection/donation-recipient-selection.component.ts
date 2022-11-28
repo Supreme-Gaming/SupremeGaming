@@ -1,7 +1,16 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, combineLatest, fromEvent, iif, merge, Observable, of, ReplaySubject } from 'rxjs';
-import { map, switchMap, debounceTime, distinctUntilChanged, shareReplay, startWith, withLatestFrom } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, fromEvent, iif, merge, Observable, of } from 'rxjs';
+import {
+  map,
+  switchMap,
+  debounceTime,
+  distinctUntilChanged,
+  shareReplay,
+  startWith,
+  withLatestFrom,
+  tap,
+} from 'rxjs/operators';
 
 import { GameServerPlayer } from '@supremegaming/common/interfaces';
 import { PlayersService } from '@supremegaming/data-access';
@@ -14,6 +23,13 @@ import { PlayersService } from '@supremegaming/data-access';
 export class DonationRecipientSelectionComponent implements OnInit {
   @Input()
   public game: string;
+
+  /**
+   * If the user has selected a result and the display value patched, the next edit on the input
+   * will cause the entire clear the input in one key stroke.
+   */
+  @Input()
+  public clearSearchOnInvalidation = false;
 
   @Output()
   public selectedRecipient: EventEmitter<GameServerPlayer> = new EventEmitter();
@@ -39,7 +55,21 @@ export class DonationRecipientSelectionComponent implements OnInit {
     // Immediately map out an empty array every time the term changes
     // This will make it so the results list is not visible while the user is typing or there is an ongoing network request
     this.searchResults = merge(
-      termChange.pipe(map(() => [])),
+      termChange.pipe(
+        withLatestFrom(this.lastSet),
+        // This following `tap` side effect enables the setting `clearSearchOnInvalidation`
+        //
+        // If the user has selected a participant, that value will be present in state.
+        // After a user selects a result, further modification of the search term should render the last state invalid which should
+        // trigger a clearRecipient state and push that value to the parent. Without this check, the component would emit a value more often than needed.
+        tap(([currentTerm, lastSetTerm]) => {
+          if (lastSetTerm && currentTerm !== lastSetTerm) {
+            this.clearRecipient();
+          }
+        }),
+        // On every new term change, we want to to clear the saved recipient
+        map(() => [])
+      ),
       termChange.pipe(
         debounceTime(500),
         distinctUntilChanged(),
@@ -119,5 +149,15 @@ export class DonationRecipientSelectionComponent implements OnInit {
     this.lastSet.next(v);
     this.searchTerm.patchValue(v);
     this.selectedRecipient.emit(player);
+  }
+
+  public clearRecipient() {
+    this.lastSet.next(null);
+
+    if (this.clearSearchOnInvalidation) {
+      this.searchTerm.patchValue(null);
+    }
+
+    this.selectedRecipient.emit(null);
   }
 }
