@@ -1,7 +1,11 @@
 <h2 class="trailer-2">Step 2 &mdash; Select a Package</h2>
 
 <div class="package-cards">
-  <div class="package-card wire-container hover-light" *ngFor="let package of packages">
+  <div
+    class="package-card wire-container hover-light"
+    [ngClass]="{lit: (cartItems | findByKeyValue : package : 'sku')?.count > 0}"
+    *ngFor="let package of packages"
+  >
     <div class="package-card__title">
       <h4>{{ package.name }} ({{package.points | number}} Points)</h4>
     </div>

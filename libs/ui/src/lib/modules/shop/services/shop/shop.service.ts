@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { GameServerPlayer } from '@supremegaming/common/interfaces';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 
 import { ICartItem, IDonationGame, IDonationPackageEvent } from '../../interfaces/shop.interfaces';
@@ -9,9 +10,11 @@ import { ICartItem, IDonationGame, IDonationPackageEvent } from '../../interface
 export class ShopService {
   private _game: ReplaySubject<IDonationGame> = new ReplaySubject<IDonationGame>(1);
   private _cart: BehaviorSubject<Array<ICartItem>> = new BehaviorSubject<Array<ICartItem>>([]);
+  private _recipient: ReplaySubject<GameServerPlayer> = new ReplaySubject<GameServerPlayer>(1);
 
   public cart: Observable<Array<ICartItem>> = this._cart.asObservable();
   public game: Observable<IDonationGame> = this._game.asObservable();
+  public recipient: Observable<GameServerPlayer> = this._recipient.asObservable();
 
   public saveGame(game: IDonationGame) {
     this._game.next(game);
@@ -42,6 +45,10 @@ export class ShopService {
     }
 
     this._cart.next(currentCart);
+  }
+
+  public saveRecipient(recipient: GameServerPlayer) {
+    this._recipient.next(recipient);
   }
 
   public clearCart() {

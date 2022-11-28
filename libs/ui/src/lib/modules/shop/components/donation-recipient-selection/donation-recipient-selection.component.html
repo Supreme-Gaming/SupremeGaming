@@ -1,1 +1,32 @@
 <h2 class="trailer-2">Step 3 &mdash; Select Your Character</h2>
+
+<div class="column12">
+  <p>
+    Type to search for the recipient in-game character. Please ensure that you have selected the correct account as its
+    associated Steam ID will be used to disburse the points.
+  </p>
+
+  <p>
+    Please note that at the current moment, only <strong>Ark: Survival Evolved</strong> and <strong>ATLAS</strong> games are
+    supported for one-time donations through this website. If you would like to make a donation for another game,
+    <a [routerLink]="['/community/support']" routerLinkActive="router-link-active">please contact an admin on Discord</a>.
+  </p>
+
+  <div class="donation-recipient-selection__search">
+    <div class="search-container" #searchContainer>
+      <input [formControl]="searchTerm" type="text" [placeholder]="'Search by in-game name or Steam ID'" />
+
+      <div [ngClass]="{hidden: (focused | async) === false}" #searchResultsContainer>
+        <ng-container *ngIf="(searchResults | async)  as results">
+          <div class="search-results">
+            <div class="search-result" *ngFor="let result of results" (click)="selectRecipient(result)">
+              <div class="search-result__name">
+                {{ result.CharacterName }} ({{result.TribeName}} &mdash; {{result.PlayMap}})
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
