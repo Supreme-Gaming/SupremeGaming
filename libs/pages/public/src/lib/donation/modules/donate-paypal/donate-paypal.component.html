@@ -20,5 +20,9 @@
 </div>
 
 <div class="column12 interactable" [ngClass]="{deactivated: (cartItems | async)?.length === 0}">
-  <supremegaming-donation-recipient-selection></supremegaming-donation-recipient-selection>
+  <supremegaming-donation-recipient-selection
+    [game]="(selectedGame | async)?.name"
+    (selectedRecipient)="saveRecipient($event)"
+  >
+  </supremegaming-donation-recipient-selection>
 </div>

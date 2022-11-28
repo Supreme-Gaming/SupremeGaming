@@ -6,6 +6,27 @@
   margin-bottom: 2rem;
   width: 1;
   font-size: 1.25rem;
+  position: relative;
+
+  .search-results {
+    position: absolute;
+    width: 100%;
+    max-height: 20rem;
+    border: 2pt solid $base_lightened;
+    border-top: none;
+    overflow-y: auto;
+
+    .search-result {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid $base_lightened;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $base_focus;
+      }
+    }
+  }
 }
 
 .search-feedback {

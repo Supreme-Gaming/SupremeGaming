@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ICartItem, IDonationGame, IDonationPackageEvent, ShopService } from '@supremegaming/ui';
+import { GameServerPlayer } from '@supremegaming/common/interfaces';
 
 @Component({
   selector: 'supremegaming-donate-paypal',
@@ -20,5 +21,9 @@ export class DonatePaypalComponent {
 
   public savePackage(pkg: IDonationPackageEvent) {
     this.ss.updateCart(pkg);
+  }
+
+  public saveRecipient(recipient: GameServerPlayer) {
+    this.ss.saveRecipient(recipient);
   }
 }
