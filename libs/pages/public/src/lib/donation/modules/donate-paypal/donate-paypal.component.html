@@ -1,0 +1,24 @@
+<div class="column12 flex flex-row justify-center content-section">
+  <h1>Help Keep the <span id="flicker" title="I spent over an hour on this animation">Lights On</span></h1>
+
+  <p>
+    Donations are completely optional and voluntary and all will be used exclusively for hardware maintenance, upgrades and
+    other server-associated costs to enhance the community and gameplay experience. Rewards for donations vary from game to
+    game but are typically in-game currency to spend in in-game shops, roles, and other perks. Please see the
+    <a routerLink="/donate/info">donation system</a> for more information.
+  </p>
+</div>
+
+<div class="column12 trailer-8">
+  <supremegaming-game-platform-selection (gameSelected)="saveGame($event)" [savedGame]="selectedGame | async">
+  </supremegaming-game-platform-selection>
+</div>
+
+<div class="column12 trailer-8 interactable" [ngClass]="{deactivated: (selectedGame | async) === null}">
+  <supremegaming-donation-package-selection (packageSelected)="savePackage($event)" [cartItems]="cartItems | async">
+  </supremegaming-donation-package-selection>
+</div>
+
+<div class="column12 interactable" [ngClass]="{deactivated: (cartItems | async)?.length === 0}">
+  <supremegaming-donation-recipient-selection></supremegaming-donation-recipient-selection>
+</div>
