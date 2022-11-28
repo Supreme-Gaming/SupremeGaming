@@ -19,11 +19,15 @@
   </supremegaming-donation-package-selection>
 </div>
 
-<div class="column12 interactable" [ngClass]="{deactivated: (cartItems | async)?.length === 0}">
+<div class="column12 trailer-8 interactable" [ngClass]="{deactivated: (cartItems | async)?.length === 0}">
   <supremegaming-donation-recipient-selection
     [game]="(selectedGame | async)?.name"
     [clearSearchOnInvalidation]="false"
     (selectedRecipient)="saveRecipient($event)"
   >
   </supremegaming-donation-recipient-selection>
+</div>
+
+<div class="column12 interactable" [ngClass]="{deactivated: (recipient | async) === null}">
+  <supremegaming-donation-selections-review></supremegaming-donation-selections-review>
 </div>

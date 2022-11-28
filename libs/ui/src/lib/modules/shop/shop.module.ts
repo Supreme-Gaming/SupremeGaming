@@ -10,7 +10,7 @@ import { DonationMethodSelectionComponent } from './components/donation-method-s
 import { GamePlatformSelectionComponent } from './components/game-platform-selection/game-platform-selection.component';
 import { DonationPackageSelectionComponent } from './components/donation-package-selection/donation-package-selection.component';
 import { DonationRecipientSelectionComponent } from './components/donation-recipient-selection/donation-recipient-selection.component';
-import { ShopService } from './services/shop/shop.service';
+import { DonationSelectionsReviewComponent } from './components/donation-selections-review/donation-selections-review.component';
 
 @NgModule({
   imports: [CommonModule, UIFormsModule, RouterModule, PipesModule, ReactiveFormsModule],
@@ -19,13 +19,14 @@ import { ShopService } from './services/shop/shop.service';
     GamePlatformSelectionComponent,
     DonationPackageSelectionComponent,
     DonationRecipientSelectionComponent,
+    DonationSelectionsReviewComponent,
   ],
   exports: [
     DonationMethodSelectionComponent,
     GamePlatformSelectionComponent,
     DonationPackageSelectionComponent,
     DonationRecipientSelectionComponent,
+    DonationSelectionsReviewComponent,
   ],
-  providers: [ShopService],
 })
 export class ShopModule {}

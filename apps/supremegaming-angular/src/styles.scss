@@ -256,3 +256,15 @@ section.root {
 .hidden {
   display: none;
 }
+
+.inform-context {
+  border: 1pt solid $support;
+  padding: 1rem;
+  border-radius: 7pt;
+  font-size: 0.9rem;
+
+  &.warn {
+    background: #fff59d0e;
+    border-color: #fff59d5e;
+  }
+}

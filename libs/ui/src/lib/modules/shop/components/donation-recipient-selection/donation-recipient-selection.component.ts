@@ -78,7 +78,11 @@ export class DonationRecipientSelectionComponent implements OnInit {
         // If it is, we don't make a network request and simply return an empty array which will clear the results list
         withLatestFrom(this.lastSet),
         switchMap(([nowTerm, lastTerm]) =>
-          iif(() => nowTerm.length > 0 && nowTerm !== lastTerm, this.ps.searchPlayersForGame(this.game, nowTerm), of([]))
+          iif(
+            () => nowTerm.length > 0 && nowTerm !== lastTerm,
+            this.ps.searchPlayersForGame(this.game, nowTerm).pipe(map((players) => players.slice(0, 10))),
+            of([])
+          )
         ),
         shareReplay()
       )
