@@ -10,7 +10,7 @@ import { ICartItem, IDonationGame, IDonationPackageEvent } from '../../interface
 export class ShopService {
   private _game: ReplaySubject<IDonationGame> = new ReplaySubject<IDonationGame>(1);
   private _cart: BehaviorSubject<Array<ICartItem>> = new BehaviorSubject<Array<ICartItem>>([]);
-  private _recipient: ReplaySubject<GameServerPlayer> = new ReplaySubject<GameServerPlayer>(1);
+  private _recipient: ReplaySubject<GameServerPlayer> = new ReplaySubject<GameServerPlayer>();
 
   public cart: Observable<Array<ICartItem>> = this._cart.asObservable();
   public game: Observable<IDonationGame> = this._game.asObservable();

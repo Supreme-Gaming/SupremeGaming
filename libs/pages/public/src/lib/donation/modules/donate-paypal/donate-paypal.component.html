@@ -9,17 +9,17 @@
   </p>
 </div>
 
-<div class="column12 trailer-8">
+<div class="column12 trailer-7">
   <supremegaming-game-platform-selection (gameSelected)="saveGame($event)" [savedGame]="selectedGame | async">
   </supremegaming-game-platform-selection>
 </div>
 
-<div class="column12 trailer-8 interactable" [ngClass]="{deactivated: (selectedGame | async) === null}">
+<div class="column12 trailer-7 interactable" [ngClass]="{deactivated: (selectedGame | async) === null}">
   <supremegaming-donation-package-selection (packageSelected)="savePackage($event)" [cartItems]="cartItems | async">
   </supremegaming-donation-package-selection>
 </div>
 
-<div class="column12 trailer-8 interactable" [ngClass]="{deactivated: (cartItems | async)?.length === 0}">
+<div class="column12 trailer-6 interactable" [ngClass]="{deactivated: (cartItems | async)?.length === 0}">
   <supremegaming-donation-recipient-selection
     [game]="(selectedGame | async)?.name"
     [clearSearchOnInvalidation]="false"
@@ -28,6 +28,9 @@
   </supremegaming-donation-recipient-selection>
 </div>
 
-<div class="column12 interactable" [ngClass]="{deactivated: (recipient | async) === null}">
-  <supremegaming-donation-selections-review></supremegaming-donation-selections-review>
+<div
+  class="column12 interactable"
+  [ngClass]="{deactivated: (recipient | async) === null && (cartItems | async).length === 0 || (recipient | async) === null}"
+>
+  <supremegaming-donation-selections-review [cart]="cartItems | async"></supremegaming-donation-selections-review>
 </div>

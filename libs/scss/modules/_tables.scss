@@ -8,6 +8,10 @@ table {
   thead {
     font-weight: 600;
     font-size: 1.1rem;
+  }
+
+  thead,
+  tbody {
     text-align: left;
   }
 
@@ -26,5 +30,12 @@ table {
   td,
   th {
     padding: 1.25rem 1rem;
+  }
+
+  &.right-align {
+    thead,
+    tbody {
+      text-align: right;
+    }
   }
 }
