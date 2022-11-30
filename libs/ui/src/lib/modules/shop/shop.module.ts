@@ -11,6 +11,7 @@ import { GamePlatformSelectionComponent } from './components/game-platform-selec
 import { DonationPackageSelectionComponent } from './components/donation-package-selection/donation-package-selection.component';
 import { DonationRecipientSelectionComponent } from './components/donation-recipient-selection/donation-recipient-selection.component';
 import { DonationSelectionsReviewComponent } from './components/donation-selections-review/donation-selections-review.component';
+import { DonationConfirmStatusComponent } from './components/donation-confirm-status/donation-confirm-status.component';
 
 @NgModule({
   imports: [CommonModule, UIFormsModule, RouterModule, PipesModule, ReactiveFormsModule],
@@ -20,6 +21,7 @@ import { DonationSelectionsReviewComponent } from './components/donation-selecti
     DonationPackageSelectionComponent,
     DonationRecipientSelectionComponent,
     DonationSelectionsReviewComponent,
+    DonationConfirmStatusComponent,
   ],
   exports: [
     DonationMethodSelectionComponent,
@@ -27,6 +29,7 @@ import { DonationSelectionsReviewComponent } from './components/donation-selecti
     DonationPackageSelectionComponent,
     DonationRecipientSelectionComponent,
     DonationSelectionsReviewComponent,
+    DonationConfirmStatusComponent,
   ],
 })
 export class ShopModule {}
