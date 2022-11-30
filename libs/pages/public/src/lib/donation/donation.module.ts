@@ -28,6 +28,15 @@ const routes: Routes = [
           },
         },
       },
+      {
+        path: 'status',
+        loadChildren: () => import('./modules/donate-status/donate-status.module').then((m) => m.DonateStatusModule),
+        data: {
+          meta: {
+            title: 'Donation Status',
+          },
+        },
+      },
     ],
   },
 ];
