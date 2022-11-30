@@ -33,6 +33,7 @@
               "with": "apps/supremegaming-angular/src/environments/environment.prod.ts"
             }
           ],
+          "aot": true,
           "optimization": true,
           "outputHashing": "all",
           "sourceMap": false,
