@@ -1,24 +1,58 @@
-<h2 class="trailer-2">Step 4 &mdash; Review &amp; Checkout</h2>
+<ng-container *ngIf="cart.length > 0">
+  <h2 class="trailer-2">Step 4 &mdash; Review &amp; Checkout</h2>
 
-<div>
-  <p>Please review and confirm your selections.</p>
+  <p class="trailer-2">Please review your selections and agreement terms before checkout out with PayPal.</p>
 
-  <div class="inform-context warn leader-1">
+  <div class="inform-context warn trailer-2">
     <p>
-      <strong>Notice</strong>: Donations made through supremegaming.gg for Supreme Gaming are optional and final. Funds are
-      non-profit and serve only for the continued support and operation of the Supreme Gaming services.
+      <strong>Notice</strong>: Donations made through supremegaming.gg for Supreme Gaming are optional and final. Funds
+      are
+      non-profit and serve only for the continued support and operation of Supreme Gaming services.
     </p>
 
     <p>
-      Upon transaction completion and verification, you can expect delivery of your rewards within 24 hours. If you do not
-      receive your rewards in that time frame, <a [routerLink]="['community/support']">please create a ticket on our </a> for
+      Upon transaction completion and verification, you can expect delivery of your rewards within 24 hours. If you do
+      not
+      receive your rewards in that time frame, <a [routerLink]="['community/support']">please create a ticket on our
+      </a> for
       assistance.
     </p>
 
     <p>
-      Any charge-backs or requests for refunds after goods have been delivered and in-game balanced depleted, are subject to
-      an immediate ban from ALL current and future Supreme Gaming ARK:Survival Evolved, ATLAS, and Conan Exiles servers and
+      Any charge-backs or requests for refunds after goods have been delivered and in-game balanced depleted, are
+      subject to
+      an immediate ban from ALL current and future Supreme Gaming ARK:Survival Evolved, ATLAS, and Conan Exiles servers
+      and
       services.
     </p>
   </div>
-</div>
+
+  <div class="wire-container table-container">
+    <table class="right-align">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Quantity</th>
+          <th>Item Description</th>
+          <th>Price (USD)</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of cart">
+          <td class="img-row"><img class="product-icon" [src]="item.productImgPath" [alt]="item.name" /></td>
+          <td>{{item.count}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.price * item.count | currency}}</td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td><strong>Total</strong></td>
+          <td><strong>{{cartTotal?.points | number}} Points</strong></td>
+          <td><strong>{{cartTotal?.dollars | currency}}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
