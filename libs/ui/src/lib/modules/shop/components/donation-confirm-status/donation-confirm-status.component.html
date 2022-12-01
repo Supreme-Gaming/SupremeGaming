@@ -1,1 +1,13 @@
-<p>donation-confirm-status works!</p>
+<ng-container *ngIf="(orderId | async) === null">
+  <p>No order to track right now</p>
+</ng-container>
+
+<ng-container *ngIf="(orderId | async) !== null">
+  <p>Order ID: {{ orderId | async }}</p>
+
+  <p>Order Status:</p>
+
+  <div>
+    <pre> {{ disbursementStatus | async | json}}</pre>
+  </div>
+</ng-container>

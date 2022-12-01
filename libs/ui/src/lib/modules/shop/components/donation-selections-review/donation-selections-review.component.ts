@@ -1,4 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { loadScript, PayPalNamespace, PurchaseItem } from '@paypal/paypal-js';
 
 import { GameServerPlayer } from '@supremegaming/common/interfaces';
@@ -26,7 +28,7 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
   private _pp: PayPalNamespace;
   private _isProd: boolean;
 
-  constructor(private readonly env: EnvironmentService) {}
+  constructor(private readonly env: EnvironmentService, private readonly router: Router) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.cart && (changes.cart.currentValue as Array<ICartItem>).length > 0) {
@@ -50,7 +52,7 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
 
   public async initPP() {
     this._pp = await loadScript({
-      'client-id': 'test',
+      'client-id': 'sb',
       currency: 'USD',
       intent: 'capture',
       components: 'buttons',
@@ -167,6 +169,8 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
         if (this._isProd === false) {
           console.log('order', order);
         }
+
+        this.router.navigate(['/donate/status', order.id]);
       },
       onError: (err) => {
         if (this._isProd == false) {
