@@ -2,7 +2,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment.prod';
+import { environment } from './environments/environment';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -10,9 +10,7 @@ async function bootstrap() {
   const port = process.env.API_PORT || 3333;
 
   app.setGlobalPrefix(globalPrefix);
-  app.useGlobalPipes(
-    new ValidationPipe({ transform: true, whitelist: true, disableErrorMessages: !environment.production })
-  );
+  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true, disableErrorMessages: environment.production }));
 
   // TODO: Might wanna tighten this up a bit
   app.enableCors({
