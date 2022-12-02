@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { Observable, of, ReplaySubject, timer } from 'rxjs';
+import { Observable, ReplaySubject, timer } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { LoggerService } from '../logger/logger.service';
@@ -77,7 +77,7 @@ export class PaypalRestService {
         }),
         catchError((err) => {
           // Exponential back-off with max 16 seconds delay
-          const nextCount = (count = 4 ? 4 : count + 1);
+          const nextCount = count === 4 ? 4 : count + 1;
           const nextTimer = 1000 * Math.pow(2, nextCount);
 
           this.log.error(
