@@ -14,7 +14,13 @@
         "polyfills": "apps/supremegaming-angular/src/polyfills.ts",
         "tsConfig": "apps/supremegaming-angular/tsconfig.app.json",
         "aot": true,
-        "assets": ["apps/supremegaming-angular/src/favicon.ico", "apps/supremegaming-angular/src/assets"],
+        "assets": [
+          "apps/supremegaming-angular/src/favicon.ico",
+          "apps/supremegaming-angular/src/assets",
+          "apps/supremegaming-angular/src/Dockerfile",
+          "apps/supremegaming-angular/src/.dockerignore",
+          "apps/supremegaming-angular/src/.nginx"
+        ],
         "styles": ["apps/supremegaming-angular/src/styles.scss"],
         "scripts": [],
         "allowedCommonJsDependencies": ["webfontloader"]
@@ -47,6 +53,17 @@
             }
           ]
         }
+      }
+    },
+    "image-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker build -t supremegaming-angular ."
+          }
+        ],
+        "cwd": "dist/apps/supremegaming-angular"
       }
     },
     "serve": {
@@ -84,3 +101,4 @@
   },
   "tags": []
 }
+
