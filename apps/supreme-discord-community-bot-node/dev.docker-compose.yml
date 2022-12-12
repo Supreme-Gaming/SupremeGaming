@@ -1,0 +1,22 @@
+# Compose file for local testing
+# Same can be used for production, just swap out the image name
+#
+# To run:
+#   docker-compose -f dev.docker-compose.yml --env-file .env.local up -d
+
+version: '3'
+
+name: SG Community Bot
+services:
+  dev:
+    image: supreme-discord-community-bot-node:latest
+    container_name: supreme-discord-community-bot-node
+    restart: always
+    environment:
+      DISCORD_API_TOKEN: ${DISCORD_API_TOKEN}
+      DISCORD_BOT_ID: ${DISCORD_BOT_ID}
+      DISCORD_GUILD_ID: ${DISCORD_GUILD_ID}
+      DISCORD_REGISTER_SLASH_COMMANDS: ${DISCORD_REGISTER_SLASH_COMMANDS}
+      DISCORD_ROLE_CHANNEL_NAME: ${DISCORD_ROLE_CHANNEL_NAME}
+      DISCORD_WELCOME_CHANNEL_NAME: ${DISCORD_WELCOME_CHANNEL_NAME}
+
