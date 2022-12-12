@@ -6,19 +6,19 @@ export class TicketMessageEntity {
   public id: number;
 
   @PrimaryColumn({ type: 'bigint' })
-  public serverId: number;
+  public serverId: string;
 
   @Column()
   public ticketId: string;
 
   @Column({ type: 'bigint' })
-  public createdBy: number;
+  public createdBy: string;
 
   @Column()
   public authorName: string;
 
   @PrimaryColumn({ type: 'bigint' })
-  public messageId: number;
+  public messageId: string;
 
   @Column({ type: 'text' })
   public content: string;

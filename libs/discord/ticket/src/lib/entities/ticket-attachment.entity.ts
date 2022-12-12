@@ -6,10 +6,10 @@ export class TicketAttachment {
   public id: number;
 
   @PrimaryColumn({ type: 'bigint' })
-  public serverId: number;
+  public serverId: string;
 
   @PrimaryColumn({ type: 'bigint' })
-  public messageId: number;
+  public messageId: string;
 
   @Column({ type: 'text' })
   public name: string;

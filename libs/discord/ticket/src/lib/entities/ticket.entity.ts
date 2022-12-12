@@ -9,16 +9,16 @@ export class TicketEntity {
   public ticketId: string;
 
   @Column({ type: 'bigint' })
-  public serverId: number;
+  public serverId: string;
 
   @Column({ type: 'bigint' })
-  public serverSequence: number;
+  public serverSequence: string;
 
   @Column({ type: 'bigint' })
-  public createdBy: number;
+  public createdBy: string;
 
   @Column({ type: 'bigint' })
-  public channelId: number;
+  public channelId: string;
 
   @Column({ default: 'open' })
   public status: string;

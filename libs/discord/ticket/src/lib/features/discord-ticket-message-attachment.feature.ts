@@ -5,12 +5,12 @@ import { MessageAttachment } from 'discord.js';
 export class DiscordServerTicketMessageAttachment {
   private _repo: Repository<TicketAttachment>;
 
-  private _serverId: number;
-  private _messageId: number;
+  private _serverId: string;
+  private _messageId: string;
 
   private _attachments: MessageAttachment[];
 
-  constructor(serverId: number, messageId: number, attachments: MessageAttachment[]) {
+  constructor(serverId: string, messageId: string, attachments: MessageAttachment[]) {
     this._repo = getRepository(TicketAttachment);
 
     this._serverId = serverId;

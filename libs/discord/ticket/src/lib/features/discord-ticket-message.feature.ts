@@ -12,11 +12,11 @@ export class TicketMessage {
 
   private _messageContent: string;
   private _messageAttachments: Array<MessageAttachment>;
-  private _messageId: number;
-  private _createdBy: number;
+  private _messageId: string;
+  private _createdBy: string;
   private _authorName: string;
-  private _channelId: number;
-  private _serverId: number;
+  private _channelId: string;
+  private _serverId: string;
 
   private _channelName: string;
 
@@ -46,13 +46,13 @@ export class TicketMessage {
   private async applyMetadata(message: Message | PartialMessage) {
     this._channelName = (message.channel as TextChannel).name;
 
-    this._messageId = parseInt(message.id);
+    this._messageId = message.id;
     this._messageContent = message.cleanContent;
 
     this._messageAttachments = message.attachments.map((a) => a);
 
-    this._channelId = parseInt(message.channel.id);
-    this._serverId = parseInt(message.guild.id);
+    this._channelId = message.channel.id;
+    this._serverId = message.guild.id;
 
     // Check if the message has a valid author. Bot's might not populate this property.
     if (message.author === null) {
@@ -63,7 +63,7 @@ export class TicketMessage {
       await message.author.fetch();
     }
 
-    this._createdBy = parseInt(message.author.id);
+    this._createdBy = message.author.id;
     this._authorName = message.author.username;
   }
 
