@@ -1,0 +1,30 @@
+# Compose file for local testing
+# Same can be used for production, just swap out the image name
+#
+# To run:
+#   docker-compose -f dev.docker-compose.yml --env-file .env.local up -d
+
+version: '3'
+
+name: SG Ticket Bot
+services:
+  dev:
+    image: supreme-discord-ticket-bot-node:latest
+    container_name: supreme-discord-ticket-bot-node
+    restart: always
+    environment:
+      DISCORD_API_TOKEN: ${DISCORD_API_TOKEN}
+      DISCORD_BOT_ID: ${DISCORD_BOT_ID}
+      DISCORD_GUILD_ID: ${DISCORD_GUILD_ID}
+      DISCORD_REGISTER_SLASH_COMMANDS: ${DISCORD_REGISTER_SLASH_COMMANDS}
+      TYPEORM_CONNECTION: ${TYPEORM_CONNECTION}
+      TYPEORM_HOST: ${TYPEORM_HOST}
+      TYPEORM_PORT: ${TYPEORM_PORT}
+      TYPEORM_USERNAME: ${TYPEORM_USERNAME}
+      TYPEORM_PASSWORD: ${TYPEORM_PASSWORD}
+      TYPEORM_DATABASE: ${TYPEORM_DATABASE}
+      TYPEORM_SYNCHRONIZE: ${TYPEORM_SYNCHRONIZE}
+      TYPEORM_DROP_SCHEMA: ${TYPEORM_DROP_SCHEMA}
+      TYPEORM_LOGGING: ${TYPEORM_LOGGING}
+      TYPEORM_DRIVER_EXTRA: ${TYPEORM_DRIVER_EXTRA}
+
