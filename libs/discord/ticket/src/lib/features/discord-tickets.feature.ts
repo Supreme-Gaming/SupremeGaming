@@ -6,10 +6,10 @@ import * as guid from 'uuid/v4';
 
 export class Ticket {
   private _repo: Repository<TicketEntity>;
-  private _serverId: number;
-  private _seq: number;
-  private _createdBy: number;
-  private _channelId: number;
+  private _serverId: string;
+  private _seq: string;
+  private _createdBy: string;
+  private _channelId: string;
 
   /**
    * This is set to true once the ticket insertion query has finished.
@@ -21,8 +21,8 @@ export class Ticket {
 
   constructor(interaction: CommandInteraction<CacheType> | ButtonInteraction<CacheType>) {
     this._repo = getRepository(TicketEntity);
-    this._serverId = parseInt(interaction.guild.id);
-    this._createdBy = parseInt(interaction.user.id);
+    this._serverId = interaction.guild.id;
+    this._createdBy = interaction.user.id;
 
     if ((interaction.channel as any).name.includes('ticket')) {
       this.channelId = interaction.channel.id;
@@ -97,7 +97,7 @@ export class Ticket {
   }
 
   public set channelId(id: string) {
-    this._channelId = parseInt(id);
+    this._channelId = id;
   }
 
   private async getDbSequence() {
@@ -108,9 +108,10 @@ export class Ticket {
       .execute();
 
     if (seq.length > 0 && seq[0].val !== null) {
-      return parseInt(seq[0].val) + 1;
+      const curr = seq[0].val;
+      return (parseInt(curr) + 1).toString();
     } else {
-      return 1;
+      return '1';
     }
   }
 }

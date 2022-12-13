@@ -136,7 +136,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
   private async setup(message: Message) {
     // Ticket configurations are stored by discord guild ID.
-    const serverId = parseInt(message.guild.id);
+    const serverId = message.guild.id;
 
     const config = await new TicketServerConfiguration(serverId).fetch();
 
@@ -306,7 +306,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       // Get ticket server configuration.
       // This will contain channel category to add ticket to and
       // role to tag on ticket creation.
-      const config = await new TicketServerConfiguration(parseInt(interaction.guild.id)).fetch();
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
 
       if (!config.fromDb) {
         interaction.reply('Ticket service not configured. Type `!ticket setup` to setup the service.');

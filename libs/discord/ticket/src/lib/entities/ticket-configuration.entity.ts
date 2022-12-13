@@ -6,7 +6,7 @@ export class TicketConfiguration {
   public id: number;
 
   @Column({ type: 'bigint' })
-  public serverId: number;
+  public serverId: string;
 
   @Column({ type: 'json' })
   public config: object;
