@@ -19,7 +19,8 @@ export class FunDiscordModule implements SlashCommands, OnInteractionCreate {
               { name: 'Never gonna', value: 'giveYouUp' },
               { name: 'If you like it', value: 'putARingOnIt' },
               { name: 'Am I real boy?', value: 'creator' },
-              { name: 'LF: Passive pen', value: 'passivePen' }
+              { name: 'LF: Passive pen', value: 'passivePen' },
+              { name: 'Wrong discord', value: 'wrongDiscord' }
             );
         }),
     ];
@@ -42,6 +43,11 @@ export class FunDiscordModule implements SlashCommands, OnInteractionCreate {
           break;
         case 'passivePen':
           interaction.reply('Trading one passive pen for 5k hard poly and 5k cp');
+          break;
+        case 'wrongDiscord':
+          interaction.reply({
+            files: ['https://cdn.discordapp.com/attachments/262744296875229185/1092881251775545474/SupremeARKmod.png'],
+          });
           break;
         default:
           break;
