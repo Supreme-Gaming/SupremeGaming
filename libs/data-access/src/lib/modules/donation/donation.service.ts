@@ -14,7 +14,7 @@ export class DonationService {
     this.service = this.env.value<SupremeGamingEnvironment, string>('v1ApiUrl') + '/payments';
   }
 
-  public captureDonation(t_id: string) {
-    return this.http.post(`${this.service}/capture/`, { id: t_id });
+  public donationStatus(t_id: string) {
+    return this.http.get(`${this.service}/status/${t_id}`);
   }
 }

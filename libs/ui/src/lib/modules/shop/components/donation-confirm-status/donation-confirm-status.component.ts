@@ -24,7 +24,7 @@ export class DonationConfirmStatusComponent implements OnInit {
     );
 
     this.disbursementStatus = this.orderId.pipe(
-      switchMap((orderId) => this.ds.captureDonation(orderId)),
+      switchMap((orderId) => this.ds.donationStatus(orderId)),
       shareReplay()
     );
   }
