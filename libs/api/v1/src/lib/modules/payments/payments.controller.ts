@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 import { GetPayPalOrderDetailsDto } from './payments.dtos';
 import { PaymentsService } from './payments.service';
@@ -8,7 +8,7 @@ export class PaymentsController {
   constructor(private readonly ps: PaymentsService) {}
 
   @Get('status/:id')
-  public getDisbursementStatus() {
-    return this.ps.getOrderDetails();
+  public getDisbursementStatus(@Param() params: GetPayPalOrderDetailsDto) {
+    return this.ps.getOrderDetails(params.id);
   }
 }
