@@ -6,7 +6,7 @@ import { PaypalRestService } from '@supremegaming/api/core';
 export class PaymentsService {
   constructor(private readonly pp: PaypalRestService) {}
 
-  public capturePayment() {
+  public getOrderDetails() {
     return this.pp.getOperatingMode();
   }
 }

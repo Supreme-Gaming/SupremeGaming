@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { Observable, ReplaySubject, timer } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { Observable, timer } from 'rxjs';
+import { catchError, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { LoggerService } from '../logger/logger.service';
 
@@ -15,9 +15,9 @@ export class PaypalRestService {
 
   private _apiUrl: string;
 
-  private _identity: Observable<any>;
-  private _bearerToken: ReplaySubject<string> = new ReplaySubject();
-  private _nextAccessTokenAcquisition: ReplaySubject<number> = new ReplaySubject();
+  private _identity: Observable<IPayPalRestIdentity>;
+  private _bearerToken: Observable<string>;
+  private _nextAccessTokenAcquisition: Observable<number>;
 
   constructor(private readonly log: LoggerService, private readonly http: HttpService) {
     this.preFlightCheck();
@@ -43,23 +43,25 @@ export class PaypalRestService {
     this._mode = process.env.PAYPAL_MODE === 'live' ? 'live' : 'sandbox';
 
     if (this._mode === 'live') {
-      this._apiUrl = 'https://api.sandbox.paypal.com';
+      this._apiUrl = 'https://api.paypal.com';
     } else {
-      this._apiUrl = 'https://api-m.sandbox.paypal.com';
+      this._apiUrl = 'https://api.sandbox.paypal.com';
     }
   }
 
   private _configureLifecycle() {
     this._identity = this._authenticate();
+    this._bearerToken = this._identity.pipe(map((identity) => identity.access_token));
+    this._nextAccessTokenAcquisition = this._identity.pipe(map((identity) => identity.expires_in));
   }
 
-  private _authenticate(count = 1): Observable<any> {
+  private _authenticate(count = 1): Observable<IPayPalRestIdentity> {
     this.log.log('PaypalRestService: _authenticate()');
 
     return this.http
       .request({
         method: 'POST',
-        url: `${this._apiUrl}/v1/oauth2/tokenss`,
+        url: `${this._apiUrl}/v1/oauth2/token`,
         withCredentials: true,
         data: 'grant_type=client_credentials',
         headers: {
@@ -86,13 +88,13 @@ export class PaypalRestService {
           );
 
           return timer(nextTimer).pipe(switchMap(() => this._authenticate(count + 1)));
-        })
+        }),
+        shareReplay()
       );
   }
 
-  public getOperatingMode(): any {
-    // return this._mode;
-    return this._authenticate();
+  public getOperatingMode() {
+    return this._bearerToken;
   }
 }
 
@@ -100,4 +102,13 @@ export interface IPayPalRestOptions {
   clientId: string;
   clientSecret: string;
   mode: 'sandbox' | 'live';
+}
+
+export interface IPayPalRestIdentity {
+  scope: string;
+  access_token: string;
+  token_type: string;
+  app_id: string;
+  expires_in: number;
+  nonce: string;
 }
