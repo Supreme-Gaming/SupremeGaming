@@ -96,6 +96,20 @@ export class PaypalRestService {
   public getOperatingMode() {
     return this._bearerToken;
   }
+
+  public getOrderDetails(t_id: string): Observable<unknown> {
+    return this._identity.pipe(
+      switchMap((identity) => {
+        return this.http
+          .get(`${this._apiUrl}/v2/checkout/orders/${t_id}`, {
+            headers: {
+              Authorization: `Bearer ${identity.access_token}`,
+            },
+          })
+          .pipe(map((res) => res.data));
+      })
+    );
+  }
 }
 
 export interface IPayPalRestOptions {
