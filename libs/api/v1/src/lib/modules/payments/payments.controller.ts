@@ -9,6 +9,7 @@ export class PaymentsController {
 
   @Get('status/:id')
   public getDisbursementStatus(@Param() params: GetPayPalOrderDetailsDto) {
-    return this.ps.getOrderDetails(params.id);
+    // return this.ps.getOrderDetails(params.id);
+    return this.ps.serializeOrder(params.id);
   }
 }

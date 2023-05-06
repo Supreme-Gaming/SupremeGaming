@@ -97,7 +97,7 @@ export class PaypalRestService {
     return this._bearerToken;
   }
 
-  public getOrderDetails(t_id: string): Observable<unknown> {
+  public getOrderDetails(t_id: string): Observable<IPayPalRestOrder> {
     return this._identity.pipe(
       switchMap((identity) => {
         return this.http
@@ -125,4 +125,134 @@ export interface IPayPalRestIdentity {
   app_id: string;
   expires_in: number;
   nonce: string;
+}
+
+export interface IPayPalRestOrder {
+  id: string;
+  intent: string;
+  status: string;
+  payment_source: IPayPalRestPaymentSource;
+  purchase_units: IPayPalRestPurchaseUnit[];
+  payer: IPayPalRestPayer;
+  create_time: string;
+  update_time: string;
+  links: IPayPalRestLink[];
+}
+
+export interface IPayPalRestPaymentSource {
+  paypal?: {
+    email_address: string;
+    account_id: string;
+    name: {
+      given_name: string;
+      surname: string;
+    };
+    address: {
+      country_code: string;
+    };
+  };
+}
+
+export interface IPayPalRestPayer {
+  name: {
+    given_name: string;
+    surname: string;
+  };
+  email_address: string;
+  payer_id: string;
+  address: {
+    country_code: string;
+  };
+}
+
+interface IPayPalRestPurchaseUnit {
+  reference_id: string;
+  amount: IPayPalRestAmount;
+  payee: IPayPalRestPayee;
+  items: IPayPalRestItem[];
+  shipping: IPayPalRestShipping;
+  payments: IPayPalRestPayment;
+}
+
+interface IPayPalRestAmount {
+  currency_code: string;
+  value: string;
+  breakdown?: IPayPalRestBreakdown;
+}
+
+interface IPayPalRestBreakdown {
+  item_total: IPayPalRestItemTotal;
+}
+
+interface IPayPalRestItemTotal {
+  currency_code: string;
+  value: string;
+}
+
+interface IPayPalRestPayee {
+  email_address: string;
+  merchant_id: string;
+}
+
+interface IPayPalRestItem {
+  name: string;
+  unit_amount: IPayPalRestUnitAmount;
+  quantity: string;
+  category: string;
+  description?: string;
+  sku: string;
+}
+
+interface IPayPalRestUnitAmount {
+  currency_code: string;
+  value: string;
+}
+
+interface IPayPalRestShipping {
+  name: IPayPalRestName;
+  address: IPayPalRestAddress;
+}
+
+interface IPayPalRestName {
+  full_name: string;
+}
+
+interface IPayPalRestAddress {
+  address_line_1: string;
+  address_line_2: string;
+  admin_area_2: string;
+  admin_area_1: string;
+  postal_code: string;
+  country_code: string;
+}
+
+interface IPayPalRestPayment {
+  captures: IPayPalRestCapture[];
+}
+
+interface IPayPalRestCapture {
+  id: string;
+  status: string;
+  amount: IPayPalRestAmount;
+  final_capture: boolean;
+  seller_protection: IPayPalRestSellerProtection;
+  seller_receivable_breakdown: IPayPalRestSellerReceivableBreakdown;
+  links: IPayPalRestLink[];
+}
+
+interface IPayPalRestSellerProtection {
+  status: string;
+  dispute_categories: string[];
+}
+
+interface IPayPalRestSellerReceivableBreakdown {
+  gross_amount: IPayPalRestAmount;
+  paypal_fee: IPayPalRestAmount;
+  net_amount: IPayPalRestAmount;
+}
+
+interface IPayPalRestLink {
+  href: string;
+  rel: string;
+  method: string;
 }
