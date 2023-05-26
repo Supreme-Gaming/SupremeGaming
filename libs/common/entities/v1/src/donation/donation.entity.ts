@@ -13,7 +13,7 @@ export class DonationEntity extends BaseEntity {
   @Column({ type: 'bigint', nullable: true })
   public Added: number;
 
-  @CreateDateColumn({ type: 'bigint', nullable: true })
+  @CreateDateColumn({ nullable: true })
   public TimeProcessed: number;
 
   @Column({ length: 255, nullable: true })
@@ -25,7 +25,7 @@ export class DonationEntity extends BaseEntity {
   @Column({ type: 'mediumtext', nullable: true })
   public OrderDetails: string;
 
-  @Column({ length: 'mediumtext', nullable: true })
+  @Column({ type: 'mediumtext', nullable: true })
   public Payer: string;
 
   @Column({ length: 255, nullable: true })

@@ -11,7 +11,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { ApiCoreModule } from '@supremegaming/api/core';
 import { ApiV1Module } from '@supremegaming/api/v1';
-import { DonationEntity, PlayerEntity, UserEntity } from '@supremegaming/common/entities/v1';
+import { DonationEntity, EventEntity, PlayerEntity, UserEntity } from '@supremegaming/common/entities/v1';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -28,7 +28,7 @@ const administrationDb = TypeOrmModule.forRoot({
   dropSchema: process.env.PAYMENTS_DB_DROP_SCHEMA === 'true',
   logging: process.env.PAYMENTS_DB_LOGGING === 'true',
   extra: process.env.PAYMENTS_DB_EXTRA,
-  entities: [DonationEntity, UserEntity],
+  entities: [DonationEntity, UserEntity, EventEntity],
 } as TypeOrmModuleOptions);
 
 const rewardsDb = TypeOrmModule.forRoot({
