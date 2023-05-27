@@ -7,7 +7,7 @@ export class DonationEntity extends BaseEntity {
   @PrimaryColumn({ generated: 'increment', nullable: false })
   public Id: number;
 
-  @Column({ unique: true, nullable: false, length: 255 })
+  @Column({ generated: 'uuid', nullable: false, length: 255 })
   public Guid: string;
 
   @Column({ type: 'bigint', nullable: true })

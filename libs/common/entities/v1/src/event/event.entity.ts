@@ -6,14 +6,29 @@ export class EventEntity extends BaseEntity {
   public guid: string;
 
   @CreateDateColumn({ nullable: false })
-  public created: Date;
+  public created?: Date;
 
   @UpdateDateColumn({ nullable: false })
-  public updated: Date;
+  public updated?: Date;
 
-  @Column({ length: 255, nullable: true })
-  public type: string;
+  @Column({ length: 255, nullable: false })
+  public type: EVENT_TYPE;
 
-  @Column({ length: 255, nullable: true })
-  public performedBy: string;
+  @Column({ length: 255, nullable: false })
+  public performedBy: EVENT_PERFORMED_BY;
+
+  @Column({ type: 'mediumtext', nullable: false })
+  public details: string;
+
+  @Column({ length: 255, nullable: false })
+  public ref: string;
+}
+
+export enum EVENT_TYPE {
+  DISBURSEMENT = 'disbursement',
+}
+
+export enum EVENT_PERFORMED_BY {
+  SYSTEM = 'system',
+  PLAYER = 'player',
 }

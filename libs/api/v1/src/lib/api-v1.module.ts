@@ -9,7 +9,12 @@ import { PaymentsModule } from './modules/payments/payments.module';
 import { PaymentsService } from './modules/payments/payments.service';
 
 @Module({
-  imports: [ApiCoreModule, PaymentsModule, TypeOrmModule.forFeature([DonationEntity, PlayerEntity, EventEntity])],
+  imports: [
+    ApiCoreModule,
+    PaymentsModule,
+    TypeOrmModule.forFeature([DonationEntity, EventEntity]),
+    TypeOrmModule.forFeature([PlayerEntity], 'rewards'),
+  ],
   controllers: [PaymentsController],
   providers: [PaymentsService],
   exports: [],
