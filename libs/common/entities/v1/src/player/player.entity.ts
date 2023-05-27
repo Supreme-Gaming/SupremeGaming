@@ -8,7 +8,7 @@ export class PlayerEntity extends BaseEntity {
   public Id: number;
 
   @Column({ unique: true, type: 'bigint', nullable: false, default: 0 })
-  public SteamId: number;
+  public SteamId: string;
 
   @Column({ type: 'varchar', length: '100000', nullable: false, default: '{}' })
   public Kits: string;
