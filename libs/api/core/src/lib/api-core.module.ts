@@ -7,6 +7,6 @@ import { LoggerService } from './services/logger/logger.service';
 @Module({
   imports: [HttpModule],
   providers: [LoggerService, PaypalRestService],
-  exports: [LoggerService, PaypalRestService],
+  exports: [LoggerService, PaypalRestService, HttpModule],
 })
 export class ApiCoreModule {}

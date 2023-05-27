@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { HttpService } from '@nestjs/axios';
 import { Observable, from, of, pipe } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { Repository } from 'typeorm';
@@ -20,7 +21,8 @@ export class PaymentsService {
     @InjectRepository(EventEntity) private readonly eventRepo: Repository<EventEntity>,
     @InjectRepository(PlayerEntity, 'rewards') private readonly playerRepo: Repository<PlayerEntity>,
     private readonly ls: LoggerService,
-    private readonly pp: PaypalRestService
+    private readonly pp: PaypalRestService,
+    private readonly httpClient: HttpService
   ) {}
 
   public getOrderDetails(id: string) {
@@ -146,6 +148,12 @@ export class PaymentsService {
 
         donation.Processed = 'true';
         this.donationRepo.save(donation);
+
+        // If discord webhook env var is set, send a message to the discord channel
+        if (process.env.DISCORD_WEBHOOK_URL) {
+          this.ls.debug(`Sending discord webhook for donation ${donation.Id}`);
+          this.sendDiscordWebhookNotification(donation, event).subscribe();
+        }
       } catch (err) {
         this.ls.error('Error disbursing donation to player.');
       }
@@ -159,5 +167,24 @@ export class PaymentsService {
     const totalPoints = parseInt(sku.name.split(':')[1]);
 
     return totalPoints;
+  }
+
+  private sendDiscordWebhookNotification(order: DonationEntity, confirmation: EventEntity) {
+    const parsedConfirmation = JSON.parse(confirmation.details);
+
+    return this.httpClient.post(process.env.DISCORD_WEBHOOK_URL, {
+      username: 'PayPal Donation Processing',
+      content: `Donation received!\n
+      **Transaction ID**: ${order.PpId}
+      **Player Name**: ${order.CharacterName}
+      **Player Guid**: ${order.PlayerGuid}
+      **Points**: ${this.getTotalPointsFromOrder(JSON.parse(order.OrderDetails))}
+      **Donation Amount**: $${order.Total}
+      **Status**: Disbursed
+      **Old Points**: ${parsedConfirmation?.oldPoints}
+      **New Points**: ${parsedConfirmation?.newPoints}\n
+      No action is needed. This donation has been automatically processed and disbursed.`,
+      avatar_url: 'http://logok.org/wp-content/uploads/2014/05/Paypal-logo-pp-2014-880x660.png',
+    });
   }
 }
