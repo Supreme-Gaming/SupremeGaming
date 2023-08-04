@@ -6,14 +6,14 @@
   "prefix": "supremegaming",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/pages/public/src/**/*.ts", "libs/pages/public/src/**/*.html"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/pages/public"],
       "options": {
         "jestConfig": "libs/pages/public/jest.config.ts",

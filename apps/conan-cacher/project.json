@@ -7,7 +7,7 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/webpack:webpack",
+      "executor": "@nx/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/conan-cacher",
         "main": "apps/conan-cacher/src/main.ts",
@@ -32,20 +32,20 @@
       "outputs": ["{options.outputPath}"]
     },
     "serve": {
-      "executor": "@nrwl/node:node",
+      "executor": "@nx/js:node",
       "options": {
         "buildTarget": "conan-cacher:build"
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/conan-cacher/**/*.ts"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "apps/conan-cacher/jest.config.ts",
         "tsConfig": "apps/conan-cacher/tsconfig.spec.json",
