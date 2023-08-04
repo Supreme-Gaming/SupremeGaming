@@ -15,6 +15,7 @@ import {
   ComponentType,
   UserSelectMenuBuilder,
   UserSelectMenuInteraction,
+  User,
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
@@ -77,15 +78,15 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
   public clientOnMessageCreate(message: Message<boolean>): void | Promise<void> {
     // Creates a ticket message object and checks if the message was made inside a ticket channel before proceeding.
-    const task = new TicketMessage(message, 'create').init();
+    new TicketMessage(message, 'create').init();
   }
 
   public clientOnMessageUpdate(oldMessage: Message<boolean>, newMessage: Message<boolean>): void | Promise<void> {
-    const task = new TicketMessage(newMessage, 'edit').init();
+    new TicketMessage(newMessage, 'edit').init();
   }
 
   public clientOnMessageDelete(message: Message<boolean>): void | Promise<void> {
-    const task = new TicketMessage(message, 'delete').init();
+    new TicketMessage(message, 'delete').init();
   }
 
   public async clientOnInteractionCreate(interaction: Interaction<CacheType>): Promise<void> {
@@ -128,11 +129,17 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       if (interaction.customId === 'user_select_add') {
         const [selectedId] = interaction.values;
 
-        await this.addMemberToTicket(interaction, selectedId);
+        const t = interaction.members.at(0);
+        const name = (t.user as User).globalName;
+
+        await this.addMemberToTicket(interaction, selectedId, name);
       } else if (interaction.customId === 'user_select_remove') {
         const [selectedId] = interaction.values;
 
-        await this.removeMemberFromTicket(interaction, selectedId);
+        const t = interaction.members.at(0);
+        const name = (t.user as User).globalName;
+
+        await this.removeMemberFromTicket(interaction, selectedId, name);
       }
     }
   }
@@ -239,7 +246,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       // Confirmation message
       channel.send(`All done! I've created a ${config.value.category} channel category and a #ticket-logs channel. For the sake of your puny human memory, I'll be posting there when a ticket is closed.
       `);
-    } catch (err: any) {
+    } catch (err) {
       // Differentiate between message capture timeouts vs others.
       if (err instanceof Collection) {
         (message.channel as TextChannel).send(`Setup timeout. Setup has been cancelled.`);
@@ -264,13 +271,13 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           value: {
             target: 'cleanContent',
             transformation: function (m) {
-              return (m[this.target] as any).toLowerCase();
+              return m[this.target].toLowerCase();
             },
           },
           actions: [
             {
               accept: ['yes'],
-              action: function (m, v) {
+              action: function (m) {
                 console.log('Will do something with YES');
                 return m.cleanContent.toUpperCase();
               },
@@ -491,7 +498,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     });
   }
 
-  private async addMemberToTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string) {
+  private async addMemberToTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string, name: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.create(selectedId, {
         ReadMessageHistory: true,
@@ -501,27 +508,27 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       });
 
       await interaction.update({
-        content: 'Successfully added selected member to ticket. They can now see and reply to this channel.',
+        content: `Added ${name} to ticket. They can now see and reply to this channel.`,
         components: [],
       });
-    } catch (err: any) {
+    } catch (err) {
       return interaction.update({
-        content: `Failed to add member to channel. ${err.message}`,
+        content: `Failed to add ${name} to channel. ${err.message}`,
       });
     }
   }
 
-  private async removeMemberFromTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string) {
+  private async removeMemberFromTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string, name: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.delete(selectedId);
 
       await interaction.update({
-        content: 'Selected user has been removed from this ticket. They can no longer see or send messages on this channel.',
+        content: `${name} has been removed from this ticket. They can no longer see or send messages on this channel.`,
         components: [],
       });
-    } catch (err: any) {
+    } catch (err) {
       return interaction.update({
-        content: `Failed to remove member from channel. ${err.message}`,
+        content: `Failed to remove ${name} from channel. ${err.message}`,
       });
     }
   }
