@@ -1,3 +1,14 @@
 {
+<<<<<<< HEAD
   "presets": [["@nrwl/web/babel", { "useBuiltIns": "usage" }]]
+=======
+  "presets": [
+    [
+      "@nx/js/babel",
+      {
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
+>>>>>>> 8d0950f (Execute 16.0.0 migrations)
 }
