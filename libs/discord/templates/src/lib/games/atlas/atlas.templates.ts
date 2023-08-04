@@ -1,9 +1,9 @@
-import { MessageEmbed } from 'discord.js';
+import { Colors, EmbedBuilder } from 'discord.js';
 
 export const ATLAS_HELP_TEMPLATE =
   'The following commands will provide additional information for our Atlas servers:\n\n```**!atlas connections** - Lists the connection information for each grid\n**!atlas status** - Lists the online or offline status for the grids\n**!atlas map** - Provides the in-game map image for reference\n**!atlas mods** - Link the mod collection in steam```';
 
-export const ATLAS_CONNECTIONS_TEMPLATE = new MessageEmbed({
+export const ATLAS_CONNECTIONS_TEMPLATE = new EmbedBuilder({
   author: {
     name: 'Atlas Connection Information',
     icon_url:
@@ -128,7 +128,7 @@ H8: play.supremegaming.gg:57626\`\`\``,
   ],
 });
 
-export const ATLAS_STATUS_TEMPLATE = new MessageEmbed({
+export const ATLAS_STATUS_TEMPLATE = new EmbedBuilder({
   author: {
     name: 'Atlas Server Status Information',
     icon_url:
@@ -156,13 +156,16 @@ export const ATLAS_STATUS_TEMPLATE = new MessageEmbed({
   ],
 });
 
-export const ATLAS_MAP_TEMPLATE = new MessageEmbed()
-  .setColor('NOT_QUITE_BLACK')
+export const ATLAS_MAP_TEMPLATE = new EmbedBuilder()
+  .setColor(Colors.NotQuiteBlack)
   .setTitle('Supreme Atlas Map')
   .setDescription('')
-  .addField('Latest map with online status', 'https://dev.supremegaming.gg/games/atlas');
+  .addFields({
+    name: 'Latest map with online status',
+    value: 'https://dev.supremegaming.gg/games/atlas',
+  });
 
-export const ATLAS_MODS_TEMPLATE = new MessageEmbed({
+export const ATLAS_MODS_TEMPLATE = new EmbedBuilder({
   color: 11414096,
   footer: {
     icon_url: 'https://cdn.discordapp.com/attachments/565297051341029386/580389255872774144/SG_Cog.png',
@@ -179,7 +182,7 @@ export const ATLAS_MODS_TEMPLATE = new MessageEmbed({
   ],
 });
 
-export const ATLAS_SHOP_TEMPLATE = new MessageEmbed({
+export const ATLAS_SHOP_TEMPLATE = new EmbedBuilder({
   color: 11414096,
   thumbnail: {
     url: 'https://c-3sux78kvnkay76x24mgskvkjogx2eiax78ykijtx2eius.g00.gamepedia.com/g00/3_c-3gx78q.mgskvkjog.ius_/c-3SUXKVNKAY76x24nzzvyx3ax2fx2fmgskvkjog.iax78ykijt.iusx2fgx78qyax78bobgrkburbkj_mgskvkjogx2fix2fijx2fGZRGY_rumu.vtmx3fbkx78youtx3d6j0577j23igh5gk1kg109l62i8gg8874_$/$/$/$/$?i10c.ua=1&i10c.dv=11',

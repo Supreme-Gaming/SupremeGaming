@@ -1,6 +1,6 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
-export const CONAN_CONNECTIONS_TEMPLATE = new MessageEmbed({
+export const CONAN_CONNECTIONS_TEMPLATE = new EmbedBuilder({
   author: {
     name: 'Conan Connection Information',
     icon_url:
@@ -33,7 +33,7 @@ export const CONAN_CONNECTIONS_TEMPLATE = new MessageEmbed({
   ],
 });
 
-export const CONAN_STATUS_TEMPLATE = new MessageEmbed({
+export const CONAN_STATUS_TEMPLATE = new EmbedBuilder({
   author: {
     name: 'Conan Server Status Information',
     icon_url:
@@ -61,7 +61,7 @@ export const CONAN_STATUS_TEMPLATE = new MessageEmbed({
   ],
 });
 
-export const CONAN_MODS_TEMPLATE = new MessageEmbed({
+export const CONAN_MODS_TEMPLATE = new EmbedBuilder({
   color: 11414096,
   footer: {
     icon_url: 'https://cdn.discordapp.com/attachments/565297051341029386/580389255872774144/SG_Cog.png',

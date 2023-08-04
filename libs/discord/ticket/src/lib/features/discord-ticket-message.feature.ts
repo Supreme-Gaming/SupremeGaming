@@ -1,4 +1,4 @@
-import { Message, TextChannel, MessageAttachment, PartialMessage } from 'discord.js';
+import { Message, TextChannel, Attachment, PartialMessage } from 'discord.js';
 import { Repository, getRepository } from 'typeorm';
 
 import { TicketEntity } from '../entities/ticket.entity';
@@ -11,7 +11,7 @@ export class TicketMessage {
   private _type: DiscordTicketMessageConstructorOptions['type'];
 
   private _messageContent: string;
-  private _messageAttachments: Array<MessageAttachment>;
+  private _messageAttachments: Array<Attachment>;
   private _messageId: string;
   private _createdBy: string;
   private _authorName: string;

@@ -1,4 +1,4 @@
-import { TextChannel, MessageEmbed, Collection, Message, MessageEmbedOptions } from 'discord.js';
+import { TextChannel, EmbedData, Collection, Message, EmbedBuilder } from 'discord.js';
 
 export class Dialog {
   private _ts: DialogTranscriptEvent[];
@@ -35,7 +35,8 @@ export class Dialog {
       // Want TS to recognize what type of prompt based on the accepted conditional.
       const opts = (prompt as any).options;
 
-      const embed = new MessageEmbed({ ...opts });
+      // TODO: Validate
+      const embed = new EmbedBuilder({ ...opts });
 
       this._ch.send({ embeds: [embed] });
 
@@ -175,7 +176,7 @@ interface DialogTranscriptPromptEmbed extends TranscriptPromptBase {
   /**
    * Used only with rich embed prompt responses.
    */
-  options: MessageEmbedOptions;
+  options: EmbedData;
 }
 
 type DialogPromptOptions = DialogTranscriptPromptPlainText | DialogTranscriptPromptEmbed;

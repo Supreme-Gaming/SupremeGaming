@@ -1,5 +1,6 @@
 import { DiscordClientBootstrapper } from '@supremegaming/discord/bootstrap';
 import { TicketClient } from '@supremegaming/discord/ticket';
+import { GatewayIntentBits, Partials } from 'discord.js';
 
 // The following import is here only because it needs to be imported so that it can be bundled
 // else it will be tree shaken out of the bundle
@@ -30,24 +31,24 @@ if (
 
 const bs = new DiscordClientBootstrapper({
   client: {
-    partials: ['REACTION', 'MESSAGE', 'USER'],
+    partials: [Partials.Reaction, Partials.Message, Partials.User],
     intents: [
-      'GUILDS',
-      'GUILD_BANS',
-      'GUILD_EMOJIS_AND_STICKERS',
-      'GUILD_INTEGRATIONS',
-      'GUILD_INVITES',
-      'GUILD_MEMBERS',
-      'GUILD_MESSAGES',
-      'GUILD_MESSAGE_REACTIONS',
-      'GUILD_MESSAGE_TYPING',
-      'GUILD_PRESENCES',
-      'GUILD_SCHEDULED_EVENTS',
-      'GUILD_VOICE_STATES',
-      'GUILD_WEBHOOKS',
-      'DIRECT_MESSAGES',
-      'DIRECT_MESSAGE_REACTIONS',
-      'DIRECT_MESSAGE_TYPING',
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildBans,
+      GatewayIntentBits.GuildEmojisAndStickers,
+      GatewayIntentBits.GuildIntegrations,
+      GatewayIntentBits.GuildInvites,
+      GatewayIntentBits.GuildMembers,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.GuildMessageReactions,
+      GatewayIntentBits.GuildMessageTyping,
+      GatewayIntentBits.GuildPresences,
+      GatewayIntentBits.GuildScheduledEvents,
+      GatewayIntentBits.GuildVoiceStates,
+      GatewayIntentBits.GuildWebhooks,
+      GatewayIntentBits.DirectMessages,
+      GatewayIntentBits.DirectMessageReactions,
+      GatewayIntentBits.DirectMessageTyping,
     ],
   },
   modules: [TicketClient],
