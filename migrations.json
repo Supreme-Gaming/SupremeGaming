@@ -2,21 +2,6 @@
   "migrations": [
     {
       "cli": "nx",
-<<<<<<< HEAD
-      "version": "15.2.0-beta.0",
-      "description": "Update typescript target to ES2022",
-      "factory": "./src/migrations/update-15-2-0/update-typescript-target",
-      "package": "@nrwl/angular",
-      "name": "update-typescript-target"
-    },
-    {
-      "cli": "nx",
-      "version": "15.2.0-beta.0",
-      "description": "Remove bundleDependencies from server targets",
-      "factory": "./src/migrations/update-15-2-0/update-workspace-config",
-      "package": "@nrwl/angular",
-      "name": "update-workspace-config"
-=======
       "version": "16.2.0-beta.0",
       "description": "Remove outputPath from run commands",
       "implementation": "./src/migrations/update-16-2-0/remove-run-commands-output-path",
@@ -192,7 +177,6 @@
       "factory": "./ng-update/index#updateToV16",
       "package": "@angular/cdk",
       "name": "migration-v16"
->>>>>>> 8d0950f (Execute 16.0.0 migrations)
     }
   ]
 }
