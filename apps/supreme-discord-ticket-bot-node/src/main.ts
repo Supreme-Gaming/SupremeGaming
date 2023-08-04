@@ -29,7 +29,7 @@ if (
   process.exit(1);
 }
 
-const bs = new DiscordClientBootstrapper({
+new DiscordClientBootstrapper({
   client: {
     partials: [Partials.Reaction, Partials.Message, Partials.User],
     intents: [
@@ -49,6 +49,7 @@ const bs = new DiscordClientBootstrapper({
       GatewayIntentBits.DirectMessages,
       GatewayIntentBits.DirectMessageReactions,
       GatewayIntentBits.DirectMessageTyping,
+      GatewayIntentBits.MessageContent,
     ],
   },
   modules: [TicketClient],
