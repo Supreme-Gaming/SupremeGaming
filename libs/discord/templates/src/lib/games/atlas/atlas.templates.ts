@@ -156,14 +156,10 @@ export const ATLAS_STATUS_TEMPLATE = new EmbedBuilder({
   ],
 });
 
-export const ATLAS_MAP_TEMPLATE = new EmbedBuilder()
-  .setColor(Colors.NotQuiteBlack)
-  .setTitle('Supreme Atlas Map')
-  .setDescription('')
-  .addFields({
-    name: 'Latest map with online status',
-    value: 'https://dev.supremegaming.gg/games/atlas',
-  });
+export const ATLAS_MAP_TEMPLATE = new EmbedBuilder().setColor(Colors.NotQuiteBlack).setTitle('Supreme Atlas Map').addFields({
+  name: 'Latest map with online status',
+  value: 'https://dev.supremegaming.gg/games/atlas',
+});
 
 export const ATLAS_MODS_TEMPLATE = new EmbedBuilder({
   color: 11414096,
