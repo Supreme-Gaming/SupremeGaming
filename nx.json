@@ -47,6 +47,6 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": ["{workspaceRoot}/workspace.json", "{workspaceRoot}/tsconfig.base.json", "{workspaceRoot}/nx.json"],
-    "production": ["default"]
+    "production": ["default", "!{projectRoot}/src/test-setup.[jt]s"]
   }
 }

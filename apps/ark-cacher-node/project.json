@@ -31,7 +31,7 @@
       }
     },
     "serve": {
-      "executor": "@nx/node:node",
+      "executor": "@nx/js:node",
       "options": {
         "buildTarget": "ark-cacher-node:build",
         "port": 7777

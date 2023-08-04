@@ -23,8 +23,7 @@
     "update": "nx migrate latest",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "workspace-generator": "nx workspace-generator",
-    "postinstall": "ngcc --properties es2020 browser module main"
+    "workspace-generator": "nx workspace-generator"
   },
   "private": true,
   "dependencies": {
@@ -68,7 +67,7 @@
     "@angular-eslint/eslint-plugin": "16.0.3",
     "@angular-eslint/eslint-plugin-template": "16.0.3",
     "@angular-eslint/template-parser": "16.0.3",
-    "@angular/cli": "16.1.7",
+    "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "16.1.8",
     "@angular/language-service": "16.1.8",
     "@nestjs/schematics": "10.0.1",
