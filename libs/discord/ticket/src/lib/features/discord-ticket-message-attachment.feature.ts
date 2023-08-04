@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 import { TicketAttachment } from '../entities/ticket-attachment.entity';
-import { MessageAttachment } from 'discord.js';
+import { Attachment } from 'discord.js';
 
 export class DiscordServerTicketMessageAttachment {
   private _repo: Repository<TicketAttachment>;
@@ -8,9 +8,9 @@ export class DiscordServerTicketMessageAttachment {
   private _serverId: string;
   private _messageId: string;
 
-  private _attachments: MessageAttachment[];
+  private _attachments: Attachment[];
 
-  constructor(serverId: string, messageId: string, attachments: MessageAttachment[]) {
+  constructor(serverId: string, messageId: string, attachments: Attachment[]) {
     this._repo = getRepository(TicketAttachment);
 
     this._serverId = serverId;

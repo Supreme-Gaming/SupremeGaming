@@ -1,18 +1,21 @@
 import {
   Message,
-  MessageEmbed,
   TextChannel,
   Collection,
   CategoryChannel,
-  MessageActionRow,
-  MessageButton,
   CacheType,
   Interaction,
   CommandInteraction,
   ButtonInteraction,
-  SelectMenuInteraction,
-  MessageSelectMenu,
   OverwriteResolvable,
+  APIEmbed,
+  ChannelType,
+  ButtonBuilder,
+  ButtonStyle,
+  ComponentType,
+  UserSelectMenuBuilder,
+  UserSelectMenuInteraction,
+  User,
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
@@ -75,29 +78,29 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
   public clientOnMessageCreate(message: Message<boolean>): void | Promise<void> {
     // Creates a ticket message object and checks if the message was made inside a ticket channel before proceeding.
-    const task = new TicketMessage(message, 'create').init();
+    new TicketMessage(message, 'create').init();
   }
 
   public clientOnMessageUpdate(oldMessage: Message<boolean>, newMessage: Message<boolean>): void | Promise<void> {
-    const task = new TicketMessage(newMessage, 'edit').init();
+    new TicketMessage(newMessage, 'edit').init();
   }
 
   public clientOnMessageDelete(message: Message<boolean>): void | Promise<void> {
-    const task = new TicketMessage(message, 'delete').init();
+    new TicketMessage(message, 'delete').init();
   }
 
   public async clientOnInteractionCreate(interaction: Interaction<CacheType>): Promise<void> {
     // Handle component commands
     if (interaction.isButton() && interaction.isMessageComponent()) {
       const channel = (await interaction.channel.fetch()) as TextChannel;
-      const message = await interaction.channel.messages.fetch(interaction.message.id);
+      const message = ((await interaction.channel) as TextChannel).messages.fetch(interaction.message.id);
 
       // Only try to handle ticket-related actions.
       if (this.isEventInTicketChannel(channel)) {
         if (interaction.customId === 'ticket_close_button') {
           await this.closeTicketChannel(interaction);
         } else if (interaction.customId === 'ticket_dismiss_button') {
-          await message.delete();
+          (await message).delete();
         } else if (interaction.customId === 'ccc_print_button') {
           interaction.reply(CCC_INSTRUCTIONS_TEMPLATE);
         }
@@ -105,7 +108,8 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
     // Handle slash commands
     else if (interaction.isCommand() && interaction.commandName === 'ticket') {
-      switch (interaction.options.getString('action')) {
+      // TODO: validate
+      switch (interaction.options.get('action').value) {
         case 'new':
           await this.createTicket(interaction);
           break;
@@ -121,15 +125,21 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         default:
           break;
       }
-    } else if (interaction.isSelectMenu()) {
+    } else if (interaction.isUserSelectMenu()) {
       if (interaction.customId === 'user_select_add') {
         const [selectedId] = interaction.values;
 
-        await this.addMemberToTicket(interaction, selectedId);
+        const t = interaction.members.at(0);
+        const name = (t.user as User).globalName;
+
+        await this.addMemberToTicket(interaction, selectedId, name);
       } else if (interaction.customId === 'user_select_remove') {
         const [selectedId] = interaction.values;
 
-        await this.removeMemberFromTicket(interaction, selectedId);
+        const t = interaction.members.at(0);
+        const name = (t.user as User).globalName;
+
+        await this.removeMemberFromTicket(interaction, selectedId, name);
       }
     }
   }
@@ -149,21 +159,22 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
   private async processNewSetup(message: Message, config: TicketServerConfiguration) {
     try {
-      const promptCategoryEmbed = new MessageEmbed({
+      const promptCategoryEmbed: APIEmbed = {
         title: 'Where should I make tickets?',
         description: `In order to keep things neat and tidy, all tickets and transcripts will be created under a Discord category.
       
       Please provide a category name. If it doesn't yet exist, I'll take care of setting that up.`,
         color: 0x69f0ae,
-        type: 'rich',
-      });
+      };
 
-      message.channel.send({ embeds: [promptCategoryEmbed] });
+      const channel = message.channel as TextChannel;
+
+      channel.send({ embeds: [promptCategoryEmbed] });
 
       const botFilter = (captured: Message) => captured.content && !captured.author.bot;
 
       // Wait for user entry. Filter out bot messages.
-      const categoryCapture = await message.channel.awaitMessages({
+      const categoryCapture = await channel.awaitMessages({
         filter: botFilter,
         max: 1,
         time: 30000,
@@ -172,18 +183,18 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
       config.category = categoryCapture;
 
-      message.channel.send(`Got it. Category will be \`${config.value.category}\`. Next question...`);
+      channel.send(`Got it. Category will be \`${config.value.category}\`. Next question...`);
 
-      const promptNotifyRole = new MessageEmbed({
+      const promptNotifyRole: APIEmbed = {
         title: 'Who should I ping when a new ticket is made?',
         description: `Please mention/tag the role that I should @ when a new ticket is created.\n\nThis can be set to \`Admin\`, \`Support Staff\`, \`@everyone\`, or any other role that exists on this server.`,
         color: 0x69f0ae,
-        type: 'rich',
-      });
-      message.channel.send({ embeds: [promptNotifyRole] });
+      };
+
+      channel.send({ embeds: [promptNotifyRole] });
 
       // Wait for user entry. Filter out bot messages.
-      const notifyRoleCapture = await message.channel.awaitMessages({
+      const notifyRoleCapture = await channel.awaitMessages({
         filter: botFilter,
         max: 1,
         time: 30000,
@@ -191,12 +202,12 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       });
 
       config.notifyRole = notifyRoleCapture;
-      message.channel.send(`Beep Boop! I will notify \`${config.value.notifyRole}\` every time a new ticket is created.`);
+      channel.send(`Beep Boop! I will notify \`${config.value.notifyRole}\` every time a new ticket is created.`);
 
       await config.save();
 
       let categoryChannel = message.guild.channels.cache.find((channel) => {
-        return channel.type === 'GUILD_CATEGORY' && channel.name === config.value.category;
+        return channel.type === ChannelType.GuildCategory && channel.name === config.value.category;
       });
 
       const everyoneRole = message.guild.roles.cache.find((role) => role.name === '@everyone');
@@ -204,40 +215,41 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       if (!categoryChannel) {
         // Make the ticket channel category with default permissions that will apply to all future
         // created tickets.
-        categoryChannel = await message.guild.channels.create(config.value.category, {
-          type: 'GUILD_CATEGORY',
+        categoryChannel = (await message.guild.channels.create({
+          name: config.value.category,
+          type: ChannelType.GuildCategory,
           reason: 'Category for all future tickets.',
           permissionOverwrites: [
             {
               id: everyoneRole,
-              allow: ['READ_MESSAGE_HISTORY'],
-              deny: ['SEND_MESSAGES', 'VIEW_CHANNEL'],
+              allow: ['ReadMessageHistory'],
+              deny: ['SendMessages', 'ViewChannel'],
             },
           ],
-        });
+        })) as CategoryChannel;
       }
 
       // Check for an existing ticket log channel.
       let ticketLogChannel = message.guild.channels.cache.find(
-        (channel) => channel.type === 'GUILD_TEXT' && channel.name === 'ticket-logs'
+        (channel) => channel.type === ChannelType.GuildText && channel.name === 'ticket-logs'
       );
 
       if (!ticketLogChannel) {
-        ticketLogChannel = await message.guild.channels.create('ticket-logs', {
-          type: 'GUILD_TEXT',
+        ticketLogChannel = (await message.guild.channels.create({
+          name: 'ticket-logs',
+          type: ChannelType.GuildText,
           reason: 'Channel to log all closed tickets.',
           parent: categoryChannel.id,
-        });
+        })) as TextChannel;
       }
 
       // Confirmation message
-      message.channel
-        .send(`All done! I've created a ${config.value.category} channel category and a #ticket-logs channel. For the sake of your puny human memory, I'll be posting there when a ticket is closed.
+      channel.send(`All done! I've created a ${config.value.category} channel category and a #ticket-logs channel. For the sake of your puny human memory, I'll be posting there when a ticket is closed.
       `);
-    } catch (err: any) {
+    } catch (err) {
       // Differentiate between message capture timeouts vs others.
       if (err instanceof Collection) {
-        message.channel.send(`Setup timeout. Setup has been cancelled.`);
+        (message.channel as TextChannel).send(`Setup timeout. Setup has been cancelled.`);
       } else {
         throw new Error(err.message);
       }
@@ -259,13 +271,13 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           value: {
             target: 'cleanContent',
             transformation: function (m) {
-              return (m[this.target] as any).toLowerCase();
+              return m[this.target].toLowerCase();
             },
           },
           actions: [
             {
               accept: ['yes'],
-              action: function (m, v) {
+              action: function (m) {
                 console.log('Will do something with YES');
                 return m.cleanContent.toUpperCase();
               },
@@ -318,23 +330,24 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       ticket = await new Ticket(interaction).init();
 
       const parentCategory = interaction.guild.channels.cache.find(
-        (channel) => channel.name === config.value.category && channel.type == 'GUILD_CATEGORY'
+        (channel) => channel.name === config.value.category && channel.type == ChannelType.GuildCategory
       ) as CategoryChannel;
 
       const everyoneRole = interaction.guild.roles.cache.find((role) => role.name === '@everyone');
 
       // Create channel with ticket record count and leading 0 padding to 4 digits.
-      const ticketChannel = await interaction.guild.channels.create(ticket.channelName, {
-        type: 'GUILD_TEXT',
+      const ticketChannel = (await interaction.guild.channels.create({
+        name: ticket.channelName,
+        type: ChannelType.GuildText,
         parent: parentCategory,
         permissionOverwrites: [
           this.getTicketReaderPermissionResolvable(interaction.user.id),
           {
             id: everyoneRole,
-            deny: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'VIEW_CHANNEL'],
+            deny: ['SendMessages', 'ReadMessageHistory', 'ViewChannel'],
           },
         ],
-      });
+      })) as TextChannel;
 
       ticket.channelId = ticketChannel.id;
 
@@ -347,30 +360,30 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         ephemeral: true,
       });
 
-      const ticketCreateEmbed = new MessageEmbed({
+      const ticketCreateEmbed: APIEmbed = {
         title: 'Ticket Instructions',
         description: `Thanks <@!${interaction.user.id}>! So that we can better assist, please describe the reason for the ticket:\n\n**Example**:\n\n- Game the issue is on: (Ark, Atlas or Conan)\n- The server or grid your issue is on: (eg. Ark Island, Atlas F9, Conan AoC)\n- A detailed description of your issue: (gimme the deets)\n\nIf this ticket is in regards to on-location assistance in-game, please provide the \`ccc\` coordinates. \n\nAn <@&${notifyRole.id}> will attend to this ticket as soon as one is available.\n\nBelow you'll find a couple of buttons for common tasks, including closing the ticket which can be done at any point in time.`,
-      });
+      };
+
+      const close = new ButtonBuilder()
+        .setLabel('Close ticket')
+        .setStyle(ButtonStyle.Danger)
+        .setCustomId('ticket_close_button')
+        .setEmoji('<a:NeonCheck:647830043304919062>');
+
+      const print = new ButtonBuilder()
+        .setLabel('Print instructions for getting ccc coordinates')
+        .setStyle(ButtonStyle.Primary)
+        .setCustomId('ccc_print_button')
+        .setEmoji('<a:cli:748801664714276914>');
 
       await ticketChannel.send({
         embeds: [ticketCreateEmbed],
         components: [
-          new MessageActionRow({
-            components: [
-              new MessageButton({
-                label: 'Close ticket',
-                style: 'DANGER',
-                customId: 'ticket_close_button',
-                emoji: '<a:NeonCheck:647830043304919062>',
-              }),
-              new MessageButton({
-                label: 'Print instructions for getting ccc coordinates',
-                style: 'PRIMARY',
-                customId: 'ccc_print_button',
-                emoji: '<a:cli:748801664714276914>',
-              }),
-            ],
-          }),
+          {
+            type: ComponentType.ActionRow,
+            components: [close, print],
+          },
         ],
       });
 
@@ -392,7 +405,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
   private getTicketReaderPermissionResolvable(userId: string): OverwriteResolvable {
     return {
       id: userId,
-      allow: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'ATTACH_FILES', 'VIEW_CHANNEL'],
+      allow: ['SendMessages', 'ReadMessageHistory', 'AttachFiles', 'ViewChannel'],
     };
   }
 
@@ -402,25 +415,25 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       return;
     }
 
+    const close = new ButtonBuilder()
+      .setLabel('Close ticket')
+      .setStyle(ButtonStyle.Danger)
+      .setCustomId('ticket_close_button')
+      .setEmoji('<a:NeonCheck:647830043304919062>');
+
+    const dismiss = new ButtonBuilder()
+      .setLabel("Go away, I'm not done yet")
+      .setStyle(ButtonStyle.Secondary)
+      .setCustomId('ticket_dismiss_button')
+      .setEmoji('<a:NO:647830054797312028>');
+
     await interaction.reply({
       content: `If there's nothing else we can help you with, please close this ticket.`,
       components: [
-        new MessageActionRow({
-          components: [
-            new MessageButton({
-              label: 'Close Ticket',
-              customId: 'ticket_close_button',
-              style: 'SUCCESS',
-              emoji: '<a:NeonCheck:647830043304919062>',
-            }),
-            new MessageButton({
-              label: "Go away, I'm not done yet",
-              customId: 'ticket_dismiss_button',
-              style: 'SECONDARY',
-              emoji: '<a:NO:647830054797312028>',
-            }),
-          ],
-        }),
+        {
+          type: ComponentType.ActionRow,
+          components: [close, dismiss],
+        },
       ],
     });
   }
@@ -457,27 +470,11 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       this.sendOutsideTicketChannelMessage(interaction);
     }
 
-    const memberOptions = interaction.guild.members.cache.map((m) => {
-      return {
-        label: m.user.username,
-        description: `${m.user.username}#${m.user.tag}`,
-        value: m.user.id,
-      };
-    });
+    const members = new UserSelectMenuBuilder().setCustomId('user_select_add').setPlaceholder('Select member from list');
 
     interaction.reply({
       content: 'Select the user to add to this ticket',
-      components: [
-        new MessageActionRow({
-          components: [
-            new MessageSelectMenu({
-              custom_id: 'user_select_add',
-              placeholder: 'Select member from list',
-              options: memberOptions,
-            }),
-          ],
-        }),
-      ],
+      components: [{ type: ComponentType.ActionRow, components: [members] }],
       ephemeral: true,
     });
   }
@@ -487,62 +484,51 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       this.sendOutsideTicketChannelMessage(interaction);
     }
 
-    const channelMemberOptions = (interaction.channel as TextChannel).members.map((m) => {
-      return {
-        label: m.user.username,
-        description: `${m.user.username}#${m.user.tag}`,
-        value: m.user.id,
-      };
-    });
+    const members = new UserSelectMenuBuilder().setCustomId('user_select_remove').setPlaceholder('Select member from list');
 
     interaction.reply({
       content: 'Select the user to remove from this ticket',
       components: [
-        new MessageActionRow({
-          components: [
-            new MessageSelectMenu({
-              custom_id: 'user_select_remove',
-              placeholder: 'Select channel member from list',
-              options: channelMemberOptions,
-            }),
-          ],
-        }),
+        {
+          type: ComponentType.ActionRow,
+          components: [members],
+        },
       ],
       ephemeral: true,
     });
   }
 
-  private async addMemberToTicket(interaction: SelectMenuInteraction<CacheType>, selectedId: string) {
+  private async addMemberToTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string, name: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.create(selectedId, {
-        READ_MESSAGE_HISTORY: true,
-        SEND_MESSAGES: true,
-        ATTACH_FILES: true,
-        VIEW_CHANNEL: true,
+        ReadMessageHistory: true,
+        SendMessages: true,
+        AttachFiles: true,
+        ViewChannel: true,
       });
 
       await interaction.update({
-        content: 'Successfully added selected member to ticket. They can now see and reply to this channel.',
+        content: `Added ${name} to ticket. They can now see and reply to this channel.`,
         components: [],
       });
-    } catch (err: any) {
+    } catch (err) {
       return interaction.update({
-        content: `Failed to add member to channel. ${err.message}`,
+        content: `Failed to add ${name} to channel. ${err.message}`,
       });
     }
   }
 
-  private async removeMemberFromTicket(interaction: SelectMenuInteraction<CacheType>, selectedId: string) {
+  private async removeMemberFromTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string, name: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.delete(selectedId);
 
       await interaction.update({
-        content: 'Selected user has been removed from this ticket. They can no longer see or send messages on this channel.',
+        content: `${name} has been removed from this ticket. They can no longer see or send messages on this channel.`,
         components: [],
       });
-    } catch (err: any) {
+    } catch (err) {
       return interaction.update({
-        content: `Failed to remove member from channel. ${err.message}`,
+        content: `Failed to remove ${name} from channel. ${err.message}`,
       });
     }
   }

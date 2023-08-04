@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 export const CCC_INSTRUCTIONS_TEMPLATE =
   '**CCC Instructions**\n\nPlease follow the following instructions to generate "ccc" coordinates.\n\nCCC coordinates are X,Y,Z world coordinates, different than player map X,Y coordinates, in Unreal Units that can be used by admins to teleport to a specific location on a map/grid. To retrieve these coordinates:\n\n**1.** Ensure that you are at the physical location where you want the admin to teleport to. The generated coordinates will be those of your character\'s current location.\n**2.** Open up your in-game console. By default the "\\`" key, often referred to as a backtick, will invoke the console. This key is most typically found on the top-left of the keyboard near the `esc` key and often shared with the `~` (tilde). The console itself is a thin black bar at the along the bottom of the in-game screen.\n**3.** Type in `ccc`, and press ENTER on your keyboard. On execution, this command will copy your character\'s coordinates to your system clipboard. There will be no feedback on successful execution and it will appear as though nothing has happened. This is normal.\n**4.** Paste (Ctrl + V, or Right click and select "Paste") into this channel.';
@@ -9,7 +9,7 @@ export const NEW_MEMBER_PRIVATE_MESSAGE_TEMPLATE =
 export const NEW_MEMBER_TEMPLATE =
   'to Supreme Gaming!\n\nWe current offer three hosted game servers:\n\n- ATLAS (PVPVE)\n\n- Ark: Survival Evolved (PVE)\n\n- Conan Exiles (PVE-Conflict)\n\nEach game has role-protected roles to keep you from getting game-related notifications for which you do not have an interest. You will have to add yourself to the proper role in order to see the relevant game channels. To do so, copy-paste any of the following commands here:\n\n`!join pathfinder` - Join the ATLAS role.\n\n`!join arkanite` - Join the Arkanite (Ark) role.\n\n`!join exiled` - Join the Exiled role (Conan Exiles).\n\n`!help` - See all available commands.\n\n';
 
-export const GENERAL_HELP_TEMPLATE = new MessageEmbed({
+export const GENERAL_HELP_TEMPLATE = new EmbedBuilder({
   author: {
     name: 'Supreme Bot Instructions',
     icon_url: 'https://cdn.discordapp.com/attachments/565297051341029386/580389255872774144/SG_Cog.png',
@@ -38,7 +38,7 @@ export const BAN_HAMMER_ADMIN_TEMPLATE =
 
 export const BAN_HAMMER_USER_TEMPLATE = 'https://imgur.com/BDbrnfE';
 
-export const DONATION_GENERAL_TEMPLATE = new MessageEmbed({
+export const DONATION_GENERAL_TEMPLATE = new EmbedBuilder({
   author: {
     name: 'Donation Information',
     icon_url: 'https://i.dlpng.com/static/png/331426_thumb.png',

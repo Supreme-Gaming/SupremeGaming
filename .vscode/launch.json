@@ -9,7 +9,13 @@
       "request": "attach",
       "name": "Debug API",
       "sourceMaps": true,
-      "port": 7777
+      "port": 7777,
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*", // a default
+        "webpack:///./*": "${webRoot}/js-src/*", // unsure how/why webpack generates ./links.js
+        "webpack:///../*": "${webRoot}/js-src/*", // unsure how/why webpack generates ../links.js
+        "webpack:///*": "*" // a default, catch everything else
+      }
     }
   ]
 }

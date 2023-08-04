@@ -28,7 +28,7 @@ export class FunDiscordModule implements SlashCommands, OnInteractionCreate {
 
   public clientOnInteractionCreate(interaction: Interaction<CacheType>): void | Promise<void> {
     if (interaction.isCommand() && interaction.commandName === 'random') {
-      switch (interaction.options.getString('cmd_choice')) {
+      switch (interaction.options.get('cmd_choice')?.value) {
         case 'apologize':
           interaction.reply('TO APOLOGIZE');
           break;

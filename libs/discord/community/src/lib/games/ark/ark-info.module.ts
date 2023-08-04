@@ -43,7 +43,8 @@ export class ArkInfoDiscordModule implements SlashCommands, OnInteractionCreate 
   public clientOnInteractionCreate(interaction: Interaction<CacheType>): void | Promise<void> {
     if (interaction.isCommand()) {
       if (interaction.commandName === 'ark') {
-        switch (interaction.options.getString('info_type')) {
+        // switch (interaction.options.getString('info_type')) {
+        switch (interaction.options.get('info_type')?.value) {
           case 'connections':
             interaction.reply({ embeds: [ARK_CONNECTIONS_TEMPLATE], ephemeral: true });
             break;
