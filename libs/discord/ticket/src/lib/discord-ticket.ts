@@ -7,14 +7,14 @@ import {
   Interaction,
   CommandInteraction,
   ButtonInteraction,
-  SelectMenuInteraction,
   OverwriteResolvable,
   APIEmbed,
   ChannelType,
   ButtonBuilder,
   ButtonStyle,
   ComponentType,
-  SelectMenuBuilder,
+  UserSelectMenuBuilder,
+  UserSelectMenuInteraction,
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
@@ -124,7 +124,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         default:
           break;
       }
-    } else if (interaction.isSelectMenu()) {
+    } else if (interaction.isUserSelectMenu()) {
       if (interaction.customId === 'user_select_add') {
         const [selectedId] = interaction.values;
 
@@ -463,22 +463,11 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       this.sendOutsideTicketChannelMessage(interaction);
     }
 
-    const memberOptions = interaction.guild.members.cache.map((m) => {
-      return {
-        label: m.user.username,
-        description: `${m.user.username}#${m.user.tag}`,
-        value: m.user.id,
-      };
-    });
-
-    const users = new SelectMenuBuilder()
-      .setPlaceholder('Select member from list')
-      .setCustomId('user_select_add')
-      .addOptions(memberOptions);
+    const members = new UserSelectMenuBuilder().setCustomId('user_select_add').setPlaceholder('Select member from list');
 
     interaction.reply({
       content: 'Select the user to add to this ticket',
-      components: [{ type: ComponentType.ActionRow, components: [users] }],
+      components: [{ type: ComponentType.ActionRow, components: [members] }],
       ephemeral: true,
     });
   }
@@ -488,32 +477,21 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       this.sendOutsideTicketChannelMessage(interaction);
     }
 
-    const channelMemberOptions = (interaction.channel as TextChannel).members.map((m) => {
-      return {
-        label: m.user.username,
-        description: `${m.user.username}#${m.user.tag}`,
-        value: m.user.id,
-      };
-    });
-
-    const users = new SelectMenuBuilder()
-      .setPlaceholder('Select member from list')
-      .setCustomId('user_select_remove')
-      .addOptions(channelMemberOptions);
+    const members = new UserSelectMenuBuilder().setCustomId('user_select_remove').setPlaceholder('Select member from list');
 
     interaction.reply({
       content: 'Select the user to remove from this ticket',
       components: [
         {
           type: ComponentType.ActionRow,
-          components: [users],
+          components: [members],
         },
       ],
       ephemeral: true,
     });
   }
 
-  private async addMemberToTicket(interaction: SelectMenuInteraction<CacheType>, selectedId: string) {
+  private async addMemberToTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.create(selectedId, {
         ReadMessageHistory: true,
@@ -533,7 +511,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
   }
 
-  private async removeMemberFromTicket(interaction: SelectMenuInteraction<CacheType>, selectedId: string) {
+  private async removeMemberFromTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.delete(selectedId);
 
