@@ -1,5 +1,6 @@
 import {
   CacheType,
+  ContextMenuCommandBuilder,
   GuildMember,
   Interaction,
   Message,
@@ -65,14 +66,21 @@ export abstract class SlashCommands {
   abstract commands(): SlashCommandTypes;
 }
 
+export abstract class ContextMenus {
+  abstract contextMenus(): ContextMenuTypes;
+}
+
 export interface DiscordFeatureModuleConstructor {
   new (): DiscordFeatureModule;
 }
 
 export type SlashCommandTypes = Array<SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder | any>;
+export type ContextMenuTypes = Array<ContextMenuCommandBuilder | any>;
 
 export class DiscordFeatureModule {
   public commands?(): SlashCommandTypes;
+
+  public contextMenus?(): ContextMenuTypes;
 
   public clientOnReady?: () => void | Promise<void>;
 

@@ -22,7 +22,7 @@ export class DiscordClientBootstrapper {
   constructor(options: BootstrapperOptions) {
     this.client = new Client(options.client);
 
-    const slashCommands: SlashCommandTypes = [];
+    const slashCommands: any = [];
 
     if (options.modules.length > 0) {
       options.modules.forEach((dm, index, arr) => {
@@ -30,6 +30,10 @@ export class DiscordClientBootstrapper {
 
         if (moduleInstance.commands) {
           slashCommands.push(...moduleInstance.commands());
+        }
+
+        if (moduleInstance.contextMenus) {
+          slashCommands.push(...moduleInstance.contextMenus());
         }
 
         if (moduleInstance.clientOnReady) {
@@ -221,7 +225,7 @@ export class DiscordClientBootstrapper {
       }
 
       console.log('Successfully refreshed application (/) commands.');
-    } catch (err: any) {
+    } catch (err) {
       console.error(err.message);
     }
   }

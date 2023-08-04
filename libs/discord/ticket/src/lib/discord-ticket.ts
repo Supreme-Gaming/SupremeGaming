@@ -16,12 +16,23 @@ import {
   UserSelectMenuBuilder,
   UserSelectMenuInteraction,
   User,
+  ContextMenuCommandBuilder,
+  ApplicationCommandType,
+  PermissionFlagsBits,
+  ContextMenuCommandInteraction,
+  ChannelSelectMenuBuilder,
+  StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder,
+  StringSelectMenuInteraction,
+  TextBasedChannel,
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
 import { createConnection, ConnectionOptionsReader } from 'typeorm';
 
 import {
+  ContextMenus,
+  ContextMenuTypes,
   OnInteractionCreate,
   OnMessageCreate,
   OnMessageDelete,
@@ -41,7 +52,9 @@ import { TicketAttachment } from './entities/ticket-attachment.entity';
 import { TicketConfiguration } from './entities/ticket-configuration.entity';
 import { TicketMessageEntity } from './entities/ticket-message.entity';
 
-export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUpdate, OnMessageDelete, OnInteractionCreate {
+export class TicketClient
+  implements SlashCommands, ContextMenus, OnMessageCreate, OnMessageUpdate, OnMessageDelete, OnInteractionCreate
+{
   constructor() {
     this.connect();
   }
@@ -73,6 +86,19 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
               { name: 'Remove user from ticket', value: 'remove' }
             );
         }),
+    ];
+  }
+
+  public contextMenus(): ContextMenuTypes {
+    return [
+      new ContextMenuCommandBuilder()
+        .setName('Remove from ticket')
+        .setType(ApplicationCommandType.User)
+        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
+      new ContextMenuCommandBuilder()
+        .setName('Add to ticket')
+        .setType(ApplicationCommandType.User)
+        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
     ];
   }
 
@@ -137,6 +163,30 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         const [selectedId] = interaction.values;
 
         const t = interaction.members.at(0);
+        const name = (t.user as User).globalName;
+
+        await this.removeMemberFromTicket(interaction, selectedId, name);
+      }
+    } else if (interaction.isStringSelectMenu()) {
+      if (interaction.customId === 'ticket_select_add') {
+        interaction;
+
+        const [channelId, userId, userName] = interaction.values[0].split('-');
+
+        await this.addMemberToTicketFromList(interaction, channelId, userId, userName);
+      }
+    } else if (interaction.isUserContextMenuCommand()) {
+      if (interaction.commandName === 'Add to ticket') {
+        const selectedId = interaction.targetId;
+
+        const t = interaction.targetMember;
+        const name = (t.user as User).globalName;
+
+        await this.promptChannelList(interaction, selectedId, name);
+      } else if (interaction.commandName === 'Remove from ticket') {
+        const selectedId = interaction.targetId;
+
+        const t = interaction.targetMember;
         const name = (t.user as User).globalName;
 
         await this.removeMemberFromTicket(interaction, selectedId, name);
@@ -498,6 +548,32 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     });
   }
 
+  private async promptChannelList(interaction: CommandInteraction<CacheType>, targetId: string, name: string) {
+    const ticket_channels = interaction.guild.channels.cache.filter((channel) => {
+      return channel.name.startsWith('ticket-');
+    });
+
+    const channelSelect = new StringSelectMenuBuilder()
+      .setCustomId('ticket_select_add')
+      .setPlaceholder('Select channel from list')
+      .addOptions(
+        ticket_channels.map((channel) =>
+          new StringSelectMenuOptionBuilder().setLabel(channel.name).setValue(`${channel.id}-${targetId}-${name}`)
+        )
+      );
+
+    interaction.reply({
+      content: 'Select the channel to add this user to',
+      components: [
+        {
+          type: ComponentType.ActionRow,
+          components: [channelSelect],
+        },
+      ],
+      ephemeral: true,
+    });
+  }
+
   private async addMemberToTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string, name: string) {
     try {
       await (interaction.channel as TextChannel).permissionOverwrites.create(selectedId, {
@@ -518,18 +594,62 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
   }
 
-  private async removeMemberFromTicket(interaction: UserSelectMenuInteraction<CacheType>, selectedId: string, name: string) {
+  private async addMemberToTicketFromList(
+    interaction: StringSelectMenuInteraction,
+    channelId: string,
+    userId: string,
+    name: string
+  ) {
     try {
-      await (interaction.channel as TextChannel).permissionOverwrites.delete(selectedId);
+      const channel = (await interaction.guild.channels.fetch(channelId)) as TextChannel;
+
+      channel.permissionOverwrites.create(userId, {
+        ReadMessageHistory: true,
+        SendMessages: true,
+        AttachFiles: true,
+        ViewChannel: true,
+      });
 
       await interaction.update({
-        content: `${name} has been removed from this ticket. They can no longer see or send messages on this channel.`,
+        content: `Added ${name} to ticket. They can now see and reply to this channel.`,
         components: [],
       });
     } catch (err) {
-      return interaction.update({
-        content: `Failed to remove ${name} from channel. ${err.message}`,
+      interaction.update({
+        content: `Failed to add ${name} to channel. ${err.message}`,
       });
+    }
+  }
+
+  private async removeMemberFromTicket(
+    interaction: UserSelectMenuInteraction<CacheType> | ContextMenuCommandInteraction,
+    selectedId: string,
+    name: string
+  ) {
+    await (interaction.channel as TextChannel).permissionOverwrites.delete(selectedId);
+
+    if (interaction.isContextMenuCommand()) {
+      try {
+        await interaction.reply({
+          content: `${name} has been removed from this ticket. They can no longer see or send messages on this channel.`,
+          ephemeral: true,
+        });
+      } catch (err) {
+        return interaction.reply({
+          content: `Failed to remove ${name} from channel. ${err.message}`,
+          ephemeral: true,
+        });
+      }
+    } else if (interaction.isAnySelectMenu()) {
+      try {
+        await interaction.update({
+          content: `${name} has been removed from this ticket. They can no longer see or send messages on this channel.`,
+        });
+      } catch (err) {
+        return interaction.update({
+          content: `Failed to remove ${name} from channel. ${err.message}`,
+        });
+      }
     }
   }
 }
