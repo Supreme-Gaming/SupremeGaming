@@ -35,7 +35,7 @@ export class ConanInfoDiscordModule implements SlashCommands, OnInteractionCreat
 
   public clientOnInteractionCreate(interaction: Interaction<CacheType>): void | Promise<void> {
     if (interaction.isCommand() && interaction.commandName === 'conan') {
-      switch (interaction.options.getString('info_type')) {
+      switch (interaction.options.get('info_type')?.value) {
         case 'connections':
           interaction.reply({ embeds: [CONAN_CONNECTIONS_TEMPLATE], ephemeral: true });
           break;
