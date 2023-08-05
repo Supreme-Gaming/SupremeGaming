@@ -23,7 +23,8 @@ export class ServersService {
 
   public async getServerByProps(whereProps: Partial<GameServer>, includeSensitive?: boolean) {
     const server = await this.gsRepo.findOne({
-      where: whereProps,
+      // TODO: Fix this typing issue.
+      where: { ...whereProps } as any,
     });
 
     if (!server) {
@@ -41,7 +42,8 @@ export class ServersService {
     // Check if host exists, otherwise game server entry will fail.
     const hs = await this.hsRepo.findOne({
       where: {
-        guid: server.host,
+        // TODO: This might not work?
+        guid: server.host.guid,
       },
     });
 

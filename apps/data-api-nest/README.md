@@ -3,7 +3,7 @@
 In `src/environments/secrets.ts` the following `jwt`, `jwtStrategy` and `steamStrategy` properties are required.
 
 ```js
-import { AuthModuleOptions } from '@supremegaming/api';
+import { AuthModuleOptions } from '@supremegaming/api/v2';
 import { ExtractJwt } from 'passport-jwt';
 
 export const authOptions: AuthModuleOptions = {
