@@ -1,32 +1,34 @@
+<h2 class="trailer-2">Step 4 &mdash; Review &amp; Checkout</h2>
+
 <ng-container *ngIf="cart.length > 0">
-  <h2 class="trailer-2">Step 4 &mdash; Review &amp; Checkout</h2>
-
   <p class="trailer-2">Please review your selections and agreement terms before checkout out with PayPal.</p>
+</ng-container>
 
-  <div class="inform-context warn trailer-2">
-    <p>
-      <strong>Notice</strong>: Donations made through supremegaming.gg for Supreme Gaming are optional and final. Funds
-      are
-      non-profit and serve only for the continued support and operation of Supreme Gaming services.
-    </p>
+<ng-container *ngIf="cart.length === 0">
+  <p class="trailer-2">There is nothing to review yet. Please ensure you have completed the above steps.</p>
+</ng-container>
 
-    <p>
-      Upon transaction completion and verification, you can expect delivery of your rewards within 24 hours. If you do
-      not
-      receive your rewards in that time frame, <a [routerLink]="['community/support']">please create a ticket on our
-      </a> for
-      assistance.
-    </p>
+<div class="inform-context warn trailer-2">
+  <p>
+    <strong>Notice</strong>: Donations made through supremegaming.gg for Supreme Gaming are optional and final. Funds
+    are
+    non-profit and serve only for the continued support and operation of Supreme Gaming services.
+  </p>
 
-    <p>
-      Any charge-backs or requests for refunds after goods have been delivered and in-game balanced depleted, are
-      subject to
-      an immediate ban from ALL current and future Supreme Gaming ARK:Survival Evolved, ATLAS, and Conan Exiles servers
-      and
-      services.
-    </p>
-  </div>
+  <p>
+    Point disbursements usually process within minutes of your payment posting but in rare cases the process can take up
+    to 24
+    hours. If you do not receive your rewards in that time frame, <a [routerLink]="['community/support']">please create
+      a ticket on our </a> for assistance.
+  </p>
 
+  <p>
+    Attempts at fraud or abuse of the donation system will result in a permanent ban from <strong>ALL</strong> Supreme
+    Gaming services.
+  </p>
+</div>
+
+<ng-container *ngIf="cart.length > 0">
   <div class="wire-container table-container">
     <table class="right-align">
       <thead>
@@ -56,3 +58,7 @@
     </table>
   </div>
 </ng-container>
+
+<div class="pp-button-area" [ngClass]="{hidden: cart?.length === 0}">
+  <div #PayPalButtonContainer></div>
+</div>
