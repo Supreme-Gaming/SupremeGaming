@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@supremegaming/api/core": ["libs/api/core/src/index.ts"],
       "@supremegaming/api/v1": ["libs/api/v1/src/index.ts"],
       "@supremegaming/api/v2": ["libs/api/v2/src/index.ts"],
       "@supremegaming/common/entities": ["libs/common/entities/src/index.ts"],
