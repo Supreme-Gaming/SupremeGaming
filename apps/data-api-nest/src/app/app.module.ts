@@ -1,11 +1,17 @@
-import { Module } from '@nestjs/common';
-
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 // import { AuthModule, HostsModule, ServersModule } from '@supremegaming/api/v2';
+// import { authOptions } from '../environments/environment';
+
+// AuthModule.forRoot(authOptions),
+// TODO: ServersModule and HostsModule are part of V2 API and not ready for use yet.
+// ServersModule,
+// HostsModule,
+
+import { Module } from '@nestjs/common';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { DonationEntity, PlayerEntity, UserEntity } from '@supremegaming/common/entities/v1';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-// import { authOptions } from '../environments/environment';
 
 const administrationDb = TypeOrmModule.forRoot({
   name: 'default',
@@ -19,9 +25,7 @@ const administrationDb = TypeOrmModule.forRoot({
   dropSchema: process.env.PAYMENTS_DB_DROP_SCHEMA === 'true',
   logging: process.env.PAYMENTS_DB_LOGGING === 'true',
   extra: process.env.PAYMENTS_DB_EXTRA,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  migrations: [__dirname + '/migrations/*{.ts,.js}'],
-  subscribers: [__dirname + '/subscribers/*{.ts,.js}'],
+  entities: [DonationEntity, UserEntity],
 } as TypeOrmModuleOptions);
 
 const rewardsDb = TypeOrmModule.forRoot({
@@ -36,21 +40,11 @@ const rewardsDb = TypeOrmModule.forRoot({
   dropSchema: process.env.REWARDS_DB_DROP_SCHEMA === 'true',
   logging: process.env.REWARDS_DB_LOGGING === 'true',
   extra: process.env.REWARDS_DB_EXTRA,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  migrations: [__dirname + '/migrations/*{.ts,.js}'],
-  subscribers: [__dirname + '/subscribers/*{.ts,.js}'],
+  entities: [PlayerEntity],
 } as TypeOrmModuleOptions);
 
 @Module({
-  imports: [
-    administrationDb,
-    rewardsDb,
-
-    // AuthModule.forRoot(authOptions),
-    // TODO: ServersModule and HostsModule are part of V2 API and not ready for use yet.
-    // ServersModule,
-    // HostsModule,
-  ],
+  imports: [administrationDb, rewardsDb],
   controllers: [AppController],
   providers: [AppService],
 })
