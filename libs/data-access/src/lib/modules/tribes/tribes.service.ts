@@ -9,7 +9,7 @@ import { EnvironmentService } from '@supremegaming/common/ngx';
   providedIn: 'root',
 })
 export class TribesService {
-  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('apiUrl')}/tribes`;
+  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('legacyApiUrl')}/tribes`;
 
   constructor(private readonly http: HttpClient, private readonly env: EnvironmentService) {}
 

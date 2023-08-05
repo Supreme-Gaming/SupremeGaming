@@ -16,7 +16,7 @@ import { EnvironmentService } from '@supremegaming/common/ngx';
   providedIn: 'root',
 })
 export class ServersService {
-  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('apiUrl')}/servers`;
+  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('legacyApiUrl')}/servers`;
 
   constructor(private env: EnvironmentService, private http: HttpClient) {}
 
