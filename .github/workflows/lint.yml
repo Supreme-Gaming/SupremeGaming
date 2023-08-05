@@ -27,7 +27,7 @@ jobs:
 
       - name: Install Dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci --legacy-peer-deps
+        run: npm ci
 
       - name: Lint Affected
         run: npx nx affected:lint --configuration=production --exclude=ark-cacher-node,conan-cacher,data-api-nest  --base=origin/development --parallel=2
