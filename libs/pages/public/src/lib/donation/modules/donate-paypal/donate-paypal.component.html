@@ -32,5 +32,6 @@
   class="column12 interactable"
   [ngClass]="{deactivated: (recipient | async) === null && (cartItems | async).length === 0 || (recipient | async) === null}"
 >
-  <supremegaming-donation-selections-review [cart]="cartItems | async"></supremegaming-donation-selections-review>
+  <supremegaming-donation-selections-review [cart]="cartItems | async" [recipient]="recipient | async">
+  </supremegaming-donation-selections-review>
 </div>

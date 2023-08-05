@@ -43,6 +43,7 @@
     "@nestjs/platform-express": "10.0.2",
     "@nestjs/typeorm": "10.0.0",
     "@nx/angular": "16.6.0",
+    "@paypal/paypal-js": "^5.1.4",
     "discord.js": "^14.12.1",
     "marked": "^1.2.7",
     "mysql": "^2.18.1",
@@ -103,3 +104,4 @@
     "typescript": "5.1.6"
   }
 }
+

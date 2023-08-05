@@ -23,7 +23,7 @@ export class EnvironmentService {
     } else {
       if (optional) {
         console.log(
-          `Environment does not contain ${String(key)}} in environment. Key is marked optional. Execution is not halted.`
+          `Environment does not contain ${String(key)} in environment. Key is marked optional. Execution is not halted.`
         );
         return;
       } else {
