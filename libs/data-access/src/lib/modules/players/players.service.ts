@@ -10,7 +10,7 @@ import { GameServerPlayer, GameServerPlayersResponse, SupremeGamingEnvironment }
   providedIn: 'root',
 })
 export class PlayersService {
-  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('apiUrl')}/players`;
+  private resourceUrl = `${this.env.value<SupremeGamingEnvironment, string>('legacyApiUrl')}/players`;
 
   constructor(private env: EnvironmentService, private http: HttpClient) {}
 

@@ -1,7 +1,8 @@
 export interface SupremeGamingEnvironment {
   production: boolean;
   servers: Array<GameServer>;
-  apiUrl: string;
+  legacyApiUrl: string;
+  v1ApiUrl: string;
   games?: SupremeGamingEnvironmentGameSettings;
 }
 

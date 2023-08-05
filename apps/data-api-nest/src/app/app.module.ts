@@ -8,6 +8,9 @@
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+
+import { ApiCoreModule } from '@supremegaming/api/core';
+import { ApiV1Module } from '@supremegaming/api/v1';
 import { DonationEntity, PlayerEntity, UserEntity } from '@supremegaming/common/entities/v1';
 
 import { AppController } from './app.controller';
@@ -44,7 +47,7 @@ const rewardsDb = TypeOrmModule.forRoot({
 } as TypeOrmModuleOptions);
 
 @Module({
-  imports: [administrationDb, rewardsDb],
+  imports: [administrationDb, rewardsDb, ApiCoreModule, ApiV1Module],
   controllers: [AppController],
   providers: [AppService],
 })
