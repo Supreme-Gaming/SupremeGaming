@@ -4,6 +4,7 @@ export interface SupremeGamingEnvironment {
   legacyApiUrl: string;
   v1ApiUrl: string;
   games?: SupremeGamingEnvironmentGameSettings;
+  paypalClientId: string;
 }
 
 export interface SupremeGamingEnvironmentGameSettings {
