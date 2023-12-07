@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { loadScript, PayPalNamespace, PurchaseItem } from '@paypal/paypal-js';
 
-import { GameServerPlayer } from '@supremegaming/common/interfaces';
+import { GameServerPlayer, SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
 import { EnvironmentService } from '@supremegaming/common/ngx';
 
 import { ICartItem } from '../../interfaces/shop.interfaces';
@@ -27,6 +27,7 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
 
   private _pp: PayPalNamespace;
   private _isProd: boolean;
+  private _ppClientId: string;
 
   constructor(private readonly env: EnvironmentService, private readonly router: Router) {}
 
@@ -45,6 +46,12 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
   }
 
   public ngOnInit(): void {
+    this._ppClientId = this.env.value<SupremeGamingEnvironment, string>('paypalClientId', false) || null;
+
+    if (this._ppClientId === '___PAYPAL_CLIENT_ID___') {
+      throw new Error('PayPal Client ID is not set. Please set it in your environment file.');
+    }
+
     this.initPP();
 
     this._isProd = this.env.value('production', true);
@@ -52,7 +59,7 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
 
   public async initPP() {
     this._pp = await loadScript({
-      'client-id': 'sb',
+      'client-id': this._ppClientId,
       currency: 'USD',
       intent: 'capture',
       components: 'buttons',

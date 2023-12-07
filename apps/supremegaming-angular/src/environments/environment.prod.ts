@@ -17,4 +17,5 @@ export const environment: SupremeGamingEnvironment = {
       rewardsProductImagesUrl: 'https://static.supremegaming.gg/images/ark/products',
     },
   },
+  paypalClientId: '___PAYPAL_CLIENT_ID___',
 };
