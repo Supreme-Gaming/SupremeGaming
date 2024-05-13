@@ -1,10 +1,10 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({
   name: 'donations',
 })
 export class DonationEntity extends BaseEntity {
-  @PrimaryColumn({ generated: 'increment', nullable: false })
+  @PrimaryColumn({ generated: 'increment' })
   public Id: number;
 
   @Column({ generated: 'uuid', nullable: false, length: 255 })
@@ -13,7 +13,7 @@ export class DonationEntity extends BaseEntity {
   @Column({ type: 'bigint', nullable: true })
   public Added: number;
 
-  @CreateDateColumn({ nullable: true })
+  @Column({ type: 'bigint', nullable: true })
   public TimeProcessed: number;
 
   @Column({ length: 255, nullable: true })
