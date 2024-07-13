@@ -1,18 +1,55 @@
 <ng-container *ngIf="(orderId | async) !== null">
   <ng-container *ngIf="(disbursementStatus | async) !== null; else loadingStatus">
-    <ng-container *ngIf="(disbursementStatus | async) !== undefined; else orderStatusFail">
-      <p>
-        {{(summary | async)?.ign}}, thank you so much for your contribution. Donors like you are the lifeblood of the
-        community; without you it would not exist. Your contribution has enabled Supreme Gaming to operate for an additional
-        <strong>{{(summary | async)?.impact}}</strong> hours!
-      </p>
-
-      <p>Order Status:</p>
-
-      <div id="status-payload">
-        <pre> {{ disbursementStatus | async | json}}</pre>
+    <div class="flex flex-row justify-center" *ngIf="(disbursementStatus | async) !== undefined; else orderStatusFail">
+      <div class="column6">
+        <p>
+          <span>{{(summary | async)?.ign}}</span>, thank you so much for your contribution. Donors like you are the lifeblood
+          of the community; we could not operate without your help. Your contribution has enabled Supreme Gaming to keep the
+          lights going for an additional <strong>~{{(summary | async)?.impact}}</strong> hours!
+        </p>
       </div>
-    </ng-container>
+
+      <div class="column5 inform-context" id="payment-receipt">
+        <h3>Payment Details</h3>
+
+        <div id="status-payload" *ngIf="disbursementStatus | async as st">
+          <div class="status-row">
+            <div class="status-label">Transaction ID</div>
+            <div class="status-value">{{st.PpId}}</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Transaction Date</div>
+            <div class="status-value">{{paymentDate | async | date : 'mediumDate'}}</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Payer</div>
+            <div class="status-value">{{st.Summary.payerName}}</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Payment Method</div>
+            <div class="status-value">PayPal</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Character Name</div>
+            <div class="status-value">{{st.CharacterName}}</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Steam ID</div>
+            <div class="status-value">{{playerId | async}}</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Amount</div>
+            <div class="status-value">{{st.Summary.totalAmount | currency}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <ng-template #orderStatusFail>
       <p>

@@ -3,9 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { HttpService } from '@nestjs/axios';
 import { Observable, from, of, pipe } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 
-import { PaypalRestService, LoggerService, IPayPalRestOrder } from '@supremegaming/api/core';
+import { PaypalRestService, LoggerService } from '@supremegaming/api/core';
 import {
   DonationEntity,
   EVENT_PERFORMED_BY,
@@ -29,7 +29,7 @@ export class PaymentsService {
     return this.serializeOrder(id).pipe(this.getDisbursementStatus());
   }
 
-  private serializeOrder(id: string): Observable<DonationEntity> {
+  private serializeOrder(id: string): Observable<DeepPartial<DonationEntity>> {
     return this.pp.getOrderDetails(id).pipe(
       map((order) => {
         if (order === null) {
@@ -43,8 +43,8 @@ export class PaymentsService {
           TimeProcessed: Date.parse(order.create_time) || null,
           PpId: order.id || null,
           ClientId: order.purchase_units[0].payments.captures[0].id || null,
-          OrderDetails: JSON.stringify(order) || null,
-          Payer: JSON.stringify(order.payer) || null,
+          OrderDetails: order || null,
+          Payer: order.payer || null,
           Total: transaction.amount.value || null,
           Processed: 'false',
           // Game:
@@ -95,16 +95,25 @@ export class PaymentsService {
 
   private getDisbursementStatus() {
     return pipe(
-      switchMap((order: DonationEntity) => {
+      switchMap((order: DeepPartial<DonationEntity>) => {
         return from(this.donationRepo.findOne({ where: { PpId: order.PpId } })).pipe(
           switchMap((donation) => {
             // Donation will either be null or an object
             if (donation) {
-              return of(donation).pipe(tap((donation) => this._disburseDonation(donation)));
+              return of(donation).pipe(
+                tap(() => this._disburseDonation(donation)),
+                map(() => donation.summarize())
+              );
             } else {
               return from(this.donationRepo.save(order)).pipe(
+                // For some reason, the save operation returns a deep partial-like object instead
+                // of the actual class. We need to convert it to the actual class to access the member methods for disbursement.
+                map((o) => DonationEntity.create(o)),
                 tap((o) => {
                   this._disburseDonation(o);
+                }),
+                map((o) => {
+                  return o.summarize();
                 })
               );
             }
@@ -129,7 +138,7 @@ export class PaymentsService {
     // Get the player and parse the order details to get the total points
     // Can't convert a dollar amount to points because ratios are not static (e.g. promotions, etc)
     const player = await this.playerRepo.findOne({ where: { SteamId: steamId } });
-    const pointTotalToAdd = this.getTotalPointsFromOrder(JSON.parse(donation.OrderDetails));
+    const pointTotalToAdd = donation.totalPointsFromOrder();
 
     if (player && pointTotalToAdd > 0) {
       const oldPoints = player.Points;
@@ -166,13 +175,6 @@ export class PaymentsService {
     }
   }
 
-  private getTotalPointsFromOrder(order: IPayPalRestOrder) {
-    const sku = order.purchase_units[0].items.find((item) => item.name.includes('Total Points'));
-    const totalPoints = parseInt(sku.name.split(':')[1]);
-
-    return totalPoints;
-  }
-
   private sendDiscordWebhookNotification(order: DonationEntity, confirmation: EventEntity) {
     const parsedConfirmation = JSON.parse(confirmation.details);
 
@@ -182,7 +184,7 @@ export class PaymentsService {
       **Transaction ID**: ${order.PpId}
       **Player Name**: ${order.CharacterName}
       **Player Guid**: ${order.PlayerGuid}
-      **Points**: ${this.getTotalPointsFromOrder(JSON.parse(order.OrderDetails))}
+      **Points**: ${order.totalPointsFromOrder()}
       **Donation Amount**: $${order.Total}
       **Status**: Disbursed
       **Old Points**: ${parsedConfirmation?.oldPoints}

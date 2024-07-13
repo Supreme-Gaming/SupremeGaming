@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, filter, map, Observable, of, shareReplay, switchMap } from 'rxjs';
 
 import { DonationService } from '@supremegaming/data-access';
-import { DonationEntity } from '@supremegaming/common/entities/v1';
+import { IDonationEntitySummarized } from '@supremegaming/common/entities/v1';
 
 @Component({
   selector: 'supremegaming-donation-confirm-status',
@@ -13,8 +13,10 @@ import { DonationEntity } from '@supremegaming/common/entities/v1';
 export class DonationConfirmStatusComponent implements OnInit {
   public orderId: Observable<string>;
 
-  public disbursementStatus: Observable<Partial<DonationEntity>>;
+  public disbursementStatus: Observable<Partial<IDonationEntitySummarized>>;
   public summary: Observable<{ ign: string; total: number; impact: string }>;
+  public playerId: Observable<string>;
+  public paymentDate: Observable<Date>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -56,5 +58,8 @@ export class DonationConfirmStatusComponent implements OnInit {
       }),
       shareReplay()
     );
+
+    this.playerId = this.disbursementStatus.pipe(map((summary) => summary.PlayerGuid.split('-')[0]));
+    this.paymentDate = this.disbursementStatus.pipe(map((summary) => new Date(summary.Summary.transactionDate)));
   }
 }

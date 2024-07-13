@@ -1,5 +1,27 @@
+@use 'libs/scss/mixins' as mixins;
+
 #status-payload {
   pre {
     white-space: break-spaces;
+  }
+}
+
+#payment-receipt {
+  h3 {
+    border-bottom: 1pt dotted #9dc6ff37;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.status-row {
+  padding: 0.5rem 0.5rem;
+  @include mixins.flexbox();
+  @include mixins.flex-direction(row);
+  @include mixins.justify-content(space-between);
+
+  .status-label {
+    opacity: 0.75;
   }
 }
