@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { SupremeGamingEnvironment } from '@supremegaming/common/interfaces';
+import { DonationEntity } from '@supremegaming/common/entities/v1';
 import { EnvironmentService } from '@supremegaming/common/ngx';
 
 @Injectable({
@@ -15,6 +16,6 @@ export class DonationService {
   }
 
   public donationStatus(t_id: string) {
-    return this.http.get(`${this.service}/status/${t_id}`);
+    return this.http.get<Partial<DonationEntity>>(`${this.service}/status/${t_id}`);
   }
 }

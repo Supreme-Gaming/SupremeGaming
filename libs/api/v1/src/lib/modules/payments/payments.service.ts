@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HttpService } from '@nestjs/axios';
 import { Observable, from, of, pipe } from 'rxjs';
@@ -32,6 +32,10 @@ export class PaymentsService {
   private serializeOrder(id: string): Observable<DonationEntity> {
     return this.pp.getOrderDetails(id).pipe(
       map((order) => {
+        if (order === null) {
+          throw new BadRequestException();
+        }
+
         const transaction = order.purchase_units[0];
 
         return {
@@ -113,11 +117,11 @@ export class PaymentsService {
   private async _disburseDonation(donation: DonationEntity) {
     // If the donation has already been processed, don't do anything
     if (donation.Processed == 'true') {
-      this.ls.debug(`Donation ${donation.Id} has already been processed`);
+      this.ls.debug(`Donation ${donation.Id} has already been processed`, 'PaymentsService');
       return;
     }
 
-    this.ls.debug(`Disbursing donation ${donation.Id}`);
+    this.ls.debug(`Disbursing donation ${donation.Id}`, 'PaymentsService');
 
     // PlayerGuid is a hyphenated id that has steam id and and map id. We need only the steam id
     const [steamId] = donation.PlayerGuid.split('-');
@@ -129,7 +133,7 @@ export class PaymentsService {
 
     if (player && pointTotalToAdd > 0) {
       const oldPoints = player.Points;
-      this.ls.debug(`Adding ${pointTotalToAdd} points to player ${player.SteamId}`);
+      this.ls.debug(`Adding ${pointTotalToAdd} points to player ${player.SteamId}`, 'PaymentsService');
       player.Points += pointTotalToAdd;
 
       try {
@@ -151,14 +155,14 @@ export class PaymentsService {
 
         // If discord webhook env var is set, send a message to the discord channel
         if (process.env.DISCORD_WEBHOOK_URL) {
-          this.ls.debug(`Sending discord webhook for donation ${donation.Id}`);
+          this.ls.debug(`Sending discord webhook for donation ${donation.Id}`, 'PaymentsService');
           this.sendDiscordWebhookNotification(donation, event).subscribe();
         }
       } catch (err) {
-        this.ls.error('Error disbursing donation to player.');
+        this.ls.error('disburseDonation(): Error disbursing donation to player.', 'PaymentsService');
       }
     } else {
-      this.ls.error(`Player not found for donation disbursement, ${steamId}`);
+      this.ls.error(`disburseDonation(): Player not found for donation disbursement, ${steamId}`, 'PaymentsService');
     }
   }
 

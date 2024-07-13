@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
 
 import { DonationService } from '@supremegaming/data-access';
+import { DonationEntity } from '@supremegaming/common/entities/v1';
 
 @Component({
   selector: 'supremegaming-donation-confirm-status',
@@ -12,7 +13,8 @@ import { DonationService } from '@supremegaming/data-access';
 export class DonationConfirmStatusComponent implements OnInit {
   public orderId: Observable<string>;
 
-  public disbursementStatus: Observable<any>;
+  public disbursementStatus: Observable<Partial<DonationEntity>>;
+  public summary: Observable<{ ign: string; total: number; impact: string }>;
 
   constructor(private readonly route: ActivatedRoute, private readonly ds: DonationService) {}
 
@@ -25,6 +27,20 @@ export class DonationConfirmStatusComponent implements OnInit {
 
     this.disbursementStatus = this.orderId.pipe(
       switchMap((orderId) => this.ds.donationStatus(orderId)),
+      shareReplay()
+    );
+
+    this.summary = this.disbursementStatus.pipe(
+      map((status) => {
+        const total = parseFloat(status.Total);
+        const impact = ((total / 600) * 730).toFixed(1);
+
+        return {
+          ign: status.CharacterName,
+          total,
+          impact,
+        };
+      }),
       shareReplay()
     );
   }

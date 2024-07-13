@@ -3,11 +3,15 @@
 </ng-container>
 
 <ng-container *ngIf="(orderId | async) !== null">
-  <p>Order ID: {{ orderId | async }}</p>
+  <p>
+    {{(summary | async)?.ign}}, thank you so much for your contribution. Donors like you are the lifeblood of the community;
+    without you it would not exist. Your contribution has enabled Supreme Gaming to operate for an additional
+    <strong>{{(summary | async)?.impact}}</strong> hours!
+  </p>
 
   <p>Order Status:</p>
 
-  <div>
+  <div id="status-payload">
     <pre> {{ disbursementStatus | async | json}}</pre>
   </div>
 </ng-container>

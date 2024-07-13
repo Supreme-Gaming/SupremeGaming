@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { Observable, timer } from 'rxjs';
+import { Observable, of, timer } from 'rxjs';
 import { catchError, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { LoggerService } from '../logger/logger.service';
@@ -25,11 +25,11 @@ export class PaypalRestService {
 
   private preFlightCheck() {
     if (!process.env.PAYPAL_CLIENT_ID || !process.env.PAYPAL_SECRET || !process.env.PAYPAL_MODE) {
-      throw new Error('PaypalRestService: Missing options');
+      throw new Error('[PaypalRestService]: Missing options');
     } else {
       this._setEvnVars();
 
-      this.log.log(`PaypalRestService Ready for takeoff: ${this._mode}`);
+      this.log.log(`Ready for takeoff: ${this._mode}`, 'PaypalRestService');
 
       this._configureLifecycle();
     }
@@ -56,7 +56,7 @@ export class PaypalRestService {
   }
 
   private _authenticate(count = 1): Observable<IPayPalRestIdentity> {
-    this.log.log('PaypalRestService: _authenticate()');
+    this.log.log('_authenticate()', 'PaypalRestService');
 
     return this.http
       .request({
@@ -83,8 +83,8 @@ export class PaypalRestService {
           const nextTimer = 1000 * Math.pow(2, nextCount);
 
           this.log.error(
-            `PaypalRestService: authenticate. Retrying attempt ${count + 1} in ${nextTimer / 1000} seconds`,
-            err.message
+            `_authenticate(). ${err.message}. Retrying attempt ${count + 1} in ${nextTimer / 1000} seconds`,
+            'PaypalRestService'
           );
 
           return timer(nextTimer).pipe(switchMap(() => this._authenticate(count + 1)));
@@ -106,7 +106,13 @@ export class PaypalRestService {
               Authorization: `Bearer ${identity.access_token}`,
             },
           })
-          .pipe(map((res) => res.data));
+          .pipe(
+            map((res) => res.data),
+            catchError((err) => {
+              this.log.error(`getOrderDetails(). ${err.message}`, 'PaypalRestService');
+              return of(null);
+            })
+          );
       })
     );
   }

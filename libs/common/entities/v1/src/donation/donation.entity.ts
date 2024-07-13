@@ -22,10 +22,10 @@ export class DonationEntity extends BaseEntity {
   @Column({ length: 255, nullable: true })
   public ClientId: string;
 
-  @Column({ type: 'mediumtext', nullable: true })
+  @Column({ type: 'mediumtext', nullable: true, select: false })
   public OrderDetails: string;
 
-  @Column({ type: 'mediumtext', nullable: true })
+  @Column({ type: 'mediumtext', nullable: true, select: false })
   public Payer: string;
 
   @Column({ length: 255, nullable: true })
