@@ -1,17 +1,30 @@
-<ng-container *ngIf="(orderId | async) === null">
-  <p>No order to track right now</p>
-</ng-container>
-
 <ng-container *ngIf="(orderId | async) !== null">
-  <p>
-    {{(summary | async)?.ign}}, thank you so much for your contribution. Donors like you are the lifeblood of the community;
-    without you it would not exist. Your contribution has enabled Supreme Gaming to operate for an additional
-    <strong>{{(summary | async)?.impact}}</strong> hours!
-  </p>
+  <ng-container *ngIf="(disbursementStatus | async) !== null; else loadingStatus">
+    <ng-container *ngIf="(disbursementStatus | async) !== undefined; else orderStatusFail">
+      <p>
+        {{(summary | async)?.ign}}, thank you so much for your contribution. Donors like you are the lifeblood of the
+        community; without you it would not exist. Your contribution has enabled Supreme Gaming to operate for an additional
+        <strong>{{(summary | async)?.impact}}</strong> hours!
+      </p>
 
-  <p>Order Status:</p>
+      <p>Order Status:</p>
 
-  <div id="status-payload">
-    <pre> {{ disbursementStatus | async | json}}</pre>
-  </div>
+      <div id="status-payload">
+        <pre> {{ disbursementStatus | async | json}}</pre>
+      </div>
+    </ng-container>
+
+    <ng-template #orderStatusFail>
+      <p>
+        Oh noes, something went wrong! We are unable to retrieve the status of your donation order at this time. Please try
+        again at a later time. If the issue persists, please reach out by
+        <a routerLink="/community/support">creating a ticket</a>, and reference the order ID
+        <code>{{orderId | async}}</code>.
+      </p>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loadingStatus>
+    <p>Retrieving order status....</p>
+  </ng-template>
 </ng-container>

@@ -109,7 +109,7 @@ export class PaypalRestService {
           .pipe(
             map((res) => res.data),
             catchError((err) => {
-              this.log.error(`getOrderDetails(). ${err.message}`, 'PaypalRestService');
+              this.log.error(`getOrderDetails(${t_id}). ${err.message}`, 'PaypalRestService');
               return of(null);
             })
           );
