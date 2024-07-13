@@ -17,6 +17,7 @@ export class DonationConfirmStatusComponent implements OnInit {
   public summary: Observable<{ ign: string; total: number; impact: string }>;
   public playerId: Observable<string>;
   public paymentDate: Observable<Date>;
+  public transactionStatus: Observable<string>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -61,5 +62,6 @@ export class DonationConfirmStatusComponent implements OnInit {
 
     this.playerId = this.disbursementStatus.pipe(map((summary) => summary.PlayerGuid.split('-')[0]));
     this.paymentDate = this.disbursementStatus.pipe(map((summary) => new Date(summary.Summary.transactionDate)));
+    this.transactionStatus = this.disbursementStatus.pipe(map((summary) => summary.Summary.transactionStatus.toLowerCase()));
   }
 }

@@ -14,6 +14,11 @@
 
         <div id="status-payload" *ngIf="disbursementStatus | async as st">
           <div class="status-row">
+            <div class="status-label">Payment Status</div>
+            <div class="status-value" id="transaction-status">{{transactionStatus | async}}</div>
+          </div>
+
+          <div class="status-row">
             <div class="status-label">Transaction ID</div>
             <div class="status-value">{{st.PpId}}</div>
           </div>
@@ -46,6 +51,11 @@
           <div class="status-row">
             <div class="status-label">Amount</div>
             <div class="status-value">{{st.Summary.totalAmount | currency}}</div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-label">Points</div>
+            <div class="status-value">{{st.Summary.totalPoints | number}}</div>
           </div>
         </div>
       </div>

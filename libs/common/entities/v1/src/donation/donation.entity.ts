@@ -68,6 +68,7 @@ export class DonationEntity extends BaseEntity {
 
     copy.Summary = {
       transactionDate: this.OrderDetails.update_time,
+      transactionStatus: this.OrderDetails.status,
       payerName: this.Payer.name.given_name + ' ' + this.Payer.name.surname,
       payerEmail: this.Payer.email_address,
       totalAmount: this.Total,
@@ -83,6 +84,7 @@ export class DonationEntity extends BaseEntity {
 
 export interface IDonationEntitySummary {
   transactionDate: string;
+  transactionStatus: string;
   payerName: string;
   payerEmail: string;
   totalAmount: string;

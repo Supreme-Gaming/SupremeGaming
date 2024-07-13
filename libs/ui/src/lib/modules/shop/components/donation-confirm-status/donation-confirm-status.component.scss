@@ -1,4 +1,5 @@
 @use 'libs/scss/mixins' as mixins;
+@use 'libs/scss/colors' as colors;
 
 #status-payload {
   pre {
@@ -24,4 +25,13 @@
   .status-label {
     opacity: 0.75;
   }
+
+  .status-value {
+    font-weight: 400;
+  }
+}
+
+#transaction-status {
+  color: colors.$success;
+  text-transform: capitalize;
 }
