@@ -1,18 +1,52 @@
 <ng-container *ngIf="(orderId | async) !== null">
-  <ng-container *ngIf="(disbursementStatus | async) !== null; else loadingStatus">
-    <div class="flex flex-row justify-center" *ngIf="(disbursementStatus | async) !== undefined; else orderStatusFail">
+  <ng-container *ngIf="(order | async) !== null; else loadingStatus">
+    <div class="flex flex-row justify-around" *ngIf="(order | async) !== undefined; else orderStatusFail">
       <div class="column6">
-        <p>
-          <span>{{(summary | async)?.ign}}</span>, thank you so much for your contribution. Donors like you are the lifeblood
-          of the community; we could not operate without your help. Your contribution has enabled Supreme Gaming to keep the
-          lights going for an additional <strong>~{{(summary | async)?.impact}}</strong> hours!
+        <p class="trailer-1">
+          <strong>{{(summary | async)?.ign}}</strong>, thank you so much for your contribution. Donors like you are the
+          lifeblood of the community; we could not operate without your help. Your contribution has enabled Supreme Gaming to
+          keep the lights going for an additional <strong>~{{(summary | async)?.impact}}</strong> hours!
         </p>
+
+        <p>
+          Your donation points are disbursed automatically immediately after payment confirmation, but in rare cases this
+          process can take up to a few minutes. If you do not receive your points shortly, please
+          <a routerLink="/community/support">create a ticket</a> on our Discord server and reference the transaction ID.
+        </p>
+
+        <!-- States: received, processing, completed, failed -->
+
+        <div class="disbursement-tracker inform-context">
+          <div
+            class="disbursement-step"
+            [ngClass]="{'in-progress': disbursementStatus | async | includes : disbursementStates.PENDING, 'completed': disbursementStatus | async | includes : disbursementStates.SUCCESS}"
+          >
+            <div class="disbursement-icon">
+              <i class="material-icons-outlined">flag</i>
+            </div>
+            <div class="disbursement-label">Received</div>
+          </div>
+
+          <div class="disbursement-step">
+            <div class="disbursement-icon">
+              <i class="material-icons-outlined">sync</i>
+            </div>
+            <div class="disbursement-label">Processing</div>
+          </div>
+
+          <div class="disbursement-step">
+            <div class="disbursement-icon">
+              <i class="material-icons-outlined">check_circle</i>
+            </div>
+            <div class="disbursement-label">Disbursed</div>
+          </div>
+        </div>
       </div>
 
       <div class="column5 inform-context" id="payment-receipt">
         <h3>Payment Details</h3>
 
-        <div id="status-payload" *ngIf="disbursementStatus | async as st">
+        <div id="status-payload" *ngIf="order | async as st">
           <div class="status-row">
             <div class="status-label">Payment Status</div>
             <div class="status-value" id="transaction-status">{{transactionStatus | async}}</div>

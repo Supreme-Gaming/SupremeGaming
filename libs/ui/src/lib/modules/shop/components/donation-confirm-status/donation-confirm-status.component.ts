@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, filter, map, Observable, of, shareReplay, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, map, Observable, of, shareReplay, switchMap } from 'rxjs';
 
 import { DonationService } from '@supremegaming/data-access';
 import { IDonationEntitySummarized } from '@supremegaming/common/entities/v1';
@@ -13,11 +13,15 @@ import { IDonationEntitySummarized } from '@supremegaming/common/entities/v1';
 export class DonationConfirmStatusComponent implements OnInit {
   public orderId: Observable<string>;
 
-  public disbursementStatus: Observable<Partial<IDonationEntitySummarized>>;
+  public order: Observable<Partial<IDonationEntitySummarized>>;
   public summary: Observable<{ ign: string; total: number; impact: string }>;
   public playerId: Observable<string>;
   public paymentDate: Observable<Date>;
   public transactionStatus: Observable<string>;
+  public disbursementStates = DisbursementStatus;
+  public disbursementStatus: BehaviorSubject<Array<DisbursementStatus>> = new BehaviorSubject([
+    this.disbursementStates.PENDING,
+  ]);
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -37,7 +41,7 @@ export class DonationConfirmStatusComponent implements OnInit {
       shareReplay()
     );
 
-    this.disbursementStatus = this.orderId.pipe(
+    this.order = this.orderId.pipe(
       switchMap((orderId) => this.ds.donationStatus(orderId)),
       catchError(() => {
         return of(undefined);
@@ -45,7 +49,7 @@ export class DonationConfirmStatusComponent implements OnInit {
       shareReplay()
     );
 
-    this.summary = this.disbursementStatus.pipe(
+    this.summary = this.order.pipe(
       filter((status) => !!status),
       map((status) => {
         const total = parseFloat(status.Total);
@@ -60,8 +64,16 @@ export class DonationConfirmStatusComponent implements OnInit {
       shareReplay()
     );
 
-    this.playerId = this.disbursementStatus.pipe(map((summary) => summary.PlayerGuid.split('-')[0]));
-    this.paymentDate = this.disbursementStatus.pipe(map((summary) => new Date(summary.Summary.transactionDate)));
-    this.transactionStatus = this.disbursementStatus.pipe(map((summary) => summary.Summary.transactionStatus.toLowerCase()));
+    this.playerId = this.order.pipe(map((summary) => summary.PlayerGuid.split('-')[0]));
+    this.paymentDate = this.order.pipe(map((summary) => new Date(summary.Summary.transactionDate)));
+    this.transactionStatus = this.order.pipe(map((summary) => summary.Summary.transactionStatus.toLowerCase()));
   }
+}
+
+enum DisbursementStatus {
+  PENDING = 'pending',
+  SUCCESS = 'success',
+  FAILED = 'failed',
+  DISBURSED = 'disbursed',
+  REFUNDED = 'refunded',
 }

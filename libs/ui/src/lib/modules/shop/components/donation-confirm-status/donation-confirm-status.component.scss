@@ -35,3 +35,52 @@
   color: colors.$success;
   text-transform: capitalize;
 }
+
+.disbursement-tracker {
+  margin: 1.5rem 0 1rem 0;
+  @include mixins.flexbox();
+  @include mixins.flex-direction(row);
+  @include mixins.justify-content(space-around);
+
+  .disbursement-step {
+    @include mixins.flexbox();
+    @include mixins.flex-direction(column);
+    @include mixins.align-items(center);
+    @include mixins.justify-content(center);
+    @include mixins.transition(opacity 0.25s, color 0.25s);
+    width: 33.33%;
+    padding: 0.5rem 0;
+    opacity: 0.5;
+
+    &.complete {
+      color: colors.$primary;
+    }
+
+    &.in-progress {
+      // Animation with opacity going from 0.75 to 1
+      animation: fadeIn 1s infinite alternate;
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .disbursement-label {
+    font-size: 0.75rem;
+    color: inherit;
+  }
+
+  .disbursement-icon {
+    margin: 0.25rem;
+
+    .material-icons-outlined {
+      font-size: 1.3rem;
+    }
+  }
+}
