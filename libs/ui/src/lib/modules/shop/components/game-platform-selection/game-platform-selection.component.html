@@ -1,0 +1,18 @@
+<h2 class="trailer-2">Step 1 &mdash; Pick Your Game</h2>
+
+<div class="game-cards">
+  <div
+    class="game-card wire-container hover-light"
+    *ngFor="let game of games"
+    [ngClass]="{'lit': savedGame?.name === game.name}"
+    (click)="setActiveGame(game)"
+  >
+    <div class="game-card__image">
+      <img [src]="game.iconPath" [alt]="game.name" />
+    </div>
+
+    <div class="game-card__title">
+      <h4>{{ game.name }}</h4>
+    </div>
+  </div>
+</div>

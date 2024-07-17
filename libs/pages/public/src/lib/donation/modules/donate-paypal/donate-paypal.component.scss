@@ -1,0 +1,104 @@
+@import 'libs/scss/colors';
+
+#flicker {
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-fill-color: $support;
+  -webkit-text-stroke-color: transparent;
+
+  // 10 second flicker animation that alternates the text from initial to stroked
+  animation: flicker 10s infinite;
+  animation-delay: 2s;
+
+  // 10 second flicker animation that alternates the text from initial to stroked
+  @keyframes flicker {
+    // on
+    0% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+    25% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+
+    // off
+    26% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+    26.25% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+
+    // on
+    29% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+    45% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+
+    // off
+    46% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+    46.4% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+
+    // on
+    46.6% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+    46.75% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+
+    // off
+    50% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+    51% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+
+    // on
+    52% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+    75% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+
+    // off
+    76% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+    76.4% {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: $base_focus;
+    }
+
+    // on
+    76.41% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+    100% {
+      -webkit-text-fill-color: $support;
+      -webkit-text-stroke-color: transparent;
+    }
+  }
+}

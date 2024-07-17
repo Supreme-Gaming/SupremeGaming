@@ -231,4 +231,47 @@ section.root {
   padding: 1.25rem 1.5rem;
   border: 1pt solid $base_lightened;
   border-radius: 5pt;
+  transition: border-color 0.25s;
+
+  &.lit {
+    border-color: $base_focus;
+  }
+
+  &.hover-light {
+    &:hover {
+      border-color: $base_focus;
+    }
+  }
+}
+
+.interactable {
+  transition: opacity 0.25s;
+
+  &.deactivated {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.inform-context {
+  border: 1pt solid $support;
+  padding: 1rem;
+  border-radius: 7pt;
+  font-size: 0.9rem;
+
+  background: #9db9ff0e;
+  border-color: #9dc6ff5e;
+
+  &.warn {
+    background: #fff59d0e;
+    border-color: #fff59d5e;
+  }
+}
+
+.center-text {
+  text-align: center;
 }

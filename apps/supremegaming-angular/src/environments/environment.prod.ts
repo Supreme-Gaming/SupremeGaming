@@ -4,7 +4,8 @@ import { servers } from './servers';
 export const environment: SupremeGamingEnvironment = {
   production: false,
   servers,
-  apiUrl: 'https://supremegaming.gg/api',
+  legacyApiUrl: 'https://supremegaming.gg/api',
+  v1ApiUrl: 'https://supremegaming.gg/api/v1',
   games: {
     atlas: {
       gridImages: 'https://static.supremegaming.gg',
@@ -16,4 +17,5 @@ export const environment: SupremeGamingEnvironment = {
       rewardsProductImagesUrl: 'https://static.supremegaming.gg/images/ark/products',
     },
   },
+  paypalClientId: '___PAYPAL_CLIENT_ID___',
 };
