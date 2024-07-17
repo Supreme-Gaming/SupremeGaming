@@ -9,35 +9,50 @@
         </p>
 
         <p>
-          Your donation points are disbursed automatically immediately after payment confirmation, but in rare cases this
-          process can take up to a few minutes. If you do not receive your points shortly, please
+          Your donation points are disbursed automatically after payment confirmation, but in rare cases this process can
+          take up to a few minutes. If you do not receive your points shortly, please
           <a routerLink="/community/support">create a ticket</a> on our Discord server and reference the transaction ID.
         </p>
 
-        <!-- States: received, processing, completed, failed -->
+        <!-- States: received, processing, complete, failed -->
 
         <div class="disbursement-tracker inform-context">
           <div
             class="disbursement-step"
-            [ngClass]="{'in-progress': disbursementStatus | async | includes : disbursementStates.PENDING, 'completed': disbursementStatus | async | includes : disbursementStates.SUCCESS}"
+            [ngClass]="{'in-progress': (disbursementStatus | async) === disbursementStates.PENDING, 'complete': (disbursementStatus | async) === disbursementStates.PROCESSING || (disbursementStatus | async) === disbursementStates.SUCCESS}"
           >
-            <div class="disbursement-icon">
-              <i class="material-icons-outlined">flag</i>
+            <div
+              class="disbursement-icon"
+              [ngSwitch]="(disbursementStatus | async) === disbursementStates.PROCESSING || (disbursementStatus | async) === disbursementStates.SUCCESS"
+            >
+              <i class="material-icons-outlined" *ngSwitchCase="true">check_circle</i>
+              <i class="material-icons-outlined" *ngSwitchDefault>flag</i>
             </div>
+
             <div class="disbursement-label">Received</div>
           </div>
 
-          <div class="disbursement-step">
-            <div class="disbursement-icon">
-              <i class="material-icons-outlined">sync</i>
+          <div
+            class="disbursement-step"
+            [ngClass]="{'in-progress': (disbursementStatus | async) === disbursementStates.PROCESSING, 'complete': (disbursementStatus | async) === disbursementStates.SUCCESS}"
+          >
+            <div class="disbursement-icon" [ngSwitch]="(disbursementStatus | async) === disbursementStates.SUCCESS">
+              <i class="material-icons-outlined" *ngSwitchCase="true">check_circle</i>
+              <i class="material-icons-outlined" *ngSwitchDefault>sync</i>
             </div>
+
             <div class="disbursement-label">Processing</div>
           </div>
 
-          <div class="disbursement-step">
-            <div class="disbursement-icon">
-              <i class="material-icons-outlined">check_circle</i>
+          <div
+            class="disbursement-step"
+            [ngClass]="{'complete': (disbursementStatus | async) === disbursementStates.SUCCESS}"
+          >
+            <div class="disbursement-icon" [ngSwitch]="(disbursementStatus | async) === disbursementStates.SUCCESS">
+              <i class="material-icons-outlined" *ngSwitchCase="true">check_circle</i>
+              <i class="material-icons-outlined" *ngSwitchDefault>paid</i>
             </div>
+
             <div class="disbursement-label">Disbursed</div>
           </div>
         </div>

@@ -1,6 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, catchError, filter, map, Observable, of, shareReplay, switchMap } from 'rxjs';
+import {
+  catchError,
+  filter,
+  map,
+  Observable,
+  of,
+  retry,
+  retryWhen,
+  shareReplay,
+  startWith,
+  switchMap,
+  take,
+  throwError,
+  timer,
+  withLatestFrom,
+} from 'rxjs';
 
 import { DonationService } from '@supremegaming/data-access';
 import { IDonationEntitySummarized } from '@supremegaming/common/entities/v1';
@@ -19,9 +34,7 @@ export class DonationConfirmStatusComponent implements OnInit {
   public paymentDate: Observable<Date>;
   public transactionStatus: Observable<string>;
   public disbursementStates = DisbursementStatus;
-  public disbursementStatus: BehaviorSubject<Array<DisbursementStatus>> = new BehaviorSubject([
-    this.disbursementStates.PENDING,
-  ]);
+  public disbursementStatus: Observable<DisbursementStatus>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -67,11 +80,53 @@ export class DonationConfirmStatusComponent implements OnInit {
     this.playerId = this.order.pipe(map((summary) => summary.PlayerGuid.split('-')[0]));
     this.paymentDate = this.order.pipe(map((summary) => new Date(summary.Summary.transactionDate)));
     this.transactionStatus = this.order.pipe(map((summary) => summary.Summary.transactionStatus.toLowerCase()));
+
+    this.disbursementStatus = this.order.pipe(
+      filter((order) => !!order),
+      switchMap((order) => {
+        if (order.Processed === 'true') {
+          return of(DisbursementStatus.SUCCESS);
+        }
+
+        return of(true).pipe(
+          switchMap(() =>
+            timer(1500).pipe(
+              switchMap(() => {
+                return timer(1500).pipe(
+                  withLatestFrom(this.orderId),
+                  switchMap(([, orderId]) =>
+                    this.ds.donationStatus(orderId).pipe(
+                      map((status) => {
+                        if (status.Processed === 'true') {
+                          return DisbursementStatus.SUCCESS;
+                        }
+
+                        throw DisbursementStatus.PROCESSING;
+                      }),
+                      retry({
+                        count: 2,
+                        delay: 5000,
+                        resetOnSuccess: true,
+                      }),
+                      catchError(() => of(DisbursementStatus.FAILED))
+                    )
+                  ),
+                  startWith(DisbursementStatus.PROCESSING)
+                );
+              })
+            )
+          ),
+          startWith(DisbursementStatus.PENDING)
+        );
+      }),
+      shareReplay()
+    );
   }
 }
 
 enum DisbursementStatus {
   PENDING = 'pending',
+  PROCESSING = 'processing',
   SUCCESS = 'success',
   FAILED = 'failed',
   DISBURSED = 'disbursed',
