@@ -48,8 +48,8 @@ export class DonationSelectionsReviewComponent implements OnInit, OnChanges {
   public ngOnInit(): void {
     this._ppClientId = this.env.value<SupremeGamingEnvironment, string>('paypalClientId', false) || null;
 
-    if (this._ppClientId === '___PAYPAL_CLIENT_ID___') {
-      throw new Error('PayPal Client ID is not set. Please set it in your environment file.');
+    if (this._ppClientId.startsWith('___')) {
+      throw new Error(`PayPal Client ID is not set. Current value is ${this._ppClientId}`);
     }
 
     this.initPP();
