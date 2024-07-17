@@ -12,7 +12,7 @@ export class DonationService {
   public service: string;
 
   constructor(private readonly http: HttpClient, private readonly env: EnvironmentService) {
-    this.service = this.env.value<SupremeGamingEnvironment, string>('v1ApiUrl') + '/payments';
+    this.service = this.env.value<SupremeGamingEnvironment, string>('v2ApiUrl') + '/payments';
   }
 
   public donationStatus(t_id: string) {

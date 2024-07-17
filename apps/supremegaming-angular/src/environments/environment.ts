@@ -9,7 +9,7 @@ export const environment: SupremeGamingEnvironment = {
   production: false,
   servers,
   legacyApiUrl: 'https://supremegaming.gg/api',
-  v1ApiUrl: 'http://localhost:3333/api',
+  v2ApiUrl: 'http://localhost:3333/api',
   games: {
     atlas: {
       gridImages: 'https://static.supremegaming.gg',
