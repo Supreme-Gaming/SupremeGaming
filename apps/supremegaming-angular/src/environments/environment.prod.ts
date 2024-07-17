@@ -4,8 +4,8 @@ import { servers } from './servers';
 export const environment: SupremeGamingEnvironment = {
   production: false,
   servers,
-  legacyApiUrl: 'https://supremegaming.gg/api',
-  v1ApiUrl: 'https://supremegaming.gg/api/v1',
+  legacyApiUrl: '___LEGACY_API_URL___',
+  v2ApiUrl: '___V2_API_URL___',
   games: {
     atlas: {
       gridImages: 'https://static.supremegaming.gg',

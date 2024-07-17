@@ -2,7 +2,7 @@ export interface SupremeGamingEnvironment {
   production: boolean;
   servers: Array<GameServer>;
   legacyApiUrl: string;
-  v1ApiUrl: string;
+  v2ApiUrl: string;
   games?: SupremeGamingEnvironmentGameSettings;
   paypalClientId: string;
 }

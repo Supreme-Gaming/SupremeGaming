@@ -1,0 +1,52 @@
+# Compose file for local testing
+# Same can be used for production, just swap out the image name
+#
+# To run:
+#   docker-compose -f dev.docker-compose.yml --env-file .env.local up -d
+
+version: '3'
+
+# name: SG Data API V2
+services:
+  data-api:
+    image: data-api-nest:latest
+    container_name: sg-data-api-nest
+    restart: always
+    ports:
+      - ${API_PORT}:${API_PORT}
+    environment:
+      # Payments Connection
+      PAYMENTS_DB_TYPE: ${PAYMENTS_DB_TYPE}
+      PAYMENTS_DB_HOST: ${PAYMENTS_DB_HOST}
+      PAYMENTS_DB_PORT: ${PAYMENTS_DB_PORT}
+      PAYMENTS_DB_USERNAME: ${PAYMENTS_DB_USERNAME}
+      PAYMENTS_DB_PASSWORD: ${PAYMENTS_DB_PASSWORD}
+      PAYMENTS_DB_DATABASE: ${PAYMENTS_DB_DATABASE}
+      PAYMENTS_DB_SYNCHRONIZE: ${PAYMENTS_DB_SYNCHRONIZE}
+      PAYMENTS_DB_DROP_SCHEMA: ${PAYMENTS_DB_DROP_SCHEMA}
+      PAYMENTS_DB_LOGGING: ${PAYMENTS_DB_LOGGING}
+      PAYMENTS_DB_EXTRA: ${PAYMENTS_DB_EXTRA}
+
+      # Rewards Connection
+      REWARDS_DB_TYPE: ${REWARDS_DB_TYPE}
+      REWARDS_DB_HOST: ${REWARDS_DB_HOST}
+      REWARDS_DB_PORT: ${REWARDS_DB_PORT}
+      REWARDS_DB_USERNAME: ${REWARDS_DB_USERNAME}
+      REWARDS_DB_PASSWORD: ${REWARDS_DB_PASSWORD}
+      REWARDS_DB_DATABASE: ${REWARDS_DB_DATABASE}
+      REWARDS_DB_SYNCHRONIZE: ${REWARDS_DB_SYNCHRONIZE}
+      REWARDS_DB_DROP_SCHEMA: ${REWARDS_DB_DROP_SCHEMA}
+      REWARDS_DB_LOGGING: ${REWARDS_DB_LOGGING}
+      REWARDS_DB_EXTRA: ${REWARDS_DB_EXTRA}
+
+      # API Config
+      API_GLOBAL_PREFIX: ${API_GLOBAL_PREFIX}
+      API_PORT: ${API_PORT}
+
+      # PayPal REST SDK Config
+      PAYPAL_MODE: ${PAYPAL_MODE}
+      PAYPAL_CLIENT_ID: ${PAYPAL_CLIENT_ID}
+      PAYPAL_SECRET: ${PAYPAL_SECRET}
+
+      # Discord Webhook Config
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}

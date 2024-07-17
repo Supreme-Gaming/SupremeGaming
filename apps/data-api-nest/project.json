@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/data-api-nest",
         "main": "apps/data-api-nest/src/main.ts",
         "tsConfig": "apps/data-api-nest/tsconfig.app.json",
-        "assets": ["apps/data-api-nest/src/assets"],
+        "assets": ["apps/data-api-nest/src/assets", "apps/data-api-nest/src/Dockerfile"],
         "target": "node",
         "compiler": "tsc"
       },
@@ -30,6 +30,17 @@
         }
       },
       "outputs": ["{options.outputPath}"]
+    },
+    "image-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker build -t data-api-nest ."
+          }
+        ],
+        "cwd": "dist/apps/data-api-nest"
+      }
     },
     "serve": {
       "executor": "@nx/js:node",

@@ -29,7 +29,23 @@ jobs:
         run: npm ci
 
       - name: Build Affected
-        run: npx nx affected:build --configuration=production --exclude=ark-cacher-node,conan-cacher,data-api-nest  --base=origin/development --parallel=2
+        run: npx nx affected:build --configuration=production --exclude=ark-cacher-node,conan-cacher  --base=origin/development --parallel=2
+
+        # Iterate through the dist folder and for any folder in dist/apps that has the suffix "-nest",
+        # copy the root package.json to the /app/<project-name> folder.
+        #
+        # This is necessary because as of this version of Nx, it cannot reliably generate a package.json for NestJS applications.
+        # and the more common issue is missing required database drivers.
+      - name: Inject Package JSON
+        run: |
+          for d in dist/apps/*-nest; do cp package.json $d; done
+
+        # Static angular applications can have environment variables injected at container runtime using the
+        # tokenSubstitute.sh script. This script is copied to the dist/apps/<project-name>-angular folder.
+        #
+      - name: Inject Token Subsitution Script
+        run: |
+          for d in dist/apps/*-angular; do cp scripts/ci/tokenSubstitute.sh $d; done
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3

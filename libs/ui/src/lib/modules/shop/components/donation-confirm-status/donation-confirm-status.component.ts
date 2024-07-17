@@ -7,12 +7,9 @@ import {
   Observable,
   of,
   retry,
-  retryWhen,
   shareReplay,
   startWith,
   switchMap,
-  take,
-  throwError,
   timer,
   withLatestFrom,
 } from 'rxjs';
