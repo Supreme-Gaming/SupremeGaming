@@ -39,10 +39,20 @@ jobs:
       - name: Inject Package JSON
         run: |
           shopt -s nullglob
+
+          # Check if dist/apps exists
+          if [ ! -d dist/apps ]; then
+            echo "dist/apps does not exist"
+            exit 0
+          fi
+
           for d in dist/apps/*-nest; do
             echo "Copying package.json to $d"
             cp package.json "$d"
           done
+
+          echo ""
+          echo "Listing dist/apps"
           ls dist/apps/
           shopt -u nullglob
 
@@ -52,11 +62,21 @@ jobs:
       - name: Inject Token Subsitution Script
         run: |
           shopt -s nullglob
+
+          # Check if dist/apps exists
+          if [ ! -d dist/apps ]; then
+            echo "dist/apps does not exist"
+            exit 0
+          fi
+
           for d in dist/apps/*-angular; do
             echo "Copying tokenSubstitute.sh to $d"
             cp scripts/ci/tokenSubstitute.sh "$d"
           done
-          ls dist/apps/
+
+          echo ""
+          echo "Listing dist/apps"
+
           shopt -u nullglob
 
       - name: Upload Build Artifacts
