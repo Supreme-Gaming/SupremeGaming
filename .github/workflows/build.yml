@@ -38,14 +38,48 @@ jobs:
         # and the more common issue is missing required database drivers.
       - name: Inject Package JSON
         run: |
-          for d in dist/apps/*-nest; do cp package.json $d; done
+          shopt -s nullglob
+
+          # Check if dist/apps exists
+          if [ ! -d dist/apps ]; then
+            echo "dist/apps does not exist"
+            exit 0
+          fi
+
+          for d in dist/apps/*-nest; do
+            echo "Copying package.json to $d"
+            cp package.json "$d"
+          done
+
+          echo ""
+          echo "Listing dist/apps"
+          ls dist/apps/
+
+          shopt -u nullglob
 
         # Static angular applications can have environment variables injected at container runtime using the
         # tokenSubstitute.sh script. This script is copied to the dist/apps/<project-name>-angular folder.
         #
       - name: Inject Token Subsitution Script
         run: |
-          for d in dist/apps/*-angular; do cp scripts/ci/tokenSubstitute.sh $d; done
+          shopt -s nullglob
+
+          # Check if dist/apps exists
+          if [ ! -d dist/apps ]; then
+            echo "dist/apps does not exist"
+            exit 0
+          fi
+
+          for d in dist/apps/*-angular; do
+            echo "Copying tokenSubstitute.sh to $d"
+            cp scripts/ci/tokenSubstitute.sh "$d"
+          done
+
+          echo ""
+          echo "Listing dist/apps"
+          ls dist/apps/
+
+          shopt -u nullglob
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
