@@ -45,7 +45,7 @@ jobs:
         #
       - name: Inject Token Subsitution Script
         run: |
-          for d in dist/apps/*-angular; do cp scripts/ci/tokenSubstitute.sh $d; done
+          for d in dist/apps/*-angular; do cp scripts/ci/tokenSubstitute.sh $d; done; ls dist/apps/
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
