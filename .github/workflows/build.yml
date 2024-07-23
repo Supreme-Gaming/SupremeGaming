@@ -54,6 +54,7 @@ jobs:
           echo ""
           echo "Listing dist/apps"
           ls dist/apps/
+
           shopt -u nullglob
 
         # Static angular applications can have environment variables injected at container runtime using the
@@ -76,6 +77,7 @@ jobs:
 
           echo ""
           echo "Listing dist/apps"
+          ls dist/apps/
 
           shopt -u nullglob
 
