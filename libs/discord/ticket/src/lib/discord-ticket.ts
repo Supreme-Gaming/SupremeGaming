@@ -35,7 +35,11 @@ import { Ticket } from './features/discord-tickets.feature';
 import { TicketMessage } from './features/discord-ticket-message.feature';
 import { Dialog } from './features/dialog.feature';
 
-import { CCC_INSTRUCTIONS_TEMPLATE } from '@supremegaming/discord/templates';
+import {
+  CCC_INSTRUCTIONS_TEMPLATE,
+  EOSID_INSTRUCTIONS_TEMPLATE,
+  STEAMID_INSTRUCTIONS_TEMPLATE,
+} from '@supremegaming/discord/templates';
 import { TicketEntity } from './entities/ticket.entity';
 import { TicketAttachment } from './entities/ticket-attachment.entity';
 import { TicketConfiguration } from './entities/ticket-configuration.entity';
@@ -103,6 +107,10 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           (await message).delete();
         } else if (interaction.customId === 'ccc_print_button') {
           interaction.reply(CCC_INSTRUCTIONS_TEMPLATE);
+        } else if (interaction.customId === 'steamid_print_button') {
+          interaction.reply(STEAMID_INSTRUCTIONS_TEMPLATE);
+        } else if (interaction.customId === 'eosid_print_button') {
+          interaction.reply(EOSID_INSTRUCTIONS_TEMPLATE);
         }
       }
     }
@@ -377,12 +385,24 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         .setCustomId('ccc_print_button')
         .setEmoji('<a:cli:748801664714276914>');
 
+      const steamid = new ButtonBuilder()
+        .setLabel('Print instructions for getting Steam ID')
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId('steamid_print_button')
+        .setEmoji('<a:cli:748801664714276914>');
+
+      const eosid = new ButtonBuilder()
+        .setLabel('Print instructions for getting EOS ID')
+        .setStyle(ButtonStyle.Success)
+        .setCustomId('eosid_print_button')
+        .setEmoji('<a:cli:748801664714276914>');
+
       await ticketChannel.send({
         embeds: [ticketCreateEmbed],
         components: [
           {
             type: ComponentType.ActionRow,
-            components: [close, print],
+            components: [close, print, steamid, eosid],
           },
         ],
       });
