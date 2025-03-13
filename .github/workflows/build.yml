@@ -86,3 +86,4 @@ jobs:
         with:
           name: ${{ github.sha }}
           path: dist/
+          include-hidden-files: true
