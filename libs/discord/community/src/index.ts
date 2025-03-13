@@ -8,3 +8,4 @@ export * from './lib/support/donate/donate-info.module';
 export * from './lib/support/help/general-help.module';
 export * from './lib/support/membership/new-member.module';
 export * from './lib/support/roles/role-assignment.module';
+export * from './lib/support/patreon/patreon-reporter.module';

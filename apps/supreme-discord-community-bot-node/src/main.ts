@@ -7,6 +7,7 @@ import {
   FunDiscordModule,
   GeneralHelpDiscordModule,
   NewMemberDiscordModule,
+  PatreonReportDiscordModule,
   RoleAssignmentDiscordModule,
 } from '@supremegaming/discord/community';
 import { GatewayIntentBits, Partials } from 'discord.js';
@@ -54,6 +55,7 @@ new DiscordClientBootstrapper({
     GeneralHelpDiscordModule,
     NewMemberDiscordModule,
     RoleAssignmentDiscordModule,
+    PatreonReportDiscordModule,
   ],
   options: {
     clientToken: process.env.DISCORD_API_TOKEN,
