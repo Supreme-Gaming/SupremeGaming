@@ -145,9 +145,9 @@ export class PatreonReportDiscordModule implements SlashCommands, OnInteractionC
                 name: member.user,
                 value: `Tier: ${member.tier}\nAmount: $${member.amount.toFixed(
                   2
-                )}\nLifetime Support: $${member.lifetimeSupport.toFixed(2)}\nLast Charge Date: <t:${Date.parse(
-                  member.lastChargeDate
-                )}:f>\nLast Charge Status: ${member.lastChargeStatus}\nDiscord ID: ${
+                )}\nLifetime Support: $${member.lifetimeSupport.toFixed(2)}\nLast Charge Date: <t:${
+                  Date.parse(member.lastChargeDate) / 1000
+                }:f>\nLast Charge Status: ${member.lastChargeStatus}\nDiscord ID: ${
                   member.discordId !== null ? `<@${member.discordId}>` : 'Not linked'
                 }`,
               })),
