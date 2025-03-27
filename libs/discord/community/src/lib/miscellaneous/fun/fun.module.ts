@@ -46,7 +46,7 @@ export class FunDiscordModule implements SlashCommands, OnInteractionCreate {
           break;
         case 'wrongDiscord':
           interaction.reply({
-            files: ['https://cdn.discordapp.com/attachments/262744296875229185/1092881251775545474/SupremeARKmod.png'],
+            files: ['http://static.supremegaming.gg/images/misc/SupremeARKmod.png'],
           });
           break;
         default:
