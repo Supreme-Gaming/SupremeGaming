@@ -1,7 +1,7 @@
 import { CacheType, CommandInteractionOptionResolver, EmbedBuilder, Interaction, PermissionFlagsBits } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
-import { PatreonCreatorClient, QueryBuilder } from 'patreon-api.ts';
+import { PatreonCreatorClient, QueryBuilder, Tier } from 'patreon-api.ts';
 
 import { OnInteractionCreate, SlashCommands, SlashCommandTypes } from '@supremegaming/discord/bootstrap';
 
@@ -70,6 +70,26 @@ export class PatreonReportDiscordModule implements SlashCommands, OnInteractionC
       await interaction.deferReply({ ephemeral: !shouldBePersistent });
 
       if (subCommandGroup === 'list') {
+        let definedTiers = process.env.PATREON_TIERS_DISCORD_ROLES;
+
+        if (!definedTiers) {
+          await interaction.editReply({
+            content: 'No defined tiers found. Please define application discord tiers and roles.',
+          });
+
+          return;
+        } else {
+          try {
+            definedTiers = JSON.parse(definedTiers);
+          } catch (err) {
+            await interaction.editReply({
+              content: 'An error occurred while parsing the defined tiers. Please check the configuration.',
+            });
+
+            return;
+          }
+        }
+
         const memberQuery = QueryBuilder.campaignMembers
           .addRelationships(['currently_entitled_tiers', 'user'])
           .setAttributes({
@@ -91,7 +111,10 @@ export class PatreonReportDiscordModule implements SlashCommands, OnInteractionC
         try {
           const members = await this.patreonClient.fetchCampaignMembers(process.env.PATREON_CAMPAIGN_ID, memberQuery);
 
-          const mappedTiers = members.included
+          const mappedTiers: Record<
+            string,
+            Pick<Tier, 'description' | 'amount_cents' | 'discord_role_ids' | 'title'>
+          > = members.included
             .filter((tier) => tier.type === 'tier')
             .reduce((acc, curr) => {
               acc[curr.id] = curr.attributes;
@@ -109,11 +132,29 @@ export class PatreonReportDiscordModule implements SlashCommands, OnInteractionC
             .filter((member) => member.attributes.patron_status === 'active_patron')
             .map((member) => {
               const tier = mappedTiers[member.relationships.currently_entitled_tiers.data[0].id];
+
+              // Find the mapped tier with the highest
+              const earnedTier = Object.values(mappedTiers).reduce((acc, currentMax) => {
+                if (acc === null) {
+                  return currentMax;
+                }
+
+                if (
+                  currentMax.amount_cents >= acc.amount_cents &&
+                  member.attributes.campaign_lifetime_support_cents >= currentMax.amount_cents
+                ) {
+                  return currentMax;
+                }
+
+                return acc;
+              }, null);
+
               const userSocialConnections = mappedUserSocialConnections[member.relationships.user.data.id];
 
               return {
                 user: member.attributes.full_name,
                 tier: tier.title,
+                earnedTier: earnedTier ? earnedTier?.title : null,
                 amount: tier.amount_cents / 100,
                 lifetimeSupport: member.attributes.campaign_lifetime_support_cents / 100,
                 lastChargeDate: member.attributes.last_charge_date,
@@ -143,13 +184,11 @@ export class PatreonReportDiscordModule implements SlashCommands, OnInteractionC
               },
               fields: chunk.map((member) => ({
                 name: member.user,
-                value: `Tier: ${member.tier}\nAmount: $${member.amount.toFixed(
+                value: `Sub: ${member.tier}\nEarned: ${member.earnedTier}\nAmount: $${member.amount.toFixed(
                   2
-                )}\nLifetime Support: $${member.lifetimeSupport.toFixed(2)}\nLast Charge Date: <t:${
+                )}\nLifetime: $${member.lifetimeSupport.toFixed(2)}\nLCD: <t:${
                   Date.parse(member.lastChargeDate) / 1000
-                }:f>\nLast Charge Status: ${member.lastChargeStatus}\nDiscord ID: ${
-                  member.discordId !== null ? `<@${member.discordId}>` : 'Not linked'
-                }`,
+                }:f>\nDiscord ID: ${member.discordId !== null ? `<@${member.discordId}>` : 'N/A'}`,
               })),
             });
 
