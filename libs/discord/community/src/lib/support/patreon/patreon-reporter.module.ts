@@ -4,17 +4,22 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { PatreonCreatorClient, QueryBuilder, Tier } from 'patreon-api.ts';
 
 import { OnInteractionCreate, SlashCommands, SlashCommandTypes } from '@supremegaming/discord/bootstrap';
+import { PatreonTokenStore } from './patreon-token-store.service'; // Added import
 
 export class PatreonReportDiscordModule implements SlashCommands, OnInteractionCreate {
+  // Instantiate PatreonTokenStore
+  private patreonTokenStore = new PatreonTokenStore(
+    process.env.PATREON_ACCESS_TOKEN,
+    process.env.PATREON_REFRESH_TOKEN
+  );
+
   public patreonClient = new PatreonCreatorClient({
     oauth: {
       clientId: process.env.PATREON_CLIENT_ID,
       clientSecret: process.env.PATREON_CLIENT_SECRET,
-      token: {
-        access_token: process.env.PATREON_ACCESS_TOKEN,
-        refresh_token: process.env.PATREON_REFRESH_TOKEN,
-      },
+      // Removed direct token specification, store will handle it
     },
+    store: this.patreonTokenStore, // Added store
   });
 
   public commands(): SlashCommandTypes {
