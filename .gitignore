@@ -45,3 +45,4 @@ secrets.ts
 *.env
 .env.*
 !.env.sample
+!.env.example
