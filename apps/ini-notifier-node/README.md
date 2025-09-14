@@ -1,4 +1,4 @@
-# ini-notifier
+# ini-notifier-node
 
 Fetches an INI file from a URL, parses and caches it, polls for changes, and posts diffs to a Discord webhook.
 
@@ -13,8 +13,8 @@ Fetches an INI file from a URL, parses and caches it, polls for changes, and pos
 
 ## Develop
 
-- Build: nx build ini-notifier
-- Run: nx serve ini-notifier
+- Build: nx build ini-notifier-node
+- Run: nx serve ini-notifier-node
 
 Place a `.env` file in the workspace root or export the variables in your shell.
 

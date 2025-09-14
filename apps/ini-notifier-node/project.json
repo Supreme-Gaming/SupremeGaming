@@ -1,7 +1,7 @@
 {
-  "name": "ini-notifier",
+  "name": "ini-notifier-node",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/ini-notifier/src",
+  "sourceRoot": "apps/ini-notifier-node/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,12 +10,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/ini-notifier",
+        "outputPath": "dist/apps/ini-notifier-node",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/ini-notifier/src/main.ts",
-        "tsConfig": "apps/ini-notifier/tsconfig.app.json",
-        "assets": ["apps/ini-notifier/src/assets"],
+        "main": "apps/ini-notifier-node/src/main.ts",
+        "tsConfig": "apps/ini-notifier-node/tsconfig.app.json",
+        "assets": ["apps/ini-notifier-node/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -40,14 +40,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "ini-notifier:build"
+        "buildTarget": "ini-notifier-node:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "ini-notifier:build:development"
+          "buildTarget": "ini-notifier-node:build:development"
         },
         "production": {
-          "buildTarget": "ini-notifier:build:production"
+          "buildTarget": "ini-notifier-node:build:production"
         }
       }
     },
@@ -55,14 +55,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/ini-notifier/**/*.ts"]
+        "lintFilePatterns": ["apps/ini-notifier-node/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/ini-notifier/jest.config.ts",
+        "jestConfig": "apps/ini-notifier-node/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

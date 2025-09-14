@@ -20,7 +20,7 @@ export function getConfig(): AppConfig {
 
   const pollIntervalMs = parseInt(process.env.POLL_INTERVAL_MS || '', 10) || 60_000;
   const requestTimeoutMs = parseInt(process.env.REQUEST_TIMEOUT_MS || '', 10) || 15_000;
-  const notifierName = process.env.NOTIFIER_NAME || 'ini-notifier';
+  const notifierName = process.env.NOTIFIER_NAME || 'ini-notifier-node';
   const notifyOnInitial = toBool(process.env.NOTIFY_ON_INITIAL);
 
   return {
