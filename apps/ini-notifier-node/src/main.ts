@@ -1,9 +1,7 @@
 // Load env variables early
 import 'dotenv/config';
 
-import { getConfig } from './config';
-import { IniCache } from './services/cache';
-import { Poller } from './jobs/poller';
+import { getConfig, IniCache, Poller } from '@supremegaming/utilities/ini-notifier';
 
 (async () => {
   const config = getConfig();
