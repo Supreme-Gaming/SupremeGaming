@@ -5,6 +5,8 @@ export interface AppConfig {
   requestTimeoutMs: number;
   notifierName: string;
   notifyOnInitial: boolean;
+  embedTitle: string;
+  embedColor: number;
 }
 
 export function getConfig(): AppConfig {
@@ -22,6 +24,9 @@ export function getConfig(): AppConfig {
   const requestTimeoutMs = parseInt(process.env.REQUEST_TIMEOUT_MS || '', 10) || 15_000;
   const notifierName = process.env.NOTIFIER_NAME || 'ini-notifier-node';
   const notifyOnInitial = toBool(process.env.NOTIFY_ON_INITIAL);
+  const embedTitle = process.env.EMBED_TITLE || 'INI Changes Detected';
+  const embedColorStr = process.env.EMBED_COLOR || 'ffa500';
+  const embedColor = parseInt(embedColorStr, 16) || 0xffa500;
 
   return {
     iniUrl,
@@ -30,6 +35,8 @@ export function getConfig(): AppConfig {
     requestTimeoutMs,
     notifierName,
     notifyOnInitial,
+    embedTitle,
+    embedColor,
   };
 }
 

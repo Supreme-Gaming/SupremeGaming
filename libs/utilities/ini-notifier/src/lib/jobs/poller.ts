@@ -48,7 +48,14 @@ export class Poller {
           const nextParsed = parsed as Record<string, unknown>;
           const changes = diffIni(prevParsed, nextParsed).all;
           if (changes.length) {
-            await sendChangeWebhook(this.config.discordWebhookUrl, this.config.notifierName, changes);
+            await sendChangeWebhook(
+              this.config.discordWebhookUrl,
+              this.config.notifierName,
+              changes,
+              this.config.embedTitle,
+              this.config.embedColor
+            );
+
             console.log(`[poller] initial cache: ${changes.length} setting(s) announced`);
           }
         }
@@ -61,7 +68,13 @@ export class Poller {
       const nextParsed = parsed as Record<string, unknown>;
       const changes = diffIni(prevParsed, nextParsed).all;
       if (changes.length) {
-        await sendChangeWebhook(this.config.discordWebhookUrl, this.config.notifierName, changes);
+        await sendChangeWebhook(
+          this.config.discordWebhookUrl,
+          this.config.notifierName,
+          changes,
+          this.config.embedTitle,
+          this.config.embedColor
+        );
         console.log(`[poller] ${changes.length} change(s) notified`);
       }
 

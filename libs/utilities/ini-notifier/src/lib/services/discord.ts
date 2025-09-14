@@ -1,22 +1,31 @@
 import axios from 'axios';
 import { IniChange } from './diff';
 
-export async function sendChangeWebhook(webhookUrl: string, notifierName: string, changes: IniChange[]) {
+export async function sendChangeWebhook(
+  webhookUrl: string,
+  notifierName: string,
+  changes: IniChange[],
+  embedTitle: string,
+  embedColor: number
+) {
   if (!changes.length) return;
 
   const contentLines = changes.slice(0, 50).map((c) => {
     const render = (v: unknown) => (v === undefined ? 'undefined' : `\`${String(v)}\``);
-    if (c.type === 'added') return `➕ ${c.key}: ${render(c.newValue)}`;
-    if (c.type === 'removed') return `➖ ${c.key}: ${render(c.oldValue)}`;
-    return `✏️ ${c.key}: ${render(c.oldValue)} → ${render(c.newValue)}`;
+    if (c.type === 'added') return `**${c.key}**: ${render(c.newValue)}`;
+    if (c.type === 'removed') return `**${c.key}**: ~~${render(c.oldValue)}~~`;
+    return `**${c.key}: ${render(c.oldValue)} → ${render(c.newValue)}**`;
   });
+
+  const embed = {
+    title: embedTitle,
+    description: contentLines.length > 0 ? contentLines.join('\n') : 'No changes.',
+    color: embedColor,
+  };
 
   const payload = {
     username: notifierName,
-    content:
-      contentLines.length > 0
-        ? `INI changes detected (showing up to 50):\n` + contentLines.join('\n')
-        : 'INI changes detected.',
+    embeds: [embed],
   };
 
   const res = await axios.post(webhookUrl, payload, {
