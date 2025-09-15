@@ -16,7 +16,7 @@ Copy `.env.sample` to `.env` and configure the required variables, or export the
 ## Notes
 
 - Uses ETag (If-None-Match) when available to avoid unnecessary downloads.
-- Initial fetch seeds the cache without sending a notification; subsequent changes trigger diffs.
+- Initial fetch seeds the cache without sending a notification; subsequent changes trigger diffs (unless otherwise specified by `NOTIFY_ON_STARTUP`).
 - Cache data is persisted to disk to survive application restarts and prevent duplicate notifications after crashes.
 - The cache directory is automatically created if it doesn't exist.
-- On startup, notifications for changes (whether first run or cached data differs from remote) are controlled by NOTIFY_ON_STARTUP.
+- On startup, notifications for changes (whether first run or cached data differs from remote) are controlled by `NOTIFY_ON_STARTUP`.
