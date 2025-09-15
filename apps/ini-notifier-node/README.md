@@ -4,14 +4,14 @@ Fetches an INI file from a URL, parses and caches it, polls for changes, and pos
 
 ## Environment variables
 
-See `.env.example` for a sample configuration file with all available environment variables and their descriptions.
+See [.env.sample](.env.sample) for a sample configuration file with all available environment variables and their descriptions.
 
 ## Develop
 
 - Build: `npx nx run ini-notifier-node:build:production`
 - Run: `npx nx run ini-notifier-node:serve`
 
-Copy `.env.example` to `.env` and configure the required variables, or export them in your shell.
+Copy `.env.sample` to `.env` and configure the required variables, or export them in your shell.
 
 ## Notes
 
