@@ -2,12 +2,12 @@
 # Same can be used for production, just swap out the image name
 #
 # To run:
-#   docker-compose -f dev.docker-compose.yml --env-file .env.local up -d
+#   docker-compose --env-file .env.local up -d
 
 name: ini-notifier-node
 services:
   dev:
-    image: ini-notifier-node:latest
+    image: ghcr.io/supreme-gaming/ini-notifier-node:latest
     container_name: ini-notifier-node
     restart: always
     environment:
@@ -21,4 +21,4 @@ services:
       EMBED_TITLE: ${EMBED_TITLE}
       EMBED_COLOR: ${EMBED_COLOR}
     volumes:
-      - ./.cache:/data
+      - ./.cache:${CACHE_DIR}

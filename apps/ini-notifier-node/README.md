@@ -4,22 +4,14 @@ Fetches an INI file from a URL, parses and caches it, polls for changes, and pos
 
 ## Environment variables
 
-- INI_URL: URL of the remote INI file to monitor (required)
-- DISCORD_WEBHOOK_URL: Discord webhook URL to post change notifications (required)
-- POLL_INTERVAL_MS: Polling interval in milliseconds (default: 60000)
-- REQUEST_TIMEOUT_MS: HTTP request timeout in milliseconds (default: 15000)
-- NOTIFIER_NAME: Username to display for the webhook (default: ini-notifier)
-- NOTIFY_ON_STARTUP: If true, send notifications for changes detected on startup (first run or when cached data differs from remote) (default: false)
-- CACHE_DIR: Directory path to store cached INI data on disk (default: ./cache)
-- EMBED_TITLE: Title for the Discord embed (default: "INI Changes Detected")
-- EMBED_COLOR: Hex color code for the Discord embed (default: ffa500)
+See `.env.example` for a sample configuration file with all available environment variables and their descriptions.
 
 ## Develop
 
 - Build: `npx nx run ini-notifier-node:build:production`
 - Run: `npx nx run ini-notifier-node:serve`
 
-Place a `.env` file in the workspace root or export the variables in your shell.
+Copy `.env.example` to `.env` and configure the required variables, or export them in your shell.
 
 ## Notes
 
