@@ -7,9 +7,11 @@ All of our existing services are held in private repositories in embarrassing st
 ## Working services/applications
 
 - `supreme-discord-community-bot-node`
-  - Template-based responses for community general help, reference, faq information. This bot likely won't be huge help outside of the Supreme Gaming community.
+  - Provides templated messages accessible through slash commands for the most commonly asked information, focused on community general help, reference, and FAQ. This bot is tailored for the Supreme Gaming community but can be adapted for similar use cases. [Read more](apps/supreme-discord-community-bot-node/README.md)
 - `supreme-discord-ticket-bot-node`
-  - Simple ticketing system that permits discord server owners to run their own private instance of a ticket bot and maintain control of all of their data.
+  - Simple ticketing system accessible through guild slash commands, allowing users to create and request individual assistance while enabling server owners to maintain control of their data. [Read more](apps/supreme-discord-ticket-bot-node/README.md)
+- `ini-notifier-node`
+  - Fetches an INI file from a URL, parses and caches it, polls for changes, and posts diffs to a Discord webhook for real-time notifications. [Read more](apps/ini-notifier-node/README.md)
 
 ## Non-working/WIP services/applications
 

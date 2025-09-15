@@ -16,8 +16,8 @@ Fetches an INI file from a URL, parses and caches it, polls for changes, and pos
 
 ## Develop
 
-- Build: nx build ini-notifier-node
-- Run: nx serve ini-notifier-node
+- Build: `npx nx run ini-notifier-node:build:production`
+- Run: `npx nx run ini-notifier-node:serve`
 
 Place a `.env` file in the workspace root or export the variables in your shell.
 
