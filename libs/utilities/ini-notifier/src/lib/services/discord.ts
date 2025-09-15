@@ -19,8 +19,16 @@ export async function sendChangeWebhook(
 
   const embed = {
     title: embedTitle,
-    description: contentLines.length > 0 ? contentLines.join('\n') : 'No changes.',
+    description: contentLines.length > 0 ? contentLines.join('\n') + '\n\n' : 'No changes.',
     color: embedColor,
+    fields: [
+      {
+        name: '',
+        value:
+          'This notifier is open source - [View on GitHub](https://github.com/Supreme-Gaming/SupremeGaming/blob/development/apps/ini-notifier-node/README.md)',
+        inline: true,
+      },
+    ],
   };
 
   const payload = {
