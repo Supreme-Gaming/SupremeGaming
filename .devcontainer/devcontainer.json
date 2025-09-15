@@ -36,7 +36,9 @@
         "streetsidesoftware.code-spell-checker",
         "oouo-diogo-perdigao.docthis",
         "nrwl.angular-console",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "dbaeumer.vscode-eslint"
       ]
     }
   }
