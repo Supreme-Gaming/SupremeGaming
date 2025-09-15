@@ -28,7 +28,9 @@ export function getConfig(): AppConfig {
   const embedTitle = process.env.EMBED_TITLE || 'INI Changes Detected';
   const embedColorStr = process.env.EMBED_COLOR || 'ffa500';
   const embedColor = parseInt(embedColorStr, 16) || 0xffa500;
-  const cacheDir = process.env.CACHE_DIR || './cache';
+  const cacheDir = process.env.CACHE_DIR || './.cache';
+
+  console.log(cacheDir);
 
   return {
     iniUrl,
