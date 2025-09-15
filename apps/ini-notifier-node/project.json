@@ -5,34 +5,29 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "platform": "node",
         "outputPath": "dist/apps/ini-notifier-node",
-        "format": ["cjs"],
-        "bundle": false,
         "main": "apps/ini-notifier-node/src/main.ts",
         "tsConfig": "apps/ini-notifier-node/tsconfig.app.json",
-        "assets": ["apps/ini-notifier-node/src/assets"],
+        "assets": ["apps/ini-notifier-node/src/assets", "apps/ini-notifier-node/src/Dockerfile"],
         "generatePackageJson": true,
-        "esbuildOptions": {
-          "sourcemap": true,
-          "outExtension": {
-            ".js": ".js"
-          }
-        }
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "development": {},
         "production": {
-          "esbuildOptions": {
-            "sourcemap": false,
-            "outExtension": {
-              ".js": ".js"
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/ini-notifier-node/src/environments/environment.ts",
+              "with": "apps/ini-notifier-node/src/environments/environment.prod.ts"
             }
-          }
+          ]
         }
       }
     },
@@ -70,6 +65,17 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "image-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker build -t ini-notifier-node ."
+          }
+        ],
+        "cwd": "dist/apps/ini-notifier-node"
       }
     }
   },
