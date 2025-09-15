@@ -4,9 +4,10 @@ export interface AppConfig {
   pollIntervalMs: number;
   requestTimeoutMs: number;
   notifierName: string;
-  notifyOnInitial: boolean;
+  notifyOnStartup: boolean;
   embedTitle: string;
   embedColor: number;
+  cacheDir: string;
 }
 
 export function getConfig(): AppConfig {
@@ -23,10 +24,11 @@ export function getConfig(): AppConfig {
   const pollIntervalMs = parseInt(process.env.POLL_INTERVAL_MS || '', 10) || 60_000;
   const requestTimeoutMs = parseInt(process.env.REQUEST_TIMEOUT_MS || '', 10) || 15_000;
   const notifierName = process.env.NOTIFIER_NAME || 'ini-notifier-node';
-  const notifyOnInitial = toBool(process.env.NOTIFY_ON_INITIAL);
+  const notifyOnStartup = toBool(process.env.NOTIFY_ON_STARTUP) ?? false; // Default to false for safety
   const embedTitle = process.env.EMBED_TITLE || 'INI Changes Detected';
   const embedColorStr = process.env.EMBED_COLOR || 'ffa500';
   const embedColor = parseInt(embedColorStr, 16) || 0xffa500;
+  const cacheDir = process.env.CACHE_DIR || './cache';
 
   return {
     iniUrl,
@@ -34,9 +36,10 @@ export function getConfig(): AppConfig {
     pollIntervalMs,
     requestTimeoutMs,
     notifierName,
-    notifyOnInitial,
+    notifyOnStartup,
     embedTitle,
     embedColor,
+    cacheDir,
   };
 }
 

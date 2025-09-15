@@ -5,7 +5,8 @@ import { getConfig, IniCache, Poller } from '@supremegaming/utilities/ini-notifi
 
 (async () => {
   const config = getConfig();
-  const cache = new IniCache();
+  const cache = new IniCache(config.cacheDir);
+  await cache.initialize();
 
   const poller = new Poller(config, cache);
   await poller.start();

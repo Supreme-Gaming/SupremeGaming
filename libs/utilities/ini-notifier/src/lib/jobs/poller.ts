@@ -8,6 +8,7 @@ import { sendChangeWebhook } from '../services/discord';
 export class Poller {
   private timer?: NodeJS.Timeout;
   private running = false;
+  private isFirstPoll = true;
 
   constructor(private readonly config: AppConfig, private readonly cache: IniCache) {}
 
@@ -32,6 +33,7 @@ export class Poller {
       });
 
       if (res.status === 304) {
+        this.isFirstPoll = false; // Reset first poll flag on successful no-change response
         return; // no change
       }
 
@@ -43,7 +45,7 @@ export class Poller {
       const parsed = parseIni(res.text);
       if (!this.cache.hasParsed()) {
         // First load: optionally notify with "all added" diff
-        if (this.config.notifyOnInitial) {
+        if (this.config.notifyOnStartup) {
           const prevParsed = {} as Record<string, unknown>;
           const nextParsed = parsed as Record<string, unknown>;
           const changes = diffIni(prevParsed, nextParsed).all;
@@ -61,6 +63,7 @@ export class Poller {
         }
         this.cache.set({ etag: res.etag, raw: res.text, parsed });
         console.log('[poller] initial INI cached');
+        this.isFirstPoll = false;
         return;
       }
 
@@ -68,17 +71,25 @@ export class Poller {
       const nextParsed = parsed as Record<string, unknown>;
       const changes = diffIni(prevParsed, nextParsed).all;
       if (changes.length) {
-        await sendChangeWebhook(
-          this.config.discordWebhookUrl,
-          this.config.notifierName,
-          changes,
-          this.config.embedTitle,
-          this.config.embedColor
-        );
-        console.log(`[poller] ${changes.length} change(s) notified`);
+        // Only send notification if it's not the first poll after startup, or if notifyOnStartup is enabled
+        if (!this.isFirstPoll || this.config.notifyOnStartup) {
+          await sendChangeWebhook(
+            this.config.discordWebhookUrl,
+            this.config.notifierName,
+            changes,
+            this.config.embedTitle,
+            this.config.embedColor
+          );
+          console.log(`[poller] ${changes.length} change(s) notified`);
+        } else {
+          console.log(
+            `[poller] ${changes.length} change(s) detected on startup, skipping notification (notifyOnStartup=false)`
+          );
+        }
       }
 
       this.cache.set({ etag: res.etag, raw: res.text, parsed });
+      this.isFirstPoll = false;
     } catch (err) {
       console.error('[poller] tick error', err);
     }
