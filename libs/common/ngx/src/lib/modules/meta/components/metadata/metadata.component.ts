@@ -3,13 +3,19 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 
 import { MetaService } from '../../meta.service';
+import { EnvironmentService } from '../../../environment/environment.service';
 
 @Component({
   selector: 'supremegaming-metadata',
   template: '',
 })
 export class MetadataComponent implements OnInit {
-  constructor(private readonly router: Router, private readonly route: ActivatedRoute, private readonly meta: MetaService) {}
+  constructor(
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly meta: MetaService,
+    private readonly env: EnvironmentService
+  ) {}
 
   public ngOnInit() {
     this.router.events

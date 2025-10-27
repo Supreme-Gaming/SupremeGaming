@@ -7,7 +7,22 @@ export const ENVIRONMENT = 'environment';
   providedIn: 'root',
 })
 export class EnvironmentService {
-  constructor(@Inject(ENVIRONMENT) private env) {}
+  constructor(@Inject(ENVIRONMENT) private env) {
+    if (env) {
+      if (env.metadata) {
+        // eslint-disable-next-line no-restricted-syntax
+        console.info(`Environment module initialized.\n`);
+        // eslint-disable-next-line no-restricted-syntax
+        console.info(`\n
+Build Date: ${env.metadata.buildDate}
+Git Commit: ${env.metadata.gitCommit}
+Git Tag: ${env.metadata.gitTag}
+Container Name: ${env.metadata.containerName}
+Node Name: ${env.metadata.nodeName}\n
+          `);
+      }
+    }
+  }
 
   /**
    * Returns an environment value lookup by token.

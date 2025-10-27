@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import * as WebFont from 'webfontloader';
 
-import { EnvironmentModule } from '@supremegaming/common/ngx';
+import { EnvironmentModule, metadata } from '@supremegaming/common/ngx';
 import { UiSkeletonModule } from '@supremegaming/ui';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +27,7 @@ WebFont.load({
     AppRoutingModule,
     UiSkeletonModule,
     HttpClientModule,
-    EnvironmentModule.forRoot(environment),
+    EnvironmentModule.forRoot({ ...environment, metadata }),
     HttpClientModule,
   ],
   declarations: [AppComponent],
