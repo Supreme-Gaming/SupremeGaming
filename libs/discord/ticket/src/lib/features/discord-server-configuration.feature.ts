@@ -100,7 +100,18 @@ export class TicketServerConfiguration {
 
       if (dbConfig) {
         this.fromDb = true;
-        this._config = { ...(dbConfig.config as any) };
+        // Merge the database config with the current config, preserving serverId
+        const configFromDb = dbConfig.config as Partial<DiscordTicketServerConfigurationProperties>;
+        this._config = {
+          ...this._config,
+          category: configFromDb.category || this._config.category,
+          notifyRole: configFromDb.notifyRole || this._config.notifyRole,
+          sudoers: configFromDb.sudoers || this._config.sudoers,
+          notifiers: configFromDb.notifiers || this._config.notifiers,
+          templateMessage: configFromDb.templateMessage || this._config.templateMessage,
+          permissionOverrides: configFromDb.permissionOverrides || this._config.permissionOverrides,
+          logChannelId: configFromDb.logChannelId || this._config.logChannelId,
+        };
       }
 
       return this;
