@@ -23,8 +23,8 @@ import {
   ModalSubmitInteraction,
   ChannelSelectMenuBuilder,
   ChannelSelectMenuInteraction,
-  RoleSelectMenuBuilder,
-  RoleSelectMenuInteraction,
+  MentionableSelectMenuBuilder,
+  MentionableSelectMenuInteraction,
   PermissionFlagsBits,
   Guild,
 } from 'discord.js';
@@ -158,7 +158,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       } else if (interaction.customId === 'config_log_channel_select') {
         await this.handleLogChannelSelect(interaction);
       }
-    } else if (interaction.isRoleSelectMenu()) {
+    } else if (interaction.isMentionableSelectMenu()) {
       if (interaction.customId === 'config_sudoers_select') {
         await this.handleSudoersSelect(interaction);
       } else if (interaction.customId === 'config_notifiers_select') {
@@ -799,7 +799,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           {
             type: ComponentType.ActionRow,
             components: [
-              new RoleSelectMenuBuilder()
+              new MentionableSelectMenuBuilder()
                 .setCustomId('config_notifiers_select')
                 .setPlaceholder('Select roles/users to notify')
                 .setMaxValues(10),
@@ -808,9 +808,9 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           {
             type: ComponentType.ActionRow,
             components: [
-              new RoleSelectMenuBuilder()
+              new MentionableSelectMenuBuilder()
                 .setCustomId('config_permissions_select')
-                .setPlaceholder('Select roles with ticket access')
+                .setPlaceholder('Select roles/users with ticket access')
                 .setMaxValues(10),
             ],
           },
@@ -876,7 +876,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
   }
 
-  private async handleSudoersSelect(interaction: RoleSelectMenuInteraction<CacheType>) {
+  private async handleSudoersSelect(interaction: MentionableSelectMenuInteraction<CacheType>) {
     try {
       const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
       const sudoers = interaction.values;
@@ -884,8 +884,14 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       config.updateFromModalData({ sudoers });
       await config.save();
       
+      // Format mentions correctly - check if it's a role or user
+      const mentions = sudoers.map(id => {
+        const role = interaction.guild.roles.cache.get(id);
+        return role ? `<@&${id}>` : `<@${id}>`;
+      }).join(', ');
+      
       await interaction.update({
-        content: `✅ Sudoers updated: ${sudoers.map(id => `<@&${id}>`).join(', ')}`,
+        content: `✅ Sudoers updated: ${mentions}`,
         components: [],
       });
     } catch (err) {
@@ -897,7 +903,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
   }
 
-  private async handleNotifiersSelect(interaction: RoleSelectMenuInteraction<CacheType>) {
+  private async handleNotifiersSelect(interaction: MentionableSelectMenuInteraction<CacheType>) {
     try {
       const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
       const notifiers = interaction.values;
@@ -905,8 +911,14 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       config.updateFromModalData({ notifiers });
       await config.save();
       
+      // Format mentions correctly - check if it's a role or user
+      const mentions = notifiers.map(id => {
+        const role = interaction.guild.roles.cache.get(id);
+        return role ? `<@&${id}>` : `<@${id}>`;
+      }).join(', ');
+      
       await interaction.update({
-        content: `✅ Notifiers updated: ${notifiers.map(id => `<@&${id}>`).join(', ')}`,
+        content: `✅ Notifiers updated: ${mentions}`,
         components: [],
       });
     } catch (err) {
@@ -918,7 +930,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
   }
 
-  private async handlePermissionsSelect(interaction: RoleSelectMenuInteraction<CacheType>) {
+  private async handlePermissionsSelect(interaction: MentionableSelectMenuInteraction<CacheType>) {
     try {
       const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
       const permissionOverrides = interaction.values;
@@ -926,8 +938,14 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       config.updateFromModalData({ permissionOverrides });
       await config.save();
       
+      // Format mentions correctly - check if it's a role or user
+      const mentions = permissionOverrides.map(id => {
+        const role = interaction.guild.roles.cache.get(id);
+        return role ? `<@&${id}>` : `<@${id}>`;
+      }).join(', ');
+      
       await interaction.update({
-        content: `✅ Permission overrides updated: ${permissionOverrides.map(id => `<@&${id}>`).join(', ')}`,
+        content: `✅ Permission overrides updated: ${mentions}`,
         components: [],
       });
     } catch (err) {
