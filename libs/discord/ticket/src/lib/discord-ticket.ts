@@ -16,6 +16,17 @@ import {
   UserSelectMenuBuilder,
   UserSelectMenuInteraction,
   User,
+  ModalBuilder,
+  TextInputBuilder,
+  TextInputStyle,
+  ActionRowBuilder,
+  ModalSubmitInteraction,
+  ChannelSelectMenuBuilder,
+  ChannelSelectMenuInteraction,
+  RoleSelectMenuBuilder,
+  RoleSelectMenuInteraction,
+  PermissionFlagsBits,
+  Guild,
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 
@@ -77,6 +88,10 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
               { name: 'Remove user from ticket', value: 'remove' }
             );
         }),
+      new SlashCommandBuilder()
+        .setName('ticket-config')
+        .setDescription('Configure the ticket system (Admin only)')
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     ];
   }
 
@@ -132,6 +147,24 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           break;
         default:
           break;
+      }
+    } else if (interaction.isCommand() && interaction.commandName === 'ticket-config') {
+      await this.showConfigModal(interaction);
+    } else if (interaction.isModalSubmit() && interaction.customId === 'ticket_config_modal') {
+      await this.handleConfigModalSubmit(interaction);
+    } else if (interaction.isChannelSelectMenu()) {
+      if (interaction.customId === 'config_category_select') {
+        await this.handleCategorySelect(interaction);
+      } else if (interaction.customId === 'config_log_channel_select') {
+        await this.handleLogChannelSelect(interaction);
+      }
+    } else if (interaction.isRoleSelectMenu()) {
+      if (interaction.customId === 'config_sudoers_select') {
+        await this.handleSudoersSelect(interaction);
+      } else if (interaction.customId === 'config_notifiers_select') {
+        await this.handleNotifiersSelect(interaction);
+      } else if (interaction.customId === 'config_permissions_select') {
+        await this.handlePermissionsSelect(interaction);
       }
     } else if (interaction.isUserSelectMenu()) {
       if (interaction.customId === 'user_select_add') {
@@ -264,7 +297,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
   }
 
-  private async processExistingSetup(message: Message, config: TicketServerConfiguration) {
+  private async processExistingSetup(message: Message, _config: TicketServerConfiguration) {
     new Dialog(message.channel as TextChannel, [
       {
         prompt: {
@@ -329,7 +362,10 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
 
       if (!config.fromDb) {
-        interaction.reply('Ticket service not configured. Type `!ticket setup` to setup the service.');
+        interaction.reply({
+          content: 'Ticket service not configured. Use `/ticket-config` to setup the service.',
+          ephemeral: true,
+        });
 
         return;
       }
@@ -343,18 +379,28 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
       const everyoneRole = interaction.guild.roles.cache.find((role) => role.name === '@everyone');
 
+      // Build permission overwrites array
+      const permissionOverwrites: OverwriteResolvable[] = [
+        this.getTicketReaderPermissionResolvable(interaction.user.id),
+        {
+          id: everyoneRole,
+          deny: ['SendMessages', 'ReadMessageHistory', 'ViewChannel'],
+        },
+      ];
+
+      // Add configured permission overrides for roles/users that should have access to all tickets
+      if (config.value.permissionOverrides && config.value.permissionOverrides.length > 0) {
+        for (const overrideId of config.value.permissionOverrides) {
+          permissionOverwrites.push(this.getTicketReaderPermissionResolvable(overrideId));
+        }
+      }
+
       // Create channel with ticket record count and leading 0 padding to 4 digits.
       const ticketChannel = (await interaction.guild.channels.create({
         name: ticket.channelName,
         type: ChannelType.GuildText,
         parent: parentCategory,
-        permissionOverwrites: [
-          this.getTicketReaderPermissionResolvable(interaction.user.id),
-          {
-            id: everyoneRole,
-            deny: ['SendMessages', 'ReadMessageHistory', 'ViewChannel'],
-          },
-        ],
+        permissionOverwrites,
       })) as TextChannel;
 
       ticket.channelId = ticketChannel.id;
@@ -406,6 +452,36 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
           },
         ],
       });
+
+      // Send custom template message with notifiers if configured
+      if (config.value.templateMessage || (config.value.notifiers && config.value.notifiers.length > 0)) {
+        let notificationContent = '';
+        
+        // Add notifiers mentions
+        if (config.value.notifiers && config.value.notifiers.length > 0) {
+          const mentions = config.value.notifiers.map(id => {
+            // Check if it's a role or user ID (roles are usually longer and cached differently)
+            const role = interaction.guild.roles.cache.get(id);
+            if (role) {
+              return `<@&${id}>`;
+            }
+            return `<@${id}>`;
+          }).join(' ');
+          notificationContent = mentions;
+        }
+
+        // Add template message if configured
+        if (config.value.templateMessage) {
+          if (notificationContent) {
+            notificationContent += '\n\n';
+          }
+          notificationContent += config.value.templateMessage;
+        }
+
+        if (notificationContent) {
+          await ticketChannel.send(notificationContent);
+        }
+      }
 
       // Insert ticket to DB last, once discord stuff has been taken care of an no errors ocurred.
       await ticket.create();
@@ -472,9 +548,20 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
   private async closeTicketChannel(interaction: CommandInteraction<CacheType> | ButtonInteraction<CacheType>) {
     const existingTicket = await new Ticket(interaction).init();
 
-    const logChannel = interaction.guild.channels.cache.find((c) => {
-      return c.name === 'ticket-logs';
-    }) as TextChannel;
+    // Get configured log channel
+    const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+    let logChannel: TextChannel;
+
+    if (config.value.logChannelId) {
+      logChannel = interaction.guild.channels.cache.get(config.value.logChannelId) as TextChannel;
+    }
+
+    // Fallback to ticket-logs channel if not configured or not found
+    if (!logChannel) {
+      logChannel = interaction.guild.channels.cache.find((c) => {
+        return c.name === 'ticket-logs';
+      }) as TextChannel;
+    }
 
     const ticketName = (interaction.channel as TextChannel).name.split('-')[1];
 
@@ -482,7 +569,9 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     await existingTicket.close();
 
     // Send close confirmation to logs channel.
-    return logChannel.send(`Ticket ${ticketName} was closed by ${interaction.user.username}`);
+    if (logChannel) {
+      return logChannel.send(`Ticket ${ticketName} was closed by ${interaction.user.username}`);
+    }
   }
 
   private async promptUserAdd(interaction: CommandInteraction<CacheType>) {
@@ -551,5 +640,354 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         content: `Failed to remove ${name} from channel. ${err.message}`,
       });
     }
+  }
+
+  private async checkSudoerPermission(interaction: CommandInteraction<CacheType>): Promise<boolean> {
+    const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+    
+    // Always allow guild owner
+    if (interaction.user.id === interaction.guild.ownerId) {
+      return true;
+    }
+
+    // If no sudoers configured, allow all admins
+    if (!config.fromDb || !config.value.sudoers || config.value.sudoers.length === 0) {
+      return true;
+    }
+
+    // Check if user is in sudoers list
+    if (config.value.sudoers.includes(interaction.user.id)) {
+      return true;
+    }
+
+    // Check if user has any of the sudoer roles
+    const member = interaction.guild.members.cache.get(interaction.user.id);
+    if (member && member.roles.cache.some(role => config.value.sudoers.includes(role.id))) {
+      return true;
+    }
+
+    return false;
+  }
+
+  private async showConfigModal(interaction: CommandInteraction<CacheType>) {
+    // Check sudoer permissions
+    const hasPermission = await this.checkSudoerPermission(interaction);
+    if (!hasPermission) {
+      return interaction.reply({
+        content: '❌ You do not have permission to configure the ticket system. Only authorized administrators can access this.',
+        ephemeral: true,
+      });
+    }
+
+    // Load existing configuration
+    const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+
+    // Create modal with text input fields
+    const modal = new ModalBuilder()
+      .setCustomId('ticket_config_modal')
+      .setTitle('Ticket System Configuration');
+
+    const categoryInput = new TextInputBuilder()
+      .setCustomId('category_input')
+      .setLabel('Category Name')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('tickets')
+      .setValue(config.value.category || 'tickets')
+      .setRequired(true);
+
+    const notifyRoleInput = new TextInputBuilder()
+      .setCustomId('notify_role_input')
+      .setLabel('Role to Notify (name)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('admin')
+      .setValue(config.value.notifyRole || 'admin')
+      .setRequired(false);
+
+    const templateInput = new TextInputBuilder()
+      .setCustomId('template_input')
+      .setLabel('Template Follow-up Message')
+      .setStyle(TextInputStyle.Paragraph)
+      .setPlaceholder('Enter the message to send when a ticket is created...')
+      .setValue(config.value.templateMessage || '')
+      .setRequired(false);
+
+    const sudoersInput = new TextInputBuilder()
+      .setCustomId('sudoers_input')
+      .setLabel('Sudoers (User/Role IDs, comma separated)')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('123456789,987654321')
+      .setValue(config.value.sudoers?.join(',') || '')
+      .setRequired(false);
+
+    const logChannelInput = new TextInputBuilder()
+      .setCustomId('log_channel_input')
+      .setLabel('Log Channel ID')
+      .setStyle(TextInputStyle.Short)
+      .setPlaceholder('Leave empty to auto-create ticket-logs')
+      .setValue(config.value.logChannelId || '')
+      .setRequired(false);
+
+    modal.addComponents(
+      new ActionRowBuilder<TextInputBuilder>().addComponents(categoryInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(notifyRoleInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(templateInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(sudoersInput),
+      new ActionRowBuilder<TextInputBuilder>().addComponents(logChannelInput)
+    );
+
+    await interaction.showModal(modal);
+  }
+
+  private async handleConfigModalSubmit(interaction: ModalSubmitInteraction<CacheType>) {
+    try {
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+
+      // Add guild owner to sudoers automatically
+      const ownerId = interaction.guild.ownerId;
+      
+      const category = interaction.fields.getTextInputValue('category_input');
+      const notifyRole = interaction.fields.getTextInputValue('notify_role_input');
+      const template = interaction.fields.getTextInputValue('template_input');
+      const sudoersInput = interaction.fields.getTextInputValue('sudoers_input');
+      const logChannelId = interaction.fields.getTextInputValue('log_channel_input');
+
+      // Parse sudoers list and ensure owner is included
+      const sudoers = sudoersInput
+        .split(',')
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+      
+      if (!sudoers.includes(ownerId)) {
+        sudoers.push(ownerId);
+      }
+
+      config.updateFromModalData({
+        category,
+        notifyRole,
+        templateMessage: template,
+        sudoers,
+        logChannelId,
+      });
+
+      await config.save();
+
+      // After saving the basic config, show additional configuration options
+      await interaction.reply({
+        content: '✅ Basic configuration saved! Now configure additional settings:',
+        ephemeral: true,
+        components: [
+          {
+            type: ComponentType.ActionRow,
+            components: [
+              new ChannelSelectMenuBuilder()
+                .setCustomId('config_category_select')
+                .setPlaceholder('Select ticket category channel')
+                .setChannelTypes([ChannelType.GuildCategory])
+                .setMaxValues(1),
+            ],
+          },
+          {
+            type: ComponentType.ActionRow,
+            components: [
+              new ChannelSelectMenuBuilder()
+                .setCustomId('config_log_channel_select')
+                .setPlaceholder('Select log channel')
+                .setChannelTypes([ChannelType.GuildText])
+                .setMaxValues(1),
+            ],
+          },
+          {
+            type: ComponentType.ActionRow,
+            components: [
+              new RoleSelectMenuBuilder()
+                .setCustomId('config_notifiers_select')
+                .setPlaceholder('Select roles/users to notify')
+                .setMaxValues(10),
+            ],
+          },
+          {
+            type: ComponentType.ActionRow,
+            components: [
+              new RoleSelectMenuBuilder()
+                .setCustomId('config_permissions_select')
+                .setPlaceholder('Select roles with ticket access')
+                .setMaxValues(10),
+            ],
+          },
+        ],
+      });
+
+      // Ensure category exists
+      await this.ensureCategoryExists(interaction.guild, category);
+      
+      // Ensure log channel exists
+      await this.ensureLogChannelExists(interaction.guild, category, logChannelId);
+    } catch (err) {
+      console.error(err);
+      return interaction.reply({
+        content: `❌ Failed to save configuration: ${err.message}`,
+        ephemeral: true,
+      });
+    }
+  }
+
+  private async handleCategorySelect(interaction: ChannelSelectMenuInteraction<CacheType>) {
+    try {
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+      const [channelId] = interaction.values;
+      const channel = interaction.guild.channels.cache.get(channelId);
+
+      if (channel && channel.type === ChannelType.GuildCategory) {
+        config.updateFromModalData({ category: channel.name });
+        await config.save();
+        
+        await interaction.update({
+          content: `✅ Ticket category set to: **${channel.name}**`,
+          components: [],
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      return interaction.reply({
+        content: `❌ Failed to update category: ${err.message}`,
+        ephemeral: true,
+      });
+    }
+  }
+
+  private async handleLogChannelSelect(interaction: ChannelSelectMenuInteraction<CacheType>) {
+    try {
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+      const [channelId] = interaction.values;
+
+      config.updateFromModalData({ logChannelId: channelId });
+      await config.save();
+      
+      await interaction.update({
+        content: `✅ Log channel set to: <#${channelId}>`,
+        components: [],
+      });
+    } catch (err) {
+      console.error(err);
+      return interaction.reply({
+        content: `❌ Failed to update log channel: ${err.message}`,
+        ephemeral: true,
+      });
+    }
+  }
+
+  private async handleSudoersSelect(interaction: RoleSelectMenuInteraction<CacheType>) {
+    try {
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+      const sudoers = interaction.values;
+
+      config.updateFromModalData({ sudoers });
+      await config.save();
+      
+      await interaction.update({
+        content: `✅ Sudoers updated: ${sudoers.map(id => `<@&${id}>`).join(', ')}`,
+        components: [],
+      });
+    } catch (err) {
+      console.error(err);
+      return interaction.reply({
+        content: `❌ Failed to update sudoers: ${err.message}`,
+        ephemeral: true,
+      });
+    }
+  }
+
+  private async handleNotifiersSelect(interaction: RoleSelectMenuInteraction<CacheType>) {
+    try {
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+      const notifiers = interaction.values;
+
+      config.updateFromModalData({ notifiers });
+      await config.save();
+      
+      await interaction.update({
+        content: `✅ Notifiers updated: ${notifiers.map(id => `<@&${id}>`).join(', ')}`,
+        components: [],
+      });
+    } catch (err) {
+      console.error(err);
+      return interaction.reply({
+        content: `❌ Failed to update notifiers: ${err.message}`,
+        ephemeral: true,
+      });
+    }
+  }
+
+  private async handlePermissionsSelect(interaction: RoleSelectMenuInteraction<CacheType>) {
+    try {
+      const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
+      const permissionOverrides = interaction.values;
+
+      config.updateFromModalData({ permissionOverrides });
+      await config.save();
+      
+      await interaction.update({
+        content: `✅ Permission overrides updated: ${permissionOverrides.map(id => `<@&${id}>`).join(', ')}`,
+        components: [],
+      });
+    } catch (err) {
+      console.error(err);
+      return interaction.reply({
+        content: `❌ Failed to update permission overrides: ${err.message}`,
+        ephemeral: true,
+      });
+    }
+  }
+
+  private async ensureCategoryExists(guild: Guild, categoryName: string) {
+    let categoryChannel = guild.channels.cache.find((channel) => {
+      return channel.type === ChannelType.GuildCategory && channel.name === categoryName;
+    });
+
+    const everyoneRole = guild.roles.cache.find((role) => role.name === '@everyone');
+
+    if (!categoryChannel) {
+      categoryChannel = await guild.channels.create({
+        name: categoryName,
+        type: ChannelType.GuildCategory,
+        reason: 'Category for all future tickets.',
+        permissionOverwrites: [
+          {
+            id: everyoneRole,
+            allow: ['ReadMessageHistory'],
+            deny: ['SendMessages', 'ViewChannel'],
+          },
+        ],
+      });
+    }
+
+    return categoryChannel;
+  }
+
+  private async ensureLogChannelExists(guild: Guild, categoryName: string, logChannelId?: string) {
+    // If a specific log channel was configured, use it
+    if (logChannelId && guild.channels.cache.has(logChannelId)) {
+      return guild.channels.cache.get(logChannelId);
+    }
+
+    // Otherwise, create or find ticket-logs
+    let ticketLogChannel = guild.channels.cache.find(
+      (channel) => channel.type === ChannelType.GuildText && channel.name === 'ticket-logs'
+    );
+
+    if (!ticketLogChannel) {
+      const categoryChannel = guild.channels.cache.find((channel) => {
+        return channel.type === ChannelType.GuildCategory && channel.name === categoryName;
+      });
+
+      ticketLogChannel = await guild.channels.create({
+        name: 'ticket-logs',
+        type: ChannelType.GuildText,
+        reason: 'Channel to log all closed tickets.',
+        parent: categoryChannel?.id,
+      });
+    }
+
+    return ticketLogChannel;
   }
 }
