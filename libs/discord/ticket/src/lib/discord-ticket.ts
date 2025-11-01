@@ -459,14 +459,9 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
         
         // Add notifiers mentions
         if (config.value.notifiers && config.value.notifiers.length > 0) {
-          const mentions = config.value.notifiers.map(id => {
-            // Check if it's a role or user ID (roles are usually longer and cached differently)
-            const role = interaction.guild.roles.cache.get(id);
-            if (role) {
-              return `<@&${id}>`;
-            }
-            return `<@${id}>`;
-          }).join(' ');
+          const mentions = config.value.notifiers
+            .map(id => this.formatMention(id, interaction.guild))
+            .join(' ');
           notificationContent = mentions;
         }
 
@@ -825,7 +820,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     } catch (err) {
       console.error(err);
       return interaction.reply({
-        content: `❌ Failed to save configuration: ${err.message}`,
+        content: '❌ Failed to save configuration. Please try again or contact an administrator.',
         ephemeral: true,
       });
     }
@@ -849,7 +844,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     } catch (err) {
       console.error(err);
       return interaction.reply({
-        content: `❌ Failed to update category: ${err.message}`,
+        content: '❌ Failed to update category. Please try again.',
         ephemeral: true,
       });
     }
@@ -870,7 +865,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     } catch (err) {
       console.error(err);
       return interaction.reply({
-        content: `❌ Failed to update log channel: ${err.message}`,
+        content: '❌ Failed to update log channel. Please try again.',
         ephemeral: true,
       });
     }
@@ -884,11 +879,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       config.updateFromModalData({ sudoers });
       await config.save();
       
-      // Format mentions correctly - check if it's a role or user
-      const mentions = sudoers.map(id => {
-        const role = interaction.guild.roles.cache.get(id);
-        return role ? `<@&${id}>` : `<@${id}>`;
-      }).join(', ');
+      const mentions = sudoers.map(id => this.formatMention(id, interaction.guild)).join(', ');
       
       await interaction.update({
         content: `✅ Sudoers updated: ${mentions}`,
@@ -897,7 +888,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     } catch (err) {
       console.error(err);
       return interaction.reply({
-        content: `❌ Failed to update sudoers: ${err.message}`,
+        content: '❌ Failed to update sudoers. Please try again.',
         ephemeral: true,
       });
     }
@@ -911,11 +902,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       config.updateFromModalData({ notifiers });
       await config.save();
       
-      // Format mentions correctly - check if it's a role or user
-      const mentions = notifiers.map(id => {
-        const role = interaction.guild.roles.cache.get(id);
-        return role ? `<@&${id}>` : `<@${id}>`;
-      }).join(', ');
+      const mentions = notifiers.map(id => this.formatMention(id, interaction.guild)).join(', ');
       
       await interaction.update({
         content: `✅ Notifiers updated: ${mentions}`,
@@ -924,7 +911,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     } catch (err) {
       console.error(err);
       return interaction.reply({
-        content: `❌ Failed to update notifiers: ${err.message}`,
+        content: '❌ Failed to update notifiers. Please try again.',
         ephemeral: true,
       });
     }
@@ -938,11 +925,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
       config.updateFromModalData({ permissionOverrides });
       await config.save();
       
-      // Format mentions correctly - check if it's a role or user
-      const mentions = permissionOverrides.map(id => {
-        const role = interaction.guild.roles.cache.get(id);
-        return role ? `<@&${id}>` : `<@${id}>`;
-      }).join(', ');
+      const mentions = permissionOverrides.map(id => this.formatMention(id, interaction.guild)).join(', ');
       
       await interaction.update({
         content: `✅ Permission overrides updated: ${mentions}`,
@@ -951,7 +934,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     } catch (err) {
       console.error(err);
       return interaction.reply({
-        content: `❌ Failed to update permission overrides: ${err.message}`,
+        content: '❌ Failed to update permission overrides. Please try again.',
         ephemeral: true,
       });
     }
@@ -1007,5 +990,13 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
     }
 
     return ticketLogChannel;
+  }
+
+  /**
+   * Helper method to format a mention correctly based on whether the ID is a role or user
+   */
+  private formatMention(id: string, guild: Guild): string {
+    const role = guild.roles.cache.get(id);
+    return role ? `<@&${id}>` : `<@${id}>`;
   }
 }
