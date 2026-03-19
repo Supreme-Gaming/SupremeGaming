@@ -1,17 +1,70 @@
+import { io, Socket } from 'socket.io-client';
 import { buildRegistrationPayload } from '@supremegaming/agent';
+
+const HEARTBEAT_INTERVAL_MS = 5000;
 
 (async () => {
   const key = process.env.AGENT_KEY;
+  const apiUrl = process.env.API_URL;
+
   if (!key) {
     console.error('[agent] AGENT_KEY environment variable is required');
     process.exit(1);
   }
 
-  try {
-    const payload = await buildRegistrationPayload(key);
-    console.log(JSON.stringify(payload, null, 2));
-  } catch (err) {
-    console.error('[agent] Registration failed:', err);
+  if (!apiUrl) {
+    console.error('[agent] API_URL environment variable is required');
     process.exit(1);
   }
+
+  const socket: Socket = io(`${apiUrl}/hosts`, {
+    reconnection: true,
+    reconnectionAttempts: Infinity,
+    reconnectionDelay: 3000,
+  });
+
+  socket.on('connect', async () => {
+    console.log(`[agent] Connected to server (socket id: ${socket.id})`);
+
+    try {
+      const payload = await buildRegistrationPayload(key);
+      socket.emit('register', payload);
+    } catch (err) {
+      console.error('[agent] Failed to build registration payload:', err);
+    }
+  });
+
+  socket.on('registered', (data) => {
+    console.log('[agent] Registration acknowledged:', data);
+    startHeartbeat(socket, key);
+  });
+
+  socket.on('heartbeat-ack', (data) => {
+    console.log('[agent] Heartbeat acknowledged:', data.timestamp);
+  });
+
+  socket.on('disconnect', (reason) => {
+    console.warn(`[agent] Disconnected: ${reason}`);
+  });
+
+  socket.on('connect_error', (err) => {
+    console.error('[agent] Connection error:', err.message);
+  });
 })();
+
+let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
+
+function startHeartbeat(socket: Socket, key: string) {
+  if (heartbeatTimer) {
+    clearInterval(heartbeatTimer);
+  }
+
+  heartbeatTimer = setInterval(async () => {
+    try {
+      const payload = await buildRegistrationPayload(key);
+      socket.emit('heartbeat', payload);
+    } catch (err) {
+      console.error('[agent] Heartbeat failed:', err);
+    }
+  }, HEARTBEAT_INTERVAL_MS);
+}

@@ -79,6 +79,9 @@ export class HostServer {
 
   @Prop()
   timestamp: string;
+
+  @Prop({ type: Date, default: null })
+  lastHeartbeat: Date;
 }
 
 export type HostServerDocument = HydratedDocument<HostServer>;
