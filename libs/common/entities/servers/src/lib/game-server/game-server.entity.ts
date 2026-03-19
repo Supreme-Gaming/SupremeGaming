@@ -1,15 +1,10 @@
-import { Entity, Column, AfterLoad, ManyToOne } from 'typeorm';
+import { Entity, Column, AfterLoad } from 'typeorm';
 
 import { GuidIdentity } from '@supremegaming/common/entities';
 import { RCONServer } from '@supremegaming/utilities/rcon';
 
-import { HostServer } from '../host-server/host-server.entity';
-
 @Entity({ name: 'administration_game_servers' })
 export class GameServer extends GuidIdentity {
-  @ManyToOne(() => HostServer)
-  public host: HostServer;
-
   @Column()
   public port: number;
 

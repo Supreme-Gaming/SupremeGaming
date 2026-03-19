@@ -1,72 +1,74 @@
 import { Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
-import { GameServer, HostServer } from '@supremegaming/common/entities/servers';
+import { RCONServer } from '@supremegaming/utilities/rcon';
+
+import { HostServer, HostServerDocument } from '../hosts/schemas/host-server.schema';
+import { GameServer, GameServerDocument } from './schemas/game-server.schema';
+
+const SENSITIVE_FIELDS = ['rconpass', 'shouldProcess', 'server_directory', 'server_alt_dir'];
 
 @Injectable()
 export class ServersService {
   constructor(
-    @InjectRepository(GameServer) private readonly gsRepo: Repository<GameServer>,
-    @InjectRepository(HostServer) private readonly hsRepo: Repository<HostServer>
+    @InjectModel(GameServer.name) private readonly gsModel: Model<GameServerDocument>,
+    @InjectModel(HostServer.name) private readonly hsModel: Model<HostServerDocument>
   ) {}
 
   public async getAllServers(includeSensitive?: boolean) {
-    if (includeSensitive) {
-      return this.gsRepo.find();
-    } else {
-      const servers = await this.gsRepo.find();
+    const query = this.gsModel.find();
 
-      return servers.map((s) => GameServer.clean(s));
+    if (!includeSensitive) {
+      query.select(SENSITIVE_FIELDS.map((f) => `-${f}`).join(' '));
     }
+
+    return query.exec();
   }
 
   public async getServerByProps(whereProps: Partial<GameServer>, includeSensitive?: boolean) {
-    const server = await this.gsRepo.findOne({
-      // TODO: Fix this typing issue.
-      where: { ...whereProps } as any,
-    });
+    const query = this.gsModel.findOne(whereProps);
+
+    if (!includeSensitive) {
+      query.select(SENSITIVE_FIELDS.map((f) => `-${f}`).join(' '));
+    }
+
+    const server = await query.exec();
 
     if (!server) {
       throw new NotFoundException();
     }
 
-    if (includeSensitive) {
-      return server;
-    } else {
-      return GameServer.clean(server);
-    }
+    return server;
   }
 
   public async createGameServer(server: Partial<GameServer>) {
     // Check if host exists, otherwise game server entry will fail.
-    const hs = await this.hsRepo.findOne({
-      where: {
-        // TODO: This might not work?
-        guid: server.host.guid,
-      },
-    });
+    const hs = await this.hsModel.findById(server.host).exec();
 
     if (!hs) {
       throw new UnprocessableEntityException();
     }
 
-    const gs = this.gsRepo.create({ ...server, host: hs });
-
-    return await gs.save();
+    return new this.gsModel(server).save();
   }
 
-  public async executeServerCommand(server: GameServer, command: string) {
-    return server.rcon
-      .connect()
-      .then((status) => {
-        return status;
-      })
-      .then((status) => {
-        return server.rcon.command(command);
-      })
-      .finally(() => {
-        return server.rcon.disconnect();
-      });
+  public async executeServerCommand(server: GameServerDocument, command: string) {
+    const populated = await server.populate('host');
+    const host = populated.host as unknown as HostServerDocument;
+
+    const rcon = new RCONServer({
+      host: { name: host.hostname, ip: host.system?.network?.publicIp, status: host.status, key: host.key },
+      rconport: server.rconport,
+      rconpass: server.rconpass,
+      game: server.game,
+    });
+
+    try {
+      await rcon.connect();
+      return await rcon.command(command);
+    } finally {
+      await rcon.disconnect();
+    }
   }
 }

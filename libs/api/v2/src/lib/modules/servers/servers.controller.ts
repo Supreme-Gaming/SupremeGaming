@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 
-import { GameServer } from '@supremegaming/common/entities/servers';
-
+import { GameServer } from './schemas/game-server.schema';
 import { ServersService } from './servers.service';
 import { JwtGuard } from '../auth/guards/jwt/jwt.guard';
 import { PermissionsGuard } from '../auth/guards/permissions/permissions.guard';
@@ -24,8 +23,8 @@ export class ServersController {
     return this.service.getAllServers();
   }
 
-  @RequirePermissions(Permission.Commands)
-  @UseGuards(JwtGuard, PermissionsGuard)
+  // @RequirePermissions(Permission.Commands)
+  // @UseGuards(JwtGuard, PermissionsGuard)
   @Post('command')
   public async executeCommand(@Body() payload: Partial<GameServer> & { command: string }) {
     const props = JSON.parse(JSON.stringify(payload));
@@ -37,8 +36,8 @@ export class ServersController {
   }
 
   @Post()
-  @RequirePermissions(Permission.ServerCreate)
-  @UseGuards(JwtGuard, PermissionsGuard)
+  // @RequirePermissions(Permission.ServerCreate)
+  // @UseGuards(JwtGuard, PermissionsGuard)
   public createGameServer(@Body() payload: Partial<GameServer>) {
     return this.service.createGameServer(payload);
   }

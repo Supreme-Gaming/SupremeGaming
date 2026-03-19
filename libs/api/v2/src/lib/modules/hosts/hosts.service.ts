@@ -1,15 +1,15 @@
 import { Injectable, InternalServerErrorException, UnprocessableEntityException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
-import { HostServer } from '@supremegaming/common/entities/servers';
+import { HostServer, HostServerDocument } from './schemas/host-server.schema';
 
 @Injectable()
 export class HostsService {
-  constructor(@InjectRepository(HostServer) private readonly repo: Repository<HostServer>) {}
+  constructor(@InjectModel(HostServer.name) private readonly model: Model<HostServerDocument>) {}
 
   public async getHostServers() {
-    return this.repo.find();
+    return this.model.find().exec();
   }
 
   public async createHostServer(server: Partial<HostServer>) {
@@ -17,19 +17,13 @@ export class HostsService {
       throw new UnprocessableEntityException();
     }
 
-    let existingOrNew: HostServer;
-
     // Find an existing host by its registration key
-    existingOrNew = await this.repo.findOne({
-      where: {
-        key: server.key,
-      },
-    });
+    let existingOrNew = await this.model.findOne({ key: server.key }).exec();
 
     // If no host has been found, create a new one else just return the existing host
     if (!existingOrNew) {
       try {
-        existingOrNew = await this.repo.create(server).save();
+        existingOrNew = await new this.model(server).save();
       } catch (err) {
         throw new InternalServerErrorException(err.message);
       }

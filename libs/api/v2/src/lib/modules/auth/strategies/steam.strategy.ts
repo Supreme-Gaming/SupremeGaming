@@ -4,7 +4,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import * as ST from 'passport-steam';
-import { v4 } from 'public-ip';
 
 import { User } from '@supremegaming/common/entities/administration';
 
@@ -28,7 +27,9 @@ export class SteamStrategy extends PassportStrategy(Strategy) {
       },
     });
 
-    const ip = await v4();
+    // @ts-expect-error -- public-ip is ESM-only; dynamic import works at runtime
+    const { publicIpv4 } = await import('public-ip');
+    const ip = await publicIpv4();
 
     if (user === undefined) {
       user = await this.usersRepo
