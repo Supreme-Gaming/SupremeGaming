@@ -1,0 +1,2 @@
+- Group related lines of code into logical blocks separated by blank lines — e.g., variable declarations, validation, core logic, and return values should each be visually distinct
+- Always run npx nx format:write after making changes to ensure consistent code formatting across the project

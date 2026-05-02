@@ -12,7 +12,7 @@ import {
 import { Server, Socket } from 'socket.io';
 
 import { HostsService } from './hosts.service';
-import { AgentAuthService } from './services/agent-auth.service';
+import { AgentsService } from '../agents/agents.service';
 import { machineAuthConfig } from '../../config/machine-auth.config';
 
 @WebSocketGateway({
@@ -27,7 +27,7 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 
   private readonly logger = new Logger(HostsGateway.name);
 
-  constructor(private readonly hostsService: HostsService, private readonly agentAuthService: AgentAuthService) {}
+  constructor(private readonly hostsService: HostsService, private readonly agentsService: AgentsService) {}
 
   afterInit(server: Server) {
     // Only enforce auth middleware if MACHINE_JWT_SECRET is configured
@@ -44,7 +44,7 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
       }
 
       try {
-        const payload = this.agentAuthService.verifyAccessToken(token);
+        const payload = this.agentsService.verifyAccessToken(token);
         if (payload.agentId !== agentId) {
           return next(new Error('invalid_token'));
         }

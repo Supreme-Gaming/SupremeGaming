@@ -4,9 +4,9 @@ import { Model } from 'mongoose';
 import { sign, verify } from 'jsonwebtoken';
 import { randomUUID, randomBytes, createHash } from 'crypto';
 
-import { machineAuthConfig } from '../../../config/machine-auth.config';
-import { RegistrationToken, RegistrationTokenDocument } from '../schemas/registration-token.schema';
-import { RefreshToken, RefreshTokenDocument } from '../schemas/refresh-token.schema';
+import { machineAuthConfig } from '../../config/machine-auth.config';
+import { RegistrationToken, RegistrationTokenDocument } from './schemas/registration-token.schema';
+import { RefreshToken, RefreshTokenDocument } from './schemas/refresh-token.schema';
 
 interface AccessTokenPayload {
   agentId: string;
@@ -22,17 +22,14 @@ interface RegistrationTokenPayload {
 }
 
 @Injectable()
-export class AgentAuthService {
-  private readonly logger = new Logger(AgentAuthService.name);
+export class AgentsService {
+  private readonly logger = new Logger(AgentsService.name);
 
   constructor(
     @InjectModel(RegistrationToken.name) private readonly registrationTokenModel: Model<RegistrationTokenDocument>,
     @InjectModel(RefreshToken.name) private readonly refreshTokenModel: Model<RefreshTokenDocument>
   ) {}
 
-  /**
-   * Create a one-time registration token for an agent (admin action).
-   */
   async createRegistrationToken(
     agentId: string,
     userId: string
@@ -59,9 +56,6 @@ export class AgentAuthService {
     return { registrationToken, installScript };
   }
 
-  /**
-   * Exchange a one-time registration token for access + refresh tokens.
-   */
   async register(
     registrationToken: string,
     agentId: string
@@ -81,17 +75,14 @@ export class AgentAuthService {
       throw new ForbiddenException('Agent ID mismatch');
     }
 
-    // Check jti usage
     const record = await this.registrationTokenModel.findOne({ jti: payload.jti }).exec();
     if (!record || record.used) {
       throw new GoneException('Registration token has already been used');
     }
 
-    // Mark as used
     record.used = true;
     await record.save();
 
-    // Issue credentials
     const { accessToken, expiresIn } = this.issueAccessToken(agentId);
     const refreshToken = await this.issueRefreshToken(agentId, payload.createdBy);
 
@@ -99,9 +90,6 @@ export class AgentAuthService {
     return { accessToken, refreshToken, expiresIn };
   }
 
-  /**
-   * Rotate tokens: validate refresh token, revoke old, issue new pair.
-   */
   async refreshTokens(
     refreshToken: string,
     agentId: string
@@ -121,11 +109,9 @@ export class AgentAuthService {
       return { error: 'refresh_token_expired', action: 're-register' };
     }
 
-    // Revoke old token
     record.revoked = true;
     await record.save();
 
-    // Issue new pair
     const { accessToken, expiresIn } = this.issueAccessToken(agentId);
     const newRefreshToken = await this.issueRefreshToken(agentId, record.createdBy);
 
@@ -133,9 +119,6 @@ export class AgentAuthService {
     return { accessToken, refreshToken: newRefreshToken, expiresIn };
   }
 
-  /**
-   * Verify an access token for Socket.IO middleware.
-   */
   verifyAccessToken(token: string): AccessTokenPayload {
     try {
       const payload = verify(token, machineAuthConfig.machineJwtSecret) as AccessTokenPayload;
@@ -155,10 +138,9 @@ export class AgentAuthService {
       { expiresIn: machineAuthConfig.accessTokenTtl }
     );
 
-    // Parse TTL string to seconds for the response
     const ttlStr = machineAuthConfig.accessTokenTtl;
     const match = ttlStr.match(/^(\d+)(m|h|s)$/);
-    let expiresIn = 900; // default 15 min
+    let expiresIn = 900;
     if (match) {
       const val = parseInt(match[1], 10);
       const unit = match[2];
