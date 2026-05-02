@@ -1,5 +1,6 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import morgan from 'morgan';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
@@ -9,6 +10,7 @@ async function bootstrap() {
   const globalPrefix = process.env.API_GLOBAL_PREFIX || 'api';
   const port = process.env.API_PORT || 3333;
 
+  app.use(morgan('combined'));
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true, disableErrorMessages: environment.production }));
 
