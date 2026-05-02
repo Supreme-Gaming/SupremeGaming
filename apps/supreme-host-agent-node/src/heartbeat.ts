@@ -26,21 +26,14 @@ export async function startHeartbeatScheduler(
     console.error(`[agent] Heartbeat job ${job?.id} failed:`, err.message);
   });
 
-  await queue.upsertJobScheduler(
-    SCHEDULER_ID,
-    { every: HEARTBEAT_INTERVAL_MS },
-    { name: 'heartbeat' }
-  );
+  await queue.upsertJobScheduler(SCHEDULER_ID, { every: HEARTBEAT_INTERVAL_MS }, { name: 'heartbeat' });
 
   console.log(`[agent] Heartbeat scheduler started (every ${HEARTBEAT_INTERVAL_MS}ms)`);
 
   return { queue, worker };
 }
 
-export async function stopHeartbeatScheduler(
-  queue: Queue,
-  worker: Worker
-): Promise<void> {
+export async function stopHeartbeatScheduler(queue: Queue, worker: Worker): Promise<void> {
   await worker.close();
   await queue.close();
   console.log('[agent] Heartbeat scheduler stopped');

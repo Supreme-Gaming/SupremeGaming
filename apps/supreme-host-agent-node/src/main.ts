@@ -2,15 +2,16 @@ import { io, Socket } from 'socket.io-client';
 import { Queue, Worker } from 'bullmq';
 import { buildRegistrationPayload } from '@supremegaming/agent';
 import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
+import { AgentCredentialManager } from './credential-manager';
 
 (async () => {
-  const key = process.env.AGENT_KEY;
+  const agentId = process.env.AGENT_ID || process.env.AGENT_KEY;
   const apiUrl = process.env.API_URL;
   const redisHost = process.env.REDIS_HOST || 'localhost';
   const redisPort = parseInt(process.env.REDIS_PORT || '6379', 10);
 
-  if (!key) {
-    console.error('[agent] AGENT_KEY environment variable is required');
+  if (!agentId) {
+    console.error('[agent] AGENT_ID (or AGENT_KEY) environment variable is required');
     process.exit(1);
   }
 
@@ -22,17 +23,29 @@ import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
   const redisConnection = { host: redisHost, port: redisPort };
   let heartbeat: { queue: Queue; worker: Worker } | null = null;
 
-  const socket: Socket = io(`${apiUrl}/hosts`, {
+  // Initialize credential manager and authenticate
+  const credManager = new AgentCredentialManager(apiUrl, agentId);
+  await credManager.init();
+
+  // Build Socket.IO connection options
+  const socketOpts: Record<string, any> = {
     reconnection: true,
     reconnectionAttempts: Infinity,
-    reconnectionDelay: 3000,
-  });
+    reconnectionDelay: 1000,
+    reconnectionDelayMax: 30000,
+    auth: {
+      token: credManager.getAccessToken(),
+      agentId,
+    },
+  };
+
+  const socket: Socket = io(`${apiUrl}/hosts`, socketOpts);
 
   socket.on('connect', async () => {
     console.log(`[agent] Connected to server (socket id: ${socket.id})`);
 
     try {
-      const payload = await buildRegistrationPayload(key);
+      const payload = await buildRegistrationPayload(agentId);
       socket.emit('register', payload);
     } catch (err) {
       console.error('[agent] Failed to build registration payload:', err);
@@ -46,7 +59,7 @@ import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
       await stopHeartbeatScheduler(heartbeat.queue, heartbeat.worker);
     }
 
-    heartbeat = await startHeartbeatScheduler(socket, key, redisConnection);
+    heartbeat = await startHeartbeatScheduler(socket, agentId, redisConnection);
   });
 
   socket.on('heartbeat-ack', (data) => {
@@ -62,7 +75,19 @@ import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
     }
   });
 
-  socket.on('connect_error', (err) => {
+  socket.on('connect_error', async (err) => {
     console.error('[agent] Connection error:', err.message);
+
+    // If the server rejected us for invalid token, refresh and retry
+    if (err.message === 'invalid_token') {
+      try {
+        console.log('[agent] Refreshing access token...');
+        await credManager.refresh();
+        // Update the auth payload for the next reconnection attempt
+        socket.auth = { token: credManager.getAccessToken(), agentId };
+      } catch (refreshErr) {
+        console.error('[agent] Token refresh failed:', refreshErr);
+      }
+    }
   });
 })();

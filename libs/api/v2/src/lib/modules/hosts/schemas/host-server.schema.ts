@@ -68,6 +68,9 @@ export class HostServer {
   @Prop({ required: true, unique: true })
   key: string;
 
+  @Prop({ unique: true, sparse: true })
+  agentId: string;
+
   @Prop({ default: 'register' })
   status: string;
 
@@ -82,6 +85,12 @@ export class HostServer {
 
   @Prop({ type: Date, default: null })
   lastHeartbeat: Date;
+
+  @Prop()
+  registeredBy: string;
+
+  @Prop({ type: Date, default: null })
+  lastTokenRefresh: Date;
 }
 
 export type HostServerDocument = HydratedDocument<HostServer>;
