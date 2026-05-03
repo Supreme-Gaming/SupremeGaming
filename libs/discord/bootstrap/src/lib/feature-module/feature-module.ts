@@ -1,5 +1,6 @@
 import {
   CacheType,
+  Client,
   GuildMember,
   Interaction,
   Message,
@@ -13,7 +14,7 @@ import {
 import { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from '@discordjs/builders';
 
 export abstract class OnReady {
-  abstract clientOnReady(): void | Promise<void>;
+  abstract clientOnReady(client?: Client): void | Promise<void>;
 }
 
 export abstract class OnInteractionCreate {
@@ -74,7 +75,7 @@ export type SlashCommandTypes = Array<SlashCommandBuilder | SlashCommandSubcomma
 export class DiscordFeatureModule {
   public commands?(): SlashCommandTypes;
 
-  public clientOnReady?: () => void | Promise<void>;
+  public clientOnReady?: (client?: Client) => void | Promise<void>;
 
   public clientOnInteractionCreate?: (interaction: Interaction<CacheType>) => void | Promise<void>;
 

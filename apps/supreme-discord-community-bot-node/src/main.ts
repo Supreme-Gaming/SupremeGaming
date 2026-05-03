@@ -9,7 +9,11 @@ import {
   NewMemberDiscordModule,
   RoleAssignmentDiscordModule,
 } from '@supremegaming/discord/community';
+import { HoneypotDiscordModule } from '@supremegaming/discord/honeypot';
 import { GatewayIntentBits, Partials } from 'discord.js';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as mysql from 'mysql';
 
 if (
   process.env.DISCORD_API_TOKEN === undefined ||
@@ -19,6 +23,18 @@ if (
   process.env.DISCORD_WELCOME_CHANNEL_NAME === undefined
 ) {
   console.error('Missing DISCORD_ environment variables');
+  process.exit(1);
+}
+
+if (
+  process.env.TYPEORM_CONNECTION === undefined ||
+  process.env.TYPEORM_HOST === undefined ||
+  process.env.TYPEORM_PORT === undefined ||
+  process.env.TYPEORM_USERNAME === undefined ||
+  process.env.TYPEORM_PASSWORD === undefined ||
+  process.env.TYPEORM_DATABASE === undefined
+) {
+  console.error('Missing TYPEORM_ environment variables');
   process.exit(1);
 }
 
@@ -54,6 +70,7 @@ new DiscordClientBootstrapper({
     GeneralHelpDiscordModule,
     NewMemberDiscordModule,
     RoleAssignmentDiscordModule,
+    HoneypotDiscordModule,
   ],
   options: {
     clientToken: process.env.DISCORD_API_TOKEN,

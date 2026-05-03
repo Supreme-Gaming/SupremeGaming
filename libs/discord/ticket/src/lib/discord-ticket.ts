@@ -42,6 +42,7 @@ import {
   OnMessageUpdate,
   SlashCommands,
   SlashCommandTypes,
+  isSudoer,
 } from '@supremegaming/discord/bootstrap';
 
 import { TicketServerConfiguration } from './features/discord-server-configuration.feature';
@@ -491,29 +492,7 @@ export class TicketClient implements SlashCommands, OnMessageCreate, OnMessageUp
 
   private async checkSudoerPermission(interaction: CommandInteraction<CacheType>): Promise<boolean> {
     const config = await new TicketServerConfiguration(interaction.guild.id).fetch();
-
-    // Always allow guild owner
-    if (interaction.user.id === interaction.guild.ownerId) {
-      return true;
-    }
-
-    // If no sudoers configured, allow all admins
-    if (!config.fromDb || !config.value.sudoers || config.value.sudoers.length === 0) {
-      return true;
-    }
-
-    // Check if user is in sudoers list
-    if (config.value.sudoers.includes(interaction.user.id)) {
-      return true;
-    }
-
-    // Check if user has any of the sudoer roles
-    const member = interaction.guild.members.cache.get(interaction.user.id);
-    if (member && member.roles.cache.some((role) => config.value.sudoers.includes(role.id))) {
-      return true;
-    }
-
-    return false;
+    return isSudoer(interaction.guild, interaction.user.id, config.value.sudoers);
   }
 
   private async showConfigModal(interaction: CommandInteraction<CacheType>) {
