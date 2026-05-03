@@ -25,7 +25,8 @@ export class DiscordClientBootstrapper {
     const slashCommands: SlashCommandTypes = [];
 
     if (options.modules.length > 0) {
-      options.modules.forEach((dm, index, arr) => {
+      for (let i = 0; i < options.modules.length; i++) {
+        const dm = options.modules[i];
         const moduleInstance: DiscordFeatureModule = new dm();
 
         if (moduleInstance.commands) {
@@ -64,8 +65,10 @@ export class DiscordClientBootstrapper {
           this._onMessageDelete(moduleInstance.clientOnMessageDelete, moduleInstance);
         }
 
+        console.log(`Loaded ${moduleInstance.constructor.name}.`);
+
         // Register slash commands after all module listeners have been initialized.
-        if (slashCommands.length > 0 && index === arr.length - 1) {
+        if (slashCommands.length > 0 && i === options.modules.length - 1) {
           if (process.env.DISCORD_REGISTER_SLASH_COMMANDS === 'false') {
             console.warn('Modules have configured slash commands but slash command registration is disabled.');
           } else if (
@@ -89,11 +92,7 @@ export class DiscordClientBootstrapper {
             }
           }
         }
-
-        console.log(`Loaded ${moduleInstance.constructor.name}.`);
-
-        return this;
-      });
+      }
     }
 
     // Call the initial onReady handler to cache guild members
@@ -221,7 +220,7 @@ export class DiscordClientBootstrapper {
       }
 
       console.log('Successfully refreshed application (/) commands.');
-    } catch (err: any) {
+    } catch (err) {
       console.error(err.message);
     }
   }
