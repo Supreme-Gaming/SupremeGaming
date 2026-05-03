@@ -7,6 +7,11 @@ export class TicketServerConfiguration {
   private _config: DiscordTicketServerConfigurationProperties = {
     category: 'tickets',
     notifyRole: 'admin',
+    sudoers: [],
+    notifiers: [],
+    templateMessage: '',
+    permissionOverrides: [],
+    logChannelId: '',
   };
   public fromDb = false;
   constructor(serverId: string) {
@@ -31,17 +36,52 @@ export class TicketServerConfiguration {
     return { ...this._config };
   }
 
+  public updateFromModalData(data: Partial<DiscordTicketServerConfigurationProperties>) {
+    if (data.category !== undefined) this._config.category = data.category;
+    if (data.notifyRole !== undefined) this._config.notifyRole = data.notifyRole;
+    if (data.sudoers !== undefined) this._config.sudoers = data.sudoers;
+    if (data.notifiers !== undefined) this._config.notifiers = data.notifiers;
+    if (data.templateMessage !== undefined) this._config.templateMessage = data.templateMessage;
+    if (data.permissionOverrides !== undefined) this._config.permissionOverrides = data.permissionOverrides;
+    if (data.logChannelId !== undefined) this._config.logChannelId = data.logChannelId;
+  }
+
   public async save() {
     try {
       const repo = getRepository(TicketConfiguration);
 
-      return await repo.insert({
-        config: {
+      const existing = await repo.findOne({
+        where: {
+          serverId: this._config.serverId,
+        },
+      });
+
+      if (existing) {
+        existing.config = {
           category: this._config.category,
           notifyRole: this._config.notifyRole,
-        },
-        serverId: this._config.serverId,
-      });
+          sudoers: this._config.sudoers,
+          notifiers: this._config.notifiers,
+          templateMessage: this._config.templateMessage,
+          permissionOverrides: this._config.permissionOverrides,
+          logChannelId: this._config.logChannelId,
+        };
+        existing.updatedAt = new Date();
+        return await repo.save(existing);
+      } else {
+        return await repo.insert({
+          config: {
+            category: this._config.category,
+            notifyRole: this._config.notifyRole,
+            sudoers: this._config.sudoers,
+            notifiers: this._config.notifiers,
+            templateMessage: this._config.templateMessage,
+            permissionOverrides: this._config.permissionOverrides,
+            logChannelId: this._config.logChannelId,
+          },
+          serverId: this._config.serverId,
+        });
+      }
     } catch (err) {
       console.log(err);
       throw new Error('Error saving ticket server configuration.');
@@ -60,7 +100,18 @@ export class TicketServerConfiguration {
 
       if (dbConfig) {
         this.fromDb = true;
-        this._config = { ...(dbConfig.config as any) };
+        // Merge the database config with the current config, preserving serverId
+        const configFromDb = dbConfig.config as Partial<DiscordTicketServerConfigurationProperties>;
+        this._config = {
+          ...this._config,
+          category: configFromDb.category || this._config.category,
+          notifyRole: configFromDb.notifyRole || this._config.notifyRole,
+          sudoers: configFromDb.sudoers || this._config.sudoers,
+          notifiers: configFromDb.notifiers || this._config.notifiers,
+          templateMessage: configFromDb.templateMessage || this._config.templateMessage,
+          permissionOverrides: configFromDb.permissionOverrides || this._config.permissionOverrides,
+          logChannelId: configFromDb.logChannelId || this._config.logChannelId,
+        };
       }
 
       return this;
@@ -75,4 +126,9 @@ export interface DiscordTicketServerConfigurationProperties {
   category: string;
   notifyRole: string;
   serverId?: string;
+  sudoers: string[];
+  notifiers: string[];
+  templateMessage: string;
+  permissionOverrides: string[];
+  logChannelId: string;
 }

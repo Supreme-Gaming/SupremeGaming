@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Build Affected
-        run: npx nx affected:build --configuration=production  --base=${{ inputs.base }} --parallel=2
+        run: npx nx affected:build --configuration=production  --base=${{ inputs.base }} --parallel=2 --exclude=conan-cacher,ark-cacher-node
 
       - name: Copy Files Needed For Image Build
         run: |
