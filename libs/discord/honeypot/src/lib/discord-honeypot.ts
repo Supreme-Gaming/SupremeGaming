@@ -160,16 +160,15 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
 
   private buildWarningEmbed(): EmbedBuilder {
     return new EmbedBuilder()
-      .setTitle('⚠️ Honeypot Channel — Do Not Post')
+      .setTitle('⚠️ Restricted Channel — Staff Only')
       .setDescription(
-        'This channel is a **honeypot trap** designed to detect automated bots and spam accounts.\n\n' +
-          '**Any message posted here will result in an immediate, permanent ban.**\n\n' +
-          'Legitimate community members have no reason to post here. ' +
-          'If you can see this channel, leave it and do not interact with it.'
+        'This channel is **restricted to staff and bots (😉😈👺) use only** and is not intended for general members.\n\n' +
+          '**Sending any message here will result in an immediate, permanent ban.**\n\n' +
+          'This not a test/drill/joke; this channel is managed and monitored by a bot and configured to perform immediate action on anyone that interacts with it. If you believe you are seeing this channel in error, please do not interact with it and contact a staff member through the appropriate support channel.'
       )
       .setColor(0xff0000)
       .setFooter({
-        text: 'Posting in this channel = permanent ban. You will need to make a ticket with another account to make an appeal.',
+        text: 'Unauthorized use of this channel will result in a permanent ban. Open a ticket with another account to appeal.',
       });
   }
 
@@ -204,7 +203,7 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
 
     const revertButton = new ButtonBuilder()
       .setCustomId(`honeypot_revert_ban_${message.author.id}`)
-      .setLabel('Revert Ban')
+      .setLabel('Lift Ban')
       .setStyle(ButtonStyle.Danger);
 
     await reportingChannel.send({
