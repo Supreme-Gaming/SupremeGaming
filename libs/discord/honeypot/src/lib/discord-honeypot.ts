@@ -160,15 +160,15 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
 
   private buildWarningEmbed(): EmbedBuilder {
     return new EmbedBuilder()
-      .setTitle('⚠️ Restricted Channel — Staff Only')
+      .setTitle('🍯 Honeypot Channel — Do Not Post')
       .setDescription(
-        'This channel is **restricted to staff and bots (😉😈👺) use only** and is not intended for general members.\n\n' +
-          '**Sending any message here will result in an immediate, permanent ban.**\n\n' +
-          'This not a test/drill/joke; this channel is managed and monitored by a bot and configured to perform immediate action on anyone that interacts with it. If you believe you are seeing this channel in error, please do not interact with it and contact a staff member through the appropriate support channel.'
+        'This channel is a bot **honeypot**. It is intentionally visible to all members.\n\n' +
+          '**Sending any message here will result in an immediate, permanent ban — no warnings, no exceptions.**\n\n' +
+          'There is no legitimate reason to post in this channel. If you are a human and are seeing this message, leave immediately.'
       )
       .setColor(0xff0000)
       .setFooter({
-        text: 'Unauthorized use of this channel will result in a permanent ban. Open a ticket with another account to appeal.',
+        text: 'Posting here = permanent ban. Appeal via ticket from another account.',
       });
   }
 
