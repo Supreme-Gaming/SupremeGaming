@@ -122,9 +122,9 @@ export class DiscordClientBootstrapper {
     this.client.login(options.options.clientToken);
   }
 
-  private _onReady(fn: () => void, ctx?: DiscordFeatureModule) {
+  private _onReady(fn: (client?: Client) => void, ctx?: DiscordFeatureModule) {
     this.client.on('ready', () => {
-      fn.apply(ctx);
+      fn.apply(ctx, [this.client]);
     });
   }
 
