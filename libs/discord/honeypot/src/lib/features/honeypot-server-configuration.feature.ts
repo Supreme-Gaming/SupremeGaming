@@ -8,6 +8,7 @@ export interface HoneypotServerConfigurationProperties {
   honeypotChannelId: string;
   reportingChannelId: string;
   warningMessageId?: string;
+  deleteMessageSeconds: number;
 }
 
 export class HoneypotServerConfiguration {
@@ -18,6 +19,7 @@ export class HoneypotServerConfiguration {
     honeypotChannelId: '',
     reportingChannelId: '',
     warningMessageId: undefined,
+    deleteMessageSeconds: 3600,
   };
 
   constructor(serverId: string) {
@@ -34,6 +36,7 @@ export class HoneypotServerConfiguration {
     if (data.honeypotChannelId !== undefined) this._config.honeypotChannelId = data.honeypotChannelId;
     if (data.reportingChannelId !== undefined) this._config.reportingChannelId = data.reportingChannelId;
     if (data.warningMessageId !== undefined) this._config.warningMessageId = data.warningMessageId;
+    if (data.deleteMessageSeconds !== undefined) this._config.deleteMessageSeconds = data.deleteMessageSeconds;
   }
 
   public async fetch(): Promise<this> {
@@ -52,6 +55,7 @@ export class HoneypotServerConfiguration {
           honeypotChannelId: stored.honeypotChannelId ?? this._config.honeypotChannelId,
           reportingChannelId: stored.reportingChannelId ?? this._config.reportingChannelId,
           warningMessageId: stored.warningMessageId,
+          deleteMessageSeconds: stored.deleteMessageSeconds ?? this._config.deleteMessageSeconds,
         };
       }
 
@@ -73,6 +77,7 @@ export class HoneypotServerConfiguration {
         honeypotChannelId: this._config.honeypotChannelId,
         reportingChannelId: this._config.reportingChannelId,
         warningMessageId: this._config.warningMessageId,
+        deleteMessageSeconds: this._config.deleteMessageSeconds,
       };
 
       if (existing) {

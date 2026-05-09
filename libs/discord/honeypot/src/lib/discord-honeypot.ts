@@ -15,8 +15,12 @@ import {
   MentionableSelectMenuBuilder,
   MentionableSelectMenuInteraction,
   Message,
+  ModalBuilder,
+  ModalSubmitInteraction,
   PermissionFlagsBits,
   TextChannel,
+  TextInputBuilder,
+  TextInputStyle,
 } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { createConnection, ConnectionOptionsReader } from 'typeorm';
@@ -83,7 +87,7 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
       if (isSudoer(message.guild, message.author.id, config.value.sudoers)) return;
 
       await message.guild.members.ban(message.author.id, {
-        deleteMessageSeconds: 60,
+        deleteMessageSeconds: config.value.deleteMessageSeconds,
         reason: 'Honeypot: posted in honeypot channel',
       });
 
@@ -124,7 +128,14 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
       } else if (interaction.customId.startsWith('honeypot_revert_ban_')) {
         const userId = interaction.customId.slice('honeypot_revert_ban_'.length);
         await this.handleRevertBan(interaction as ButtonInteraction<CacheType>, userId);
+      } else if (interaction.customId === 'honeypot_set_delete_window') {
+        await this.handleSetDeleteWindow(interaction as ButtonInteraction<CacheType>);
       }
+      return;
+    }
+
+    if (interaction.isModalSubmit() && interaction.customId === 'honeypot_delete_window_modal') {
+      await this.handleDeleteWindowModalSubmit(interaction as ModalSubmitInteraction<CacheType>);
     }
   }
 
@@ -236,6 +247,8 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
             })
             .join(', ')
         : 'None (all admins allowed)';
+    const deleteHours = cv.deleteMessageSeconds / 3600;
+    const deleteDisplay = cv.deleteMessageSeconds === 0 ? 'Disabled' : `${deleteHours} hour${deleteHours !== 1 ? 's' : ''}`;
 
     const embed = new EmbedBuilder()
       .setTitle('Honeypot Configuration')
@@ -244,7 +257,8 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
       .addFields(
         { name: 'Honeypot Channel', value: honeypotChannelDisplay, inline: true },
         { name: 'Reporting Channel', value: reportingChannelDisplay, inline: true },
-        { name: 'Sudoers (exempt from bans)', value: sudoersDisplay, inline: false }
+        { name: 'Sudoers (exempt from bans)', value: sudoersDisplay, inline: false },
+        { name: 'Message Delete Window', value: deleteDisplay, inline: true }
       )
       .setFooter({ text: 'Sudoers and server owners are never banned by the honeypot.' });
 
@@ -272,6 +286,12 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
             .setPlaceholder('Select sudoers (users/roles exempt from ban)')
             .setMinValues(0)
             .setMaxValues(25)
+        ),
+        new ActionRowBuilder<ButtonBuilder>().addComponents(
+          new ButtonBuilder()
+            .setCustomId('honeypot_set_delete_window')
+            .setLabel('Set Message Delete Window')
+            .setStyle(ButtonStyle.Secondary)
         ),
       ],
     });
@@ -380,6 +400,53 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
         content: '❌ Failed to revert ban. User may already be unbanned or not found.',
         ephemeral: true,
       });
+    }
+  }
+
+  private async handleSetDeleteWindow(interaction: ButtonInteraction<CacheType>): Promise<void> {
+    const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
+    const currentHours = config.value.deleteMessageSeconds / 3600;
+    const currentDisplay = Number.isInteger(currentHours) ? String(currentHours) : currentHours.toFixed(2);
+
+    const modal = new ModalBuilder()
+      .setCustomId('honeypot_delete_window_modal')
+      .setTitle('Set Message Delete Window')
+      .addComponents(
+        new ActionRowBuilder<TextInputBuilder>().addComponents(
+          new TextInputBuilder()
+            .setCustomId('honeypot_delete_window_input')
+            .setLabel('Delete window in hours (0–168, 0 = disabled)')
+            .setStyle(TextInputStyle.Short)
+            .setRequired(true)
+            .setPlaceholder(`Current: ${currentDisplay}h`)
+            .setMinLength(1)
+            .setMaxLength(6)
+        )
+      );
+
+    await interaction.showModal(modal);
+  }
+
+  private async handleDeleteWindowModalSubmit(interaction: ModalSubmitInteraction<CacheType>): Promise<void> {
+    try {
+      const raw = interaction.fields.getTextInputValue('honeypot_delete_window_input').trim();
+      const hours = parseFloat(raw);
+
+      if (isNaN(hours) || hours < 0 || hours > 168) {
+        await interaction.reply({ content: '❌ Invalid value. Enter a number between 0 and 168.', ephemeral: true });
+        return;
+      }
+
+      const seconds = Math.round(hours * 3600);
+      const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
+      config.updateFromData({ deleteMessageSeconds: seconds });
+      await config.save();
+
+      const display = seconds === 0 ? 'Disabled' : `${hours} hour${hours !== 1 ? 's' : ''}`;
+      await interaction.reply({ content: `✅ Message delete window set to: **${display}**`, ephemeral: true });
+    } catch (err) {
+      console.error('[Honeypot] handleDeleteWindowModalSubmit error:', err);
+      await interaction.reply({ content: '❌ Failed to update message delete window.', ephemeral: true });
     }
   }
 }
