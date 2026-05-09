@@ -302,6 +302,11 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
       const [channelId] = interaction.values;
       const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
 
+      if (!isSudoer(interaction.guild, interaction.user.id, config.value.sudoers)) {
+        await interaction.reply({ content: '❌ You do not have permission to configure the honeypot system.', ephemeral: true });
+        return;
+      }
+
       const channelChanged = config.value.honeypotChannelId !== channelId;
 
       config.updateFromData({
@@ -329,6 +334,11 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
       const [channelId] = interaction.values;
       const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
 
+      if (!isSudoer(interaction.guild, interaction.user.id, config.value.sudoers)) {
+        await interaction.reply({ content: '❌ You do not have permission to configure the honeypot system.', ephemeral: true });
+        return;
+      }
+
       config.updateFromData({ reportingChannelId: channelId });
       await config.save();
 
@@ -345,6 +355,12 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
   private async handleSudoersSelect(interaction: MentionableSelectMenuInteraction<CacheType>): Promise<void> {
     try {
       const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
+
+      if (!isSudoer(interaction.guild, interaction.user.id, config.value.sudoers)) {
+        await interaction.reply({ content: '❌ You do not have permission to configure the honeypot system.', ephemeral: true });
+        return;
+      }
+
       config.updateFromData({ sudoers: interaction.values });
       await config.save();
 
@@ -405,6 +421,12 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
 
   private async handleSetDeleteWindow(interaction: ButtonInteraction<CacheType>): Promise<void> {
     const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
+
+    if (!isSudoer(interaction.guild, interaction.user.id, config.value.sudoers)) {
+      await interaction.reply({ content: '❌ You do not have permission to configure the honeypot system.', ephemeral: true });
+      return;
+    }
+
     const currentHours = config.value.deleteMessageSeconds / 3600;
     const currentDisplay = Number.isInteger(currentHours) ? String(currentHours) : currentHours.toFixed(2);
 
@@ -429,6 +451,13 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
 
   private async handleDeleteWindowModalSubmit(interaction: ModalSubmitInteraction<CacheType>): Promise<void> {
     try {
+      const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
+
+      if (!isSudoer(interaction.guild, interaction.user.id, config.value.sudoers)) {
+        await interaction.reply({ content: '❌ You do not have permission to configure the honeypot system.', ephemeral: true });
+        return;
+      }
+
       const raw = interaction.fields.getTextInputValue('honeypot_delete_window_input').trim();
       const hours = parseFloat(raw);
 
@@ -438,7 +467,6 @@ export class HoneypotDiscordModule implements SlashCommands, OnReady, OnMessageC
       }
 
       const seconds = Math.round(hours * 3600);
-      const config = await new HoneypotServerConfiguration(interaction.guild.id).fetch();
       config.updateFromData({ deleteMessageSeconds: seconds });
       await config.save();
 
