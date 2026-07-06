@@ -47,3 +47,6 @@ secrets.ts
 .env.*
 !.env.sample
 !.env.example
+
+# Working files
+scratch/
