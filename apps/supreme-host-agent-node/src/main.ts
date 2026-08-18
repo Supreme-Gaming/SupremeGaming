@@ -39,7 +39,9 @@ import { AgentCredentialManager } from './credential-manager';
     },
   };
 
-  const socket: Socket = io(`${apiUrl}/hosts`, socketOpts);
+  // Socket.IO namespaces are not under the REST prefix (/api).
+  const socketOrigin = new URL(apiUrl).origin;
+  const socket: Socket = io(`${socketOrigin}/hosts`, socketOpts);
 
   socket.on('connect', async () => {
     console.log(`[agent] Connected to server (socket id: ${socket.id})`);
