@@ -1,7 +1,9 @@
 import * as os from 'os';
-// @ts-ignore public-ip is ESM-only with no top-level "types"; node10 moduleResolution cannot see package exports
-import { publicIpv4 } from 'public-ip';
+import { Resolver } from 'dns/promises';
 import { NetworkInfo, NetworkInterfaceInfo } from '../interfaces/registration.interfaces';
+
+const OPENDNS_RESOLVERS = ['208.67.222.222', '208.67.220.220'];
+const OPENDNS_MYIP_HOST = 'myip.opendns.com';
 
 export function getLocalNetworkInterfaces(): NetworkInterfaceInfo[] {
   const interfaces = os.networkInterfaces();
@@ -19,9 +21,33 @@ export function getLocalNetworkInterfaces(): NetworkInterfaceInfo[] {
     }));
 }
 
+async function lookupPublicIpv4(timeoutMs = 5000): Promise<string> {
+  const resolver = new Resolver();
+  resolver.setServers(OPENDNS_RESOLVERS);
+
+  let timer: NodeJS.Timeout | undefined;
+  try {
+    const addresses = await Promise.race([
+      resolver.resolve4(OPENDNS_MYIP_HOST),
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error('Public IP lookup timed out')), timeoutMs);
+      }),
+    ]);
+    const address = addresses[0];
+    if (!address) {
+      throw new Error('Public IP lookup returned no address');
+    }
+    return address;
+  } finally {
+    if (timer !== undefined) {
+      clearTimeout(timer);
+    }
+  }
+}
+
 export async function getPublicIp(timeoutMs = 5000): Promise<string | null> {
   try {
-    return await publicIpv4({ timeout: timeoutMs });
+    return await lookupPublicIpv4(timeoutMs);
   } catch {
     return null;
   }

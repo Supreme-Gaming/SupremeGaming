@@ -1,12 +1,22 @@
 import * as os from 'os';
 import { getLocalNetworkInterfaces, getPublicIp, getNetworkInfo } from './network-info';
 
-jest.mock('public-ip', () => ({
-  publicIpv4: jest.fn(),
-}));
+jest.mock('dns/promises', () => {
+  const resolve4 = jest.fn();
+  const setServers = jest.fn();
+  return {
+    Resolver: jest.fn().mockImplementation(() => ({
+      setServers,
+      resolve4,
+    })),
+    __mock: { resolve4, setServers },
+  };
+});
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { publicIpv4 } = require('public-ip');
+const { __mock } = jest.requireMock('dns/promises') as {
+  __mock: { resolve4: jest.Mock; setServers: jest.Mock };
+};
+const { resolve4, setServers } = __mock;
 
 describe('network-info', () => {
   beforeEach(() => {
@@ -77,28 +87,29 @@ describe('network-info', () => {
 
   describe('getPublicIp', () => {
     it('should return the public IPv4 address', async () => {
-      publicIpv4.mockResolvedValue('203.0.113.50');
+      resolve4.mockResolvedValue(['203.0.113.50']);
 
       const result = await getPublicIp();
 
       expect(result).toBe('203.0.113.50');
-      expect(publicIpv4).toHaveBeenCalledWith({ timeout: 5000 });
+      expect(setServers).toHaveBeenCalledWith(['208.67.222.222', '208.67.220.220']);
+      expect(resolve4).toHaveBeenCalledWith('myip.opendns.com');
     });
 
     it('should return null on failure', async () => {
-      publicIpv4.mockRejectedValue(new Error('Network unreachable'));
+      resolve4.mockRejectedValue(new Error('Network unreachable'));
 
       const result = await getPublicIp();
 
       expect(result).toBeNull();
     });
 
-    it('should pass custom timeout', async () => {
-      publicIpv4.mockResolvedValue('203.0.113.50');
+    it('should return null when no address is returned', async () => {
+      resolve4.mockResolvedValue([]);
 
-      await getPublicIp(10000);
+      const result = await getPublicIp();
 
-      expect(publicIpv4).toHaveBeenCalledWith({ timeout: 10000 });
+      expect(result).toBeNull();
     });
   });
 
@@ -116,7 +127,7 @@ describe('network-info', () => {
           },
         ],
       });
-      publicIpv4.mockResolvedValue('203.0.113.50');
+      resolve4.mockResolvedValue(['203.0.113.50']);
 
       const result = await getNetworkInfo();
 
@@ -127,7 +138,7 @@ describe('network-info', () => {
 
     it('should handle null public IP gracefully', async () => {
       jest.spyOn(os, 'networkInterfaces').mockReturnValue({});
-      publicIpv4.mockRejectedValue(new Error('timeout'));
+      resolve4.mockRejectedValue(new Error('timeout'));
 
       const result = await getNetworkInfo();
 

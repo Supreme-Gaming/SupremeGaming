@@ -3,10 +3,6 @@ import * as systemInfo from './services/system-info';
 import * as diskInfo from './services/disk-info';
 import * as networkInfo from './services/network-info';
 
-jest.mock('public-ip', () => ({
-  publicIpv4: jest.fn(),
-}));
-
 describe('buildRegistrationPayload', () => {
   beforeEach(() => {
     jest.spyOn(systemInfo, 'getHostname').mockReturnValue('test-host');
