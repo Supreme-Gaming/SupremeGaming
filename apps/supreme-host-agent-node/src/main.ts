@@ -3,6 +3,7 @@ import { Queue, Worker } from 'bullmq';
 import { buildRegistrationPayload } from '@supremegaming/agent';
 import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
 import { AgentCredentialManager } from './credential-manager';
+import { attachCommandHandlers } from './commands';
 
 (async () => {
   const agentId = process.env.AGENT_ID || process.env.AGENT_KEY;
@@ -42,6 +43,7 @@ import { AgentCredentialManager } from './credential-manager';
   // Socket.IO namespaces are not under the REST prefix (/api).
   const socketOrigin = new URL(apiUrl).origin;
   const socket: Socket = io(`${socketOrigin}/hosts`, socketOpts);
+  attachCommandHandlers(socket);
 
   socket.on('connect', async () => {
     console.log(`[agent] Connected to server (socket id: ${socket.id})`);

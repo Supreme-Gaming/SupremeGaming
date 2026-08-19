@@ -11,6 +11,10 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
+import { AGENT_SOCKET_EVENTS, type AgentCommandProgress } from '@supremegaming/agent';
+
+import { AgentCommandsService } from './agent-commands.service';
+import { AgentSocketBridge } from './agent-socket.bridge';
 import { HostsService } from './hosts.service';
 import { AgentsService } from '../agents/agents.service';
 import { machineAuthConfig } from '../../config/machine-auth.config';
@@ -27,9 +31,15 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 
   private readonly logger = new Logger(HostsGateway.name);
 
-  constructor(private readonly hostsService: HostsService, private readonly agentsService: AgentsService) {}
+  constructor(
+    private readonly hostsService: HostsService,
+    private readonly agentsService: AgentsService,
+    private readonly commandsService: AgentCommandsService,
+    private readonly socketBridge: AgentSocketBridge
+  ) {}
 
   afterInit(server: Server) {
+    this.socketBridge.attach(server);
     // Only enforce auth middleware if MACHINE_JWT_SECRET is configured
     if (!machineAuthConfig.machineJwtSecret) {
       this.logger.warn('MACHINE_JWT_SECRET not set — Socket.IO auth middleware is DISABLED');
@@ -90,8 +100,9 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 
     const host = await this.hostsService.registerHost({ ...payload, key: agentId });
 
-    // Store identifier on socket for disconnect lookup
+    // Store identifier on socket for disconnect lookup and targeted commands
     client.data = { ...client.data, key: agentId };
+    client.join(`agent:${agentId}`);
 
     client.emit('registered', {
       success: true,
@@ -112,5 +123,15 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
       success: true,
       timestamp: new Date().toISOString(),
     });
+  }
+
+  @SubscribeMessage(AGENT_SOCKET_EVENTS.COMMAND_PROGRESS)
+  handleCommandProgress(@MessageBody() payload: AgentCommandProgress, @ConnectedSocket() client: Socket) {
+    const agentId = client.data?.agentId || client.data?.key;
+    if (!agentId) {
+      return;
+    }
+
+    this.commandsService.recordProgress(agentId, payload);
   }
 }

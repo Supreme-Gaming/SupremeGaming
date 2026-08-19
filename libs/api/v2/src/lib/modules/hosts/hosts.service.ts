@@ -14,6 +14,10 @@ export class HostsService {
     return this.model.find().exec();
   }
 
+  public async getHostByAgentId(agentId: string) {
+    return this.model.findOne({ $or: [{ key: agentId }, { agentId }] }).exec();
+  }
+
   public async createHostServer(server: Partial<HostServer>) {
     if (!server.key) {
       throw new UnprocessableEntityException();
