@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UseGuards } from '@nestjs/common';
 
 import { ResponseDto } from '../../decorators/response-dto.decorator';
 import { JwtGuard } from '../auth/guards/jwt/jwt.guard';
@@ -9,6 +9,7 @@ import { CreateGameServerDto } from './dto/create-game-server.dto';
 import { ExecuteServerCommandDto } from './dto/execute-server-command.dto';
 import { GameServerResponseDto } from './dto/game-server-response.dto';
 import { GetServerByPortParamsDto } from './dto/get-server-by-port-params.dto';
+import { UpdateGameServerDto } from './dto/update-game-server.dto';
 import { GameServer } from './schemas/game-server.schema';
 import { ServersService } from './servers.service';
 
@@ -47,5 +48,21 @@ export class ServersController {
   // @UseGuards(JwtGuard, PermissionsGuard)
   public createGameServer(@Body() payload: CreateGameServerDto) {
     return this.service.createGameServer(payload);
+  }
+
+  @Patch(':id')
+  @ResponseDto(GameServerResponseDto)
+  // @RequirePermissions(Permission.ServerUpdate)
+  // @UseGuards(JwtGuard, PermissionsGuard)
+  public updateGameServer(@Param('id') id: string, @Body() payload: UpdateGameServerDto) {
+    return this.service.updateGameServer(id, payload);
+  }
+
+  @Delete(':id')
+  @HttpCode(204)
+  // @RequirePermissions(Permission.ServerDelete)
+  // @UseGuards(JwtGuard, PermissionsGuard)
+  public deleteGameServer(@Param('id') id: string) {
+    return this.service.deleteGameServer(id);
   }
 }

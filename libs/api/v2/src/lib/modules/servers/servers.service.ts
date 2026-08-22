@@ -6,6 +6,7 @@ import { RCONServer } from '@supremegaming/utilities/rcon';
 
 import { HostServer, HostServerDocument } from '../hosts/schemas/host-server.schema';
 import { CreateGameServerDto } from './dto/create-game-server.dto';
+import { UpdateGameServerDto } from './dto/update-game-server.dto';
 import { GameServer, GameServerDocument } from './schemas/game-server.schema';
 
 const SENSITIVE_FIELDS = ['rconpass', 'shouldProcess', 'server_directory', 'server_alt_dir'];
@@ -52,6 +53,34 @@ export class ServersService {
     }
 
     return new this.gsModel(server).save();
+  }
+
+  public async updateGameServer(id: string, update: UpdateGameServerDto) {
+    const patch = Object.fromEntries(Object.entries(update).filter(([, value]) => value !== undefined));
+
+    if (patch.host) {
+      const hs = await this.hsModel.findById(patch.host).exec();
+
+      if (!hs) {
+        throw new UnprocessableEntityException();
+      }
+    }
+
+    const updated = await this.gsModel.findByIdAndUpdate(id, patch, { new: true, runValidators: true }).exec();
+
+    if (!updated) {
+      throw new NotFoundException();
+    }
+
+    return updated;
+  }
+
+  public async deleteGameServer(id: string): Promise<void> {
+    const deleted = await this.gsModel.findByIdAndDelete(id).exec();
+
+    if (!deleted) {
+      throw new NotFoundException();
+    }
   }
 
   public async executeServerCommand(server: GameServerDocument, command: string) {
