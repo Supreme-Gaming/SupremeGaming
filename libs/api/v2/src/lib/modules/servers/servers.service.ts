@@ -1,6 +1,6 @@
-import { Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 import { RCONServer } from '@supremegaming/utilities/rcon';
 
@@ -31,12 +31,8 @@ export class ServersService {
   }
 
   public async createGameServer(server: CreateGameServerDto) {
-    // Check if host exists, otherwise game server entry will fail.
-    const hs = await this.hsModel.findById(server.host).exec();
-
-    if (!hs) {
-      throw new UnprocessableEntityException();
-    }
+    const hs = await this.requireHost(server.host);
+    await this.assertNoPortConflict(hs._id, [server.port, server.rconport]);
 
     return new this.gsModel(server).save();
   }
@@ -44,12 +40,16 @@ export class ServersService {
   public async updateGameServer(id: string, update: UpdateGameServerDto) {
     const patch = Object.fromEntries(Object.entries(update).filter(([, value]) => value !== undefined));
 
-    if (patch.host) {
-      const hs = await this.hsModel.findById(patch.host).exec();
+    if (patch.host || patch.port !== undefined || patch.rconport !== undefined) {
+      const existing = await this.gsModel.findById(id).exec();
 
-      if (!hs) {
-        throw new UnprocessableEntityException();
+      if (!existing) {
+        throw new NotFoundException();
       }
+
+      const hostId = patch.host ?? existing.host;
+      await this.requireHost(hostId);
+      await this.assertNoPortConflict(hostId, [patch.port ?? existing.port, patch.rconport ?? existing.rconport], id);
     }
 
     const updated = await this.gsModel.findByIdAndUpdate(id, patch, { new: true, runValidators: true }).exec();
@@ -85,6 +85,34 @@ export class ServersService {
       return await rcon.command(command);
     } finally {
       await rcon.disconnect();
+    }
+  }
+
+  private async requireHost(hostId: string | Types.ObjectId) {
+    const hs = await this.hsModel.findById(hostId).exec();
+
+    if (!hs) {
+      throw new UnprocessableEntityException();
+    }
+
+    return hs;
+  }
+
+  private async assertNoPortConflict(
+    hostId: string | Types.ObjectId,
+    ports: number[],
+    excludeId?: string
+  ): Promise<void> {
+    const conflict = await this.gsModel
+      .exists({
+        host: hostId,
+        ...(excludeId ? { _id: { $ne: excludeId } } : {}),
+        $or: [{ port: { $in: ports } }, { rconport: { $in: ports } }],
+      })
+      .exec();
+
+    if (conflict) {
+      throw new ConflictException('A game server on this host already uses one of these ports');
     }
   }
 }
