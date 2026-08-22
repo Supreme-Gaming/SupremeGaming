@@ -9,8 +9,6 @@ import { CreateGameServerDto } from './dto/create-game-server.dto';
 import { UpdateGameServerDto } from './dto/update-game-server.dto';
 import { GameServer, GameServerDocument } from './schemas/game-server.schema';
 
-const SENSITIVE_FIELDS = ['rconpass', 'shouldProcess', 'server_directory', 'server_alt_dir'];
-
 @Injectable()
 export class ServersService {
   constructor(
@@ -18,24 +16,12 @@ export class ServersService {
     @InjectModel(HostServer.name) private readonly hsModel: Model<HostServerDocument>
   ) {}
 
-  public async getAllServers(includeSensitive?: boolean) {
-    const query = this.gsModel.find();
-
-    if (!includeSensitive) {
-      query.select(SENSITIVE_FIELDS.map((f) => `-${f}`).join(' '));
-    }
-
-    return query.exec();
+  public async getAllServers() {
+    return this.gsModel.find().exec();
   }
 
-  public async getServerByProps(whereProps: Partial<GameServer>, includeSensitive?: boolean) {
-    const query = this.gsModel.findOne(whereProps);
-
-    if (!includeSensitive) {
-      query.select(SENSITIVE_FIELDS.map((f) => `-${f}`).join(' '));
-    }
-
-    const server = await query.exec();
+  public async getServerByProps(whereProps: Partial<GameServer>) {
+    const server = await this.gsModel.findOne(whereProps).exec();
 
     if (!server) {
       throw new NotFoundException();

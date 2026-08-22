@@ -39,7 +39,7 @@ export class ServersController {
   public async executeCommand(@Body() payload: ExecuteServerCommandDto) {
     const { command, ...rest } = payload;
     const props = Object.fromEntries(Object.entries(rest).filter(([, value]) => value !== undefined)) as Partial<GameServer>;
-    const server = await this.service.getServerByProps(props, true);
+    const server = await this.service.getServerByProps(props);
 
     return this.service.executeServerCommand(server, command);
   }
