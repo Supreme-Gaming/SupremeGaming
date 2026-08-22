@@ -1,24 +1,31 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 
-import { GameServer } from './schemas/game-server.schema';
-import { ServersService } from './servers.service';
+import { ResponseDto } from '../../decorators/response-dto.decorator';
 import { JwtGuard } from '../auth/guards/jwt/jwt.guard';
 import { PermissionsGuard } from '../auth/guards/permissions/permissions.guard';
 import { Permission } from '../auth/enum/permissions.enum';
 import { RequirePermissions } from '../auth/decorators/permissions.decorator';
+import { CreateGameServerDto } from './dto/create-game-server.dto';
+import { ExecuteServerCommandDto } from './dto/execute-server-command.dto';
+import { GameServerResponseDto } from './dto/game-server-response.dto';
+import { GetServerByPortParamsDto } from './dto/get-server-by-port-params.dto';
+import { GameServer } from './schemas/game-server.schema';
+import { ServersService } from './servers.service';
 
 @Controller('servers')
 export class ServersController {
   constructor(private readonly service: ServersService) {}
 
   @Get(':port')
-  public getServerByPort(@Param() params: { port: number }) {
+  @ResponseDto(GameServerResponseDto)
+  public getServerByPort(@Param() params: GetServerByPortParamsDto) {
     return this.service.getServerByProps({
       port: params.port,
     });
   }
 
   @Get()
+  @ResponseDto(GameServerResponseDto)
   public getServers() {
     return this.service.getAllServers();
   }
@@ -26,19 +33,19 @@ export class ServersController {
   // @RequirePermissions(Permission.Commands)
   // @UseGuards(JwtGuard, PermissionsGuard)
   @Post('command')
-  public async executeCommand(@Body() payload: Partial<GameServer> & { command: string }) {
-    const props = JSON.parse(JSON.stringify(payload));
-    delete props.command;
-
+  public async executeCommand(@Body() payload: ExecuteServerCommandDto) {
+    const { command, ...rest } = payload;
+    const props = Object.fromEntries(Object.entries(rest).filter(([, value]) => value !== undefined)) as Partial<GameServer>;
     const server = await this.service.getServerByProps(props, true);
 
-    return this.service.executeServerCommand(server, payload.command);
+    return this.service.executeServerCommand(server, command);
   }
 
   @Post()
+  @ResponseDto(GameServerResponseDto)
   // @RequirePermissions(Permission.ServerCreate)
   // @UseGuards(JwtGuard, PermissionsGuard)
-  public createGameServer(@Body() payload: Partial<GameServer>) {
+  public createGameServer(@Body() payload: CreateGameServerDto) {
     return this.service.createGameServer(payload);
   }
 }

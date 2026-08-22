@@ -2,6 +2,7 @@ import { Injectable, InternalServerErrorException, Logger, UnprocessableEntityEx
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
+import { CreateHostServerDto } from './dto/create-host-server.dto';
 import { HostServer, HostServerDocument } from './schemas/host-server.schema';
 
 @Injectable()
@@ -18,7 +19,7 @@ export class HostsService {
     return this.model.findOne({ $or: [{ key: agentId }, { agentId }] }).exec();
   }
 
-  public async createHostServer(server: Partial<HostServer>) {
+  public async createHostServer(server: CreateHostServerDto) {
     if (!server.key) {
       throw new UnprocessableEntityException();
     }

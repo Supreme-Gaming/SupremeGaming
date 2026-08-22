@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { RCONServer } from '@supremegaming/utilities/rcon';
 
 import { HostServer, HostServerDocument } from '../hosts/schemas/host-server.schema';
+import { CreateGameServerDto } from './dto/create-game-server.dto';
 import { GameServer, GameServerDocument } from './schemas/game-server.schema';
 
 const SENSITIVE_FIELDS = ['rconpass', 'shouldProcess', 'server_directory', 'server_alt_dir'];
@@ -42,7 +43,7 @@ export class ServersService {
     return server;
   }
 
-  public async createGameServer(server: Partial<GameServer>) {
+  public async createGameServer(server: CreateGameServerDto) {
     // Check if host exists, otherwise game server entry will fail.
     const hs = await this.hsModel.findById(server.host).exec();
 

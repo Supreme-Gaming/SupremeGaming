@@ -5,16 +5,19 @@ import { RequirePermissions } from '../auth/decorators/permissions.decorator';
 import { Permission } from '../auth/enum/permissions.enum';
 import { JwtGuard } from '../auth/guards/jwt/jwt.guard';
 import { PermissionsGuard } from '../auth/guards/permissions/permissions.guard';
-import { HostServer } from './schemas/host-server.schema';
-import { HostsService } from './hosts.service';
+import { ResponseDto } from '../../decorators/response-dto.decorator';
 import { AgentCommandsService } from './agent-commands.service';
+import { CreateHostServerDto } from './dto/create-host-server.dto';
+import { HostServerResponseDto } from './dto/host-server-response.dto';
 import { IssueAgentCommandDto } from './dto/issue-agent-command.dto';
+import { HostsService } from './hosts.service';
 
 @Controller('hosts')
 export class HostsController {
   constructor(private service: HostsService, private readonly commands: AgentCommandsService) {}
 
   @Get()
+  @ResponseDto(HostServerResponseDto)
   // @RequirePermissions(Permission.ServerCreate)
   // @UseGuards(JwtGuard, PermissionsGuard)
   public getHostServers() {
@@ -22,9 +25,10 @@ export class HostsController {
   }
 
   @Post()
+  @ResponseDto(HostServerResponseDto)
   // @RequirePermissions(Permission.ServerCreate)
   // @UseGuards(JwtGuard, PermissionsGuard)
-  public createHostServer(@Body() payload: Partial<HostServer>) {
+  public createHostServer(@Body() payload: CreateHostServerDto) {
     return this.service.createHostServer(payload);
   }
 

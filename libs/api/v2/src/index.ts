@@ -1,4 +1,6 @@
 export * from './lib/api-v2.module';
+export * from './lib/decorators/response-dto.decorator';
+export * from './lib/interceptors/response-validation.interceptor';
 export * from './lib/modules/auth/auth.module';
 export * from './lib/modules/hosts/hosts.module';
 export * from './lib/modules/servers/servers.module';
