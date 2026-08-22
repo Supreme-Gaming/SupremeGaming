@@ -11,6 +11,7 @@ describe('ServersService', () => {
   let service: ServersService;
   const save = jest.fn();
   const gsModel: any = jest.fn().mockImplementation(() => ({ save }));
+  gsModel.find = jest.fn();
   gsModel.findById = jest.fn();
   gsModel.findByIdAndUpdate = jest.fn();
   gsModel.findByIdAndDelete = jest.fn();
@@ -133,6 +134,44 @@ describe('ServersService', () => {
       gsModel.findByIdAndUpdate.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
 
       await expect(service.updateGameServer(serverId, { map_name: 'TheIsland' })).rejects.toBeInstanceOf(NotFoundException);
+    });
+  });
+
+  describe('getAgentConfiguration', () => {
+    it('returns game servers for the host as agent configuration', async () => {
+      const server = {
+        _id: serverId,
+        host: hostId,
+        port: 7777,
+        rconport: 27020,
+        rconpass: 'secret',
+        game: 'ark',
+        map_name: 'TheIsland',
+        shouldProcess: true,
+        server_directory: '/opt/ark',
+        server_alt_dir: '/opt/ark-alt',
+      };
+      gsModel.find.mockReturnValue({
+        lean: () => ({
+          exec: jest.fn().mockResolvedValue([server]),
+        }),
+      });
+
+      await expect(service.getAgentConfiguration(hostId)).resolves.toEqual({
+        hostId,
+        servers: [server],
+      });
+      expect(gsModel.find).toHaveBeenCalledWith({ host: hostId });
+    });
+
+    it('returns an empty server list when the host has none', async () => {
+      gsModel.find.mockReturnValue({
+        lean: () => ({
+          exec: jest.fn().mockResolvedValue([]),
+        }),
+      });
+
+      await expect(service.getAgentConfiguration(hostId)).resolves.toEqual({ hostId, servers: [] });
     });
   });
 

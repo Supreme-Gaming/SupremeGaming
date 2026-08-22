@@ -15,5 +15,6 @@ import { ServersService } from './servers.service';
   ],
   controllers: [ServersController],
   providers: [ServersService],
+  exports: [ServersService],
 })
 export class ServersModule {}

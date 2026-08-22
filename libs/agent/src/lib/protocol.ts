@@ -1,6 +1,7 @@
 export const AGENT_SOCKET_EVENTS = {
   COMMAND: 'command',
   COMMAND_PROGRESS: 'command:progress',
+  CONFIGURATION: 'configuration',
 } as const;
 
 export const AGENT_COMMAND_TYPES = {
@@ -60,4 +61,9 @@ export interface ListDirectoryResult {
   path: string;
   truncated: boolean;
   entries: DirectoryEntry[];
+}
+
+export interface AgentHostConfiguration {
+  hostId: string;
+  servers: unknown[];
 }

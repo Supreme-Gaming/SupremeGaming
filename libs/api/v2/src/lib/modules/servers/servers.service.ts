@@ -20,6 +20,13 @@ export class ServersService {
     return this.gsModel.find().exec();
   }
 
+  public async getAgentConfiguration(hostId: string | Types.ObjectId) {
+    return {
+      hostId: String(hostId),
+      servers: await this.gsModel.find({ host: hostId }).lean().exec(),
+    };
+  }
+
   public async getServerByProps(whereProps: Partial<GameServer>) {
     const server = await this.gsModel.findOne(whereProps).exec();
 

@@ -8,9 +8,14 @@ import { HostsController } from './hosts.controller';
 import { HostsGateway } from './hosts.gateway';
 import { HostsService } from './hosts.service';
 import { AgentsModule } from '../agents/agents.module';
+import { ServersModule } from '../servers/servers.module';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: HostServer.name, schema: HostServerSchema }]), AgentsModule],
+  imports: [
+    MongooseModule.forFeature([{ name: HostServer.name, schema: HostServerSchema }]),
+    AgentsModule,
+    ServersModule,
+  ],
   controllers: [HostsController],
   providers: [HostsService, HostsGateway, AgentCommandsService, AgentSocketBridge],
 })

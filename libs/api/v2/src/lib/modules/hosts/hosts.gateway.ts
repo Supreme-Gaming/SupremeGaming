@@ -9,6 +9,7 @@ import {
   MessageBody,
   ConnectedSocket,
 } from '@nestjs/websockets';
+import { Types } from 'mongoose';
 import { Server, Socket } from 'socket.io';
 
 import { AGENT_SOCKET_EVENTS, type AgentCommandProgress } from '@supremegaming/agent';
@@ -17,6 +18,7 @@ import { AgentCommandsService } from './agent-commands.service';
 import { AgentSocketBridge } from './agent-socket.bridge';
 import { HostsService } from './hosts.service';
 import { AgentsService } from '../agents/agents.service';
+import { ServersService } from '../servers/servers.service';
 import { machineAuthConfig } from '../../config/machine-auth.config';
 
 @WebSocketGateway({
@@ -35,7 +37,8 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
     private readonly hostsService: HostsService,
     private readonly agentsService: AgentsService,
     private readonly commandsService: AgentCommandsService,
-    private readonly socketBridge: AgentSocketBridge
+    private readonly socketBridge: AgentSocketBridge,
+    private readonly serversService: ServersService
   ) {}
 
   afterInit(server: Server) {
@@ -68,13 +71,16 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
     this.logger.log('Socket.IO auth middleware installed');
   }
 
-  handleConnection(client: Socket) {
+  async handleConnection(client: Socket) {
     const agentId = client.data?.agentId;
     this.logger.log(`Client connected: ${client.id} (agent: ${agentId || 'unauthenticated'})`);
 
-    if (agentId) {
-      client.join(`agent:${agentId}`);
+    if (!agentId) {
+      return;
     }
+
+    client.join(`agent:${agentId}`);
+    await this.emitHostConfiguration(client, agentId);
   }
 
   async handleDisconnect(client: Socket) {
@@ -109,6 +115,8 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
       hostId: host._id,
       status: host.status,
     });
+
+    await this.emitHostConfiguration(client, agentId, host._id);
   }
 
   @SubscribeMessage('heartbeat')
@@ -133,5 +141,21 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
     }
 
     this.commandsService.recordProgress(agentId, payload);
+  }
+
+  private async emitHostConfiguration(client: Socket, agentId: string, hostId?: string | Types.ObjectId) {
+    try {
+      const resolvedHostId = hostId ?? (await this.hostsService.getHostByAgentId(agentId))?._id;
+
+      if (!resolvedHostId) {
+        this.logger.debug(`No host record for agent ${agentId}; skipping configuration`);
+        return;
+      }
+
+      const configuration = await this.serversService.getAgentConfiguration(resolvedHostId);
+      client.emit(AGENT_SOCKET_EVENTS.CONFIGURATION, configuration);
+    } catch (err) {
+      this.logger.error(`Failed to emit configuration to agent ${agentId}`, err);
+    }
   }
 }

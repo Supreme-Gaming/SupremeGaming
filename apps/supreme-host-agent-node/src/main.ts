@@ -4,6 +4,7 @@ import { buildRegistrationPayload } from '@supremegaming/agent';
 import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
 import { AgentCredentialManager } from './credential-manager';
 import { attachCommandHandlers } from './commands';
+import { attachConfigurationHandler } from './configuration';
 
 (async () => {
   const agentId = process.env.AGENT_ID || process.env.AGENT_KEY;
@@ -44,6 +45,7 @@ import { attachCommandHandlers } from './commands';
   const socketOrigin = new URL(apiUrl).origin;
   const socket: Socket = io(`${socketOrigin}/hosts`, socketOpts);
   attachCommandHandlers(socket);
+  attachConfigurationHandler(socket);
 
   socket.on('connect', async () => {
     console.log(`[agent] Connected to server (socket id: ${socket.id})`);
