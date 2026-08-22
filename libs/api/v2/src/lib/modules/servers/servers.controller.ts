@@ -1,5 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UseGuards } from '@nestjs/common';
 
+import { ObjectIdParamsDto } from '@supremegaming/common/nest';
+
 import { ResponseDto } from '../../decorators/response-dto.decorator';
 import { JwtGuard } from '../auth/guards/jwt/jwt.guard';
 import { PermissionsGuard } from '../auth/guards/permissions/permissions.guard';
@@ -54,15 +56,15 @@ export class ServersController {
   @ResponseDto(GameServerResponseDto)
   // @RequirePermissions(Permission.ServerUpdate)
   // @UseGuards(JwtGuard, PermissionsGuard)
-  public updateGameServer(@Param('id') id: string, @Body() payload: UpdateGameServerDto) {
-    return this.service.updateGameServer(id, payload);
+  public updateGameServer(@Param() params: ObjectIdParamsDto, @Body() payload: UpdateGameServerDto) {
+    return this.service.updateGameServer(params.id, payload);
   }
 
   @Delete(':id')
   @HttpCode(204)
   // @RequirePermissions(Permission.ServerDelete)
   // @UseGuards(JwtGuard, PermissionsGuard)
-  public deleteGameServer(@Param('id') id: string) {
-    return this.service.deleteGameServer(id);
+  public deleteGameServer(@Param() params: ObjectIdParamsDto) {
+    return this.service.deleteGameServer(params.id);
   }
 }
