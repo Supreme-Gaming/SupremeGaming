@@ -4,6 +4,7 @@ import { Model, Types } from 'mongoose';
 
 import { RCONServer } from '@supremegaming/utilities/rcon';
 
+import { HostConfigurationPublisher } from '../hosts/host-configuration.publisher';
 import { HostServer, HostServerDocument } from '../hosts/schemas/host-server.schema';
 import { CreateGameServerDto } from './dto/create-game-server.dto';
 import { UpdateGameServerDto } from './dto/update-game-server.dto';
@@ -13,7 +14,8 @@ import { GameServer, GameServerDocument } from './schemas/game-server.schema';
 export class ServersService {
   constructor(
     @InjectModel(GameServer.name) private readonly gsModel: Model<GameServerDocument>,
-    @InjectModel(HostServer.name) private readonly hsModel: Model<HostServerDocument>
+    @InjectModel(HostServer.name) private readonly hsModel: Model<HostServerDocument>,
+    private readonly hostConfiguration: HostConfigurationPublisher
   ) {}
 
   public async getAllServers() {
@@ -41,11 +43,15 @@ export class ServersService {
     const hs = await this.requireHost(server.host);
     await this.assertNoPortConflict(hs._id, [server.port, server.rconport]);
 
-    return new this.gsModel(server).save();
+    const created = await new this.gsModel(server).save();
+    await this.hostConfiguration.publishForHost(created.host);
+    return created;
   }
 
   public async updateGameServer(id: string, update: UpdateGameServerDto) {
     const patch = Object.fromEntries(Object.entries(update).filter(([, value]) => value !== undefined));
+
+    let previousHost: string | Types.ObjectId | undefined;
 
     if (patch.host || patch.port !== undefined || patch.rconport !== undefined) {
       const existing = await this.gsModel.findById(id).exec();
@@ -54,6 +60,7 @@ export class ServersService {
         throw new NotFoundException();
       }
 
+      previousHost = existing.host;
       const hostId = patch.host ?? existing.host;
       await this.requireHost(hostId);
       await this.assertNoPortConflict(hostId, [patch.port ?? existing.port, patch.rconport ?? existing.rconport], id);
@@ -65,6 +72,11 @@ export class ServersService {
       throw new NotFoundException();
     }
 
+    await this.hostConfiguration.publishForHost(updated.host);
+    if (previousHost && String(previousHost) !== String(updated.host)) {
+      await this.hostConfiguration.publishForHost(previousHost);
+    }
+
     return updated;
   }
 
@@ -74,6 +86,8 @@ export class ServersService {
     if (!deleted) {
       throw new NotFoundException();
     }
+
+    await this.hostConfiguration.publishForHost(deleted.host);
   }
 
   public async executeServerCommand(server: GameServerDocument, command: string) {

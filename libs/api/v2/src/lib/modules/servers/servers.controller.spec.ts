@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/mongoose';
 
+import { AgentsService } from '../agents/agents.service';
+import { HostConfigurationPublisher } from '../hosts/host-configuration.publisher';
+import { GameDataService } from './game-data.service';
 import { ServersController } from './servers.controller';
 import { ServersService } from './servers.service';
 import { GameServer } from './schemas/game-server.schema';
@@ -14,6 +17,9 @@ describe('ServersController', () => {
       controllers: [ServersController],
       providers: [
         ServersService,
+        { provide: GameDataService, useValue: {} },
+        { provide: AgentsService, useValue: { verifyAccessToken: jest.fn() } },
+        { provide: HostConfigurationPublisher, useValue: { publishForHost: jest.fn() } },
         { provide: getModelToken(GameServer.name), useValue: {} },
         { provide: getModelToken(HostServer.name), useValue: {} },
       ],

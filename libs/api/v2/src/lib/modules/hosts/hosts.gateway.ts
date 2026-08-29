@@ -12,13 +12,13 @@ import {
 import { Types } from 'mongoose';
 import { Server, Socket } from 'socket.io';
 
-import { AGENT_SOCKET_EVENTS, type AgentCommandProgress } from '@supremegaming/agent';
+import { AGENT_SOCKET_EVENTS, type AgentCommandProgress } from '@supremegaming/agent/core';
 
 import { AgentCommandsService } from './agent-commands.service';
 import { AgentSocketBridge } from './agent-socket.bridge';
+import { HostConfigurationPublisher } from './host-configuration.publisher';
 import { HostsService } from './hosts.service';
 import { AgentsService } from '../agents/agents.service';
-import { ServersService } from '../servers/servers.service';
 import { machineAuthConfig } from '../../config/machine-auth.config';
 
 @WebSocketGateway({
@@ -38,7 +38,7 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
     private readonly agentsService: AgentsService,
     private readonly commandsService: AgentCommandsService,
     private readonly socketBridge: AgentSocketBridge,
-    private readonly serversService: ServersService
+    private readonly configurationPublisher: HostConfigurationPublisher
   ) {}
 
   afterInit(server: Server) {
@@ -145,15 +145,7 @@ export class HostsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 
   private async emitHostConfiguration(client: Socket, agentId: string, hostId?: string | Types.ObjectId) {
     try {
-      const resolvedHostId = hostId ?? (await this.hostsService.getHostByAgentId(agentId))?._id;
-
-      if (!resolvedHostId) {
-        this.logger.debug(`No host record for agent ${agentId}; skipping configuration`);
-        return;
-      }
-
-      const configuration = await this.serversService.getAgentConfiguration(resolvedHostId);
-      client.emit(AGENT_SOCKET_EVENTS.CONFIGURATION, configuration);
+      await this.configurationPublisher.publishToClient(client, agentId, hostId);
     } catch (err) {
       this.logger.error(`Failed to emit configuration to agent ${agentId}`, err);
     }

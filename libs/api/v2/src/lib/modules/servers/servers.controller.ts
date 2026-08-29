@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
 
 import { ObjectIdParamsDto } from '@supremegaming/common/nest';
 
@@ -7,17 +7,20 @@ import { JwtGuard } from '../auth/guards/jwt/jwt.guard';
 import { PermissionsGuard } from '../auth/guards/permissions/permissions.guard';
 import { Permission } from '../auth/enum/permissions.enum';
 import { RequirePermissions } from '../auth/decorators/permissions.decorator';
+import { MachineJwtGuard } from '../agents/guards/machine-jwt.guard';
 import { CreateGameServerDto } from './dto/create-game-server.dto';
 import { ExecuteServerCommandDto } from './dto/execute-server-command.dto';
 import { GameServerResponseDto } from './dto/game-server-response.dto';
 import { GetServerByPortParamsDto } from './dto/get-server-by-port-params.dto';
+import { IngestGameDataDto } from './dto/ingest-game-data.dto';
 import { UpdateGameServerDto } from './dto/update-game-server.dto';
+import { GameDataService } from './game-data.service';
 import { GameServer } from './schemas/game-server.schema';
 import { ServersService } from './servers.service';
 
 @Controller('servers')
 export class ServersController {
-  constructor(private readonly service: ServersService) {}
+  constructor(private readonly service: ServersService, private readonly gameData: GameDataService) {}
 
   @Get(':port')
   @ResponseDto(GameServerResponseDto)
@@ -66,5 +69,15 @@ export class ServersController {
   // @UseGuards(JwtGuard, PermissionsGuard)
   public deleteGameServer(@Param() params: ObjectIdParamsDto) {
     return this.service.deleteGameServer(params.id);
+  }
+
+  @Post(':id/game-data')
+  @UseGuards(MachineJwtGuard)
+  public ingestGameData(
+    @Param() params: ObjectIdParamsDto,
+    @Body() payload: IngestGameDataDto,
+    @Req() req: { agent: { agentId: string } }
+  ) {
+    return this.gameData.ingestGameData(params.id, req.agent.agentId, payload);
   }
 }

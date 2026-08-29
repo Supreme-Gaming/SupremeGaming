@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException, Logger, UnprocessableEntityException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 import { CreateHostServerDto } from './dto/create-host-server.dto';
 import { HostServer, HostServerDocument } from './schemas/host-server.schema';
@@ -17,6 +17,10 @@ export class HostsService {
 
   public async getHostByAgentId(agentId: string) {
     return this.model.findOne({ $or: [{ key: agentId }, { agentId }] }).exec();
+  }
+
+  public async getHostById(id: string | Types.ObjectId) {
+    return this.model.findById(id).exec();
   }
 
   public async createHostServer(server: CreateHostServerDto) {

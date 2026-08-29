@@ -5,6 +5,7 @@ import { RegistrationToken, RegistrationTokenSchema } from './schemas/registrati
 import { RefreshToken, RefreshTokenSchema } from './schemas/refresh-token.schema';
 import { AgentsController } from './agents.controller';
 import { AgentsService } from './agents.service';
+import { MachineJwtGuard } from './guards/machine-jwt.guard';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { AgentsService } from './agents.service';
     ]),
   ],
   controllers: [AgentsController],
-  providers: [AgentsService],
-  exports: [AgentsService],
+  providers: [AgentsService, MachineJwtGuard],
+  exports: [AgentsService, MachineJwtGuard],
 })
 export class AgentsModule {}

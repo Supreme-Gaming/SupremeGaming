@@ -4,6 +4,7 @@ import { getModelToken } from '@nestjs/mongoose';
 
 import { ServersService } from './servers.service';
 import { GameServer } from './schemas/game-server.schema';
+import { HostConfigurationPublisher } from '../hosts/host-configuration.publisher';
 import { HostServer } from '../hosts/schemas/host-server.schema';
 import { CreateGameServerDto } from './dto/create-game-server.dto';
 
@@ -18,6 +19,9 @@ describe('ServersService', () => {
   gsModel.exists = jest.fn();
   const hsModel = {
     findById: jest.fn(),
+  };
+  const hostConfiguration = {
+    publishForHost: jest.fn(),
   };
 
   const hostId = '507f191e810c19729de860ea';
@@ -39,6 +43,7 @@ describe('ServersService', () => {
         ServersService,
         { provide: getModelToken(GameServer.name), useValue: gsModel },
         { provide: getModelToken(HostServer.name), useValue: hsModel },
+        { provide: HostConfigurationPublisher, useValue: hostConfiguration },
       ],
     }).compile();
 
@@ -51,12 +56,13 @@ describe('ServersService', () => {
 
   describe('createGameServer', () => {
     it('creates the server when the host exists and ports are free', async () => {
-      const created = { _id: serverId };
+      const created = { _id: serverId, host: hostId };
       hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: hostId }) });
       gsModel.exists.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
       save.mockResolvedValue(created);
 
       await expect(service.createGameServer(createPayload)).resolves.toEqual(created);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
       expect(gsModel.exists).toHaveBeenCalledWith({
         host: hostId,
         $or: [{ port: { $in: [7777, 27020] } }, { rconport: { $in: [7777, 27020] } }],
@@ -81,7 +87,7 @@ describe('ServersService', () => {
 
   describe('updateGameServer', () => {
     it('updates the server when it exists', async () => {
-      const updated = { _id: serverId, port: 7778 };
+      const updated = { _id: serverId, host: hostId, port: 7778 };
       gsModel.findById.mockReturnValue({
         exec: jest.fn().mockResolvedValue({ _id: serverId, host: hostId, port: 7777, rconport: 27020 }),
       });
@@ -90,6 +96,7 @@ describe('ServersService', () => {
       gsModel.findByIdAndUpdate.mockReturnValue({ exec: jest.fn().mockResolvedValue(updated) });
 
       await expect(service.updateGameServer(serverId, { port: 7778 })).resolves.toEqual(updated);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
       expect(gsModel.exists).toHaveBeenCalledWith({
         host: hostId,
         _id: { $ne: serverId },
@@ -99,10 +106,11 @@ describe('ServersService', () => {
     });
 
     it('skips the port check when the patch does not change host or ports', async () => {
-      const updated = { _id: serverId, map_name: 'TheIsland' };
+      const updated = { _id: serverId, host: hostId, map_name: 'TheIsland' };
       gsModel.findByIdAndUpdate.mockReturnValue({ exec: jest.fn().mockResolvedValue(updated) });
 
       await expect(service.updateGameServer(serverId, { map_name: 'TheIsland' })).resolves.toEqual(updated);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
       expect(gsModel.findById).not.toHaveBeenCalled();
       expect(gsModel.exists).not.toHaveBeenCalled();
     });
@@ -177,10 +185,11 @@ describe('ServersService', () => {
 
   describe('deleteGameServer', () => {
     it('deletes the server when it exists', async () => {
-      gsModel.findByIdAndDelete.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: serverId }) });
+      gsModel.findByIdAndDelete.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: serverId, host: hostId }) });
 
       await expect(service.deleteGameServer(serverId)).resolves.toBeUndefined();
       expect(gsModel.findByIdAndDelete).toHaveBeenCalledWith(serverId);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
     });
 
     it('throws NotFoundException when the server does not exist', async () => {

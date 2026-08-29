@@ -6,7 +6,7 @@ import {
   type AgentCommand,
   type AgentCommandProgress,
   isTerminalAgentCommandStatus,
-} from '@supremegaming/agent';
+} from '@supremegaming/agent/core';
 
 import { AgentSocketBridge } from './agent-socket.bridge';
 import { IssueAgentCommandDto } from './dto/issue-agent-command.dto';

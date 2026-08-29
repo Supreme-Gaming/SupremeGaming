@@ -1,5 +1,5 @@
 import { NotFoundException, ServiceUnavailableException } from '@nestjs/common';
-import { AGENT_SOCKET_EVENTS } from '@supremegaming/agent';
+import { AGENT_SOCKET_EVENTS } from '@supremegaming/agent/core';
 
 import { AgentCommandsService } from './agent-commands.service';
 import { AgentSocketBridge } from './agent-socket.bridge';

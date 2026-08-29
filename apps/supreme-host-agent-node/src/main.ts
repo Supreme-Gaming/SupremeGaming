@@ -1,10 +1,18 @@
 import { io, Socket } from 'socket.io-client';
 import { Queue, Worker } from 'bullmq';
-import { buildRegistrationPayload } from '@supremegaming/agent';
-import { startHeartbeatScheduler, stopHeartbeatScheduler } from './heartbeat';
-import { AgentCredentialManager } from './credential-manager';
-import { attachCommandHandlers } from './commands';
-import { attachConfigurationHandler } from './configuration';
+
+import {
+  AgentCredentialManager,
+  JobManager,
+  attachCommandHandlers,
+  attachConfigurationHandler,
+  buildRegistrationPayload,
+  createHostAgentJobsQueue,
+  createHostAgentJobsWorker,
+  gameDataIntervalMs,
+  startHeartbeatScheduler,
+  stopHeartbeatScheduler,
+} from '@supremegaming/agent/host';
 
 (async () => {
   const agentId = process.env.AGENT_ID || process.env.AGENT_KEY;
@@ -24,13 +32,20 @@ import { attachConfigurationHandler } from './configuration';
 
   const redisConnection = { host: redisHost, port: redisPort };
   let heartbeat: { queue: Queue; worker: Worker } | null = null;
+  let jobsWorker: Worker | null = null;
 
-  // Initialize credential manager and authenticate
   const credManager = new AgentCredentialManager(apiUrl, agentId);
   await credManager.init();
 
-  // Build Socket.IO connection options
-  const socketOpts: Record<string, any> = {
+  const jobsQueue = createHostAgentJobsQueue(redisConnection);
+  const jobManager = new JobManager({
+    queue: jobsQueue,
+    apiUrl,
+    getAccessToken: () => credManager.getAccessToken(),
+    intervalMs: gameDataIntervalMs(),
+  });
+
+  const socketOpts: Record<string, unknown> = {
     reconnection: true,
     reconnectionAttempts: Infinity,
     reconnectionDelay: 1000,
@@ -41,11 +56,10 @@ import { attachConfigurationHandler } from './configuration';
     },
   };
 
-  // Socket.IO namespaces are not under the REST prefix (/api).
   const socketOrigin = new URL(apiUrl).origin;
   const socket: Socket = io(`${socketOrigin}/hosts`, socketOpts);
-  attachCommandHandlers(socket);
-  attachConfigurationHandler(socket);
+  attachCommandHandlers(socket, jobManager);
+  attachConfigurationHandler(socket, jobManager);
 
   socket.on('connect', async () => {
     console.log(`[agent] Connected to server (socket id: ${socket.id})`);
@@ -66,6 +80,18 @@ import { attachConfigurationHandler } from './configuration';
     }
 
     heartbeat = await startHeartbeatScheduler(socket, agentId, redisConnection);
+
+    if (jobsWorker) {
+      await jobsWorker.close();
+    }
+
+    jobsWorker = createHostAgentJobsWorker(redisConnection, (job) => jobManager.processJob(job));
+    
+    jobsWorker.on('failed', (job, err) => {
+      console.error(`[agent] Job ${job?.id} failed:`, err.message);
+    });
+
+    console.log('[agent] Game-data jobs worker started');
   });
 
   socket.on('heartbeat-ack', (data) => {
@@ -79,17 +105,21 @@ import { attachConfigurationHandler } from './configuration';
       await stopHeartbeatScheduler(heartbeat.queue, heartbeat.worker);
       heartbeat = null;
     }
+
+    if (jobsWorker) {
+      await jobsWorker.close();
+      jobsWorker = null;
+      console.log('[agent] Game-data jobs worker stopped');
+    }
   });
 
   socket.on('connect_error', async (err) => {
     console.error('[agent] Connection error:', err.message);
 
-    // If the server rejected us for invalid token, refresh and retry
     if (err.message === 'invalid_token') {
       try {
         console.log('[agent] Refreshing access token...');
         await credManager.refresh();
-        // Update the auth payload for the next reconnection attempt
         socket.auth = { token: credManager.getAccessToken(), agentId };
       } catch (refreshErr) {
         console.error('[agent] Token refresh failed:', refreshErr);
