@@ -14,7 +14,7 @@
         "format": ["cjs"],
         "bundle": true,
         "main": "apps/supreme-host-agent-node/src/main.ts",
-        "additionalEntryPoints": ["apps/supreme-host-agent-node/src/ark-ascended.worker.ts"],
+        "additionalEntryPoints": ["apps/supreme-host-agent-node/src/ark.worker.ts"],
         "tsConfig": "apps/supreme-host-agent-node/tsconfig.app.json",
         "assets": ["apps/supreme-host-agent-node/src/assets"],
         "generatePackageJson": true,

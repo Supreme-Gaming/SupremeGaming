@@ -21,6 +21,9 @@ export class IngestGameDataPlayerDto {
   public EosId?: string;
 
   @Allow()
+  public SteamId?: string;
+
+  @Allow()
   public PlayerId: number;
 
   @Allow()

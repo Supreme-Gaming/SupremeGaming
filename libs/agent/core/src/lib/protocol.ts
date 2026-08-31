@@ -12,6 +12,7 @@ export const AGENT_COMMAND_TYPES = {
 
 export const AGENT_GAME_TYPES = {
   ARK_ASCENDED: 'ark-ascended',
+  ARK_EVOLVED: 'ark-evolved',
 } as const;
 
 export const AGENT_JOB_TYPES = {
@@ -101,7 +102,7 @@ export interface CancelJobPayload {
   serverId: string;
 }
 
-/** Flattened ASA player — no nested `Tribe` cycle. */
+/** Flattened ARK player — no nested `Tribe` cycle. */
 export interface GameDataPlayer {
   PlayerName: string;
   Level: number;
@@ -109,12 +110,13 @@ export interface GameDataPlayer {
   CharacterName: string;
   TribeId: number | false;
   EosId?: string;
+  SteamId?: string;
   PlayerId: number;
   FileCreated: string;
   FileUpdated: string;
 }
 
-/** Flattened ASA tribe — no nested `Players` cycle. */
+/** Flattened ARK tribe — no nested `Players` cycle. */
 export interface GameDataTribe {
   Name: string;
   OwnerId: number;

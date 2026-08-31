@@ -1,6 +1,6 @@
 import { AGENT_GAME_TYPES } from '@supremegaming/agent/core';
 
-import { flattenArkPlayer, flattenArkTribe, parseArkAscendedGameData } from './ark-ascended';
+import { flattenArkPlayer, flattenArkTribe, parseArkGameData } from './ark';
 
 jest.mock('@supremegaming/ark-files', () => {
   const getPlayers = jest.fn();
@@ -25,7 +25,7 @@ const mockedArkFiles = jest.requireMock('@supremegaming/ark-files') as jest.Mock
 const arkFilesMocks = mockedArkFiles;
 const { ArkBinaryFormats } = mockedArkFiles;
 
-describe('ark-ascended collector', () => {
+describe('ark collector', () => {
   const tribe = {
     Players: [{ PlayerName: 'cycle' }],
     Name: 'Alpha',
@@ -44,6 +44,7 @@ describe('ark-ascended collector', () => {
     CharacterName: 'Ada',
     TribeId: 9,
     EosId: 'eos-1',
+    SteamId: 76561198000000000,
     PlayerId: 1001,
     FileCreated: '2026-01-01T00:00:00.000Z',
     FileUpdated: '2026-01-02T00:00:00.000Z',
@@ -55,14 +56,25 @@ describe('ark-ascended collector', () => {
     arkFilesMocks.__getTribes.mockReset().mockReturnValue([tribe]);
   });
 
-  it('constructs ArkFiles with a fresh ASA read of the given absolute path', () => {
-    parseArkAscendedGameData('/opt/asa');
+  it('constructs ArkFiles with a fresh ASA read for ark-ascended', () => {
+    parseArkGameData('/opt/asa', AGENT_GAME_TYPES.ARK_ASCENDED);
 
     expect(mockedArkFiles).toHaveBeenCalledWith('/opt/asa', 0, ArkBinaryFormats.ASA, true);
   });
 
+  it('constructs ArkFiles with a fresh ASE read for ark-evolved', () => {
+    const snapshot = parseArkGameData('/opt/ase', AGENT_GAME_TYPES.ARK_EVOLVED);
+
+    expect(mockedArkFiles).toHaveBeenCalledWith('/opt/ase', 0, ArkBinaryFormats.ASE, true);
+    expect(snapshot.game).toBe(AGENT_GAME_TYPES.ARK_EVOLVED);
+  });
+
+  it('rejects unsupported games', () => {
+    expect(() => parseArkGameData('/opt/asa', 'minecraft')).toThrow("Unsupported ARK game 'minecraft'");
+  });
+
   it('strips circular Tribe.Players / Player.Tribe graphs', () => {
-    const snapshot = parseArkAscendedGameData('/opt/asa');
+    const snapshot = parseArkGameData('/opt/asa', AGENT_GAME_TYPES.ARK_ASCENDED);
 
     expect(snapshot.game).toBe(AGENT_GAME_TYPES.ARK_ASCENDED);
     expect(snapshot.players).toHaveLength(1);
@@ -76,6 +88,7 @@ describe('ark-ascended collector', () => {
       CharacterName: 'Ada',
       TribeId: 9,
       EosId: 'eos-1',
+      SteamId: '76561198000000000',
       PlayerId: 1001,
       FileCreated: '2026-01-01T00:00:00.000Z',
       FileUpdated: '2026-01-02T00:00:00.000Z',
@@ -91,8 +104,9 @@ describe('ark-ascended collector', () => {
     });
   });
 
-  it('omits nested cycles from flatten helpers', () => {
+  it('omits nested cycles from flatten helpers and keeps SteamId as a string', () => {
     expect(flattenArkPlayer(player)).not.toHaveProperty('Tribe');
+    expect(flattenArkPlayer(player).SteamId).toBe('76561198000000000');
     expect(flattenArkTribe(tribe)).not.toHaveProperty('Players');
   });
 });

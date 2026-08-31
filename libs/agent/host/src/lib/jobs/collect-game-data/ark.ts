@@ -5,8 +5,10 @@ import { Worker } from 'worker_threads';
 
 import { AGENT_GAME_TYPES, type GameDataPlayer, type GameDataSnapshot, type GameDataTribe } from '@supremegaming/agent/core';
 
-type ArkPlayerRecord = Partial<GameDataPlayer> & { Tribe?: unknown };
+type ArkPlayerRecord = Omit<Partial<GameDataPlayer>, 'SteamId'> & { Tribe?: unknown; SteamId?: string | number };
 type ArkTribeRecord = Partial<GameDataTribe> & { Players?: unknown };
+
+type ArkBinaryFormats = { ASE: string; ASA: string };
 
 type ArkFilesConstructor = {
   new (
@@ -18,7 +20,7 @@ type ArkFilesConstructor = {
     getPlayers(): unknown[];
     getTribes(): unknown[];
   };
-  ArkBinaryFormats: { ASE: string; ASA: string };
+  ArkBinaryFormats: ArkBinaryFormats;
 };
 
 function loadArkFiles(): ArkFilesConstructor {
@@ -33,6 +35,7 @@ export function flattenArkPlayer(player: ArkPlayerRecord): GameDataPlayer {
     CharacterName: player.CharacterName ?? '',
     TribeId: player.TribeId ?? false,
     EosId: player.EosId,
+    SteamId: player.SteamId != null ? String(player.SteamId) : undefined,
     PlayerId: player.PlayerId ?? 0,
     FileCreated: player.FileCreated ?? '',
     FileUpdated: player.FileUpdated ?? '',
@@ -51,27 +54,38 @@ export function flattenArkTribe(tribe: ArkTribeRecord): GameDataTribe {
   };
 }
 
-export function parseArkAscendedGameData(serverDirectory: string): GameDataSnapshot {
+export function arkBinaryFormatForGame(game: string, formats: ArkBinaryFormats): string {
+  switch (game) {
+    case AGENT_GAME_TYPES.ARK_ASCENDED:
+      return formats.ASA;
+    case AGENT_GAME_TYPES.ARK_EVOLVED:
+      return formats.ASE;
+    default:
+      throw new Error(`Unsupported ARK game '${game}'`);
+  }
+}
+
+export function parseArkGameData(serverDirectory: string, game: string): GameDataSnapshot {
   const ArkFilesCtor = loadArkFiles();
   const { ArkBinaryFormats } = ArkFilesCtor;
-  const arkFiles = new ArkFilesCtor(serverDirectory, 0, ArkBinaryFormats.ASA, true);
+  const arkFiles = new ArkFilesCtor(serverDirectory, 0, arkBinaryFormatForGame(game, ArkBinaryFormats), true);
   const players = ((arkFiles.getPlayers() as ArkPlayerRecord[]) ?? []).map(flattenArkPlayer);
   const tribes = ((arkFiles.getTribes() as ArkTribeRecord[]) ?? []).map(flattenArkTribe);
 
   console.log(`Received ${players.length} players and ${tribes.length} tribes`);
 
   return {
-    game: AGENT_GAME_TYPES.ARK_ASCENDED,
+    game,
     collectedAt: new Date().toISOString(),
     players,
     tribes,
   };
 }
 
-export function resolveArkAscendedWorkerFilename(): string {
+export function resolveArkWorkerFilename(): string {
   const candidates = [
-    join(__dirname, 'ark-ascended.worker.js'),
-    join(__dirname, 'jobs/collect-game-data/ark-ascended.worker.js'),
+    join(__dirname, 'ark.worker.js'),
+    join(__dirname, 'jobs/collect-game-data/ark.worker.js'),
   ];
 
   for (const candidate of candidates) {
@@ -83,9 +97,12 @@ export function resolveArkAscendedWorkerFilename(): string {
   return candidates[candidates.length - 1];
 }
 
-export function runArkAscendedParse(serverDirectory: string): { worker: Worker; result: Promise<GameDataSnapshot> } {
-  const worker = new Worker(resolveArkAscendedWorkerFilename(), {
-    workerData: { serverDirectory },
+export function runArkParse(
+  serverDirectory: string,
+  game: string
+): { worker: Worker; result: Promise<GameDataSnapshot> } {
+  const worker = new Worker(resolveArkWorkerFilename(), {
+    workerData: { serverDirectory, game },
   });
 
   const result = new Promise<GameDataSnapshot>((resolve, reject) => {
@@ -93,7 +110,7 @@ export function runArkAscendedParse(serverDirectory: string): { worker: Worker; 
     worker.once('error', reject);
     worker.once('exit', (code) => {
       if (code !== 0) {
-        reject(new Error(`ark-ascended worker exited with code ${code}`));
+        reject(new Error(`ark worker exited with code ${code}`));
       }
     });
   });

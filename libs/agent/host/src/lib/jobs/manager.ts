@@ -12,7 +12,7 @@ import {
 } from '@supremegaming/agent/core';
 
 import { AgentCommandError } from '../commands/errors';
-import { runArkAscendedParse } from './collect-game-data/ark-ascended';
+import { runArkParse } from './collect-game-data/ark';
 import {
   COLLECT_GAME_DATA_JOB,
   collectGameDataSchedulerId,
@@ -28,9 +28,13 @@ export interface JobManagerOptions {
   intervalMs?: number;
 }
 
+const COLLECT_GAME_DATA_GAMES = new Set<string>([
+  AGENT_GAME_TYPES.ARK_ASCENDED,
+  AGENT_GAME_TYPES.ARK_EVOLVED,
+]);
 export function isCollectGameDataEligible(server: AgentGameServerConfig): boolean {
   return (
-    server.game === AGENT_GAME_TYPES.ARK_ASCENDED &&
+    COLLECT_GAME_DATA_GAMES.has(server.game) &&
     server.shouldProcess === true &&
     typeof server.server_directory === 'string' &&
     server.server_directory.length > 0
@@ -105,7 +109,7 @@ export class JobManager {
       throw new AgentCommandError('unknown_server', `Unknown game server '${serverId}'`);
     }
 
-    if (server.game !== AGENT_GAME_TYPES.ARK_ASCENDED) {
+    if (!COLLECT_GAME_DATA_GAMES.has(server.game)) {
       throw new AgentCommandError('unsupported_game', `Game '${server.game}' does not support collect-game-data`);
     }
 
@@ -163,7 +167,7 @@ export class JobManager {
     const { serverId, serverDirectory, requestId, game } = job.data;
     this.report(requestId, { status: 'running', message: 'Collecting game data' });
 
-    const { worker, result } = runArkAscendedParse(serverDirectory);
+    const { worker, result } = runArkParse(serverDirectory, game);
 
     this.trackParse(serverId, worker);
 

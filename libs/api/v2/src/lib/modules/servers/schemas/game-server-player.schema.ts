@@ -36,6 +36,9 @@ export class GameServerPlayer {
   PlayerId: number;
 
   @Prop()
+  SteamId: string;
+
+  @Prop()
   FileCreated: string;
 
   @Prop()

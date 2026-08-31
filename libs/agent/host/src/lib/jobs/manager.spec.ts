@@ -3,8 +3,8 @@ import { AGENT_GAME_TYPES, AGENT_JOB_TYPES, type AgentHostConfiguration } from '
 import { isCollectGameDataEligible, JobManager } from './manager';
 import { COLLECT_GAME_DATA_JOB, collectGameDataSchedulerId } from './queue';
 
-jest.mock('./collect-game-data/ark-ascended', () => ({
-  runArkAscendedParse: jest.fn(),
+jest.mock('./collect-game-data/ark', () => ({
+  runArkParse: jest.fn(),
 }));
 
 describe('isCollectGameDataEligible', () => {
@@ -18,8 +18,9 @@ describe('isCollectGameDataEligible', () => {
     server_directory: '/opt/asa',
   };
 
-  it('accepts ark-ascended servers that should process and have a directory', () => {
+  it('accepts ark-ascended and ark-evolved servers that should process and have a directory', () => {
     expect(isCollectGameDataEligible(base)).toBe(true);
+    expect(isCollectGameDataEligible({ ...base, game: AGENT_GAME_TYPES.ARK_EVOLVED })).toBe(true);
   });
 
   it('rejects servers that are the wrong game, disabled, or missing a directory', () => {
@@ -39,6 +40,15 @@ describe('JobManager.applyConfiguration', () => {
     game: AGENT_GAME_TYPES.ARK_ASCENDED,
     shouldProcess: true,
     server_directory: '/opt/asa',
+  };
+  const eligibleEvolved: AgentHostConfiguration['servers'][number] = {
+    _id: 'gs-evolved',
+    host: 'host-1',
+    port: 7779,
+    rconport: 27022,
+    game: AGENT_GAME_TYPES.ARK_EVOLVED,
+    shouldProcess: true,
+    server_directory: '/opt/ase',
   };
   const ineligible: AgentHostConfiguration['servers'][number] = {
     _id: 'gs-off',
@@ -75,9 +85,9 @@ describe('JobManager.applyConfiguration', () => {
   });
 
   it('upserts a scheduler for each eligible server', async () => {
-    await manager.applyConfiguration({ hostId: 'host-1', servers: [eligible, ineligible] });
+    await manager.applyConfiguration({ hostId: 'host-1', servers: [eligible, eligibleEvolved, ineligible] });
 
-    expect(queue.upsertJobScheduler).toHaveBeenCalledTimes(1);
+    expect(queue.upsertJobScheduler).toHaveBeenCalledTimes(2);
     expect(queue.upsertJobScheduler).toHaveBeenCalledWith(
       collectGameDataSchedulerId('gs-eligible'),
       { every: 60_000 },
@@ -88,6 +98,20 @@ describe('JobManager.applyConfiguration', () => {
           serverId: 'gs-eligible',
           game: AGENT_GAME_TYPES.ARK_ASCENDED,
           serverDirectory: '/opt/asa',
+          trigger: 'schedule',
+        },
+      }
+    );
+    expect(queue.upsertJobScheduler).toHaveBeenCalledWith(
+      collectGameDataSchedulerId('gs-evolved'),
+      { every: 60_000 },
+      {
+        name: COLLECT_GAME_DATA_JOB,
+        data: {
+          job: AGENT_JOB_TYPES.COLLECT_GAME_DATA,
+          serverId: 'gs-evolved',
+          game: AGENT_GAME_TYPES.ARK_EVOLVED,
+          serverDirectory: '/opt/ase',
           trigger: 'schedule',
         },
       }

@@ -48,6 +48,7 @@ export class GameDataService {
             CharacterName: player.CharacterName,
             TribeId: player.TribeId,
             EosId: player.EosId,
+            SteamId: player.SteamId,
             PlayerId: player.PlayerId,
             FileCreated: player.FileCreated,
             FileUpdated: player.FileUpdated,
