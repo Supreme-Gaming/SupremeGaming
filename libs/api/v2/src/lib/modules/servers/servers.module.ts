@@ -1,14 +1,29 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 
-import { GameServer, HostServer } from '@supremegaming/common/entities/servers';
-
+import { AgentsModule } from '../agents/agents.module';
+import { HostsModule } from '../hosts/hosts.module';
+import { HostServer, HostServerSchema } from '../hosts/schemas/host-server.schema';
+import { GameDataService } from './game-data.service';
+import { GameServer, GameServerSchema } from './schemas/game-server.schema';
+import { GameServerPlayer, GameServerPlayerSchema } from './schemas/game-server-player.schema';
+import { GameServerTribe, GameServerTribeSchema } from './schemas/game-server-tribe.schema';
 import { ServersController } from './servers.controller';
 import { ServersService } from './servers.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([GameServer, HostServer])],
+  imports: [
+    MongooseModule.forFeature([
+      { name: GameServer.name, schema: GameServerSchema },
+      { name: HostServer.name, schema: HostServerSchema },
+      { name: GameServerPlayer.name, schema: GameServerPlayerSchema },
+      { name: GameServerTribe.name, schema: GameServerTribeSchema },
+    ]),
+    AgentsModule,
+    HostsModule,
+  ],
   controllers: [ServersController],
-  providers: [ServersService],
+  providers: [ServersService, GameDataService],
+  exports: [ServersService],
 })
 export class ServersModule {}

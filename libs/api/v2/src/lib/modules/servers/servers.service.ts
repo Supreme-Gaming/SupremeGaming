@@ -1,72 +1,139 @@
-import { Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ConflictException, Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, Types } from 'mongoose';
 
-import { GameServer, HostServer } from '@supremegaming/common/entities/servers';
+import { RCONServer } from '@supremegaming/utilities/rcon';
+
+import { HostConfigurationPublisher } from '../hosts/host-configuration.publisher';
+import { HostServer, HostServerDocument } from '../hosts/schemas/host-server.schema';
+import { CreateGameServerDto } from './dto/create-game-server.dto';
+import { UpdateGameServerDto } from './dto/update-game-server.dto';
+import { GameServer, GameServerDocument } from './schemas/game-server.schema';
 
 @Injectable()
 export class ServersService {
   constructor(
-    @InjectRepository(GameServer) private readonly gsRepo: Repository<GameServer>,
-    @InjectRepository(HostServer) private readonly hsRepo: Repository<HostServer>
+    @InjectModel(GameServer.name) private readonly gsModel: Model<GameServerDocument>,
+    @InjectModel(HostServer.name) private readonly hsModel: Model<HostServerDocument>,
+    private readonly hostConfiguration: HostConfigurationPublisher
   ) {}
 
-  public async getAllServers(includeSensitive?: boolean) {
-    if (includeSensitive) {
-      return this.gsRepo.find();
-    } else {
-      const servers = await this.gsRepo.find();
-
-      return servers.map((s) => GameServer.clean(s));
-    }
+  public async getAllServers() {
+    return this.gsModel.find().exec();
   }
 
-  public async getServerByProps(whereProps: Partial<GameServer>, includeSensitive?: boolean) {
-    const server = await this.gsRepo.findOne({
-      // TODO: Fix this typing issue.
-      where: { ...whereProps } as any,
-    });
+  public async getAgentConfiguration(hostId: string | Types.ObjectId) {
+    return {
+      hostId: String(hostId),
+      servers: await this.gsModel.find({ host: hostId }).lean().exec(),
+    };
+  }
+
+  public async getServerByProps(whereProps: Partial<GameServer>) {
+    const server = await this.gsModel.findOne(whereProps).exec();
 
     if (!server) {
       throw new NotFoundException();
     }
 
-    if (includeSensitive) {
-      return server;
-    } else {
-      return GameServer.clean(server);
+    return server;
+  }
+
+  public async createGameServer(server: CreateGameServerDto) {
+    const hs = await this.requireHost(server.host);
+    await this.assertNoPortConflict(hs._id, [server.port, server.rconport]);
+
+    const created = await new this.gsModel(server).save();
+    await this.hostConfiguration.publishForHost(created.host);
+    return created;
+  }
+
+  public async updateGameServer(id: string, update: UpdateGameServerDto) {
+    const patch = Object.fromEntries(Object.entries(update).filter(([, value]) => value !== undefined));
+
+    let previousHost: string | Types.ObjectId | undefined;
+
+    if (patch.host || patch.port !== undefined || patch.rconport !== undefined) {
+      const existing = await this.gsModel.findById(id).exec();
+
+      if (!existing) {
+        throw new NotFoundException();
+      }
+
+      previousHost = existing.host;
+      const hostId = patch.host ?? existing.host;
+      await this.requireHost(hostId);
+      await this.assertNoPortConflict(hostId, [patch.port ?? existing.port, patch.rconport ?? existing.rconport], id);
+    }
+
+    const updated = await this.gsModel.findByIdAndUpdate(id, patch, { new: true, runValidators: true }).exec();
+
+    if (!updated) {
+      throw new NotFoundException();
+    }
+
+    await this.hostConfiguration.publishForHost(updated.host);
+    if (previousHost && String(previousHost) !== String(updated.host)) {
+      await this.hostConfiguration.publishForHost(previousHost);
+    }
+
+    return updated;
+  }
+
+  public async deleteGameServer(id: string): Promise<void> {
+    const deleted = await this.gsModel.findByIdAndDelete(id).exec();
+
+    if (!deleted) {
+      throw new NotFoundException();
+    }
+
+    await this.hostConfiguration.publishForHost(deleted.host);
+  }
+
+  public async executeServerCommand(server: GameServerDocument, command: string) {
+    const populated = await server.populate('host');
+    const host = populated.host as unknown as HostServerDocument;
+
+    const rcon = new RCONServer({
+      host: { name: host.hostname, ip: host.system?.network?.publicIp, status: host.status, key: host.key },
+      rconport: server.rconport,
+      rconpass: server.rconpass,
+      game: server.game,
+    });
+
+    try {
+      await rcon.connect();
+      return await rcon.command(command);
+    } finally {
+      await rcon.disconnect();
     }
   }
 
-  public async createGameServer(server: Partial<GameServer>) {
-    // Check if host exists, otherwise game server entry will fail.
-    const hs = await this.hsRepo.findOne({
-      where: {
-        // TODO: This might not work?
-        guid: server.host.guid,
-      },
-    });
+  private async requireHost(hostId: string | Types.ObjectId) {
+    const hs = await this.hsModel.findById(hostId).exec();
 
     if (!hs) {
       throw new UnprocessableEntityException();
     }
 
-    const gs = this.gsRepo.create({ ...server, host: hs });
-
-    return await gs.save();
+    return hs;
   }
 
-  public async executeServerCommand(server: GameServer, command: string) {
-    return server.rcon
-      .connect()
-      .then((status) => {
-        return status;
+  private async assertNoPortConflict(
+    hostId: string | Types.ObjectId,
+    ports: number[],
+    excludeId?: string
+  ): Promise<void> {
+    const conflict = await this.gsModel
+      .exists({
+        host: hostId,
+        ...(excludeId ? { _id: { $ne: excludeId } } : {}),
+        $or: [{ port: { $in: ports } }, { rconport: { $in: ports } }],
       })
-      .then((status) => {
-        return server.rcon.command(command);
-      })
-      .finally(() => {
-        return server.rcon.disconnect();
-      });
+      .exec();
+
+    if (conflict) {
+      throw new ConflictException('A game server on this host already uses one of these ports');
+    }
   }
 }

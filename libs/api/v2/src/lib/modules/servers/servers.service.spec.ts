@@ -1,12 +1,50 @@
+import { ConflictException, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { getModelToken } from '@nestjs/mongoose';
+
 import { ServersService } from './servers.service';
+import { GameServer } from './schemas/game-server.schema';
+import { HostConfigurationPublisher } from '../hosts/host-configuration.publisher';
+import { HostServer } from '../hosts/schemas/host-server.schema';
+import { CreateGameServerDto } from './dto/create-game-server.dto';
 
 describe('ServersService', () => {
   let service: ServersService;
+  const save = jest.fn();
+  const gsModel: any = jest.fn().mockImplementation(() => ({ save }));
+  gsModel.find = jest.fn();
+  gsModel.findById = jest.fn();
+  gsModel.findByIdAndUpdate = jest.fn();
+  gsModel.findByIdAndDelete = jest.fn();
+  gsModel.exists = jest.fn();
+  const hsModel = {
+    findById: jest.fn(),
+  };
+  const hostConfiguration = {
+    publishForHost: jest.fn(),
+  };
+
+  const hostId = '507f191e810c19729de860ea';
+  const serverId = '507f1f77bcf86cd799439011';
+  const createPayload: CreateGameServerDto = {
+    host: hostId,
+    port: 7777,
+    rconport: 27020,
+    game: 'ark',
+    rconpass: 'secret',
+  };
 
   beforeEach(async () => {
+    jest.resetAllMocks();
+    gsModel.mockImplementation(() => ({ save }));
+
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ServersService],
+      providers: [
+        ServersService,
+        { provide: getModelToken(GameServer.name), useValue: gsModel },
+        { provide: getModelToken(HostServer.name), useValue: hsModel },
+        { provide: HostConfigurationPublisher, useValue: hostConfiguration },
+      ],
     }).compile();
 
     service = module.get<ServersService>(ServersService);
@@ -14,5 +52,150 @@ describe('ServersService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  describe('createGameServer', () => {
+    it('creates the server when the host exists and ports are free', async () => {
+      const created = { _id: serverId, host: hostId };
+      hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: hostId }) });
+      gsModel.exists.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+      save.mockResolvedValue(created);
+
+      await expect(service.createGameServer(createPayload)).resolves.toEqual(created);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
+      expect(gsModel.exists).toHaveBeenCalledWith({
+        host: hostId,
+        $or: [{ port: { $in: [7777, 27020] } }, { rconport: { $in: [7777, 27020] } }],
+      });
+    });
+
+    it('rejects a host that does not exist', async () => {
+      hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+
+      await expect(service.createGameServer(createPayload)).rejects.toBeInstanceOf(UnprocessableEntityException);
+      expect(gsModel.exists).not.toHaveBeenCalled();
+    });
+
+    it('rejects when another server on the host already uses the port', async () => {
+      hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: hostId }) });
+      gsModel.exists.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: serverId }) });
+
+      await expect(service.createGameServer(createPayload)).rejects.toBeInstanceOf(ConflictException);
+      expect(save).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('updateGameServer', () => {
+    it('updates the server when it exists', async () => {
+      const updated = { _id: serverId, host: hostId, port: 7778 };
+      gsModel.findById.mockReturnValue({
+        exec: jest.fn().mockResolvedValue({ _id: serverId, host: hostId, port: 7777, rconport: 27020 }),
+      });
+      hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: hostId }) });
+      gsModel.exists.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+      gsModel.findByIdAndUpdate.mockReturnValue({ exec: jest.fn().mockResolvedValue(updated) });
+
+      await expect(service.updateGameServer(serverId, { port: 7778 })).resolves.toEqual(updated);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
+      expect(gsModel.exists).toHaveBeenCalledWith({
+        host: hostId,
+        _id: { $ne: serverId },
+        $or: [{ port: { $in: [7778, 27020] } }, { rconport: { $in: [7778, 27020] } }],
+      });
+      expect(gsModel.findByIdAndUpdate).toHaveBeenCalledWith(serverId, { port: 7778 }, { new: true, runValidators: true });
+    });
+
+    it('skips the port check when the patch does not change host or ports', async () => {
+      const updated = { _id: serverId, host: hostId, map_name: 'TheIsland' };
+      gsModel.findByIdAndUpdate.mockReturnValue({ exec: jest.fn().mockResolvedValue(updated) });
+
+      await expect(service.updateGameServer(serverId, { map_name: 'TheIsland' })).resolves.toEqual(updated);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
+      expect(gsModel.findById).not.toHaveBeenCalled();
+      expect(gsModel.exists).not.toHaveBeenCalled();
+    });
+
+    it('rejects a host that does not exist', async () => {
+      gsModel.findById.mockReturnValue({
+        exec: jest.fn().mockResolvedValue({ _id: serverId, host: hostId, port: 7777, rconport: 27020 }),
+      });
+      hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+
+      await expect(service.updateGameServer(serverId, { host: hostId })).rejects.toBeInstanceOf(
+        UnprocessableEntityException
+      );
+      expect(gsModel.findByIdAndUpdate).not.toHaveBeenCalled();
+    });
+
+    it('rejects when the new port conflicts with another server on the host', async () => {
+      gsModel.findById.mockReturnValue({
+        exec: jest.fn().mockResolvedValue({ _id: serverId, host: hostId, port: 7777, rconport: 27020 }),
+      });
+      hsModel.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: hostId }) });
+      gsModel.exists.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: 'other' }) });
+
+      await expect(service.updateGameServer(serverId, { port: 7778 })).rejects.toBeInstanceOf(ConflictException);
+      expect(gsModel.findByIdAndUpdate).not.toHaveBeenCalled();
+    });
+
+    it('throws NotFoundException when the server does not exist', async () => {
+      gsModel.findByIdAndUpdate.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+
+      await expect(service.updateGameServer(serverId, { map_name: 'TheIsland' })).rejects.toBeInstanceOf(NotFoundException);
+    });
+  });
+
+  describe('getAgentConfiguration', () => {
+    it('returns game servers for the host as agent configuration', async () => {
+      const server = {
+        _id: serverId,
+        host: hostId,
+        port: 7777,
+        rconport: 27020,
+        rconpass: 'secret',
+        game: 'ark',
+        map_name: 'TheIsland',
+        shouldProcess: true,
+        server_directory: '/opt/ark',
+        server_alt_dir: '/opt/ark-alt',
+      };
+      gsModel.find.mockReturnValue({
+        lean: () => ({
+          exec: jest.fn().mockResolvedValue([server]),
+        }),
+      });
+
+      await expect(service.getAgentConfiguration(hostId)).resolves.toEqual({
+        hostId,
+        servers: [server],
+      });
+      expect(gsModel.find).toHaveBeenCalledWith({ host: hostId });
+    });
+
+    it('returns an empty server list when the host has none', async () => {
+      gsModel.find.mockReturnValue({
+        lean: () => ({
+          exec: jest.fn().mockResolvedValue([]),
+        }),
+      });
+
+      await expect(service.getAgentConfiguration(hostId)).resolves.toEqual({ hostId, servers: [] });
+    });
+  });
+
+  describe('deleteGameServer', () => {
+    it('deletes the server when it exists', async () => {
+      gsModel.findByIdAndDelete.mockReturnValue({ exec: jest.fn().mockResolvedValue({ _id: serverId, host: hostId }) });
+
+      await expect(service.deleteGameServer(serverId)).resolves.toBeUndefined();
+      expect(gsModel.findByIdAndDelete).toHaveBeenCalledWith(serverId);
+      expect(hostConfiguration.publishForHost).toHaveBeenCalledWith(hostId);
+    });
+
+    it('throws NotFoundException when the server does not exist', async () => {
+      gsModel.findByIdAndDelete.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+
+      await expect(service.deleteGameServer(serverId)).rejects.toBeInstanceOf(NotFoundException);
+    });
   });
 });

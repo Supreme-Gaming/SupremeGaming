@@ -1,0 +1,106 @@
+{
+  "name": "supreme-host-agent-node",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/supreme-host-agent-node/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/supreme-host-agent-node",
+        "format": ["cjs"],
+        "bundle": true,
+        "thirdParty": true,
+        "main": "apps/supreme-host-agent-node/src/main.ts",
+        "additionalEntryPoints": ["apps/supreme-host-agent-node/src/ark.worker.ts"],
+        "tsConfig": "apps/supreme-host-agent-node/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "assets/**",
+            "input": "apps/supreme-host-agent-node/src",
+            "output": "."
+          },
+          {
+            "glob": "Dockerfile",
+            "input": "apps/supreme-host-agent-node/src",
+            "output": "."
+          },
+          {
+            "glob": ".dockerignore",
+            "input": "apps/supreme-host-agent-node/src",
+            "output": "."
+          }
+        ],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "image-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker build -t supreme-host-agent-node ."
+          }
+        ],
+        "cwd": "dist/apps/supreme-host-agent-node"
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "supreme-host-agent-node:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "supreme-host-agent-node:build:development"
+        },
+        "production": {
+          "buildTarget": "supreme-host-agent-node:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/supreme-host-agent-node/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/supreme-host-agent-node/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

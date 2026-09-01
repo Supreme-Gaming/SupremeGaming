@@ -1,5 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { getModelToken } from '@nestjs/mongoose';
+
+import { AgentsService } from '../agents/agents.service';
+import { HostConfigurationPublisher } from '../hosts/host-configuration.publisher';
+import { GameDataService } from './game-data.service';
 import { ServersController } from './servers.controller';
+import { ServersService } from './servers.service';
+import { GameServer } from './schemas/game-server.schema';
+import { HostServer } from '../hosts/schemas/host-server.schema';
 
 describe('ServersController', () => {
   let controller: ServersController;
@@ -7,6 +15,14 @@ describe('ServersController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ServersController],
+      providers: [
+        ServersService,
+        { provide: GameDataService, useValue: {} },
+        { provide: AgentsService, useValue: { verifyAccessToken: jest.fn() } },
+        { provide: HostConfigurationPublisher, useValue: { publishForHost: jest.fn() } },
+        { provide: getModelToken(GameServer.name), useValue: {} },
+        { provide: getModelToken(HostServer.name), useValue: {} },
+      ],
     }).compile();
 
     controller = module.get<ServersController>(ServersController);
