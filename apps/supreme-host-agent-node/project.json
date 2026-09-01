@@ -12,7 +12,7 @@
         "platform": "node",
         "outputPath": "dist/apps/supreme-host-agent-node",
         "format": ["cjs"],
-        "bundle": false,
+        "bundle": true,
         "main": "apps/supreme-host-agent-node/src/main.ts",
         "tsConfig": "apps/supreme-host-agent-node/tsconfig.app.json",
         "assets": ["apps/supreme-host-agent-node/src/assets"],
