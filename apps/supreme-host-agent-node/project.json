@@ -13,10 +13,27 @@
         "outputPath": "dist/apps/supreme-host-agent-node",
         "format": ["cjs"],
         "bundle": true,
+        "thirdParty": true,
         "main": "apps/supreme-host-agent-node/src/main.ts",
         "additionalEntryPoints": ["apps/supreme-host-agent-node/src/ark.worker.ts"],
         "tsConfig": "apps/supreme-host-agent-node/tsconfig.app.json",
-        "assets": ["apps/supreme-host-agent-node/src/assets"],
+        "assets": [
+          {
+            "glob": "assets/**",
+            "input": "apps/supreme-host-agent-node/src",
+            "output": "."
+          },
+          {
+            "glob": "Dockerfile",
+            "input": "apps/supreme-host-agent-node/src",
+            "output": "."
+          },
+          {
+            "glob": ".dockerignore",
+            "input": "apps/supreme-host-agent-node/src",
+            "output": "."
+          }
+        ],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -35,6 +52,17 @@
             }
           }
         }
+      }
+    },
+    "image-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker build -t supreme-host-agent-node ."
+          }
+        ],
+        "cwd": "dist/apps/supreme-host-agent-node"
       }
     },
     "serve": {

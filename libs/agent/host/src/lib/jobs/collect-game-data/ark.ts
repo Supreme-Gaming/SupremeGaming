@@ -1,9 +1,9 @@
 import { existsSync } from 'fs';
-import { createRequire } from 'module';
 import { join } from 'path';
 import { Worker } from 'worker_threads';
 
 import { AGENT_GAME_TYPES, type GameDataPlayer, type GameDataSnapshot, type GameDataTribe } from '@supremegaming/agent/core';
+import ArkFiles from '@supremegaming/ark-files';
 
 type ArkPlayerRecord = Omit<Partial<GameDataPlayer>, 'SteamId'> & { Tribe?: unknown; SteamId?: string | number };
 type ArkTribeRecord = Partial<GameDataTribe> & { Players?: unknown };
@@ -24,7 +24,7 @@ type ArkFilesConstructor = {
 };
 
 function loadArkFiles(): ArkFilesConstructor {
-  return createRequire(__filename)('@supremegaming/ark-files') as ArkFilesConstructor;
+  return ArkFiles as unknown as ArkFilesConstructor;
 }
 
 export function flattenArkPlayer(player: ArkPlayerRecord): GameDataPlayer {
