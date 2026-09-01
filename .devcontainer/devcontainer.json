@@ -12,10 +12,6 @@
       "installOhMyZshConfig": true
     }
   },
-  "mounts": ["source=claude-config,target=/home/vscode/.claude,type=volume"],
-  "containerEnv": {
-    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}"
-  },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Use 'postCreateCommand' to run commands after the container is created.
