@@ -127,7 +127,7 @@ export class JobManager {
         requestId: opts.requestId,
         trigger: 'on-demand',
       },
-      { jobId: `${COLLECT_GAME_DATA_JOB}:${serverId}:ondemand:${randomUUID()}` }
+      { jobId: `${COLLECT_GAME_DATA_JOB}-${serverId}-ondemand-${randomUUID()}` }
     );
 
     const jobId = String(job.id);
